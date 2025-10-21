@@ -2161,27 +2161,31 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
         </div>
       </div>
       {(
-        hasVariant($state, "modal", "rm1Hs4")
+        hasVariant($state, "modal", "rm3Hs4")
           ? true
-          : hasVariant($state, "modal", "rm1Hs3")
+          : hasVariant($state, "modal", "rm3Hs2")
             ? true
-            : hasVariant($state, "modal", "rm1Hs2")
+            : hasVariant($state, "modal", "rm1Hs4")
               ? true
-              : hasVariant($state, "modal", "rm1Hs1")
+              : hasVariant($state, "modal", "rm1Hs3")
                 ? true
-                : (() => {
-                    try {
-                      return true;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })()
+                : hasVariant($state, "modal", "rm1Hs2")
+                  ? true
+                  : hasVariant($state, "modal", "rm1Hs1")
+                    ? true
+                    : (() => {
+                        try {
+                          return true;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })()
       ) ? (
         <ReferencePanel
           data-plasmic-name={"referencePanel"}
@@ -2208,10 +2212,20 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               "modal",
               "rm1Hs4"
             ),
+            [sty.referencePanelmodal_rm3Hs2]: hasVariant(
+              $state,
+              "modal",
+              "rm3Hs2"
+            ),
             [sty.referencePanelmodal_rm3Hs3]: hasVariant(
               $state,
               "modal",
               "rm3Hs3"
+            ),
+            [sty.referencePanelmodal_rm3Hs4]: hasVariant(
+              $state,
+              "modal",
+              "rm3Hs4"
             )
           })}
           modal={
@@ -2225,6 +2239,16 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               projectcss.__wab_text,
               sty.text__wtheB,
               {
+                [sty.textmodal_ivanDoor__wtheBao3U]: hasVariant(
+                  $state,
+                  "modal",
+                  "ivanDoor"
+                ),
+                [sty.textmodal_kelvinDoor__wtheB8FMxe]: hasVariant(
+                  $state,
+                  "modal",
+                  "kelvinDoor"
+                ),
                 [sty.textmodal_rm1Hs1__wtheBAmduI]: hasVariant(
                   $state,
                   "modal",
@@ -2284,35 +2308,508 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                   $state,
                   "modal",
                   "rm3Hs4"
+                ),
+                [sty.textmodal_shareseDoor__wtheBf6Qgf]: hasVariant(
+                  $state,
+                  "modal",
+                  "shareseDoor"
                 )
               }
             )}
           >
-            {hasVariant($state, "modal", "rm3Hs4")
-              ? "Gomez-Torrijos E, Garcia-Rodriguez R, Castro-Jimenez A, et al. The efficacy of step-down therapy in adult patients with proton pump inhibitor-responsive oesophageal eosinophilia.\rAliment Pharmacol Ther. 2016;43(4):534\u201340.\r\nGutierrez-Junquera C, Fernandez-Fernandez S, Cilleruelo ML, et al. High prevalence of response to proton-pump inhibitor treatment in children with esophageal eosinophilia. J Pediatr\rGastroenterol Nutr. 2016;62(5):704\u201310.\r\nLaserna-Mendieta EJ, Casabona S, Guagnozzi D, et al. Efficacy of proton pump inhibitor therapy for eosinophilic oesophagitis in 630 patients: Results from the EoE Connect registry.\rAliment Pharmacol Ther. 2020; 52(5):798\u2013807.\r\nLucendo AJ, Arias \u00c1, Molina-Infante J. Efficacy of proton pump inhibitor drugs for inducing clinical and histologic remission in patients with symptomatic esophageal eosinophilia: A\rsystematic review and meta-analysis. Clin Gastroenterol Hepatol. 2016;14(1):13-22.e1."
-              : hasVariant($state, "modal", "rm3Hs3")
-                ? "Capucilli P, Hill DA. Allergic comorbidity in eosinophilic esophagitis: mechanistic relevance and clinical implications. Clin Rev Allergy Immunol. 2019;57(1):111-127.\r\nDellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. Am J Gastroenterol. 2025;120(1):31.\r\nHill DA, Grundmeier RW, Ramos M, Spergel JM. Eosinophilic Esophagitis Is a Late Manifestation of the Allergic March. J Allergy Clin Immunol Pract. 2018;6(5):1528-1533.\r\nOliva S, McGowan EC. Associations of eosinophilic gastrointestinal disorders with other gastrointestinal and allergic diseases. Immunol Allergy Clin North Am. 2024;44(2):329-348."
-                : hasVariant($state, "modal", "rm3Hs2")
-                  ? "Capucilli P, Hill DA. Allergic comorbidity in eosinophilic esophagitis: mechanistic relevance and clinical implications. Clin Rev Allergy Immunol. 2019;57(1):111-127.\n\rGonsalves NP, Aceves SS. Diagnosis and treatment of eosinophilic esophagitis. J Allergy Clin Immunol. 2020;145(1):1-7.\r\nOliva S, McGowan EC. Associations of eosinophilic gastrointestinal disorders with other gastrointestinal and allergic diseases. Immunology and Allergy Clinics. 2024;44(2):329-348."
-                  : hasVariant($state, "modal", "rm3Hs1")
-                    ? "Cheng E, Zhang X, HuoX, et al. Omeprazole blocks eotaxin-3 expression by oesophageal squamous cells from patients with eosinophilic oesophagitis and GORD. Gut. 2013;62(6):824\u201332.\r\nDellon ES, Liacouras CA, Molina-Infante J, et al. Updated international consensus diagnostic criteria for eosinophilic esophagitis: Proceedings of the AGREE Conference. Gastroenterology.\r2018;155(4):1022-1033.e10.\rDellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. Am J Gastroenterol. 2025;120(1):31.\r\nMolina-Infante J, Bredenoord AJ, Cheng E, et al. Proton pump inhibitor-responsive oesophageal eosinophilia: An entity challenging current diagnostic criteria for eosinophilic\roesophagitis. Gut. 2016;65(3):524\u201331.\r\nZhang X, Cheng E, Huo X, et al. Omeprazole blocks STAT6 binding to the eotaxin-3 promoter in eosinophilic esophagitis cells. PLoS One. 2012;7(11):e50037."
-                    : hasVariant($state, "modal", "rm2Hs4")
-                      ? "Dellon ES, Cotton CC, Gebhart JH, et al. Accuracy of the eosinophilic esophagitis endoscopic reference score in diagnosis and determining response to treatment. Clin Gastroenterol\rHepatol. 2016;14(1):31-39.\r\nGupta M, Grinman M. Diagnosis and management of eosinophilic esophagitis. CMAJ. 2024;196(4):E121-E128.\n\rHirano I, Moy N, Heckman MG, Thomas CS, Gonsalves N, Achem SR. Endoscopic assessment of the oesophageal features of eosinophilic oesophagitis: validation of a novel classification\rand grading system. Gut. 2013;62(4):489-495.\r\nWechsler JB, Bolton SM, Amsden K, Wershil BK, Hirano I, Kagalwalla AF. Eosinophilic esophagitis reference score accurately identifies disease activity and treatment effects in children.\rClin Gastroenterol Hepatol. 2018;16(7):1056-1063."
-                      : hasVariant($state, "modal", "rm2Hs3")
-                        ? "EOHILIA (budesonide oral suspension) product label. Available at www.accessdata.fda.gov/drugsatfda_docs/label/2024/213976s000lbl.pdf. Accessed September 3, 2025.\r\nHirano I, Collins MH, Katzka DA, Mukkada VA, Falk GW, Morey R, et al; ORBIT1/SHP621-301 Investigators. Budesonide oral suspension improves outcomes in patients with eosinophilic\resophagitis: Results from a Phase 3 trial. Clin Gastroenterol Hepatol. 2021:S1542-3565(21)00456-0."
-                        : hasVariant($state, "modal", "rm2Hs2")
-                          ? "Chehade M, McGowan EC, Wright BL, et al. Barriers to timely diagnosis of eosinophilic gastrointestinal diseases. J Allergy Clin Immunol Pract. 2024;12(2):302\u20138.\r\nDellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. Am J Gastroenterol. 2025;120(1):31.\r\nFuruta GT, Katzka DA. Eosinophilic esophagitis. N Engl J Med. 2015;373(17):1640-1648.\r\nFuruta GT, Liacouras CA, Collins MH, et al. Eosinophilic esophagitis in children and adults: A systematic review and consensus recommendations for diagnosis and treatment.\rGastroenterology. 2007;133(4):1342-1363."
-                          : hasVariant($state, "modal", "rm2Hs1")
-                            ? "Peterson K, Firszt R, Fang J, Wong J, Smith KR, Brady KA. Risk of autoimmunity in EoE and families: A population-based cohort study. Am J Gastroenterol. 2016;111(7):926-932.\n\rXue Z, Miller TL, Abramson L, et al. Association of eosinophilic esophagitis with autoimmune and connective tissue disorders, and the impact on treatment response. Dis Esophagus.\r2022;36(1):doac043."
-                            : hasVariant($state, "modal", "rm1Hs4")
-                              ? "Aceves SS. Food allergy testing in eosinophilic esophagitis: What the gastroenterologist needs to know. Clin Gastroenterol Hepatol. 2014;12(8):1216-1223.\n\rCapucilli P, Hill DA. Allergic comorbidity in eosinophilic esophagitis: mechanistic relevance and clinical implications. Clin Rev Allergy Immunol. 2019;57(1):111-127.\r\nMayerhofer C, Kavallar AM, Aldrian D, Lindner AK, Mu\u0308ller T, Vogel GF. Efficacy of elimination diets in eosinophilic esophagitis: a systematic review and meta-analysis. Clin Gastroenterol\rHepatol. 2023;21(9):2197-2210.e3."
-                              : hasVariant($state, "modal", "rm1Hs3")
-                                ? "Chehade M, Dellon E, Spergel J, et al. Dupilumab improves histologic and endoscopic outcomes in children aged 1 to <12 years with eosinophilic esophagitis (EoE): 52-week results from\rthe Phase 3 EoE KIDS Trial. J Allergy Immunol. 2024;156(2):SAB266.\r\nDellon ES, Peterson KA, Mitlyng BL, et al. Mepolizumab for treatment of adolescents and adults with eosinophilic oesophagitis: a multicentre, randomised, double-blind,\rplacebo-controlled clinical trial. Gut. 2023;72(10):1828-1837.\n\rDellon ES, Rothenberg ME, Collins MH, et al. Dupilumab in adults and adolescents with eosinophilic esophagitis. N Engl J Med. 2022;387(25):2317-2330.\r\nDellon ES, Spergel JM. Biologics in eosinophilic gastrointestinal diseases. Ann Allergy Asthma Immunol. 2023;130(1):21-27."
-                                : hasVariant($state, "modal", "rm1Hs2")
-                                  ? "Dellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. Am J Gastroenterol. 2025;120(1):31.\r\nErdle SC, Carr S, Chan ES, Robertson K, Watson W. Eosinophilic esophagitis. Allergy Asthma Clin Immunol. 2024;20(S3):72.\r\nFuruta GT, Liacouras CA, Collins MH, et al. Eosinophilic esophagitis in children and adults: A systematic review and consensus recommendations for diagnosis and treatment.\rGastroenterology. 2007;133(4):1342-1363."
-                                  : hasVariant($state, "modal", "rm1Hs1")
-                                    ? "Dellon ES, Hirano I. Epidemiology and natural history of eosinophilic esophagitis. Gastroenterology. 2018;154(2):319-332.e3.\r\nJensen ET, Kappelman MD, Kim HP, Ringel-Kulka T, Dellon ES. Early life exposures as risk factors for pediatric eosinophilic esophagitis. J Pediatr Gastroenterol Nutr. 2013;57:67\u201371.\r\nKapel RC, Miller JK, Torres C, Aksoy S, Lash R, Katzka DA. Eosinophilic esophagitis: a prevalent disease in the United States that affects all age groups. Gastroenterology. 2008;134:1316\u201321.\r\nvan Nimwegen FA, Penders J, Stobberingh EE, et al. Mode and place of delivery, gastrointestinal microbiota, and their influence on asthma and atopy. J Allergy Clin Immunol. 2011;128(5):\r948.e3\u201355.e3."
-                                    : "Enter some text"}
+            {hasVariant($state, "modal", "rm3Hs4") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Gomez-Torrijos E, Garcia-Rodriguez R, Castro-Jimenez A, et al. The efficacy of step-down therapy in adult patients with proton pump inhibitor-responsive oesophageal eosinophilia.\r "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Aliment Pharmacol Ther. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2016;43(4):534\u201340.\r\nGutierrez-Junquera C, Fernandez-Fernandez S, Cilleruelo ML, et al. High prevalence of response to proton-pump inhibitor treatment in children with esophageal eosinophilia. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"J Pediatr\rGastroenterol Nutr. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2016;62(5):704\u201310.\r\nLaserna-Mendieta EJ, Casabona S, Guagnozzi D, et al. Efficacy of proton pump inhibitor therapy for eosinophilic oesophagitis in 630 patients: Results from the EoE Connect registry.\r "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Aliment Pharmacol Ther. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2020; 52(5):798\u2013807.\r\nLucendo AJ, Arias \u00c1, Molina-Infante J. Efficacy of proton pump inhibitor drugs for inducing clinical and histologic remission in patients with symptomatic esophageal eosinophilia: A\rsystematic review and meta-analysis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Clin Gastroenterol Hepatol. "}
+                </span>
+                <React.Fragment>{"2016;14(1):13-22.e1."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm3Hs3") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Capucilli P, Hill DA. Allergic comorbidity in eosinophilic esophagitis: mechanistic relevance and clinical implications."
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {" Clin Rev Allergy Immunol."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2019;57(1):111-127.\r\nDellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Am J Gastroenterol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2025;120(1):31.\r\nHill DA, Grundmeier RW, Ramos M, Spergel JM. Eosinophilic Esophagitis Is a Late Manifestation of the Allergic March. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"J Allergy Clin Immunol Pract."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2018;6(5):1528-1533.\r\nOliva S, McGowan EC. Associations of eosinophilic gastrointestinal disorders with other gastrointestinal and allergic diseases. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Immunol Allergy Clin North Am."}
+                </span>
+                <React.Fragment>{" 2024;44(2):329-348."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm3Hs2") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Capucilli P, Hill DA. Allergic comorbidity in eosinophilic esophagitis: mechanistic relevance and clinical implications. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Clin Rev Allergy Immunol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2019;57(1):111-127.\n\rGonsalves NP, Aceves SS. Diagnosis and treatment of eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"J Allergy Clin Immunol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2020;145(1):1-7.\r\nOliva S, McGowan EC. Associations of eosinophilic gastrointestinal disorders with other gastrointestinal and allergic diseases. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Immunology and Allergy Clinics."}
+                </span>
+                <React.Fragment>{" 2024;44(2):329-348."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm3Hs1") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Cheng E, Zhang X, HuoX, et al. Omeprazole blocks eotaxin-3 expression by oesophageal squamous cells from patients with eosinophilic oesophagitis and GORD. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gut. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2013;62(6):824\u201332.\r\nDellon ES, Liacouras CA, Molina-Infante J, et al. Updated international consensus diagnostic criteria for eosinophilic esophagitis: Proceedings of the AGREE Conference. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gastroenterology.\r"}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2018;155(4):1022-1033.e10.\rDellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Am J Gastroenterol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2025;120(1):31.\r\nMolina-Infante J, Bredenoord AJ, Cheng E, et al. Proton pump inhibitor-responsive oesophageal eosinophilia: An entity challenging current diagnostic criteria for eosinophilic\r oesophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gut. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2016;65(3):524\u201331.\r\nZhang X, Cheng E, Huo X, et al. Omeprazole blocks STAT6 binding to the eotaxin-3 promoter in eosinophilic esophagitis cells. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"PLoS One."}
+                </span>
+                <React.Fragment>{" 2012;7(11):e50037."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm2Hs4") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Dellon ES, Cotton CC, Gebhart JH, et al. Accuracy of the eosinophilic esophagitis endoscopic reference score in diagnosis and determining response to treatment. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Clin Gastroenterol \rHepatol."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2016;14(1):31-39.\r\nGupta M, Grinman M. Diagnosis and management of eosinophilic esophagitis. CMAJ. 2024;196(4):E121-E128.\n\rHirano I, Moy N, Heckman MG, Thomas CS, Gonsalves N, Achem SR. Endoscopic assessment of the oesophageal features of eosinophilic oesophagitis: validation of a novel classification\rand grading system. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gut. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2013;62(4):489-495.\r\nWechsler JB, Bolton SM, Amsden K, Wershil BK, Hirano I, Kagalwalla AF. Eosinophilic esophagitis reference score accurately identifies disease activity and treatment effects in children.\r "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Clin Gastroenterol Hepatol. "}
+                </span>
+                <React.Fragment>{"2018;16(7):1056-1063."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm2Hs3") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "EOHILIA (budesonide oral suspension) product label. Available at www.accessdata.fda.gov/drugsatfda_docs/label/2024/213976s000lbl.pdf. Accessed September 3, 2025.\r\nHirano I, Collins MH, Katzka DA, Mukkada VA, Falk GW, Morey R, et al; ORBIT1/SHP621-301 Investigators. Budesonide oral suspension improves outcomes in patients with eosinophilic \resophagitis: Results from a Phase 3 trial. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Clin Gastroenterol Hepatol. "}
+                </span>
+                <React.Fragment>{"2021:S1542-3565(21)00456-0."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm2Hs2") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Chehade M, McGowan EC, Wright BL, et al. Barriers to timely diagnosis of eosinophilic gastrointestinal diseases. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"J Allergy Clin Immunol Pract."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2024;12(2):302\u20138.\r\nDellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Am J Gastroenterol."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2025;120(1):31.\r\nFuruta GT, Katzka DA. Eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"N Engl J Med. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2015;373(17):1640-1648.\r\nFuruta GT, Liacouras CA, Collins MH, et al. Eosinophilic esophagitis in children and adults: A systematic review and consensus recommendations for diagnosis and treatment.\r "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gastroenterology. "}
+                </span>
+                <React.Fragment>{"2007;133(4):1342-1363."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm2Hs1") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Peterson K, Firszt R, Fang J, Wong J, Smith KR, Brady KA. Risk of autoimmunity in EoE and families: A population-based cohort study. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Am J Gastroenterol."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2016;111(7):926-932.\n\rXue Z, Miller TL, Abramson L, et al. Association of eosinophilic esophagitis with autoimmune and connective tissue disorders, and the impact on treatment response. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Dis Esophagus"}
+                </span>
+                <React.Fragment>{".\r 2022;36(1):doac043."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm1Hs4") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Aceves SS. Food allergy testing in eosinophilic esophagitis: What the gastroenterologist needs to know. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Clin Gastroenterol Hepatol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2014;12(8):1216-1223.\n\rCapucilli P, Hill DA. Allergic comorbidity in eosinophilic esophagitis: mechanistic relevance and clinical implications. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Clin Rev Allergy Immunol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2019;57(1):111-127.\r\nMayerhofer C, Kavallar AM, Aldrian D, Lindner AK, Mu\u0308ller T, Vogel GF. Efficacy of elimination diets in eosinophilic esophagitis: a systematic review and meta-analysis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Clin Gastroenterol \rHepatol. "}
+                </span>
+                <React.Fragment>{"2023;21(9):2197-2210.e3."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm1Hs3") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Chehade M, Dellon E, Spergel J, et al. Dupilumab improves histologic and endoscopic outcomes in children aged 1 to <12 years with eosinophilic esophagitis (EoE): 52-week results from\r the Phase 3 EoE KIDS Trial. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"J Allergy Immunol."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2024;156(2):SAB266.\r\nDellon ES, Peterson KA, Mitlyng BL, et al. Mepolizumab for treatment of adolescents and adults with eosinophilic oesophagitis: a multicentre, randomised, double-blind,\rplacebo-controlled clinical trial. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gut."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2023;72(10):1828-1837.\n\rDellon ES, Rothenberg ME, Collins MH, et al. Dupilumab in adults and adolescents with eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"N Engl J Med. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2022;387(25):2317-2330.\r\nDellon ES, Spergel JM. Biologics in eosinophilic gastrointestinal diseases. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Ann Allergy Asthma Immunol. "}
+                </span>
+                <React.Fragment>{"2023;130(1):21-27."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm1Hs2") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Dellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Am J Gastroenterol."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2025;120(1):31.\r\nErdle SC, Carr S, Chan ES, Robertson K, Watson W. Eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Allergy Asthma Clin Immunol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2024;20(S3):72.\r\nFuruta GT, Liacouras CA, Collins MH, et al. Eosinophilic esophagitis in children and adults: A systematic review and consensus recommendations for diagnosis and treatment.\r"
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gastroenterology. "}
+                </span>
+                <React.Fragment>{"2007;133(4):1342-1363."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm1Hs1") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Dellon ES, Hirano I. Epidemiology and natural history of eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gastroenterology"}
+                </span>
+                <React.Fragment>
+                  {
+                    ". 2018;154(2):319-332.e3.\r\nJensen ET, Kappelman MD, Kim HP, Ringel-Kulka T, Dellon ES. Early life exposures as risk factors for pediatric eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"J Pediatr Gastroenterol Nutr."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2013;57:67\u201371.\r\nKapel RC, Miller JK, Torres C, Aksoy S, Lash R, Katzka DA. Eosinophilic esophagitis: a prevalent disease in the United States that affects all age groups. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gastroenterology. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2008;134:1316\u201321.\r\nvan Nimwegen FA, Penders J, Stobberingh EE, et al. Mode and place of delivery, gastrointestinal microbiota, and their influence on asthma and atopy. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"J Allergy Clin Immunol."}
+                </span>
+                <React.Fragment>
+                  {" 2011;128(5):\r948.e3\u201355.e3."}
+                </React.Fragment>
+              </React.Fragment>
+            ) : (
+              "Enter some text"
+            )}
           </div>
         </ReferencePanel>
       ) : null}
@@ -2344,6 +2841,11 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             $state,
             "modal",
             "rm1Hs4"
+          ),
+          [sty.questionContainermodal_rm2Hs1]: hasVariant(
+            $state,
+            "modal",
+            "rm2Hs1"
           ),
           [sty.questionContainermodal_rm3Hs2]: hasVariant(
             $state,
@@ -2651,7 +3153,8 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             [sty.computermodal_rm2Hs4]: hasVariant($state, "modal", "rm2Hs4"),
             [sty.computermodal_rm3Hs1]: hasVariant($state, "modal", "rm3Hs1"),
             [sty.computermodal_rm3Hs2]: hasVariant($state, "modal", "rm3Hs2"),
-            [sty.computermodal_rm3Hs3]: hasVariant($state, "modal", "rm3Hs3")
+            [sty.computermodal_rm3Hs3]: hasVariant($state, "modal", "rm3Hs3"),
+            [sty.computermodal_rm3Hs4]: hasVariant($state, "modal", "rm3Hs4")
           })}
           correctReasoning={
             <div
@@ -2660,6 +3163,11 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                   $state,
                   "modal",
                   "rm1Hs1"
+                ),
+                [sty.freeBoxmodal_rm3Hs2__zy0SpjLsEv]: hasVariant(
+                  $state,
+                  "modal",
+                  "rm3Hs2"
                 )
               })}
             >
@@ -2669,6 +3177,11 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                     $state,
                     "modal",
                     "rm1Hs1"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs2__qtjoJLsEv]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs2"
                   )
                 })}
               >
@@ -2682,6 +3195,11 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                         $state,
                         "modal",
                         "rm1Hs1"
+                      ),
+                      [sty.textmodal_rm3Hs2__bWajjLsEv]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
                       )
                     }
                   )}
@@ -2695,6 +3213,11 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                     $state,
                     "modal",
                     "rm1Hs1"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs2__flP9WJLsEv]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs2"
                   )
                 })}
               >
@@ -2708,6 +3231,11 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                         $state,
                         "modal",
                         "rm1Hs1"
+                      ),
+                      [sty.textmodal_rm3Hs2__mEetjLsEv]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
                       )
                     }
                   )}
@@ -2958,6 +3486,11 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                   $state,
                   "modal",
                   "rm1Hs1"
+                ),
+                [sty.wrongAnswermodal_rm3Hs2__o2Tr0JLsEv]: hasVariant(
+                  $state,
+                  "modal",
+                  "rm3Hs2"
                 )
               })}
               modal={
@@ -3176,17 +3709,19 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"ivanPcp42"}
             data-plasmic-override={overrides.ivanPcp42}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "modal", "rm3Hs3")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "modal", "kelvinDoor")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "modal", "rm1Hs4")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "modal", "rm1Hs3")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs2")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs1")
+                          ? true
+                          : undefined
             }
             answerA={
               hasVariant($state, "modal", "ivanPcp42")
@@ -3901,6 +4436,373 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "sharesePcp2"
               )
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__x5QIt, {
+                  [sty.freeBoxmodal_rm1Hs1__x5QItAmduI]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs1"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs2__x5QItzqLiy]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs3__x5QIt2GBx0]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs3"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs4__x5QIteiGL]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs4"
+                  ),
+                  [sty.freeBoxmodal_rm2Hs4__x5QItYsxLc]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm2Hs4"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs2__x5QItJLsEv]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs3__x5QItRaFia]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs3"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__evOZp, {
+                    [sty.freeBoxmodal_rm1Hs1__evOZpAmduI]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs1"
+                    ),
+                    [sty.freeBoxmodal_rm3Hs2__evOZpJLsEv]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs2"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__dFzy,
+                      {
+                        [sty.textmodal_rm1Hs1__dFzyAmduI]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs1"
+                        ),
+                        [sty.textmodal_rm3Hs2__dFzyJLsEv]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        ),
+                        [sty.textmodal_rm3Hs3__dFzyRaFia]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs3")
+                      ? "Correct answer: A"
+                      : hasVariant($state, "modal", "rm3Hs2")
+                        ? "Correct answer: D"
+                        : "Correct answer: C"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__n4GLt, {
+                    [sty.freeBoxmodal_rm1Hs4__n4GLTeiGL]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs4"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__eTu3E,
+                      {
+                        [sty.textmodal_rm1Hs4__eTu3EeiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        ),
+                        [sty.textmodal_rm3Hs2__eTu3EjLsEv]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        ),
+                        [sty.textmodal_rm3Hs3__eTu3ERaFia]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs3") ? (
+                      <React.Fragment>
+                        <React.Fragment>
+                          {"According the studies, "}
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"60-80% of individuals with EoE"}
+                        </span>
+                        <React.Fragment>
+                          {
+                            " also suffer \rfrom various allergic conditions, including:"
+                          }
+                        </React.Fragment>
+                      </React.Fragment>
+                    ) : hasVariant($state, "modal", "rm3Hs2") ? (
+                      "Dysphagia is a hallmark symptom of EoE and is also frequently \rexperienced by GERD patients, especially if the reflux leads to either of\rthe following:"
+                    ) : (
+                      "Key features of EoE that are typically found upon endoscopy include \rthe following, commonly abbreviated as EREFS:"
+                    )}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__pAvgD, {
+                    [sty.freeBoxmodal_rm1Hs4__pAvgDeiGL]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs4"
+                    ),
+                    [sty.freeBoxmodal_rm3Hs2__pAvgDjLsEv]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs2"
+                    ),
+                    [sty.freeBoxmodal_rm3Hs3__pAvgDRaFia]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs3"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__uUeJr,
+                      {
+                        [sty.textmodal_rm1Hs4__uUeJreiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        ),
+                        [sty.textmodal_rm3Hs2__uUeJrJLsEv]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        ),
+                        [sty.textmodal_rm3Hs3__uUeJrRaFia]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs3") ? (
+                      "\u2022 Seasonal allergies\r\n\u2022 Asthma"
+                    ) : hasVariant($state, "modal", "rm3Hs2") ? (
+                      "\u2022 Inflammation\r\n\u2022 Narrowing of the esophagus"
+                    ) : (
+                      <React.Fragment>
+                        <React.Fragment>{"\u2022 "}</React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"E"}
+                        </span>
+                        <React.Fragment>{"dema\r\n\u2022 "}</React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"R"}
+                        </span>
+                        <React.Fragment>{"ings\r\n\u2022 "}</React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"E"}
+                        </span>
+                        <React.Fragment>{"xudates"}</React.Fragment>
+                      </React.Fragment>
+                    )}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__rDc56,
+                      {
+                        [sty.textmodal_rm1Hs4__rDc56EiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        ),
+                        [sty.textmodal_rm3Hs2__rDc56JLsEv]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        ),
+                        [sty.textmodal_rm3Hs3__rDc56RaFia]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs3") ? (
+                      "\u2022 Eczema\n\r\u2022 Food allergies"
+                    ) : hasVariant($state, "modal", "rm3Hs2") ? (
+                      "\u2022 Inflammation\r\n\u2022 Narrowing of the esophagus"
+                    ) : (
+                      <React.Fragment>
+                        <React.Fragment>{"\u2022 "}</React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"E"}
+                        </span>
+                        <React.Fragment>{"dema\r\n\u2022 "}</React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"R"}
+                        </span>
+                        <React.Fragment>{"ings\r\n\u2022 "}</React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"E"}
+                        </span>
+                        <React.Fragment>{"xudates"}</React.Fragment>
+                      </React.Fragment>
+                    )}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nikdr,
+                    {
+                      [sty.textmodal_rm1Hs4__nikdReiGL]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs4"
+                      ),
+                      [sty.textmodal_rm3Hs2__nikdrjLsEv]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      ),
+                      [sty.textmodal_rm3Hs3__nikdrRaFia]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs3"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "modal", "rm3Hs3")
+                    ? "EoE is a feature of the allergic (or atopic) march, which describes the\r typical progression of allergic conditions that starts in childhood and\rintensifies over time."
+                    : "A scoring system of severity known as the EREFS Index is often used \rby gastroenterologists to assess severity of disease."}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__dBq3R,
+                    {
+                      [sty.textmodal_rm1Hs1__dBq3RAmduI]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs1"
+                      ),
+                      [sty.textmodal_rm3Hs2__dBq3RJLsEv]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      )
+                    }
+                  )}
+                >
+                  {"Why are the other answers incorrect?"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zV8G,
+                    {
+                      [sty.textmodal_rm1Hs1__zV8GAmduI]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs1"
+                      ),
+                      [sty.textmodal_rm3Hs2__zV8GjLsEv]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      ),
+                      [sty.textmodal_rm3Hs3__zV8GRaFia]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs3"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "modal", "rm3Hs3")
+                    ? "Irritable bowel syndrome, type 1 diabetes, and obesity are not\r associated with EoE."
+                    : hasVariant($state, "modal", "rm3Hs2")
+                      ? "Other clinical presentations listed here, including erosive esophagitis or\rhiatal hernia, indicate a likely diagnosis of GERD but are not commonly seen\rin patients with EoE."
+                      : "Gastric erosions and dysplasia may be indicators of other\rconditions such as GERD and Barrett\u2019s esophagus but are not\rindicative of a diagnosis of EoE. Patients with EoE will not have\rnormal-appearing mucosa.z"}
+                </div>
+              </div>
+            }
             incorrectReasoning={
               <WrongAnswer
                 className={classNames(
@@ -4324,17 +5226,19 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"ivanPcp2"}
             data-plasmic-override={overrides.ivanPcp2}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "modal", "rm3Hs2")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "modal", "kelvinDoor")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "modal", "rm1Hs4")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "modal", "rm1Hs3")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs2")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs1")
+                          ? true
+                          : undefined
             }
             answerA={
               hasVariant($state, "modal", "ivanPcp2")
@@ -5073,6 +5977,268 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "sharesePcp2"
               )
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__iCczK, {
+                  [sty.freeBoxmodal_rm1Hs1__iCczKAmduI]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs1"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs2__iCczKzqLiy]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs3__iCczK2GBx0]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs3"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs4__iCczKeiGL]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs4"
+                  ),
+                  [sty.freeBoxmodal_rm2Hs4__iCczKYsxLc]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm2Hs4"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs2__iCczKjLsEv]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs2"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__w89Cz, {
+                    [sty.freeBoxmodal_rm1Hs1__w89CzAmduI]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs1"
+                    ),
+                    [sty.freeBoxmodal_rm3Hs2__w89CzjLsEv]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs2"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__djvVw,
+                      {
+                        [sty.textmodal_rm1Hs1__djvVwAmduI]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs1"
+                        ),
+                        [sty.textmodal_rm3Hs2__djvVwJLsEv]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs2")
+                      ? "Correct answer: D"
+                      : "Correct answer: C"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__iaeCl, {
+                    [sty.freeBoxmodal_rm1Hs4__iaeCleiGL]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs4"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__eLi1X,
+                      {
+                        [sty.textmodal_rm1Hs4__eLi1XeiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        ),
+                        [sty.textmodal_rm3Hs2__eLi1XjLsEv]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs2")
+                      ? "Dysphagia is a hallmark symptom of EoE and is also frequently \rexperienced by GERD patients, especially if the reflux leads to either of\rthe following:"
+                      : "Key features of EoE that are typically found upon endoscopy include \rthe following, commonly abbreviated as EREFS:"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__ycdsj, {
+                    [sty.freeBoxmodal_rm1Hs4__ycdsjeiGL]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs4"
+                    ),
+                    [sty.freeBoxmodal_rm3Hs2__ycdsjJLsEv]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs2"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__n8TWr,
+                      {
+                        [sty.textmodal_rm1Hs4__n8TWReiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        ),
+                        [sty.textmodal_rm3Hs2__n8TWrjLsEv]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs2") ? (
+                      "\u2022 Inflammation\r\n\u2022 Narrowing of the esophagus"
+                    ) : (
+                      <React.Fragment>
+                        <React.Fragment>{"\u2022 "}</React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"E"}
+                        </span>
+                        <React.Fragment>{"dema\r\n\u2022 "}</React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"R"}
+                        </span>
+                        <React.Fragment>{"ings\r\n\u2022 "}</React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"E"}
+                        </span>
+                        <React.Fragment>{"xudates"}</React.Fragment>
+                      </React.Fragment>
+                    )}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__liil1,
+                    {
+                      [sty.textmodal_rm1Hs4__liil1EiGL]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs4"
+                      ),
+                      [sty.textmodal_rm3Hs2__liil1JLsEv]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      )
+                    }
+                  )}
+                >
+                  {
+                    "A scoring system of severity known as the EREFS Index is often used \rby gastroenterologists to assess severity of disease."
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___1Lyyw,
+                    {
+                      [sty.textmodal_rm1Hs1___1LyywAmduI]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs1"
+                      ),
+                      [sty.textmodal_rm3Hs2___1LyywJLsEv]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      )
+                    }
+                  )}
+                >
+                  {"Why are the other answers incorrect?"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__aJvGv,
+                    {
+                      [sty.textmodal_rm1Hs1__aJvGvAmduI]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs1"
+                      ),
+                      [sty.textmodal_rm3Hs2__aJvGvJLsEv]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "modal", "rm3Hs2")
+                    ? "Other clinical presentations listed here, including erosive esophagitis or\rhiatal hernia, indicate a likely diagnosis of GERD but are not commonly seen\rin patients with EoE."
+                    : "Gastric erosions and dysplasia may be indicators of other\rconditions such as GERD and Barrett\u2019s esophagus but are not\rindicative of a diagnosis of EoE. Patients with EoE will not have\rnormal-appearing mucosa.z"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__th6NN,
+                    {
+                      [sty.textmodal_rm3Hs2__th6NNjLsEv]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      )
+                    }
+                  )}
+                >
+                  {
+                    "Alternately, there is no underlying allergic mechanism present in GERD\rpatients; however, seasonal allergies are considered part of the \u201callergic\r(or atopic) march\u201d commonly seen in patients with EoE."
+                  }
+                </div>
+              </div>
+            }
             incorrectReasoning={
               <WrongAnswer
                 className={classNames(
@@ -6720,17 +7886,19 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"ivanPcp4"}
             data-plasmic-override={overrides.ivanPcp4}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "modal", "rm3Hs4")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "modal", "kelvinDoor")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "modal", "rm1Hs4")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "modal", "rm1Hs3")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs2")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs1")
+                          ? true
+                          : undefined
             }
             answerA={
               hasVariant($state, "modal", "ivanPcp3")
@@ -7534,6 +8702,352 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "sharesePcp2"
               )
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__qliVs, {
+                  [sty.freeBoxmodal_rm1Hs1__qliVsAmduI]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs1"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs2__qliVszqLiy]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs3__qliVs2GBx0]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs3"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs4__qliVseiGL]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs4"
+                  ),
+                  [sty.freeBoxmodal_rm2Hs4__qliVsYsxLc]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm2Hs4"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs2__qliVsJLsEv]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs3__qliVsRaFia]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs3"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs4__qliVs5ZaAc]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs4"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__kyHoH, {
+                    [sty.freeBoxmodal_rm1Hs1__kyHoHAmduI]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs1"
+                    ),
+                    [sty.freeBoxmodal_rm3Hs2__kyHoHjLsEv]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs2"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__kpg6J,
+                      {
+                        [sty.textmodal_rm1Hs1__kpg6JAmduI]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs1"
+                        ),
+                        [sty.textmodal_rm3Hs2__kpg6JJLsEv]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        ),
+                        [sty.textmodal_rm3Hs3__kpg6JRaFia]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs3")
+                      ? "Correct answer: A"
+                      : hasVariant($state, "modal", "rm3Hs2")
+                        ? "Correct answer: D"
+                        : "Correct answer: D"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__mco7K, {
+                    [sty.freeBoxmodal_rm1Hs4__mco7KeiGL]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs4"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__zMd9,
+                      {
+                        [sty.textmodal_rm1Hs4__zMd9EiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        ),
+                        [sty.textmodal_rm3Hs2__zMd9JLsEv]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        ),
+                        [sty.textmodal_rm3Hs3__zMd9RaFia]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs3") ? (
+                      <React.Fragment>
+                        <React.Fragment>
+                          {"According the studies, "}
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"60-80% of individuals with EoE"}
+                        </span>
+                        <React.Fragment>
+                          {
+                            " also suffer \rfrom various allergic conditions, including:"
+                          }
+                        </React.Fragment>
+                      </React.Fragment>
+                    ) : hasVariant($state, "modal", "rm3Hs2") ? (
+                      "Dysphagia is a hallmark symptom of EoE and is also frequently \rexperienced by GERD patients, especially if the reflux leads to either of\rthe following:"
+                    ) : (
+                      "PPIs work to treat EoE by blocking the chemical signals that summon\reosinophils to the esophagus, thereby reducing inflammation. The\racid-suppressive actions of PPIs also support healing of the\resophageal lining."
+                    )}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__sM4Oy,
+                    {
+                      [sty.textmodal_rm3Hs4__sM4Oy5ZaAc]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs4"
+                      )
+                    }
+                  )}
+                >
+                  {"Studies show that use of PPIs result in:"}
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__ywsAb, {
+                    [sty.freeBoxmodal_rm1Hs4__ywsABeiGL]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs4"
+                    ),
+                    [sty.freeBoxmodal_rm3Hs2__ywsAbjLsEv]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs2"
+                    ),
+                    [sty.freeBoxmodal_rm3Hs3__ywsAbRaFia]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs3"
+                    )
+                  })}
+                >
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__sqMhb, {
+                      [sty.imgmodal_rm3Hs4__sqMhb5ZaAc]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs4"
+                      )
+                    })}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"10%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/escape_room/images/_50RemissionSvg.svg",
+                      fullWidth: 70.18,
+                      fullHeight: 70.18,
+                      aspectRatio: 1
+                    }}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__v32Ge,
+                      {
+                        [sty.textmodal_rm1Hs4__v32GEeiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        ),
+                        [sty.textmodal_rm3Hs2__v32GejLsEv]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        ),
+                        [sty.textmodal_rm3Hs3__v32GeRaFia]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs3")
+                      ? "\u2022 Seasonal allergies\r\n\u2022 Asthma"
+                      : hasVariant($state, "modal", "rm3Hs2")
+                        ? "\u2022 Inflammation\r\n\u2022 Narrowing of the esophagus"
+                        : "Remission of EoE\rin approximately \r50% of patients"}
+                  </div>
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__q67Zs, {
+                      [sty.imgmodal_rm3Hs4__q67Zs5ZaAc]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs4"
+                      )
+                    })}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"10%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/escape_room/images/_7085MaintainedResponseSvg.svg",
+                      fullWidth: 70.29,
+                      fullHeight: 70.18,
+                      aspectRatio: 1.001567
+                    }}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__xzHhl,
+                      {
+                        [sty.textmodal_rm1Hs4__xzHhLeiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        ),
+                        [sty.textmodal_rm3Hs2__xzHhljLsEv]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        ),
+                        [sty.textmodal_rm3Hs3__xzHhlRaFia]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs3")
+                      ? "\u2022 Eczema\n\r\u2022 Food allergies"
+                      : hasVariant($state, "modal", "rm3Hs2")
+                        ? "\u2022 Inflammation\r\n\u2022 Narrowing of the esophagus"
+                        : "Several studies show\rmaintained response in\r 70-85% of patients after 1 year"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___2Tvrh,
+                    {
+                      [sty.textmodal_rm1Hs1___2TvrhAmduI]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs1"
+                      ),
+                      [sty.textmodal_rm3Hs2___2TvrhjLsEv]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      )
+                    }
+                  )}
+                >
+                  {"Why are the other answers incorrect?"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__cPlyv,
+                    {
+                      [sty.textmodal_rm1Hs1__cPlyvAmduI]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs1"
+                      ),
+                      [sty.textmodal_rm3Hs2__cPlyvjLsEv]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      ),
+                      [sty.textmodal_rm3Hs3__cPlyvRaFia]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs3"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "modal", "rm3Hs3")
+                    ? "Irritable bowel syndrome, type 1 diabetes, and obesity are not\r associated with EoE."
+                    : hasVariant($state, "modal", "rm3Hs2")
+                      ? "Other clinical presentations listed here, including erosive esophagitis or\rhiatal hernia, indicate a likely diagnosis of GERD but are not commonly seen\rin patients with EoE."
+                      : "A PPI trial is no longer recommended to diagnose EoE. PPIs are \rconsidered a first-line treatment and may be used before or after a\r dietary elimination trial based on patient preference."}
+                </div>
+              </div>
+            }
             incorrectReasoning={
               <WrongAnswer
                 className={classNames(
@@ -16157,17 +17671,19 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"ivanBed"}
             data-plasmic-override={overrides.ivanBed}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "modal", "rm3Hs1")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "modal", "kelvinDoor")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "modal", "rm1Hs4")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "modal", "rm1Hs3")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs2")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs1")
+                          ? true
+                          : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm3Hs1")
@@ -16307,6 +17823,140 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               [sty.ivanBedmodal_rm3Hs1]: hasVariant($state, "modal", "rm3Hs1"),
               [sty.ivanBedmodal_rm3Hs2]: hasVariant($state, "modal", "rm3Hs2")
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__ibSe, {
+                  [sty.freeBoxmodal_rm1Hs1__ibSeAmduI]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs1"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs2__ibSEzqLiy]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs3__ibSe2GBx0]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs3"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs1__ibSeXadiq]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs1"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__oZeLb, {
+                    [sty.freeBoxmodal_rm1Hs1__oZeLbAmduI]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs1"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__obZvc,
+                      {
+                        [sty.textmodal_rm1Hs1__obZvcAmduI]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs1"
+                        ),
+                        [sty.textmodal_rm3Hs1__obZvcXadiq]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs1"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs1")
+                      ? "Correct answer: A"
+                      : "Correct answer: B"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___9Xwek, {
+                    [sty.freeBoxmodal_rm1Hs1___9XwekAmduI]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs1"
+                    ),
+                    [sty.freeBoxmodal_rm3Hs1___9XwekXadiq]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs1"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__c84Aq,
+                      {
+                        [sty.textmodal_rm1Hs1__c84AqAmduI]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs1"
+                        )
+                      }
+                    )}
+                  >
+                    {
+                      "The 2025 ACG guidelines update eliminated \rthe requirement for a PPI trial before\r diagnosing EoE to rule out inflammation\r related to GERD. This change was based on \rextensive data indicating that patients \rresponding to PPIs exhibit similar clinical,\r endoscopic, histological, immunological, and\r molecular characteristics as those with EoE who do not respond \rto PPIs."
+                    }
+                  </div>
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__uRcFl, {
+                      [sty.imgmodal_rm2Hs3__uRcFlLsBpn]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm2Hs3"
+                      )
+                    })}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"30%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/escape_room/images/ppiIllustrationSvg.svg",
+                      fullWidth: 243.52,
+                      fullHeight: 173.83,
+                      aspectRatio: 1.400909
+                    }}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__pzURs,
+                    {
+                      [sty.textmodal_rm1Hs1__pzURsAmduI]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs1"
+                      )
+                    }
+                  )}
+                >
+                  {
+                    "This suggests that PPIs are an effective treatment for EoE through\rnovel mechanisms and not solely through gastric acid\rsuppression. Furthermore, research shows a complex relationship\rbetween EoE and GERD, and not an independent disease course\ras previously suspected."
+                  }
+                </div>
+              </div>
+            }
             incorrectReasoning={
               <WrongAnswer
                 className={classNames(
@@ -16463,17 +18113,19 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           data-plasmic-name={"sharese1"}
           data-plasmic-override={overrides.sharese1}
           active={
-            hasVariant($state, "modal", "kelvinDoor")
+            hasVariant($state, "modal", "rm2Hs1")
               ? true
-              : hasVariant($state, "modal", "rm1Hs4")
+              : hasVariant($state, "modal", "kelvinDoor")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs3")
+                : hasVariant($state, "modal", "rm1Hs4")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs2")
+                  : hasVariant($state, "modal", "rm1Hs3")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs1")
+                    : hasVariant($state, "modal", "rm1Hs2")
                       ? true
-                      : undefined
+                      : hasVariant($state, "modal", "rm1Hs1")
+                        ? true
+                        : undefined
           }
           answerA={
             hasVariant($state, "modal", "rm3Hs1")
@@ -16675,7 +18327,8 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             [sty.sharese1modal_rm2Hs3]: hasVariant($state, "modal", "rm2Hs3"),
             [sty.sharese1modal_rm2Hs4]: hasVariant($state, "modal", "rm2Hs4"),
             [sty.sharese1modal_rm3Hs1]: hasVariant($state, "modal", "rm3Hs1"),
-            [sty.sharese1modal_rm3Hs2]: hasVariant($state, "modal", "rm3Hs2")
+            [sty.sharese1modal_rm3Hs2]: hasVariant($state, "modal", "rm3Hs2"),
+            [sty.sharese1modal_rm3Hs4]: hasVariant($state, "modal", "rm3Hs4")
           })}
           correctReasoning={
             <div
@@ -16897,7 +18550,7 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 )}
               >
                 {
-                  "A personal or family history of kidney disease, type 1 diabetes, and\rleukocytosis are not known to increase an individual\u2019s risk of\rdeveloping EoE."
+                  "A personal or family history of kidney disease, type 1 diabetes, and\rleukocytosis are not known to increase an individual\u2019s risk of\r developing EoE."
                 }
               </div>
             </div>
@@ -17101,17 +18754,19 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"sharese2"}
             data-plasmic-override={overrides.sharese2}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "modal", "rm2Hs2")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "modal", "kelvinDoor")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "modal", "rm1Hs4")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "modal", "rm1Hs3")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs2")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs1")
+                          ? true
+                          : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm3Hs1")
@@ -17495,6 +19150,242 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "sharesePcp2"
               )
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__nKvxa, {
+                  [sty.freeBoxmodal_rm1Hs1__nKvxaAmduI]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs1"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs2__nKvxAzqLiy]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs3__nKvxa2GBx0]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs3"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs4__nKvxAeiGL]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs4"
+                  ),
+                  [sty.freeBoxmodal_rm2Hs2__nKvxafqRuS]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm2Hs2"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__qaJ21, {
+                    [sty.freeBoxmodal_rm1Hs1__qaJ21AmduI]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs1"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___5830H,
+                      {
+                        [sty.textmodal_rm1Hs1___5830HAmduI]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs1"
+                        ),
+                        [sty.textmodal_rm2Hs2___5830HFqRuS]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm2Hs2"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm2Hs2")
+                      ? "Correct answer: B"
+                      : "Correct answer: C"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__sNfzf, {
+                    [sty.freeBoxmodal_rm1Hs4__sNfzfeiGL]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs4"
+                    ),
+                    [sty.freeBoxmodal_rm2Hs2__sNfzfFqRuS]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm2Hs2"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__cZbU,
+                      {
+                        [sty.textmodal_rm1Hs4__cZbUeiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        ),
+                        [sty.textmodal_rm2Hs2__cZbUFqRuS]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm2Hs2"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm2Hs2")
+                      ? "EoE patients with longstanding dysphagia may develop coping behaviors \rto manage their eating difficulties. This may result in minimization of\rsymptoms and delayed diagnosis. Clinicians should evaluate patients with\rsuspected and diagnosed EoE for behaviors using the IMPACT acronym:"
+                      : "There are several approaches to a food elimination diet, \rranging from eliminating one food or food ingredient at a time\rto up to six foods or ingredients simultaneously. This is then\r followed by reintroduction of those foods/food ingredients to\ridentify triggers."}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__lbD1D, {
+                    [sty.freeBoxmodal_rm1Hs4__lbD1DeiGL]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs4"
+                    ),
+                    [sty.freeBoxmodal_rm2Hs2__lbD1DfqRuS]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm2Hs2"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__xGRa,
+                      {
+                        [sty.textmodal_rm1Hs4__xGRaeiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        ),
+                        [sty.textmodal_rm2Hs2__xGRaFqRuS]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm2Hs2"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm2Hs2") ? (
+                      <React.Fragment>
+                        <React.Fragment>{"\u2022 "}</React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"I"}
+                        </span>
+                        <React.Fragment>
+                          {"mbibe fluids with meals\r\n\u2022"}
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {" M"}
+                        </span>
+                        <React.Fragment>
+                          {"odify food\r\n\u2022 "}
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"P"}
+                        </span>
+                        <React.Fragment>{"rolong mealtimes"}</React.Fragment>
+                      </React.Fragment>
+                    ) : (
+                      "1-6 foods/\rfood ingredients"
+                    )}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__yfLi,
+                      {
+                        [sty.textmodal_rm1Hs4__yfLieiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        ),
+                        [sty.textmodal_rm2Hs2__yfLiFqRuS]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm2Hs2"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm2Hs2") ? (
+                      <React.Fragment>
+                        <React.Fragment>{"\u2022 "}</React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"A"}
+                        </span>
+                        <React.Fragment>
+                          {"void hard texture foods\r\n\u2022 "}
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"C"}
+                        </span>
+                        <React.Fragment>
+                          {"hew excessively\n\r\u2022 "}
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"T"}
+                        </span>
+                        <React.Fragment>
+                          {"urn away tablets/pills"}
+                        </React.Fragment>
+                      </React.Fragment>
+                    ) : (
+                      "Reintroduction"
+                    )}
+                  </div>
+                </div>
+              </div>
+            }
             incorrectReasoning={
               <WrongAnswer
                 className={classNames(
@@ -17783,17 +19674,19 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"sharese3"}
             data-plasmic-override={overrides.sharese3}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "modal", "rm2Hs3")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "modal", "kelvinDoor")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "modal", "rm1Hs4")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "modal", "rm1Hs3")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs2")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs1")
+                          ? true
+                          : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm3Hs1")
@@ -18177,6 +20070,199 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               [sty.sharese3modal_rm3Hs1]: hasVariant($state, "modal", "rm3Hs1"),
               [sty.sharese3modal_rm3Hs2]: hasVariant($state, "modal", "rm3Hs2")
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__vB2Ru, {
+                  [sty.freeBoxmodal_rm1Hs1__vB2RuAmduI]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs1"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs2__vB2RUzqLiy]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs3__vB2Ru2GBx0]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs3"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs4__vB2RUeiGL]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs4"
+                  ),
+                  [sty.freeBoxmodal_rm2Hs3__vB2RulsBpn]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm2Hs3"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__ofbaR, {
+                    [sty.freeBoxmodal_rm1Hs1__ofbaRAmduI]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs1"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__akYVa,
+                      {
+                        [sty.textmodal_rm1Hs1__akYVaAmduI]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs1"
+                        )
+                      }
+                    )}
+                  >
+                    {"Correct answer: C"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__tTjy6, {
+                    [sty.freeBoxmodal_rm1Hs4__tTjy6EiGL]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs4"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__d2IaQ,
+                      {
+                        [sty.textmodal_rm1Hs4__d2IaQeiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        )
+                      }
+                    )}
+                  >
+                    <React.Fragment>
+                      <React.Fragment>{"BOS is an "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"immediate-release topical corticosteroid "}
+                      </span>
+                      <React.Fragment>
+                        {
+                          "given as a \rviscous suspension to lengthen its survival time on the esophageal\r mucosal surface following oral administration."
+                        }
+                      </React.Fragment>
+                    </React.Fragment>
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__rDyN, {
+                    [sty.freeBoxmodal_rm1Hs1__rDyNAmduI]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs1"
+                    )
+                  })}
+                >
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__drox0, {
+                      [sty.imgmodal_rm1Hs4__drox0EiGL]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs4"
+                      ),
+                      [sty.imgmodal_rm2Hs3__drox0LsBpn]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm2Hs3"
+                      )
+                    })}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"10%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/escape_room/images/wheatSvg.svg",
+                      fullWidth: 83.04,
+                      fullHeight: 83.04,
+                      aspectRatio: 1
+                    }}
+                  />
+
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__vRw7, {
+                      [sty.imgmodal_rm2Hs3__vRw7LsBpn]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm2Hs3"
+                      )
+                    })}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"15%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/escape_room/images/image10.svg",
+                      fullWidth: 154.52,
+                      fullHeight: 154.52,
+                      aspectRatio: 1
+                    }}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__zVlGw,
+                      {
+                        [sty.textmodal_rm1Hs1__zVlGwAmduI]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs1"
+                        )
+                      }
+                    )}
+                  >
+                    <React.Fragment>
+                      <React.Fragment>
+                        {
+                          "BOS is currently approved for the treatment of EoE in\rindividuals aged 11 years and older based on data \rfrom a pair of phase 3 trials showing that patients \rtreated with BOS 2 mg twice daily were significantly\r more likely than those treated with placebo to\rachieve both stringent "
+                        }
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"histological and symptom "}
+                      </span>
+                      <React.Fragment>
+                        {
+                          "\rresponse at 12 weeks. Improved endoscopic \routcomes were also seen in these trials."
+                        }
+                      </React.Fragment>
+                    </React.Fragment>
+                  </div>
+                </div>
+              </div>
+            }
             incorrectReasoning={
               <WrongAnswer
                 className={classNames(
@@ -19370,6 +21456,225 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               [sty.sharese4modal_rm3Hs1]: hasVariant($state, "modal", "rm3Hs1"),
               [sty.sharese4modal_rm3Hs2]: hasVariant($state, "modal", "rm3Hs2")
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__tpFj9, {
+                  [sty.freeBoxmodal_rm1Hs1__tpFj9AmduI]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs1"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs2__tpFj9ZqLiy]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs3__tpFj92GBx0]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs3"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs4__tpFj9EiGL]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs4"
+                  ),
+                  [sty.freeBoxmodal_rm2Hs4__tpFj9YsxLc]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm2Hs4"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__btxU, {
+                    [sty.freeBoxmodal_rm1Hs1__btxUAmduI]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs1"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__rFDs4,
+                      {
+                        [sty.textmodal_rm1Hs1__rFDs4AmduI]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs1"
+                        )
+                      }
+                    )}
+                  >
+                    {"Correct answer: C"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__esHi7, {
+                    [sty.freeBoxmodal_rm1Hs4__esHi7EiGL]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs4"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__ztkVp,
+                      {
+                        [sty.textmodal_rm1Hs4__ztkVpeiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        )
+                      }
+                    )}
+                  >
+                    {
+                      "Key features of EoE that are typically found upon endoscopy include \rthe following, commonly abbreviated as EREFS:"
+                    }
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__ly1Uz, {
+                    [sty.freeBoxmodal_rm1Hs4__ly1UzeiGL]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs4"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__ul3T,
+                      {
+                        [sty.textmodal_rm1Hs4__ul3TEiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        )
+                      }
+                    )}
+                  >
+                    <React.Fragment>
+                      <React.Fragment>{"\u2022 "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"E"}
+                      </span>
+                      <React.Fragment>{"dema\r\n\u2022 "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"R"}
+                      </span>
+                      <React.Fragment>{"ings\r\n\u2022 "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"E"}
+                      </span>
+                      <React.Fragment>{"xudates"}</React.Fragment>
+                    </React.Fragment>
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__cqSNp,
+                      {
+                        [sty.textmodal_rm1Hs4__cqSNpeiGL]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        )
+                      }
+                    )}
+                  >
+                    <React.Fragment>
+                      <React.Fragment>{"\u2022 "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"F"}
+                      </span>
+                      <React.Fragment>{"urrows\n\r\u2022 "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"S"}
+                      </span>
+                      <React.Fragment>{"trictures"}</React.Fragment>
+                    </React.Fragment>
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__udhlw,
+                    {
+                      [sty.textmodal_rm1Hs4__udhlweiGL]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs4"
+                      )
+                    }
+                  )}
+                >
+                  {
+                    "A scoring system of severity known as the EREFS Index is often used \rby gastroenterologists to assess severity of disease."
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__afKhi,
+                    {
+                      [sty.textmodal_rm1Hs1__afKhiAmduI]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs1"
+                      )
+                    }
+                  )}
+                >
+                  {"Why are the other answers incorrect?"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__f72Bn,
+                    {
+                      [sty.textmodal_rm1Hs1__f72BnAmduI]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm1Hs1"
+                      )
+                    }
+                  )}
+                >
+                  {
+                    "Gastric erosions and dysplasia may be indicators of other\rconditions such as GERD and Barrett\u2019s esophagus but are not\rindicative of a diagnosis of EoE. Patients with EoE will not have\rnormal-appearing mucosa.z"
+                  }
+                </div>
+              </div>
+            }
             incorrectReasoning={
               <WrongAnswer
                 className={classNames(
@@ -19459,7 +21764,7 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 : hasVariant($state, "modal", "rm2Hs4")
                   ? (() => {
                       try {
-                        return $props.questions.questions[9].questionText;
+                        return $props.questions.questions[11].questionText;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -19547,7 +21852,7 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 : hasVariant($state, "modal", "rm2Hs4")
                   ? (() => {
                       try {
-                        return $props.questions.questions[9].id;
+                        return $props.questions.questions[11].id;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||

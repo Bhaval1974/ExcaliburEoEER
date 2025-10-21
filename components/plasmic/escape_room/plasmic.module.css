@@ -129,7 +129,7 @@
   --plasmic-token-correct-answer: var(--token-Eozza9wjGW1p);
   --token-vbOi9-1Zo0_Y: #382e2c;
   --plasmic-token-incorrect-answer: var(--token-vbOi9-1Zo0_Y);
-  --token-eicqt-ssaXax: #e9e9e9;
+  --token-eicqt-ssaXax: #a47763;
   --plasmic-token-clue-tab: var(--token-eicqt-ssaXax);
   --token-jyvaH5gQaBQ6: #b1b1b1;
   --plasmic-token-clue-header: var(--token-jyvaH5gQaBQ6);
@@ -298,6 +298,8 @@
   --plasmic-mixin-unnamed-style-preset_white-space: var(
     --mixin-8zO0zxJN4unJ_white-space
   );
+  --mixin-_8tvLvxOM1na_white-space: pre-wrap;
+  --plasmic-mixin-glossary_white-space: var(--mixin-_8tvLvxOM1na_white-space);
 }
 
 :where(.all) {

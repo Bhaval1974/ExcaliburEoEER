@@ -14,6 +14,32 @@
   height: 100%;
   min-height: 0;
 }
+.page0 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 75%;
+  justify-content: center;
+  align-items: center;
+  background: #efefef;
+  column-gap: 25px;
+  min-width: 0;
+  border-radius: 25px;
+  padding: 50px;
+}
+.page0page__4 {
+  display: flex;
+}
+.img__uRwXf {
+  object-fit: cover;
+  max-width: 100%;
+  margin: 50px;
+}
+.img__uRwXf > picture > img {
+  object-fit: cover;
+}
 .page1 {
   display: flex;
   flex-direction: row;
@@ -1537,4 +1563,64 @@
 }
 .infographEdButtonpage__8__h3U8E9HC:global(.__wab_instance) {
   flex-shrink: 0;
+}
+.freeBox__wsbvt {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  left: 0px;
+  top: 920px;
+  z-index: 1;
+  padding: 0px;
+}
+.freeBoxpage__0__wsbvTfSaBo {
+  display: none;
+}
+.freeBoxpage__1__wsbvt3SPjq {
+  display: flex;
+}
+.freeBoxpage__2__wsbvTwX7Lq {
+  display: flex;
+}
+.freeBoxpage__3__wsbvtn2SoW {
+  display: flex;
+}
+.freeBoxpage__4__wsbvteQd5A {
+  display: flex;
+}
+.freeBoxpage__5__wsbvTfPd0L {
+  display: flex;
+}
+.freeBoxpage__6__wsbvt1SPt7 {
+  display: flex;
+}
+.freeBoxpage__7__wsbvt9AoNr {
+  display: flex;
+}
+.freeBoxpage__8__wsbvt8E9HC {
+  display: flex;
+}
+.text__nNtEj {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 25pt;
+  font-weight: 400;
+  color: #ffffff;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-transform: uppercase;
+  background: #3f3f3f;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  left: auto;
+  top: auto;
+  z-index: 1;
+  bottom: auto;
+  padding: 15px 50px;
 }

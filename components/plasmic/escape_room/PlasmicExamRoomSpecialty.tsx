@@ -63,6 +63,7 @@ import Hotspot from "../../Hotspot"; // plasmic-import: Fhh6u1WI2G9i/component
 import InstructionBanner from "../../InstructionBanner"; // plasmic-import: XeE2UeZFWwVr/component
 import ReferencePanel from "../../ReferencePanel"; // plasmic-import: dm8P2fnSqnl1/component
 import QuestionModal from "../../QuestionModal"; // plasmic-import: k8q3s-VwBO0i/component
+import WrongAnswer from "../../WrongAnswer"; // plasmic-import: N85BHE1JruFS/component
 import BottomToolbar from "../../BottomToolbar"; // plasmic-import: 2RFJUesBV3VF/component
 import ClueModal from "../../ClueModal"; // plasmic-import: 0lm5ubHxYbp_/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/projectModule
@@ -1986,7 +1987,13 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
             }}
           >
             <Hotspot
-              className={classNames("__wab_instance", sty.hotspot__gzRoc)}
+              className={classNames("__wab_instance", sty.hotspot__gzRoc, {
+                [sty.hotspotmodal_rm2Hs1__gzRoccWWw]: hasVariant(
+                  $state,
+                  "modal",
+                  "rm2Hs1"
+                )
+              })}
               size={"_50Px"}
             />
           </div>
@@ -2714,33 +2721,40 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
         </div>
       </div>
       {(
-        hasVariant($state, "modal", "rm1Hs1")
-          ? (() => {
-              try {
-                return true;
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return true;
-                }
-                throw e;
-              }
-            })()
-          : (() => {
-              try {
-                return true;
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return true;
-                }
-                throw e;
-              }
-            })()
+        hasVariant($state, "modal", "rm3Hs4")
+          ? true
+          : hasVariant($state, "modal", "rm3Hs3")
+            ? true
+            : hasVariant($state, "modal", "rm3Hs2")
+              ? true
+              : hasVariant($state, "modal", "rm2Hs4")
+                ? true
+                : hasVariant($state, "modal", "rm2Hs3")
+                  ? true
+                  : hasVariant($state, "modal", "rm2Hs1")
+                    ? true
+                    : hasVariant($state, "modal", "rm1Hs4")
+                      ? true
+                      : hasVariant($state, "modal", "rm1Hs3")
+                        ? true
+                        : hasVariant($state, "modal", "rm1Hs2")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs1")
+                            ? true
+                            : (() => {
+                                try {
+                                  return true;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return true;
+                                  }
+                                  throw e;
+                                }
+                              })()
       ) ? (
         <ReferencePanel
           data-plasmic-name={"referencePanel"}
@@ -2766,10 +2780,40 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
               "modal",
               "rm1Hs3"
             ),
+            [sty.referencePanelmodal_rm1Hs4]: hasVariant(
+              $state,
+              "modal",
+              "rm1Hs4"
+            ),
+            [sty.referencePanelmodal_rm2Hs1]: hasVariant(
+              $state,
+              "modal",
+              "rm2Hs1"
+            ),
+            [sty.referencePanelmodal_rm2Hs3]: hasVariant(
+              $state,
+              "modal",
+              "rm2Hs3"
+            ),
             [sty.referencePanelmodal_rm2Hs4]: hasVariant(
               $state,
               "modal",
               "rm2Hs4"
+            ),
+            [sty.referencePanelmodal_rm3Hs2]: hasVariant(
+              $state,
+              "modal",
+              "rm3Hs2"
+            ),
+            [sty.referencePanelmodal_rm3Hs3]: hasVariant(
+              $state,
+              "modal",
+              "rm3Hs3"
+            ),
+            [sty.referencePanelmodal_rm3Hs4]: hasVariant(
+              $state,
+              "modal",
+              "rm3Hs4"
             )
           })}
           modal={
@@ -2846,31 +2890,448 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
               }
             )}
           >
-            {hasVariant($state, "modal", "rm3Hs4")
-              ? "Clinicaltrials.gov. A randomized, double-blind, parallel-group, placebo-controlled phase 3 efficacy and safety study of tezepelumab in patients with eosinophilic esophagitis (CROSSING).\rAvailable at clinicaltrials.gov/study/NCT05583227. Accessed September 3, 2025.\r\nDellon ES, Collins MH, Bredenoord AJ, et al. Etrasimod as a treatment for eosinophilic oesophagitis (VOYAGE): a double-blind, placebo-controlled, randomised, phase 2 trial. Lancet\rGastroenterol Hepatol. 2025;10(7):622-633.\r\nDellon ES, Spergel JM. Biologics in eosinophilic gastrointestinal diseases. Ann Allergy Asthma Immunol. 2023;130(1):21-27."
-              : hasVariant($state, "modal", "rm3Hs3")
-                ? "Dellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. Am J Gastroenterol. 2025;120(1):31.\r\nGonsalves N, Policarpio-Nicolas M, Zhang Q, et al. Histopathologic variability and endoscopic correlates in adults with eosinophilic esophagitis. Gastrointest Endosc. 2006;64(3):313\u20139.\r\nSalek J, Clayton F, Vinson L, et al. Endoscopic appearance and location dictate diagnostic yield of biopsies in eosinophilic oesophagitis. Aliment Pharmacol Ther. 2015;41(12):1288\u201395.\r\nShah A, Kagalwalla AF, Gonsalves N, et al. Histopathologic variability in children with eosinophilic esophagitis. Am J Gastroenterol. 2009;104(3):716\u201321."
-                : hasVariant($state, "modal", "rm3Hs2")
-                  ? "Gomez-Torrijos E, Garcia-Rodriguez R, Castro-Jimenez A, et al. The efficacy of step-down therapy in adult patients with proton pump inhibitor-responsive oesophageal eosinophilia.\rAliment Pharmacol Ther. 2016;43(4):534\u201340.\n\rGutierrez-Junquera C, Fernandez-Fernandez S, Cilleruelo ML, et al. High prevalence of response to proton-pump inhibitor treatment in children with esophageal eosinophilia. J Pediatr\rGastroenterol Nutr. 2016;62(5):704\u201310.\n\rLaserna-Mendieta EJ, Casabona S, Guagnozzi D, et al. Efficacy of proton pump inhibitor therapy for eosinophilic oesophagitis in 630 patients: Results from the EoE Connect registry.\rAliment Pharmacol Ther. 2020; 52(5):798\u2013807."
-                  : hasVariant($state, "modal", "rm3Hs1")
-                    ? "Cheng E, Zhang X, HuoX, et al. Omeprazole blocks eotaxin-3 expression by oesophageal squamous cells from patients with eosinophilic oesophagitis and GORD. Gut. 2013;62(6):824\u201332.\r\nDellon ES, Liacouras CA, Molina-Infante J, et al. Updated international consensus diagnostic criteria for eosinophilic esophagitis: Proceedings of the AGREE Conference. Gastroenterology.\r2018;155(4):1022-1033.e10.\r\nDellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. Am J Gastroenterol. 2025;120(1):31.\r\nMolina-Infante J, Bredenoord AJ, Cheng E, et al. Proton pump inhibitor-responsive oesophageal eosinophilia: An entity challenging current diagnostic criteria for eosinophilic\roesophagitis. Gut. 2016;65(3):524\u201331.\r\nZhang X, Cheng E, Huo X, et al. Omeprazole blocks STAT6 binding to the eotaxin-3 promoter in eosinophilic esophagitis cells. PLoS One. 2012;7(11):e50037."
-                    : hasVariant($state, "modal", "rm2Hs4")
-                      ? "Ackerman SJ, Kagalwalla AF, Hirano I, et al. One-hour esophageal string test: a nonendoscopic minimally invasive test that accurately detects disease activity in eosinophilic esophagitis.\rAm J Gastroenterol. 2019;114(10):1614.\r\nFuruta GT, Kagalwalla AF, Lee JJ, et al. The oesophageal string test: a novel, minimally invasive method measures mucosal inflammation in eosinophilic oesophagitis. Gut.\r2013;62(10):1395-1405.\r\nHines BT, Rank MA, Wright BL, et al. Minimally invasive biomarker studies in eosinophilic esophagitis: A systematic review. Ann Allergy Asthma Immunol. 2018;121(2):218\u201328.\r\nMcGowan EC, Aceves SS. Non-Invasive tests for eosinophilic esophagitis: Ready for use? Ann Allergy Asthma Immunol. 2022;129(1):27-34."
-                      : hasVariant($state, "modal", "rm2Hs3")
-                        ? "EOHILIA (budesonide oral suspension) product label. Available at www.accessdata.fda.gov/drugsatfda_docs/label/2024/213976s000lbl.pdf. Accessed September 3, 2025.\r\nHirano I, Collins MH, Katzka DA, Mukkada VA, Falk GW, Morey R, et al; ORBIT1/SHP621-301 Investigators. Budesonide oral suspension improves outcomes in patients with eosinophilic\resophagitis: Results from a Phase 3 trial. Clin Gastroenterol Hepatol. 2021:S1542-3565(21)00456-0."
-                        : hasVariant($state, "modal", "rm2Hs2")
-                          ? "Chehade M, McGowan EC, Wright BL, et al. Barriers to timely diagnosis of eosinophilic gastrointestinal diseases. J Allergy Clin Immunol Pract. 2024;12(2):302\u20138.\r\nDellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. Am J Gastroenterol. 2025;120(1):31.\r\nFuruta GT, Katzka DA. Eosinophilic esophagitis. N Engl J Med. 2015;373(17):1640-1648.\r\nFuruta GT, Liacouras CA, Collins MH, et al. Eosinophilic esophagitis in children and adults: A systematic review and consensus recommendations for diagnosis and treatment.\rGastroenterology. 2007;133(4):1342-1363."
-                          : hasVariant($state, "modal", "rm2Hs1")
-                            ? "Peterson K, Firszt R, Fang J, Wong J, Smith KR, Brady KA. Risk of autoimmunity in EoE and families: A population-based cohort study. Am J Gastroenterol. 2016;111(7):926-932.\r\nXue Z, Miller TL, Abramson L, et al. Association of eosinophilic esophagitis with autoimmune and connective tissue disorders, and the impact on treatment response. Dis Esophagus.\r2022;36(1):doac043."
-                            : hasVariant($state, "modal", "rm1Hs4")
-                              ? "Dellon ES, Khoury P, Muir AB, et al. A clinical severity index for eosinophilic esophagitis: Development, consensus, and future directions. Gastroenterology. 2022;163(1):59-76.\r\nA clinical severity index tool (I-SEE) for eosinophilic esophagitis. American Gastroenterological Association. Available at gastro.org/clinical-guidance/i-see-index-of-severity-for-eoe-tool/.\rAccessed September 2, 2025."
-                              : hasVariant($state, "modal", "rm1Hs3")
-                                ? "Chehade M, Dellon E, Spergel J, et al. Dupilumab improves histologic and endoscopic outcomes in children aged 1 to <12 years with eosinophilic esophagitis (EoE): 52-week results from\rthe Phase 3 EoE KIDS Trial. J Allergy Immunol. 2024;156(2):SAB266.\r\nDellon ES, Rothenberg ME, Collins MH, et al. Dupilumab in adults and adolescents with eosinophilic esophagitis. N Engl J Med. 2022;387(25):2317-2330.\n\rGupta M, Grinman M. Diagnosis and management of eosinophilic esophagitis. CMAJ. 2024;196(4):E121-E128."
-                                : hasVariant($state, "modal", "rm1Hs2")
-                                  ? "Dellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. Am J Gastroenterol. 2025;120(1):31.\r\nErdle SC, Carr S, Chan ES, Robertson K, Watson W. Eosinophilic esophagitis. Allergy Asthma Clin Immunol. 2024;20(S3):72.\rFuruta GT, Liacouras CA, Collins MH, et al. Eosinophilic esophagitis in children and adults: A systematic review and consensus recommendations for diagnosis and treatment.\rGastroenterology. 2007;133(4):1342-1363."
-                                  : hasVariant($state, "modal", "rm1Hs1")
-                                    ? "Dellon ES, Hirano I. Epidemiology and natural history of eosinophilic esophagitis. Gastroenterology. 2018;154(2):319-332.e3.\r\nJensen ET, Kappelman MD, Kim HP, Ringel-Kulka T, Dellon ES. Early life exposures as risk factors for pediatric eosinophilic esophagitis. J Pediatr Gastroenterol Nutr. 2013;57:67\u201371.\r\nKapel RC, Miller JK, Torres C, Aksoy S, Lash R, Katzka DA. Eosinophilic esophagitis: a prevalent disease in the United States that affects all age groups. Gastroenterology. 2008;134:1316\u201321.\r\nvan Nimwegen FA, Penders J, Stobberingh EE, et al. Mode and place of delivery, gastrointestinal microbiota, and their influence on asthma and atopy. J Allergy Clin Immunol. 2011;128(5):\r948.e3\u201355.e3."
-                                    : "Enter some text"}
+            {hasVariant($state, "modal", "rm3Hs4") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Clinicaltrials.gov. A randomized, double-blind, parallel-group, placebo-controlled phase 3 efficacy and safety study of tezepelumab in patients with eosinophilic esophagitis (CROSSING). Available at clinicaltrials.gov/study/NCT05583227. Accessed September 3, 2025.\r\nDellon ES, Collins MH, Bredenoord AJ, et al. Etrasimod as a treatment for eosinophilic oesophagitis (VOYAGE): a double-blind, placebo-controlled, randomised, phase 2 trial. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Lancet\r Gastroenterol Hepatol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2025;10(7):622-633.\r\nDellon ES, Spergel JM. Biologics in eosinophilic gastrointestinal diseases. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Ann Allergy Asthma Immunol. "}
+                </span>
+                <React.Fragment>{"2023;130(1):21-27."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm3Hs3") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Dellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Am J Gastroenterol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2025;120(1):31.\r\nGonsalves N, Policarpio-Nicolas M, Zhang Q, et al. Histopathologic variability and endoscopic correlates in adults with eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gastrointest Endosc. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2006;64(3):313\u20139.\r\nSalek J, Clayton F, Vinson L, et al. Endoscopic appearance and location dictate diagnostic yield of biopsies in eosinophilic oesophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Aliment Pharmacol Ther. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2015;41(12):1288\u201395.\r\nShah A, Kagalwalla AF, Gonsalves N, et al. Histopathologic variability in children with eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Am J Gastroenterol. "}
+                </span>
+                <React.Fragment>{"2009;104(3):716\u201321."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm3Hs2") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Gomez-Torrijos E, Garcia-Rodriguez R, Castro-Jimenez A, et al. The efficacy of step-down therapy in adult patients with proton pump inhibitor-responsive oesophageal eosinophilia.\r "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Aliment Pharmacol Ther. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2016;43(4):534\u201340.\n\rGutierrez-Junquera C, Fernandez-Fernandez S, Cilleruelo ML, et al. High prevalence of response to proton-pump inhibitor treatment in children with esophageal eosinophilia. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"J Pediatr\rGastroenterol Nutr."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2016;62(5):704\u201310.\n\rLaserna-Mendieta EJ, Casabona S, Guagnozzi D, et al. Efficacy of proton pump inhibitor therapy for eosinophilic oesophagitis in 630 patients: Results from the EoE Connect registry.\r "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Aliment Pharmacol Ther. "}
+                </span>
+                <React.Fragment>{"2020; 52(5):798\u2013807."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm3Hs1") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Cheng E, Zhang X, HuoX, et al. Omeprazole blocks eotaxin-3 expression by oesophageal squamous cells from patients with eosinophilic oesophagitis and GORD. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gut. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2013;62(6):824\u201332.\r\nDellon ES, Liacouras CA, Molina-Infante J, et al. Updated international consensus diagnostic criteria for eosinophilic esophagitis: Proceedings of the AGREE Conference. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gastroenterology.\r"}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2018;155(4):1022-1033.e10.\r\nDellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. Am J Gastroenterol. 2025;120(1):31.\r\nMolina-Infante J, Bredenoord AJ, Cheng E, et al. Proton pump inhibitor-responsive oesophageal eosinophilia: An entity challenging current diagnostic criteria for eosinophilic\r oesophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gut. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2016;65(3):524\u201331.\r\nZhang X, Cheng E, Huo X, et al. Omeprazole blocks STAT6 binding to the eotaxin-3 promoter in eosinophilic esophagitis cells. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"PLoS One."}
+                </span>
+                <React.Fragment>{" 2012;7(11):e50037."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm2Hs4") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Ackerman SJ, Kagalwalla AF, Hirano I, et al. One-hour esophageal string test: a non endoscopic minimally invasive test that accurately detects disease activity in eosinophilic esophagitis.\r "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Am J Gastroenterol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2019;114(10):1614.\r\nFuruta GT, Kagalwalla AF, Lee JJ, et al. The oesophageal string test: a novel, minimally invasive method measures mucosal inflammation in eosinophilic oesophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gut.\r"}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2013;62(10):1395-1405.\r\nHines BT, Rank MA, Wright BL, et al. Minimally invasive biomarker studies in eosinophilic esophagitis: A systematic review. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Ann Allergy Asthma Immunol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2018;121(2):218\u201328.\r\nMcGowan EC, Aceves SS. Non-Invasive tests for eosinophilic esophagitis: Ready for use? "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Ann Allergy Asthma Immunol. "}
+                </span>
+                <React.Fragment>{"2022;129(1):27-34."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm2Hs3") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "EOHILIA (budesonide oral suspension) product label. Available at www.accessdata.fda.gov/drugsatfda_docs/label/2024/213976s000lbl.pdf. Accessed September 3, 2025.\r\nHirano I, Collins MH, Katzka DA, Mukkada VA, Falk GW, Morey R, et al; ORBIT1/SHP621-301 Investigators. Budesonide oral suspension improves outcomes in patients with eosinophilic \resophagitis: Results from a Phase 3 trial. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Clin Gastroenterol Hepatol. "}
+                </span>
+                <React.Fragment>{"2021:S1542-3565(21)00456-0."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm2Hs2") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Chehade M, McGowan EC, Wright BL, et al. Barriers to timely diagnosis of eosinophilic gastrointestinal diseases. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"J Allergy Clin Immunol Pract. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2024;12(2):302\u20138.\r\nDellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Am J Gastroenterol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2025;120(1):31.\r\nFuruta GT, Katzka DA. Eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"N Engl J Med."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2015;373(17):1640-1648.\r\nFuruta GT, Liacouras CA, Collins MH, et al. Eosinophilic esophagitis in children and adults: A systematic review and consensus recommendations for diagnosis and treatment. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"\rGastroenterology. "}
+                </span>
+                <React.Fragment>{"2007;133(4):1342-1363."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm2Hs1") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Peterson K, Firszt R, Fang J, Wong J, Smith KR, Brady KA. Risk of autoimmunity in EoE and families: A population-based cohort study. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Am J Gastroenterol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2016;111(7):926-932.\r\nXue Z, Miller TL, Abramson L, et al. Association of eosinophilic esophagitis with autoimmune and connective tissue disorders, and the impact on treatment response. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Dis Esophagus."}
+                </span>
+                <React.Fragment>{"\r2022;36(1):doac043."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm1Hs4") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Dellon ES, Khoury P, Muir AB, et al. A clinical severity index for eosinophilic esophagitis: Development, consensus, and future directions. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gastroenterology."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2022;163(1):59-76.\r\nA clinical severity index tool (I-SEE) for eosinophilic esophagitis. American Gastroenterological Association. Available at gastro.org/clinical-guidance/i-see-index-of-severity-for-eoe-tool/.\rAccessed September 2, 2025."
+                  }
+                </React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm1Hs3") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Chehade M, Dellon E, Spergel J, et al. Dupilumab improves histologic and endoscopic outcomes in children aged 1 to <12 years with eosinophilic esophagitis (EoE): 52-week results from\rthe Phase 3 EoE KIDS Trial. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"J Allergy Immunol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2024;156(2):SAB266.\r\nDellon ES, Rothenberg ME, Collins MH, et al. Dupilumab in adults and adolescents with eosinophilic esophagitis."
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {" N Engl J Med. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2022;387(25):2317-2330.\n\rGupta M, Grinman M. Diagnosis and management of eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"CMAJ. "}
+                </span>
+                <React.Fragment>{"2024;196(4):E121-E128."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm1Hs2") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Dellon ES, Muir AB, Katzka DA, et al. ACG clinical guideline: Diagnosis and management of eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Am J Gastroenterol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2025;120(1):31.\r\nErdle SC, Carr S, Chan ES, Robertson K, Watson W. Eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Allergy Asthma Clin Immunol. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2024;20(S3):72.\r Furuta GT, Liacouras CA, Collins MH, et al. Eosinophilic esophagitis in children and adults: A systematic review and consensus recommendations for diagnosis and treatment. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"\rGastroenterology. "}
+                </span>
+                <React.Fragment>{"2007;133(4):1342-1363."}</React.Fragment>
+              </React.Fragment>
+            ) : hasVariant($state, "modal", "rm1Hs1") ? (
+              <React.Fragment>
+                <React.Fragment>
+                  {
+                    "Dellon ES, Hirano I. Epidemiology and natural history of eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gastroenterology. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2018;154(2):319-332.e3.\r\nJensen ET, Kappelman MD, Kim HP, Ringel-Kulka T, Dellon ES. Early life exposures as risk factors for pediatric eosinophilic esophagitis. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"J Pediatr Gastroenterol Nutr. "}
+                </span>
+                <React.Fragment>
+                  {
+                    "2013;57:67\u201371.\r\nKapel RC, Miller JK, Torres C, Aksoy S, Lash R, Katzka DA. Eosinophilic esophagitis: a prevalent disease in the United States that affects all age groups. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"Gastroenterology."}
+                </span>
+                <React.Fragment>
+                  {
+                    " 2008;134:1316\u201321.\r\nvan Nimwegen FA, Penders J, Stobberingh EE, et al. Mode and place of delivery, gastrointestinal microbiota, and their influence on asthma and atopy. "
+                  }
+                </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontStyle: "italic" }}
+                >
+                  {"J Allergy Clin Immunol. "}
+                </span>
+                <React.Fragment>
+                  {"2011;128(5):\r948.e3\u201355.e3."}
+                </React.Fragment>
+              </React.Fragment>
+            ) : (
+              "Enter some text"
+            )}
           </div>
         </ReferencePanel>
       ) : null}
@@ -2908,6 +3369,11 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
             "modal",
             "rm1Hs4"
           ),
+          [sty.questionContainermodal_rm2Hs1]: hasVariant(
+            $state,
+            "modal",
+            "rm2Hs1"
+          ),
           [sty.questionContainermodal_rm3Hs1]: hasVariant(
             $state,
             "modal",
@@ -2939,17 +3405,19 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
           data-plasmic-name={"computer"}
           data-plasmic-override={overrides.computer}
           active={
-            hasVariant($state, "modal", "kelvinDoor")
+            hasVariant($state, "modal", "rm3Hs3")
               ? true
-              : hasVariant($state, "modal", "rm1Hs4")
+              : hasVariant($state, "modal", "kelvinDoor")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs3")
+                : hasVariant($state, "modal", "rm1Hs4")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs2")
+                  : hasVariant($state, "modal", "rm1Hs3")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs1")
+                    : hasVariant($state, "modal", "rm1Hs2")
                       ? true
-                      : undefined
+                      : hasVariant($state, "modal", "rm1Hs1")
+                        ? true
+                        : undefined
           }
           answerA={
             hasVariant($state, "modal", "ivanDoor")
@@ -3221,6 +3689,213 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
               "shareseDoor"
             )
           })}
+          correctReasoning={
+            <div
+              className={classNames(projectcss.all, sty.freeBox__v3Jy, {
+                [sty.freeBoxmodal_rm1Hs1__v3JyX9Qua]: hasVariant(
+                  $state,
+                  "modal",
+                  "rm1Hs1"
+                ),
+                [sty.freeBoxmodal_rm1Hs2__v3JyHoV8R]: hasVariant(
+                  $state,
+                  "modal",
+                  "rm1Hs2"
+                ),
+                [sty.freeBoxmodal_rm3Hs3__v3JyT1D7C]: hasVariant(
+                  $state,
+                  "modal",
+                  "rm3Hs3"
+                )
+              })}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__bnsUa)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ydecf,
+                    {
+                      [sty.textmodal_rm3Hs3__ydecft1D7C]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs3"
+                      )
+                    }
+                  )}
+                >
+                  {"Correct answer: B"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox___19JFs)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ecPot
+                  )}
+                >
+                  {
+                    "Studies have found that these factors have a higher risk of developing EoE:"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__twlA)}>
+                <div className={classNames(projectcss.all, sty.freeBox__sbJKo)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__thCyq)}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__t43Z7)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"15%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"100%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/bornPrematureoyOrViaCSectionSvg.svg",
+                        fullWidth: 61,
+                        fullHeight: 61,
+                        aspectRatio: 1
+                      }}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__nqzLy
+                      )}
+                    >
+                      {"Individuals born prematurely\r or via C-section"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__ffc9P)}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__lJfeB)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"15%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/infantsWhoReceivedAntibioticsSvg.svg",
+                        fullWidth: 61,
+                        fullHeight: 61,
+                        aspectRatio: 1
+                      }}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__whcTq
+                      )}
+                    >
+                      {"Infants who received antibiotic"}
+                    </div>
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__lmmN2)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__dzXlN)}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__mFyVk)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"15%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/thoseNotExclusivelyBreastfedSvg.svg",
+                        fullWidth: 61,
+                        fullHeight: 61,
+                        aspectRatio: 1
+                      }}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__q8So7
+                      )}
+                    >
+                      {"Those not\r exclusively breastfed"}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__chJzy
+                )}
+              >
+                <React.Fragment>
+                  <React.Fragment>
+                    {
+                      "These factors are also believed to contribute to the development of other\rconditions that are part of the \u201c"
+                    }
+                  </React.Fragment>
+                  <span
+                    className={"plasmic_default__all plasmic_default__span"}
+                    style={{ fontWeight: 700 }}
+                  >
+                    {"allergic (or atopic) march,"}
+                  </span>
+                  <React.Fragment>
+                    {"\u201d including\r allergies, asthma, and eczema."}
+                  </React.Fragment>
+                </React.Fragment>
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___0ITr
+                )}
+              >
+                {"Why are the other answers incorrect?"}
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___3LW3E
+                )}
+              >
+                {
+                  "Males are three times more likely to be diagnosed with EoE than females.\r Smoking and an unbalanced diet have not been shown to increase an \rindividual\u2019s risk of developing EoE."
+                }
+              </div>
+            </div>
+          }
+          incorrectReasoning={
+            <WrongAnswer
+              className={classNames("__wab_instance", sty.wrongAnswer__mlUsZ, {
+                [sty.wrongAnswermodal_rm1Hs1__mlUsZx9Qua]: hasVariant(
+                  $state,
+                  "modal",
+                  "rm1Hs1"
+                )
+              })}
+            />
+          }
           onClickClose={async event => {
             const $steps = {};
 
@@ -3418,17 +4093,19 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
             data-plasmic-name={"ivanSpecialist4"}
             data-plasmic-override={overrides.ivanSpecialist4}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "modal", "rm3Hs4")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "modal", "kelvinDoor")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "modal", "rm1Hs4")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "modal", "rm1Hs3")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs2")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs1")
+                          ? true
+                          : undefined
             }
             answerA={
               hasVariant($state, "modal", "kelvinPcp1")
@@ -4074,6 +4751,399 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 "sharesePcp2"
               )
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__xkDjx, {
+                  [sty.freeBoxmodal_rm3Hs1__xkDjXxjzOf]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs1"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs2__xkDjxBlyoB]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs3__xkDjXt1D7C]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs3"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs4__xkDjXgBHb]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs4"
+                  )
+                })}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox___41HL)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___8HbU6,
+                      {
+                        [sty.textmodal_rm3Hs2___8HbU6BlyoB]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        ),
+                        [sty.textmodal_rm3Hs3___8HbU6T1D7C]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs3")
+                      ? "Correct answer: D"
+                      : hasVariant($state, "modal", "rm3Hs2")
+                        ? "Correct answer: C"
+                        : "Correct answer: D"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__d1Vp,
+                    {
+                      [sty.textmodal_rm3Hs3__d1VpT1D7C]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs3"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "modal", "rm3Hs3") ? (
+                    <React.Fragment>
+                      <React.Fragment>
+                        {"Studies have demonstrated that collecting "}
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"six or more biopsies "}
+                      </span>
+                      <React.Fragment>
+                        {
+                          "leads to\ra diagnostic sensitivity of nearly 100% in patients with suspected EoE."
+                        }
+                      </React.Fragment>
+                    </React.Fragment>
+                  ) : (
+                    "Tezepelumab is a potential first-in-class monoclonal antibody that\rinhibits the action of thymic stromal lymphopoietin. Tezepelumab was\rgranted orphan drug designation by the FDA for the treatment of\rEoE in 2021."
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__pky5M,
+                    {
+                      [sty.textmodal_rm3Hs4__pky5MgBHb]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs4"
+                      )
+                    }
+                  )}
+                >
+                  {
+                    "Phase 3 studies of tezepelumab have been conducted in patients with:"
+                  }
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__lf0I9, {
+                    [sty.freeBoxmodal_rm3Hs4__lf0I9GBHb]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs4"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___1YkG, {
+                      [sty.freeBoxmodal_rm3Hs4___1YkGgBHb]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs4"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__kZq9P,
+                        {
+                          [sty.freeBoxmodal_rm3Hs4__kZq9PgBHb]: hasVariant(
+                            $state,
+                            "modal",
+                            "rm3Hs4"
+                          )
+                        }
+                      )}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img___0JfZy, {
+                          [sty.imgmodal_rm3Hs4___0JfZYgBHb]: hasVariant(
+                            $state,
+                            "modal",
+                            "rm3Hs4"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"20%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"auto"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/nasalSpraySvg.svg",
+                          fullWidth: 61,
+                          fullHeight: 61,
+                          aspectRatio: 1
+                        }}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__l7Twb,
+                          {
+                            [sty.textmodal_rm3Hs4__l7TwBgBHb]: hasVariant(
+                              $state,
+                              "modal",
+                              "rm3Hs4"
+                            )
+                          }
+                        )}
+                      >
+                        {
+                          "Patients with asthma (it is\r approved for this indication)"
+                        }
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__bMxm4, {
+                      [sty.freeBoxmodal_rm3Hs4__bMxm4GBHb]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs4"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___5BTkE,
+                        {
+                          [sty.freeBoxmodal_rm3Hs4___5BTkEgBHb]: hasVariant(
+                            $state,
+                            "modal",
+                            "rm3Hs4"
+                          )
+                        }
+                      )}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__mV25Z, {
+                          [sty.imgmodal_rm3Hs4__mV25ZgBHb]: hasVariant(
+                            $state,
+                            "modal",
+                            "rm3Hs4"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"20%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"auto"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/copdSvg.svg",
+                          fullWidth: 61,
+                          fullHeight: 61,
+                          aspectRatio: 1
+                        }}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___0JvSp,
+                          {
+                            [sty.textmodal_rm3Hs4___0JvSPgBHb]: hasVariant(
+                              $state,
+                              "modal",
+                              "rm3Hs4"
+                            )
+                          }
+                        )}
+                      >
+                        {"COPD"}
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__hEtwX, {
+                      [sty.freeBoxmodal_rm3Hs4__hEtwXgBHb]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs4"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__rFnyE,
+                        {
+                          [sty.freeBoxmodal_rm3Hs4__rFnyEgBHb]: hasVariant(
+                            $state,
+                            "modal",
+                            "rm3Hs4"
+                          )
+                        }
+                      )}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__cmmY, {
+                          [sty.imgmodal_rm3Hs4__cmmYgBHb]: hasVariant(
+                            $state,
+                            "modal",
+                            "rm3Hs4"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"20%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"auto"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/chronicRhinosinusitisSvg.svg",
+                          fullWidth: 61,
+                          fullHeight: 61,
+                          aspectRatio: 1
+                        }}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__eu1Ne,
+                          {
+                            [sty.textmodal_rm3Hs4__eu1NEgBHb]: hasVariant(
+                              $state,
+                              "modal",
+                              "rm3Hs4"
+                            )
+                          }
+                        )}
+                      >
+                        {"Severe chronic rhinosinusitis"}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__pTf7Y,
+                    {
+                      [sty.textmodal_rm3Hs4__pTf7YgBHb]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs4"
+                      )
+                    }
+                  )}
+                >
+                  {
+                    "A phase 3 trial in EoE is currently underway, with planned completion \rin 2027. \rEtrasimod, an oral, once-daily, selective sphingosine 1-phosphate\rreceptor modulator, is another novel treatment currently under \rinvestigation for the treatment of EoE."
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___3Jb7R,
+                    {
+                      [sty.textmodal_rm2Hs4___3Jb7RpHpy7]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm2Hs4"
+                      ),
+                      [sty.textmodal_rm3Hs2___3Jb7RBlyoB]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      ),
+                      [sty.textmodal_rm3Hs4___3Jb7RgBHb]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs4"
+                      )
+                    }
+                  )}
+                >
+                  {"Why are the other answers incorrect?"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__pbyVe,
+                    {
+                      [sty.textmodal_rm3Hs2__pbyVeBlyoB]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      ),
+                      [sty.textmodal_rm3Hs4__pbyVegBHb]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs4"
+                      )
+                    }
+                  )}
+                >
+                  {
+                    "The other drugs listed here are being investigated for the treatment\rof other GI conditions, but not in EoE."
+                  }
+                </div>
+              </div>
+            }
+            incorrectReasoning={
+              <WrongAnswer
+                className={classNames(
+                  "__wab_instance",
+                  sty.wrongAnswer__lkIHz,
+                  {
+                    [sty.wrongAnswermodal_rm3Hs4__lkIHzgBHb]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs4"
+                    )
+                  }
+                )}
+              />
+            }
             onClickClose={async event => {
               const $steps = {};
 
@@ -4451,17 +5521,19 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
             data-plasmic-name={"ivanShelf"}
             data-plasmic-override={overrides.ivanShelf}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "modal", "rm3Hs3")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "modal", "kelvinDoor")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "modal", "rm1Hs4")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "modal", "rm1Hs3")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs2")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs1")
+                          ? true
+                          : undefined
             }
             answerA={
               hasVariant($state, "modal", "ivanPcp2")
@@ -5245,6 +6317,195 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 "sharesePcp2"
               )
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox___8Zk92, {
+                  [sty.freeBoxmodal_rm3Hs1___8Zk92XjzOf]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs1"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs2___8Zk92BlyoB]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs3___8Zk92T1D7C]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs3"
+                  )
+                })}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__giGs8)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__rmUyM,
+                      {
+                        [sty.textmodal_rm3Hs2__rmUyMBlyoB]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        ),
+                        [sty.textmodal_rm3Hs3__rmUyMt1D7C]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs3")
+                      ? "Correct answer: D"
+                      : hasVariant($state, "modal", "rm3Hs2")
+                        ? "Correct answer: C"
+                        : "Correct answer: A"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__eo9Sa,
+                    {
+                      [sty.textmodal_rm3Hs3__eo9Sat1D7C]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs3"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "modal", "rm3Hs3") ? (
+                    <React.Fragment>
+                      <React.Fragment>
+                        {"Studies have demonstrated that collecting "}
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"six or more biopsies "}
+                      </span>
+                      <React.Fragment>
+                        {
+                          "leads to\ra diagnostic sensitivity of nearly 100% in patients with suspected EoE."
+                        }
+                      </React.Fragment>
+                    </React.Fragment>
+                  ) : (
+                    "Studies have demonstrated that collecting six or more biopsies leads to\ra diagnostic sensitivity of nearly 100% in patients with suspected EoE."
+                  )}
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__yMFm, {
+                    [sty.freeBoxmodal_rm3Hs2__yMFmBlyoB]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs2"
+                    ),
+                    [sty.freeBoxmodal_rm3Hs3__yMFmt1D7C]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs3"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__fccZj,
+                      {
+                        [sty.textmodal_rm3Hs3__fccZjt1D7C]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs3") ? (
+                      <React.Fragment>
+                        <React.Fragment>
+                          {
+                            "The 2025 ACG Guidelines\r recommend collecting at least \r\u00a0"
+                          }
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"six biopsies"}
+                        </span>
+                        <React.Fragment>
+                          {"\u00a0 from a minimum of "}
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {"\rtwo different locations"}
+                        </span>
+                        <React.Fragment>
+                          {
+                            " in the \resophagus (e.g., proximal, mid,\r and distal) while concentrating \ron sections that show visual\r inflammation, if available."
+                          }
+                        </React.Fragment>
+                      </React.Fragment>
+                    ) : (
+                      "The 2025 ACG Guidelines\r recommend collecting at least \r\u00a0six biopsies\u00a0 from a minimum of \u00a0\rtwo different locations\u00a0 in the \resophagus (e.g., proximal, mid,\r and distal) while concentrating \ron sections that show visual\r inflammation, if available."
+                    )}
+                  </div>
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__g2U6M, {
+                      [sty.imgmodal_rm3Hs3__g2U6Mt1D7C]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs3"
+                      )
+                    })}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={
+                      hasVariant($state, "modal", "rm3Hs3") ? "50%" : "100%"
+                    }
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/escape_room/images/image17.svg",
+                      fullWidth: 444.34,
+                      fullHeight: 438.51,
+                      aspectRatio: 1.013295
+                    }}
+                  />
+                </div>
+              </div>
+            }
+            incorrectReasoning={
+              <WrongAnswer
+                className={classNames(
+                  "__wab_instance",
+                  sty.wrongAnswer__cKj7X,
+                  {
+                    [sty.wrongAnswermodal_rm3Hs3__cKj7Xt1D7C]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs3"
+                    )
+                  }
+                )}
+              />
+            }
             onClickClose={async event => {
               const $steps = {};
 
@@ -5669,17 +6930,21 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
             data-plasmic-name={"ivanScreen"}
             data-plasmic-override={overrides.ivanScreen}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "modal", "rm3Hs2")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "modal", "rm3Hs1")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "modal", "kelvinDoor")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "modal", "rm1Hs4")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs3")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs2")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs1")
+                            ? true
+                            : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm3Hs2")
@@ -5908,6 +7173,188 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 "rm3Hs2"
               )
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__fiQsb, {
+                  [sty.freeBoxmodal_rm3Hs1__fiQsBxjzOf]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs1"
+                  ),
+                  [sty.freeBoxmodal_rm3Hs2__fiQsbBlyoB]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm3Hs2"
+                  )
+                })}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__cNPo)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__zxDtC,
+                      {
+                        [sty.textmodal_rm3Hs2__zxDtCBlyoB]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs2")
+                      ? "Correct answer: C"
+                      : "Correct answer: A"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__n9Ls4, {
+                    [sty.freeBoxmodal_rm3Hs2__n9Ls4BlyoB]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs2"
+                    )
+                  })}
+                >
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img___8BbLp, {
+                      [sty.imgmodal_rm3Hs2___8BbLpBlyoB]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      )
+                    })}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={
+                      hasVariant($state, "modal", "rm3Hs2") ? "50%" : "100%"
+                    }
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/escape_room/images/image16.png",
+                      fullWidth: 970,
+                      fullHeight: 333,
+                      aspectRatio: undefined
+                    }}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__hrcao,
+                      {
+                        [sty.textmodal_rm3Hs1__hrcaOxjzOf]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs1"
+                        ),
+                        [sty.textmodal_rm3Hs2__hrcaoBlyoB]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm3Hs2"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "modal", "rm3Hs2")
+                      ? "Data support the long-term \refficacy of PPIs, with several\r studies showing 70-85% of patients with EoE maintaining\r PPI response after 1 year."
+                      : hasVariant($state, "modal", "rm3Hs1")
+                        ? "The 2025 ACG guidelines update eliminated \rthe requirement for a PPI trial before\r diagnosing EoE to rule out inflammation\r related to GERD. This change was based on \rextensive data indicating that patients \rresponding to PPIs exhibit similar clinical,\r endoscopic, histological, immunological, and\r molecular characteristics as those with EoE who do not respond \rto PPIs."
+                        : "The 2025 ACG guidelines update eliminated\rthe requirement for a PPI trial before\rdiagnosing EoE to rule out inflammation\rrelated to GERD. This change was based on\rextensive data indicating that patients\rresponding to PPIs exhibit similar clinical,\rendoscopic, histological, immunological, and\rmolecular characteristics as those with EoE who do not respond\rto PPIs."}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kxVDh,
+                    {
+                      [sty.textmodal_rm3Hs1__kxVDhxjzOf]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs1"
+                      ),
+                      [sty.textmodal_rm3Hs2__kxVDhBlyoB]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "modal", "rm3Hs2")
+                    ? "Additionally, one study showed histologic and symptom PPI responses\rthat were maintained in 60% of adults after a mean of 3.6 years."
+                    : hasVariant($state, "modal", "rm3Hs1")
+                      ? "This suggests that PPIs are an effective treatment for EoE through \rnovel mechanisms and not solely through gastric acid \rsuppression. Furthermore, research shows a complex relationship \rbetween EoE and GERD, and not an independent disease course\r as previously suspected."
+                      : "This suggests that PPIs are an effective treatment for EoE through\rnovel mechanisms and not solely through gastric acid\rsuppression. Furthermore, research shows a complex relationship\rbetween EoE and GERD, and not an independent disease course\ras previously suspected."}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___6Lkv,
+                    {
+                      [sty.textmodal_rm2Hs4___6LkvpHpy7]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm2Hs4"
+                      ),
+                      [sty.textmodal_rm3Hs2___6LkvBlyoB]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      )
+                    }
+                  )}
+                >
+                  {"Why are the other answers incorrect?"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__u0Bla,
+                    {
+                      [sty.textmodal_rm3Hs2__u0BlaBlyoB]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm3Hs2"
+                      )
+                    }
+                  )}
+                >
+                  {
+                    "Choices A, B, and D listed here are all novel mechanisms described as\rpart of PPI therapy in patients with EoE."
+                  }
+                </div>
+              </div>
+            }
+            incorrectReasoning={
+              <WrongAnswer
+                className={classNames(
+                  "__wab_instance",
+                  sty.wrongAnswer__kPlJo,
+                  {
+                    [sty.wrongAnswermodal_rm3Hs1__kPlJoxjzOf]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs1"
+                    ),
+                    [sty.wrongAnswermodal_rm3Hs2__kPlJoBlyoB]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm3Hs2"
+                    )
+                  }
+                )}
+              />
+            }
             onClickClose={async event => {
               const $steps = {};
 
@@ -6077,17 +7524,19 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
           data-plasmic-name={"sharese1"}
           data-plasmic-override={overrides.sharese1}
           active={
-            hasVariant($state, "modal", "kelvinDoor")
+            hasVariant($state, "modal", "rm2Hs1")
               ? true
-              : hasVariant($state, "modal", "rm1Hs4")
+              : hasVariant($state, "modal", "kelvinDoor")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs3")
+                : hasVariant($state, "modal", "rm1Hs4")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs2")
+                  : hasVariant($state, "modal", "rm1Hs3")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs1")
+                    : hasVariant($state, "modal", "rm1Hs2")
                       ? true
-                      : undefined
+                      : hasVariant($state, "modal", "rm1Hs1")
+                        ? true
+                        : undefined
           }
           answerA={
             hasVariant($state, "modal", "rm3Hs1")
@@ -6291,6 +7740,121 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
             [sty.sharese1modal_rm3Hs1]: hasVariant($state, "modal", "rm3Hs1"),
             [sty.sharese1modal_rm3Hs2]: hasVariant($state, "modal", "rm3Hs2")
           })}
+          correctReasoning={
+            <div
+              className={classNames(projectcss.all, sty.freeBox___316Ny, {
+                [sty.freeBoxmodal_rm2Hs1___316NycWWw]: hasVariant(
+                  $state,
+                  "modal",
+                  "rm2Hs1"
+                )
+              })}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__qCXvt)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__rPaA
+                  )}
+                >
+                  {"Correct answer: C"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__bkWRj)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__hWnul
+                  )}
+                >
+                  {
+                    "EoE is commonly associated with autoimmune and connective tissue \rdiseases. According to studies, patients or patients with first-degree \rfamily members diagnosed with these diseases are at increased risk of\rdeveloping EoE:"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__erfpE)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__y3Y4S
+                  )}
+                >
+                  {
+                    "\u2022 Celiac disease\r\n\u2022 Common variable\r immunodeficiency (CVID)\r\n\u2022 Crohn\u2019s disease\n\r\u2022 Hashimoto\u2019s thyroiditis"
+                  }
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__jc0X)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__nMD
+                    )}
+                  >
+                    {
+                      "\u2022 IgA deficiency\r\n\u2022 Multiple sclerosis\r\n\u2022 Rheumatoid arthritis\n\r\u2022 Ulcerative colitis"
+                    }
+                  </div>
+                </div>
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__iv1J2
+                )}
+              >
+                {"CLICK TO SEE:"}
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__aZkQp)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___8IyW5
+                  )}
+                >
+                  {
+                    "Relative risk of specific autoimmune diseases in EoE\rprobands and first-degree relatives (FDRs) of EoE probands"
+                  }
+                </div>
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__fy3I
+                )}
+              >
+                {"Why are the other answers incorrect?"}
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___6Wxrk
+                )}
+              >
+                {
+                  "A personal or family history of kidney disease, type 1 diabetes, and\rleukocytosis are not known to increase an individual\u2019s risk of\r developing EoE."
+                }
+              </div>
+            </div>
+          }
+          incorrectReasoning={
+            <WrongAnswer
+              className={classNames("__wab_instance", sty.wrongAnswer__sAuE8, {
+                [sty.wrongAnswermodal_rm2Hs1__sAuE8CWWw]: hasVariant(
+                  $state,
+                  "modal",
+                  "rm2Hs1"
+                )
+              })}
+            />
+          }
           onClickClose={async event => {
             const $steps = {};
 
@@ -6873,6 +8437,133 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 "sharesePcp2"
               )
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__wj66U, {
+                  [sty.freeBoxmodal_rm2Hs2__wj66UJ1J0]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm2Hs2"
+                  )
+                })}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__ygXbV)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__fJxor
+                    )}
+                  >
+                    {"Correct answer: B"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___0SciD)}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__ib2SR
+                    )}
+                  >
+                    {
+                      "EoE patients with longstanding dysphagia may develop coping behaviors \rto manage their eating difficulties. This may result in minimization of\rsymptoms and delayed diagnosis. Clinicians should evaluate patients with\rsuspected and diagnosed EoE for behaviors using the IMPACT acronym:"
+                    }
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__iFzUt)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__nlRYf
+                    )}
+                  >
+                    <React.Fragment>
+                      <React.Fragment>{"\u2022 "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"I"}
+                      </span>
+                      <React.Fragment>
+                        {"mbibe fluids with meals\r\n\u2022"}
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {" M"}
+                      </span>
+                      <React.Fragment>{"odify food\r\n\u2022 "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"P"}
+                      </span>
+                      <React.Fragment>{"rolong mealtimes"}</React.Fragment>
+                    </React.Fragment>
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__cfUir
+                    )}
+                  >
+                    <React.Fragment>
+                      <React.Fragment>{"\u2022 "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"A"}
+                      </span>
+                      <React.Fragment>
+                        {"void hard texture foods\r\n\u2022 "}
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"C"}
+                      </span>
+                      <React.Fragment>
+                        {"hew excessively\n\r\u2022 "}
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"T"}
+                      </span>
+                      <React.Fragment>
+                        {"urn away tablets/pills"}
+                      </React.Fragment>
+                    </React.Fragment>
+                  </div>
+                </div>
+              </div>
+            }
+            incorrectReasoning={
+              <WrongAnswer
+                className={classNames(
+                  "__wab_instance",
+                  sty.wrongAnswer___8COq1,
+                  {
+                    [sty.wrongAnswermodal_rm2Hs2___8COq1J1J0]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm2Hs2"
+                    )
+                  }
+                )}
+              />
+            }
             onClickClose={async event => {
               const $steps = {};
 
@@ -7146,17 +8837,19 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
             data-plasmic-name={"sharese3"}
             data-plasmic-override={overrides.sharese3}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "modal", "rm2Hs3")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "modal", "kelvinDoor")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "modal", "rm1Hs4")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "modal", "rm1Hs3")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs2")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs1")
+                          ? true
+                          : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm3Hs1")
@@ -7540,6 +9233,198 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
               [sty.sharese3modal_rm3Hs1]: hasVariant($state, "modal", "rm3Hs1"),
               [sty.sharese3modal_rm3Hs2]: hasVariant($state, "modal", "rm3Hs2")
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__qcmki, {
+                  [sty.freeBoxmodal_rm2Hs2__qcmkiJ1J0]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm2Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm2Hs3__qcmkiPvEsk]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm2Hs3"
+                  )
+                })}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__vhSZq)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___1Hvdy
+                    )}
+                  >
+                    {"Correct answer: D"}
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__udLjH)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__k0Z1E,
+                      {
+                        [sty.textmodal_rm2Hs3__k0Z1EPvEsk]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm2Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {
+                      "The FDA-approved dosing for budesonide oral suspension (BOS) is 2 mg\r twice daily (it should be noted that the 2025 ACG guidelines suggest a\r dosage of 2-4 mg either once or twice daily)."
+                    }
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__yDmH, {
+                    [sty.freeBoxmodal_rm2Hs3__yDmHPvEsk]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm2Hs3"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__dVmf3, {
+                      [sty.freeBoxmodal_rm2Hs3__dVmf3PvEsk]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm2Hs3"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___13DS,
+                        {
+                          [sty.textmodal_rm2Hs3___13DSPvEsk]: hasVariant(
+                            $state,
+                            "modal",
+                            "rm2Hs3"
+                          )
+                        }
+                      )}
+                    >
+                      {"FDA-approved dosage"}
+                    </div>
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__kdAcG, {
+                        [sty.imgmodal_rm2Hs3__kdAcGPvEsk]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm2Hs3"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"50%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/image11.svg",
+                        fullWidth: 284.61,
+                        fullHeight: 105.88,
+                        aspectRatio: 2.688043
+                      }}
+                    />
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__aevk1, {
+                      [sty.freeBoxmodal_rm2Hs3__aevk1PvEsk]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm2Hs3"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__lJxU,
+                        {
+                          [sty.textmodal_rm2Hs3__lJxUPvEsk]: hasVariant(
+                            $state,
+                            "modal",
+                            "rm2Hs3"
+                          )
+                        }
+                      )}
+                    >
+                      {"2025 ACG guidelines"}
+                    </div>
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__rui5Z, {
+                        [sty.imgmodal_rm2Hs3__rui5ZPvEsk]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm2Hs3"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"50%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/image12.svg",
+                        fullWidth: 359.24,
+                        fullHeight: 105.88,
+                        aspectRatio: 3.392898
+                      }}
+                    />
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__hyRs, {
+                    [sty.freeBoxmodal_rm2Hs3__hyRsPvEsk]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm2Hs3"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__caby4
+                    )}
+                  >
+                    {
+                      "BOS is an immediate-release topical corticosteroid given as a viscous\rsuspension to lengthen its survival time on the esophageal mucosal surface \rfollowing oral administration. BOS is currently approved for the treatment\rof EoE in individuals aged 11 years and older based on data from a pair of\r phase 3 trials showing that patients treated with BOS 2 mg twice daily were\r significantly more likely than those treated with placebo to achieve both\rstringent histological and symptom response at 12 weeks. Improved\r endoscopic outcomes were also seen in these trials."
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+            incorrectReasoning={
+              <WrongAnswer
+                className={classNames(
+                  "__wab_instance",
+                  sty.wrongAnswer__h85Nl,
+                  {
+                    [sty.wrongAnswermodal_rm2Hs3__h85NlPvEsk]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm2Hs3"
+                    )
+                  }
+                )}
+              />
+            }
             onClickClose={async event => {
               const $steps = {};
 
@@ -7893,6 +9778,167 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
               [sty.diagrammodal_rm1Hs4]: hasVariant($state, "modal", "rm1Hs4"),
               [sty.diagrammodal_rm3Hs1]: hasVariant($state, "modal", "rm3Hs1")
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__ltpMr, {
+                  [sty.freeBoxmodal_rm1Hs3__ltpMrGtgMk]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs3"
+                  )
+                })}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__jCnGs)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__q1VNw
+                    )}
+                  >
+                    {"Correct answer: B"}
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox___6J1T)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__jwm8Q
+                    )}
+                  >
+                    {
+                      "Dupilumab, a fully human monoclonal antibody targeting IL-4R\u03b1, reduces\rtype 2 inflammation by blocking the following signaling pathways:"
+                    }
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__mQl)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__o6XUb)}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__oKz6S)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/image8.svg",
+                        fullWidth: 287.79,
+                        fullHeight: 172.31,
+                        aspectRatio: 1.670187
+                      }}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__a0Yya
+                      )}
+                    >
+                      {"IL-4"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__zgunM)}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__xiIxe)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/image9.svg",
+                        fullWidth: 287.79,
+                        fullHeight: 172.31,
+                        aspectRatio: 1.670187
+                      }}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__ak1T9
+                      )}
+                    >
+                      {"IL-13"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__sxzP7)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__kEqG3
+                      )}
+                    >
+                      {
+                        "These cytokines play a role\rin the development of \rallergic and inflammatory\r diseases such as EoE."
+                      }
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__in4Mn
+                  )}
+                >
+                  {
+                    "Dupilumab is currently FDA approved for use in children with EoE ages\r1 year and older. A three-part, phase 3 trial showed that EoE patient s\rtreated with dupilumab weekly were significantly more likely to achieve \rhistologic remission and see amelioration of symptoms compared to\r those treated with placebo."
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zfmXa
+                  )}
+                >
+                  {"Why are the other answers incorrect?"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__usgbc
+                  )}
+                >
+                  {
+                    "Cendakimab and tezepelumab are currently being studied for use in EoE \rbut are not yet FDA approved for this indication. Mepolizumab is approved\r for use in several different conditions, including severe eosinophilic \rasthma, but a recent study in EoE patients found that mepolizumab was\r not more effective than placebo at improving dysphagia symptoms."
+                  }
+                </div>
+              </div>
+            }
+            incorrectReasoning={
+              <WrongAnswer
+                className={classNames(
+                  "__wab_instance",
+                  sty.wrongAnswer__cxDy3,
+                  {
+                    [sty.wrongAnswermodal_rm1Hs3__cxDy3GtgMk]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs3"
+                    )
+                  }
+                )}
+              />
+            }
             onClickClose={async event => {
               const $steps = {};
 
@@ -8023,17 +10069,19 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
             data-plasmic-name={"sharese4"}
             data-plasmic-override={overrides.sharese4}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "modal", "rm2Hs4")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "modal", "kelvinDoor")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "modal", "rm1Hs4")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "modal", "rm1Hs3")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs2")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs1")
+                          ? true
+                          : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm3Hs1")
@@ -8412,6 +10460,177 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
               [sty.sharese4modal_rm3Hs1]: hasVariant($state, "modal", "rm3Hs1"),
               [sty.sharese4modal_rm3Hs2]: hasVariant($state, "modal", "rm3Hs2")
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__t9ZJa, {
+                  [sty.freeBoxmodal_rm2Hs2__t9ZJaJ1J0]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm2Hs2"
+                  ),
+                  [sty.freeBoxmodal_rm2Hs3__t9ZJaPvEsk]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm2Hs3"
+                  ),
+                  [sty.freeBoxmodal_rm2Hs4__t9ZJapHpy7]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm2Hs4"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___8WlCk)}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__im9Nc
+                    )}
+                  >
+                    {"Correct answer: D"}
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__cRgFv)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__ybSqv,
+                      {
+                        [sty.textmodal_rm2Hs3__ybSqvPvEsk]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm2Hs3"
+                        )
+                      }
+                    )}
+                  >
+                    {
+                      "The Esophageal String Test (EST) involves the swallowing of\ra weighted string capsule that remains in the esophagus for\r1 hour to absorb inflammatory factors. It has demonstrated\ra strong correlation with endoscopic results in studies of\rpediatric and adult patients with EoE."
+                    }
+                  </div>
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__fofL3, {
+                      [sty.imgmodal_rm2Hs4__fofL3PHpy7]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm2Hs4"
+                      )
+                    })}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"15%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/escape_room/images/image13.svg",
+                      fullWidth: 139.08,
+                      fullHeight: 117.26,
+                      aspectRatio: 1.186082
+                    }}
+                  />
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__ulyX2, {
+                    [sty.freeBoxmodal_rm2Hs3__ulyX2PvEsk]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm2Hs3"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__br5S
+                    )}
+                  >
+                    {
+                      "Another non-invasive option for assessing esophageal\reosinophil levels is the cytosponge, in which a small, round\rbrush inside a capsule on a string is swallowed, allowed to\rexpand in the esophagus for 5-10 minutes, and then pulled\r out through the mouth. The brush collects cells from the\r esophagus for testing."
+                    }
+                  </div>
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__jMjOo, {
+                      [sty.imgmodal_rm2Hs4__jMjOopHpy7]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm2Hs4"
+                      )
+                    })}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"15%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/escape_room/images/image15.svg",
+                      fullWidth: 139.08,
+                      fullHeight: 117.26,
+                      aspectRatio: 1.186082
+                    }}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__z5Sk,
+                    {
+                      [sty.textmodal_rm2Hs4__z5SkpHpy7]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm2Hs4"
+                      )
+                    }
+                  )}
+                >
+                  {"Why are the other answers incorrect?"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ysoLr,
+                    {
+                      [sty.textmodal_rm2Hs4__ysoLRpHpy7]: hasVariant(
+                        $state,
+                        "modal",
+                        "rm2Hs4"
+                      )
+                    }
+                  )}
+                >
+                  {
+                    "There are currently no validated noninvasive biomarkers to assess\r treatment response in EoE. Barium swallow esophagram and EndoFLIP\r (which is used during upper EGD) are only used for assessment of\rfibrostenosis or strictures. Symptom presentation is not a suitable\rmeasure of histological and biological response to treatment."
+                  }
+                </div>
+              </div>
+            }
+            incorrectReasoning={
+              <WrongAnswer
+                className={classNames(
+                  "__wab_instance",
+                  sty.wrongAnswer___9AlPo,
+                  {
+                    [sty.wrongAnswermodal_rm2Hs4___9AlPOpHpy7]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm2Hs4"
+                    )
+                  }
+                )}
+              />
+            }
             onClickClose={async event => {
               const $steps = {};
 
@@ -8770,6 +10989,129 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
               ),
               [sty.bookshelfmodal_rm1Hs4]: hasVariant($state, "modal", "rm1Hs4")
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__muEt7, {
+                  [sty.freeBoxmodal_rm1Hs2__muEt7HoV8R]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs2"
+                  )
+                })}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__xx3VM)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__mP6Eq
+                    )}
+                  >
+                    {"Correct answer: C"}
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__jT3N)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__udcVr
+                    )}
+                  >
+                    {
+                      "EoE signs and symptoms vary across age groups. Click to reveal\r the primary symptoms in patients of different ages:"
+                    }
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__byQwG)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__biXJy)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__gkHrt
+                      )}
+                    >
+                      {"\u22645 years"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__ap2Bx)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___1RmTe
+                      )}
+                    >
+                      {"6-14 years"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__u62IL)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__r1QlU
+                      )}
+                    >
+                      {"Adults"}
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kFqsN
+                  )}
+                >
+                  {
+                    "However, EoE symptoms are often nonspecific and may be\rconsistent with other conditions, making the diagnosis challenging.\r\n\nIn younger children, feeding difficulties may be mistaken for \u201ctypical\u201d\r fussy eating, while in older individuals, symptoms of dysphagia may\rbe masked by adaptive behaviors and food avoidance.\r\n\nThese sorts of issues can all contribute to the delayed diagnosis of\r EoE, which has been frequently cited as a problem across the\rhealthcare spectrum. Tools such as the IMPACT behavioral\r assessment can be used to distinguish EoE from other diagnoses\rwith overlapping presentation patterns."
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__krLx7
+                  )}
+                >
+                  {"Why are the other answers incorrect?"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__bVReE
+                  )}
+                >
+                  {
+                    "Persistent sore throat is more commonly found among infants and\ryoung children under the age of 5. Weight gain and chronic\rdiarrhea are not typically associated with EoE at any age."
+                  }
+                </div>
+              </div>
+            }
+            incorrectReasoning={
+              <WrongAnswer
+                className={classNames(
+                  "__wab_instance",
+                  sty.wrongAnswer__gXuR7,
+                  {
+                    [sty.wrongAnswermodal_rm1Hs2__gXuR7HoV8R]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs2"
+                    )
+                  }
+                )}
+              />
+            }
             onClickClose={async event => {
               const $steps = {};
 
@@ -8967,6 +11309,245 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
               [sty.bedmodal_rm1Hs3]: hasVariant($state, "modal", "rm1Hs3"),
               [sty.bedmodal_rm1Hs4]: hasVariant($state, "modal", "rm1Hs4")
             })}
+            correctReasoning={
+              <div
+                className={classNames(projectcss.all, sty.freeBox__mLkLu, {
+                  [sty.freeBoxmodal_rm1Hs3__mLkLuGtgMk]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs3"
+                  ),
+                  [sty.freeBoxmodal_rm1Hs4__mLkLUqEe8P]: hasVariant(
+                    $state,
+                    "modal",
+                    "rm1Hs4"
+                  )
+                })}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__qIkEv)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__k0F4
+                    )}
+                  >
+                    {"Correct answer: B"}
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__fRc1Z)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__oNjfb
+                    )}
+                  >
+                    {
+                      "The I-SEE provides a simplified scoring system of clinical severity\rbased on three domains:"
+                    }
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__pAphS)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__d2Ng3)}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img___0TlLq)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"30%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/symptomsAndComplicationsSvg.svg",
+                        fullWidth: 61,
+                        fullHeight: 61,
+                        aspectRatio: 1
+                      }}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__tc8T
+                      )}
+                    >
+                      {"Symptoms and\rcomplications"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__yw08)}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__yltyy)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"30%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/inflammatoryFeaturesSvg.svg",
+                        fullWidth: 61,
+                        fullHeight: 61,
+                        aspectRatio: 1
+                      }}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__t6W3R
+                      )}
+                    >
+                      {"Inflammatory Fibrostenosis\rfeatures"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__kRrz3)}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__mfKb1, {
+                        [sty.imgmodal_rm1Hs4__mfKb1QEe8P]: hasVariant(
+                          $state,
+                          "modal",
+                          "rm1Hs4"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"30%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/fibrostenosisSvg.svg",
+                        fullWidth: 61,
+                        fullHeight: 61,
+                        aspectRatio: 1
+                      }}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___7XeYm
+                      )}
+                    >
+                      {"Fibrostenosis\n"}
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___2CmC6
+                  )}
+                >
+                  {
+                    "I-SEE categorizes patients based on disease severity (inactive, mild,\rmoderate, or severe). It is a useful tool for assessing disease at initial\rdiagnosis and during monitoring visits. I-SEE also provides a means\rto facilitate communication among providers and with\rpatients/caregivers."
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__mhvqM
+                  )}
+                >
+                  {"Why are the other answers incorrect?"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__azgjw
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>
+                      {
+                        "I-SEE serves as a complementary tool to, but does not replace,\rvalidated instruments such as the EREFS, which evaluates "
+                      }
+                    </React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"E"}
+                    </span>
+                    <React.Fragment>{"dema,\r "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"R"}
+                    </span>
+                    <React.Fragment>{"ings, "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"E"}
+                    </span>
+                    <React.Fragment>{"xudates, "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"F"}
+                    </span>
+                    <React.Fragment>{"urrows, and "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"S"}
+                    </span>
+                    <React.Fragment>
+                      {
+                        "trictures. I-SEE is not used to assess\rrisk factors or treatment contraindications.\n\n"
+                      }
+                    </React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {
+                        "The I-SEE tool can be accessed in the Resources bookshelf."
+                      }
+                    </span>
+                  </React.Fragment>
+                </div>
+              </div>
+            }
+            incorrectReasoning={
+              <WrongAnswer
+                className={classNames(
+                  "__wab_instance",
+                  sty.wrongAnswer__nNrLu,
+                  {
+                    [sty.wrongAnswermodal_rm1Hs4__nNrLUqEe8P]: hasVariant(
+                      $state,
+                      "modal",
+                      "rm1Hs4"
+                    )
+                  }
+                )}
+              />
+            }
             onClickClose={async event => {
               const $steps = {};
 

@@ -156,6 +156,7 @@ function PlasmicTutorial__RenderFunc(props: {
             data-plasmic-name={"tutorialShell"}
             data-plasmic-override={overrides.tutorialShell}
             className={classNames("__wab_instance", sty.tutorialShell)}
+            page={"_0"}
           />
         </div>
       </div>

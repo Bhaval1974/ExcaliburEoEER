@@ -269,6 +269,9 @@
   flex-direction: row;
   min-width: 0;
 }
+.slotTargetCorrectReasoningreasoning_question1 {
+  font-family: "Open Sans", sans-serif;
+}
 .freeBox___3Z9Fa {
   display: flex;
   flex-direction: row;
@@ -322,7 +325,6 @@
   min-width: 0;
 }
 .freeBox__xVeT {
-  display: flex;
   flex-direction: row;
   position: relative;
   align-items: stretch;
@@ -333,6 +335,7 @@
   margin-top: 50px;
   margin-left: 50px;
   min-width: 0;
+  display: none;
   padding: 8px;
 }
 .freeBoxactive__xVeTDygov {

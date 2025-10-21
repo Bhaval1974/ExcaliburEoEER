@@ -1,0 +1,136 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
+}
+.baseButtonWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
+}
+.baseButtonWrapperactive {
+  display: none;
+}
+.text__uQdnS {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--token-h1IJQpQlo5HQ);
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  min-width: 0;
+}
+.freeBox__wvapS {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background: var(--token-eicqt-ssaXax);
+  min-width: 0;
+  padding: 10px 30px;
+  border-width: 1px;
+  border-style: solid;
+}
+.freeBox___07Nrh {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
+}
+.freeBox___0XvL {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  padding-top: 0px;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.slotTargetChildren4 {
+  color: var(--token-HqmJL_ouMwsr);
+  text-align: center;
+}
+.freeBox__xeni {
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background: var(--token-eicqt-ssaXax);
+  min-width: 0;
+  display: none;
+  padding: 10px 30px;
+  border-width: 1px;
+  border-style: solid;
+}
+.freeBoxactive__xeniDl3D {
+  display: flex;
+}
+.activeButton {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
+}
+.text__hY6W {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--token-A0PHvu8gKc_i);
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  min-width: 0;
+}
+.freeBox__vEy8N {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  padding-top: 0px;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.slotTargetChildren {
+  color: var(--token-A0PHvu8gKc_i);
+  text-align: center;
+}

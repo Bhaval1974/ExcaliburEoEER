@@ -514,6 +514,45 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/faculty"
+        },
+        {
+          "id": "1PO-hqhnLxDk",
+          "name": "Glossary",
+          "type": "managed",
+          "projectId": "7WvC14QG9b5jXarkiBh2yY",
+          "renderModuleFilePath": "plasmic/escape_room/PlasmicGlossary.tsx",
+          "importSpec": {
+            "modulePath": "Glossary.tsx"
+          },
+          "cssFilePath": "plasmic/escape_room/PlasmicGlossary.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "M2HdJEYFli90",
+          "name": "ClueTabbedContainer",
+          "type": "managed",
+          "projectId": "7WvC14QG9b5jXarkiBh2yY",
+          "renderModuleFilePath": "plasmic/escape_room/PlasmicClueTabbedContainer.tsx",
+          "importSpec": {
+            "modulePath": "ClueTabbedContainer.tsx"
+          },
+          "cssFilePath": "plasmic/escape_room/PlasmicClueTabbedContainer.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "ppx8EZHvc7Bt",
+          "name": "ContainerTab",
+          "type": "managed",
+          "projectId": "7WvC14QG9b5jXarkiBh2yY",
+          "renderModuleFilePath": "plasmic/escape_room/PlasmicContainerTab.tsx",
+          "importSpec": {
+            "modulePath": "ContainerTab.tsx"
+          },
+          "cssFilePath": "plasmic/escape_room/PlasmicContainerTab.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -938,6 +977,96 @@
           "id": "14yt2QoA5E3k",
           "name": "nuts.svg",
           "filePath": "../public/plasmic/escape_room/images/nutsSvg.svg"
+        },
+        {
+          "id": "nHl-C44xaIu4",
+          "name": "image 10",
+          "filePath": "../public/plasmic/escape_room/images/image10.svg"
+        },
+        {
+          "id": "oTGdO8rjJYiD",
+          "name": "PPI illustration.svg",
+          "filePath": "../public/plasmic/escape_room/images/ppiIllustrationSvg.svg"
+        },
+        {
+          "id": "4kMn8V0oyqrq",
+          "name": "50% remission.svg",
+          "filePath": "../public/plasmic/escape_room/images/_50RemissionSvg.svg"
+        },
+        {
+          "id": "n5O5LzJyEWor",
+          "name": "70-85% maintained response.svg",
+          "filePath": "../public/plasmic/escape_room/images/_7085MaintainedResponseSvg.svg"
+        },
+        {
+          "id": "eWFNTp6Y2Nki",
+          "name": "symptoms and complications.svg",
+          "filePath": "../public/plasmic/escape_room/images/symptomsAndComplicationsSvg.svg"
+        },
+        {
+          "id": "gfy5RawNdL_1",
+          "name": "inflammatory features.svg",
+          "filePath": "../public/plasmic/escape_room/images/inflammatoryFeaturesSvg.svg"
+        },
+        {
+          "id": "fNbsMF4ANzVE",
+          "name": "fibrostenosis.svg",
+          "filePath": "../public/plasmic/escape_room/images/fibrostenosisSvg.svg"
+        },
+        {
+          "id": "43MJWe8kBOom",
+          "name": "image 11",
+          "filePath": "../public/plasmic/escape_room/images/image11.svg"
+        },
+        {
+          "id": "guvh3lkRiPqM",
+          "name": "image 12",
+          "filePath": "../public/plasmic/escape_room/images/image12.svg"
+        },
+        {
+          "id": "vkL7mMqSqEa8",
+          "name": "image 13",
+          "filePath": "../public/plasmic/escape_room/images/image13.svg"
+        },
+        {
+          "id": "GPiop-1azbXI",
+          "name": "image 14",
+          "filePath": "../public/plasmic/escape_room/images/image14.svg"
+        },
+        {
+          "id": "2MKjWURr4g19",
+          "name": "image 15",
+          "filePath": "../public/plasmic/escape_room/images/image15.svg"
+        },
+        {
+          "id": "W_oOmcdh58sF",
+          "name": "image 16",
+          "filePath": "../public/plasmic/escape_room/images/image16.png"
+        },
+        {
+          "id": "clMaA_KfIzHU",
+          "name": "image 17",
+          "filePath": "../public/plasmic/escape_room/images/image17.svg"
+        },
+        {
+          "id": "9vMTZJPnXJMz",
+          "name": "nasal spray.svg",
+          "filePath": "../public/plasmic/escape_room/images/nasalSpraySvg.svg"
+        },
+        {
+          "id": "SsnBKS-FvnWi",
+          "name": "COPD.svg",
+          "filePath": "../public/plasmic/escape_room/images/copdSvg.svg"
+        },
+        {
+          "id": "jAbDgo-AL-1g",
+          "name": "chronic rhinosinusitis.svg",
+          "filePath": "../public/plasmic/escape_room/images/chronicRhinosinusitisSvg.svg"
+        },
+        {
+          "id": "2RtS3M_UVUWg",
+          "name": "image 18",
+          "filePath": "../public/plasmic/escape_room/images/image18.svg"
         }
       ],
       "indirect": false,

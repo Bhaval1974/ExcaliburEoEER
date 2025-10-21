@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import BottomToolbar from "../../BottomToolbar"; // plasmic-import: 2RFJUesBV3VF/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/styleTokensProvider
 
@@ -80,6 +81,7 @@ export const PlasmicFaculty__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicFaculty__OverridesType = {
   root?: Flex__<"div">;
+  bottomToolbar?: Flex__<typeof BottomToolbar>;
 };
 
 export interface DefaultFacultyProps {}
@@ -149,20 +151,180 @@ function PlasmicFaculty__RenderFunc(props: {
             styleTokensClassNames,
             sty.root
           )}
-        />
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text___5SGsm
+            )}
+          >
+            {"Meet the Faculty"}
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__pAdec)}>
+            <div className={classNames(projectcss.all, sty.freeBox__nhccS)}>
+              <div className={classNames(projectcss.all, sty.freeBox__vueCw)}>
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__uR2E2)}
+                  displayHeight={"150px"}
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={"150px"}
+                  loading={"lazy"}
+                />
+
+                <div className={classNames(projectcss.all, sty.freeBox__id6Fk)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__de7Zh
+                    )}
+                  >
+                    {"Joy Chang"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___7Ddye
+                    )}
+                  >
+                    {"MD, MS"}
+                  </div>
+                </div>
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__vvXdj
+                )}
+              >
+                {
+                  "Joy Chang, MD, MS is an Assistant\r Professor of Medicine in the Division\r\nof Gastroenterology at the University\r of Michigan in Ann Arbor.\r\n\nShe specializes in caring for patients\r with eosinophilic GI diseases and is a\r member of the Esophageal Diseases Program at the University of Michigan.\rDr. Chang\u2019s research interests focus\ron patient and physician preferences \rand decision making in EoE care.\n"
+                }
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__inIMh)}>
+              <div className={classNames(projectcss.all, sty.freeBox__fDgO)}>
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img___8Ddt)}
+                  displayHeight={"150px"}
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={"150px"}
+                  loading={"lazy"}
+                />
+
+                <div className={classNames(projectcss.all, sty.freeBox__cpIfy)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__pV7Rx
+                    )}
+                  >
+                    {"Nirmala Prabu Gonsalves"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__v1ELd
+                    )}
+                  >
+                    {"MD"}
+                  </div>
+                </div>
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__ivtbU
+                )}
+              >
+                {
+                  "Nirmala Prabu Gonsalves, MD, serves \ras Professor of Medicine in the\r Division of Gastroenterology & \rHepatology at Northwestern University Feinberg School of Medicine and is a member of\r Northwestern\u2019s Esophageal Center.\r \n\nHer research career has been\r dedicated to improving the care of\r patients with eosinophilic\r gastrointestinal diseases (EGIDs). Her\r clinical experiences with EGIDs have\r shaped the overarching research \rgoals that include identifying novel\r treatments and determining the best\rmethods to measure disease activity."
+                }
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__n5M7B)}>
+              <div className={classNames(projectcss.all, sty.freeBox__lZ3YK)}>
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__lOuMs)}
+                  displayHeight={"150px"}
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={"150px"}
+                  loading={"lazy"}
+                />
+
+                <div className={classNames(projectcss.all, sty.freeBox__jYn2B)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___844Ap
+                    )}
+                  >
+                    {"Calies Menard-Katcher"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__du2Si
+                    )}
+                  >
+                    {"MD, MSc"}
+                  </div>
+                </div>
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__o2Eoe
+                )}
+              >
+                {
+                  "Calies Menard-Katcher, MD, MSc is an\r Associate Professor in the Department \rof Pediatrics at Children\u2019s Hospital\r Colorado in Aurora, CO.\r \n\nHer research focuses on the natural\r history of EoE, particularly with \rattention to development of abnormal\r esophageal function and structure."
+                }
+              </div>
+            </div>
+          </div>
+          <BottomToolbar
+            data-plasmic-name={"bottomToolbar"}
+            data-plasmic-override={overrides.bottomToolbar}
+            className={classNames("__wab_instance", sty.bottomToolbar)}
+          />
+        </div>
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: ["root", "bottomToolbar"],
+  bottomToolbar: ["bottomToolbar"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  bottomToolbar: typeof BottomToolbar;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -227,6 +389,7 @@ export const PlasmicFaculty = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    bottomToolbar: makeNodeComponent("bottomToolbar"),
 
     // Metadata about props expected for PlasmicFaculty
     internalVariantProps: PlasmicFaculty__VariantProps,

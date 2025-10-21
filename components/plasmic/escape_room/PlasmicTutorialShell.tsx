@@ -76,10 +76,12 @@ import HotspotSvgIcon from "./icons/PlasmicIcon__HotspotSvg"; // plasmic-import:
 createPlasmicElementProxy;
 
 export type PlasmicTutorialShell__VariantMembers = {
-  page: "_1" | "_2" | "_3" | "_4" | "_5" | "_6" | "_7" | "_8";
+  page: "_0" | "_1" | "_2" | "_3" | "_4" | "_5" | "_6" | "_7" | "_8";
 };
 export type PlasmicTutorialShell__VariantsArgs = {
-  page?: SingleChoiceArg<"_1" | "_2" | "_3" | "_4" | "_5" | "_6" | "_7" | "_8">;
+  page?: SingleChoiceArg<
+    "_0" | "_1" | "_2" | "_3" | "_4" | "_5" | "_6" | "_7" | "_8"
+  >;
 };
 type VariantPropType = keyof PlasmicTutorialShell__VariantsArgs;
 export const PlasmicTutorialShell__VariantProps = new Array<VariantPropType>(
@@ -92,6 +94,7 @@ export const PlasmicTutorialShell__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicTutorialShell__OverridesType = {
   root?: Flex__<"div">;
+  page0?: Flex__<"div">;
   page1?: Flex__<"div">;
   page2?: Flex__<"div">;
   page3?: Flex__<"div">;
@@ -103,7 +106,9 @@ export type PlasmicTutorialShell__OverridesType = {
 };
 
 export interface DefaultTutorialShellProps {
-  page?: SingleChoiceArg<"_1" | "_2" | "_3" | "_4" | "_5" | "_6" | "_7" | "_8">;
+  page?: SingleChoiceArg<
+    "_0" | "_1" | "_2" | "_3" | "_4" | "_5" | "_6" | "_7" | "_8"
+  >;
   className?: string;
 }
 
@@ -198,6 +203,7 @@ function PlasmicTutorialShell__RenderFunc(props: {
         styleTokensClassNames,
         sty.root,
         {
+          [sty.rootpage__0]: hasVariant($state, "page", "_0"),
           [sty.rootpage__1]: hasVariant($state, "page", "_1"),
           [sty.rootpage__2]: hasVariant($state, "page", "_2"),
           [sty.rootpage__3]: hasVariant($state, "page", "_3"),
@@ -209,6 +215,65 @@ function PlasmicTutorialShell__RenderFunc(props: {
         }
       )}
     >
+      {(
+        hasVariant($state, "page", "_4")
+          ? (() => {
+              try {
+                return $state.currentStep == 0;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })()
+          : (() => {
+              try {
+                return $state.currentStep == 0;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })()
+      ) ? (
+        <div
+          data-plasmic-name={"page0"}
+          data-plasmic-override={overrides.page0}
+          className={classNames(projectcss.all, sty.page0, {
+            [sty.page0page__0]: hasVariant($state, "page", "_0"),
+            [sty.page0page__1]: hasVariant($state, "page", "_1"),
+            [sty.page0page__2]: hasVariant($state, "page", "_2"),
+            [sty.page0page__4]: hasVariant($state, "page", "_4"),
+            [sty.page0page__8]: hasVariant($state, "page", "_8")
+          })}
+        >
+          <PlasmicImg__
+            alt={""}
+            className={classNames(sty.img__uRwXf)}
+            displayHeight={"auto"}
+            displayMaxHeight={"none"}
+            displayMaxWidth={"100%"}
+            displayMinHeight={"0"}
+            displayMinWidth={"0"}
+            displayWidth={"auto"}
+            loading={"lazy"}
+            src={{
+              src: "/plasmic/escape_room/images/image18.svg",
+              fullWidth: 1424.84,
+              fullHeight: 389.89,
+              aspectRatio: 3.654467
+            }}
+          />
+        </div>
+      ) : null}
       {(
         hasVariant($state, "page", "_1")
           ? true
@@ -230,7 +295,8 @@ function PlasmicTutorialShell__RenderFunc(props: {
           data-plasmic-name={"page1"}
           data-plasmic-override={overrides.page1}
           className={classNames(projectcss.all, sty.page1, {
-            [sty.page1page__1]: hasVariant($state, "page", "_1")
+            [sty.page1page__1]: hasVariant($state, "page", "_1"),
+            [sty.page1page__2]: hasVariant($state, "page", "_2")
           })}
         >
           <div className={classNames(projectcss.all, sty.freeBox__baZu4)}>
@@ -2113,45 +2179,6 @@ function PlasmicTutorialShell__RenderFunc(props: {
             $steps["updateCurrentStep"] = await $steps["updateCurrentStep"];
           }
 
-          $steps["updateCurrentStep4"] = true
-            ? (() => {
-                const actionArgs = {
-                  destination: `/tutorial#${(() => {
-                    try {
-                      return "step-" + $state.currentStep;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return undefined;
-                      }
-                      throw e;
-                    }
-                  })()}`
-                };
-                return (({ destination }) => {
-                  if (
-                    typeof destination === "string" &&
-                    destination.startsWith("#")
-                  ) {
-                    document
-                      .getElementById(destination.substr(1))
-                      .scrollIntoView({ behavior: "smooth" });
-                  } else {
-                    __nextRouter?.push(destination);
-                  }
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["updateCurrentStep4"] != null &&
-            typeof $steps["updateCurrentStep4"] === "object" &&
-            typeof $steps["updateCurrentStep4"].then === "function"
-          ) {
-            $steps["updateCurrentStep4"] = await $steps["updateCurrentStep4"];
-          }
-
           $steps["updateCurrentStep2"] =
             $state.currentStep == $state.stepsTotal
               ? (() => {
@@ -2211,6 +2238,61 @@ function PlasmicTutorialShell__RenderFunc(props: {
       >
         {"Continue"}
       </InfographEdButton>
+      <div
+        className={classNames(projectcss.all, sty.freeBox__wsbvt, {
+          [sty.freeBoxpage__0__wsbvTfSaBo]: hasVariant($state, "page", "_0"),
+          [sty.freeBoxpage__1__wsbvt3SPjq]: hasVariant($state, "page", "_1"),
+          [sty.freeBoxpage__2__wsbvTwX7Lq]: hasVariant($state, "page", "_2"),
+          [sty.freeBoxpage__3__wsbvtn2SoW]: hasVariant($state, "page", "_3"),
+          [sty.freeBoxpage__4__wsbvteQd5A]: hasVariant($state, "page", "_4"),
+          [sty.freeBoxpage__5__wsbvTfPd0L]: hasVariant($state, "page", "_5"),
+          [sty.freeBoxpage__6__wsbvt1SPt7]: hasVariant($state, "page", "_6"),
+          [sty.freeBoxpage__7__wsbvt9AoNr]: hasVariant($state, "page", "_7"),
+          [sty.freeBoxpage__8__wsbvt8E9HC]: hasVariant($state, "page", "_8")
+        })}
+      >
+        <div
+          className={classNames(
+            projectcss.all,
+            projectcss.__wab_text,
+            sty.text__nNtEj,
+            {
+              [sty.textpage__0__nNtEJfSaBo]: hasVariant($state, "page", "_0"),
+              [sty.textpage__1__nNtEj3SPjq]: hasVariant($state, "page", "_1")
+            }
+          )}
+          onClick={async event => {
+            const $steps = {};
+
+            $steps["goToFaculty"] = true
+              ? (() => {
+                  const actionArgs = { destination: `/faculty` };
+                  return (({ destination }) => {
+                    if (
+                      typeof destination === "string" &&
+                      destination.startsWith("#")
+                    ) {
+                      document
+                        .getElementById(destination.substr(1))
+                        .scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      __nextRouter?.push(destination);
+                    }
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["goToFaculty"] != null &&
+              typeof $steps["goToFaculty"] === "object" &&
+              typeof $steps["goToFaculty"].then === "function"
+            ) {
+              $steps["goToFaculty"] = await $steps["goToFaculty"];
+            }
+          }}
+        >
+          {"Skip tutorial"}
+        </div>
+      </div>
     </div>
   ) as React.ReactElement | null;
 }
@@ -2218,6 +2300,7 @@ function PlasmicTutorialShell__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
+    "page0",
     "page1",
     "page2",
     "page3",
@@ -2227,6 +2310,7 @@ const PlasmicDescendants = {
     "page7",
     "page8"
   ],
+  page0: ["page0"],
   page1: ["page1"],
   page2: ["page2"],
   page3: ["page3"],
@@ -2241,6 +2325,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  page0: "div";
   page1: "div";
   page2: "div";
   page3: "div";
@@ -2313,6 +2398,7 @@ export const PlasmicTutorialShell = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    page0: makeNodeComponent("page0"),
     page1: makeNodeComponent("page1"),
     page2: makeNodeComponent("page2"),
     page3: makeNodeComponent("page3"),

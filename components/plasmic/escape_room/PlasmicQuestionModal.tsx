@@ -838,7 +838,11 @@ function PlasmicQuestionModal__RenderFunc(props: {
             >
               {renderPlasmicSlot({
                 defaultContents: null,
-                value: args.correctReasoning
+                value: args.correctReasoning,
+                className: classNames(sty.slotTargetCorrectReasoning, {
+                  [sty.slotTargetCorrectReasoningreasoning_question1]:
+                    hasVariant($state, "reasoning", "question1")
+                })
               })}
               {renderPlasmicSlot({
                 defaultContents: null,

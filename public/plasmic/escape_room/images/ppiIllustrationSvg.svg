@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 243.52 173.83">
+  <g data-name="Layer 2" style="isolation:isolate">
+    <g data-name="pink notes">
+      <rect width="243.52" height="173.83" fill="#fff" rx="15" ry="15"/>
+      <path fill="#e4eaea" d="M95.73 136.31c19.37-14.31 41.51-7.42 55.1.43 14.78 8.53-14.07 17.55-31.28 15.01s-28.93-11.66-23.82-15.44"/>
+      <path fill="#ffb966" stroke="#a47764" stroke-miterlimit="10" d="M97.74 32.33h40c1.25 0 2.26 1.01 2.26 2.26v9.09c0 .36-.29.65-.65.65H96.13c-.36 0-.65-.29-.65-.65v-9.09c0-1.25 1.01-2.26 2.26-2.26Z"/>
+      <rect width="58.25" height="13.99" x="88.61" y="44.33" fill="#ffb966" stroke="#a47764" stroke-miterlimit="10" rx="1.85" ry="1.85"/>
+      <path fill="none" stroke="#a47764" stroke-linecap="round" stroke-miterlimit="10" d="M97.14 49.45v8.87m8.23-8.87v8.87m8.23-8.87v8.87m8.22-8.87v8.87m8.26-8.87v8.87m8.26-8.87v8.87"/>
+      <path fill="#e4efef" stroke="#a47764" stroke-linecap="round" stroke-miterlimit="10" d="M93.3 58.32h48.89v76.92c0 3.46-2.81 6.27-6.27 6.27H99.57c-3.46 0-6.27-2.81-6.27-6.27z"/>
+      <path fill="#a47764" d="M93.3 80.94h48.89v32.94H93.3z"/>
+      <rect width="3.48" height="67.13" x="99.26" y="65.4" fill="#fff" opacity=".8" rx="1.57" ry="1.57" style="mix-blend-mode:screen"/>
+      <path fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2" d="M121.99 96.08h-4.87v-4.81h-2.6v12.28h2.6v-5.3h4.87v5.3h2.59V91.27h-2.59z"/>
+      <path fill="#382f2c" d="M121.99 96.08h-4.87v-4.81h-2.6v12.28h2.6v-5.3h4.87v5.3h2.59V91.27h-2.59z"/>
+      <path fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2" d="M129.53 93.75v-1.91h-1.07v1.91h-1.9v1.07h1.9v1.89h1.07v-1.89h1.9v-1.07z"/>
+      <path fill="#382f2c" d="M129.53 93.75v-1.91h-1.07v1.91h-1.9v1.07h1.9v1.89h1.07v-1.89h1.9v-1.07z"/>
+      <path fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="2" d="M107.83 91.84h-1.72v8.37l-2.05-2.06v2.48l2.91 2.92 2.92-2.92v-2.48l-2.06 2.06z"/>
+      <path fill="#382f2c" d="M107.83 91.84h-1.72v8.37l-2.05-2.06v2.48l2.91 2.92 2.92-2.92v-2.48l-2.06 2.06z"/>
+    </g>
+  </g>
+</svg>

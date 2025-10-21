@@ -61,6 +61,7 @@ import {
 
 import ClueTab from "../../ClueTab"; // plasmic-import: AHLWtbHHbn2R/component
 import ProgressBar from "../../ProgressBar"; // plasmic-import: uN6JtswiqsYW/component
+import ClueTabbedContainer from "../../ClueTabbedContainer"; // plasmic-import: M2HdJEYFli90/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/styleTokensProvider
 
@@ -108,9 +109,11 @@ export const PlasmicClueModal__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicClueModal__OverridesType = {
   root?: Flex__<"div">;
+  tabbedClueModal?: Flex__<"div">;
   table?: Flex__<"div">;
-  svg?: Flex__<"svg">;
   progressBar?: Flex__<typeof ProgressBar>;
+  patientChartClueModal?: Flex__<"div">;
+  clueTabbedContainer?: Flex__<typeof ClueTabbedContainer>;
 };
 
 export interface DefaultClueModalProps {
@@ -237,12 +240,19 @@ function PlasmicClueModal__RenderFunc(props: {
         {
           [sty.rootivanCbc]: hasVariant($state, "ivanCbc", "ivanCbc"),
           [sty.rootkelvinCbc]: hasVariant($state, "kelvinCbc", "kelvinCbc"),
+          [sty.rootkelvinCbc_kelvinCeliacTest]:
+            hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+            hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest"),
           [sty.rootkelvinCeliacTest]: hasVariant(
             $state,
             "kelvinCeliacTest",
             "kelvinCeliacTest"
           ),
           [sty.rootkelvinCmp]: hasVariant($state, "kelvinCmp", "kelvinCmp"),
+          [sty.rootkelvinCmp_kelvinCbc_kelvinCeliacTest]:
+            hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+            hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+            hasVariant($state, "kelvinCmp", "kelvinCmp"),
           [sty.rootshareseCbc]: hasVariant($state, "shareseCbc", "shareseCbc"),
           [sty.rootshareseCeliacTest]: hasVariant(
             $state,
@@ -256,578 +266,658 @@ function PlasmicClueModal__RenderFunc(props: {
       )}
     >
       <div
-        className={classNames(projectcss.all, sty.freeBox__lTgWk, {
-          [sty.freeBoxivanCbc__lTgWkPiQEx]: hasVariant(
+        data-plasmic-name={"tabbedClueModal"}
+        data-plasmic-override={overrides.tabbedClueModal}
+        className={classNames(projectcss.all, sty.tabbedClueModal, {
+          [sty.tabbedClueModalivanCbc]: hasVariant(
             $state,
             "ivanCbc",
             "ivanCbc"
           ),
-          [sty.freeBoxkelvinCbc__lTgWkYbE4M]: hasVariant(
+          [sty.tabbedClueModalkelvinCbc]: hasVariant(
             $state,
             "kelvinCbc",
             "kelvinCbc"
           ),
-          [sty.freeBoxtabs_kelvinPcp__lTgWkKbzSz]: hasVariant(
+          [sty.tabbedClueModalkelvinCbc_kelvinCeliacTest]:
+            hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+            hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest"),
+          [sty.tabbedClueModalkelvinCeliacTest]: hasVariant(
             $state,
-            "tabs",
-            "kelvinPcp"
-          )
-        })}
-      >
-        <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__far7E,
-            {
-              [sty.textivanCbc__far7EPiQEx]: hasVariant(
-                $state,
-                "ivanCbc",
-                "ivanCbc"
-              ),
-              [sty.textkelvinCbc__far7EYbE4M]: hasVariant(
-                $state,
-                "kelvinCbc",
-                "kelvinCbc"
-              ),
-              [sty.textkelvinCmp__far7Em5CsG]: hasVariant(
-                $state,
-                "kelvinCmp",
-                "kelvinCmp"
-              ),
-              [sty.textshareseCbc__far7EtjzU]: hasVariant(
-                $state,
-                "shareseCbc",
-                "shareseCbc"
-              ),
-              [sty.textshareseCeliacTest__far7EyMclE]: hasVariant(
-                $state,
-                "shareseCeliacTest",
-                "shareseCeliacTest"
-              ),
-              [sty.texttabs_ivanPcp__far7ELnyQl]: hasVariant(
-                $state,
-                "tabs",
-                "ivanPcp"
-              ),
-              [sty.texttabs_sharesePcp__far7EZlEIb]: hasVariant(
-                $state,
-                "tabs",
-                "sharesePcp"
-              )
-            }
-          )}
-        >
-          {hasVariant($state, "ivanCbc", "ivanCbc") ? (
-            <React.Fragment>
-              <React.Fragment>{"Your clue is: "}</React.Fragment>
-              <span
-                className={"plasmic_default__all plasmic_default__span"}
-                style={{ fontWeight: 700 }}
-              >
-                {"Ivan's Lab Report & Endoscopy Images"}
-              </span>
-            </React.Fragment>
-          ) : hasVariant($state, "shareseCeliacTest", "shareseCeliacTest") ? (
-            <React.Fragment>
-              <React.Fragment>{"Your clue is: "}</React.Fragment>
-              <span
-                className={"plasmic_default__all plasmic_default__span"}
-                style={{ fontWeight: 700 }}
-              >
-                {"Sharese's Lab Report & Endoscopy Images"}
-              </span>
-            </React.Fragment>
-          ) : hasVariant($state, "shareseCbc", "shareseCbc") ? (
-            <React.Fragment>
-              <React.Fragment>{"Your clue is: "}</React.Fragment>
-              <span
-                className={"plasmic_default__all plasmic_default__span"}
-                style={{ fontWeight: 700 }}
-              >
-                {"Sharese's Lab Report & Endoscopy Images"}
-              </span>
-            </React.Fragment>
-          ) : hasVariant($state, "tabs", "ivanPcp") ? (
-            <React.Fragment>
-              <React.Fragment>{"Your clue is: "}</React.Fragment>
-              <span
-                className={"plasmic_default__all plasmic_default__span"}
-                style={{ fontWeight: 700 }}
-              >
-                {"Ivan's Lab Report & Endoscopy Images"}
-              </span>
-            </React.Fragment>
-          ) : hasVariant($state, "tabs", "sharesePcp") ? (
-            <React.Fragment>
-              <React.Fragment>{"Your clue is: "}</React.Fragment>
-              <span
-                className={"plasmic_default__all plasmic_default__span"}
-                style={{ fontWeight: 700 }}
-              >
-                {"Sharese's Lab Report & Endoscopy Images"}
-              </span>
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              <React.Fragment>{"Your clue is: "}</React.Fragment>
-              <span
-                className={"plasmic_default__all plasmic_default__span"}
-                style={{ fontWeight: 700 }}
-              >
-                {"Kelvin's Lab Report & Endoscopy Images"}
-              </span>
-            </React.Fragment>
-          )}
-        </div>
-        <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__zlAzl,
-            {
-              [sty.textivanCbc__zlAzlPiQEx]: hasVariant(
-                $state,
-                "ivanCbc",
-                "ivanCbc"
-              ),
-              [sty.textshareseCbc__zlAzltjzU]: hasVariant(
-                $state,
-                "shareseCbc",
-                "shareseCbc"
-              ),
-              [sty.textshareseCeliacTest__zlAzlyMclE]: hasVariant(
-                $state,
-                "shareseCeliacTest",
-                "shareseCeliacTest"
-              ),
-              [sty.texttabs_kelvinPcp__zlAzlKbzSz]: hasVariant(
-                $state,
-                "tabs",
-                "kelvinPcp"
-              )
-            }
-          )}
-        >
-          <React.Fragment>
-            <React.Fragment>{"Abnormal results are in "}</React.Fragment>
-            <span
-              className={"plasmic_default__all plasmic_default__span"}
-              style={{ color: "#D16F54" }}
-            >
-              {"red"}
-            </span>
-            <React.Fragment>{". "}</React.Fragment>
-          </React.Fragment>
-        </div>
-      </div>
-      <div
-        className={classNames(projectcss.all, sty.freeBox__yKcHi, {
-          [sty.freeBoxivanCbc__yKcHiPiQEx]: hasVariant(
-            $state,
-            "ivanCbc",
-            "ivanCbc"
+            "kelvinCeliacTest",
+            "kelvinCeliacTest"
           ),
-          [sty.freeBoxshareseCbc__yKcHiTjzU]: hasVariant(
+          [sty.tabbedClueModalkelvinCmp]: hasVariant(
+            $state,
+            "kelvinCmp",
+            "kelvinCmp"
+          ),
+          [sty.tabbedClueModalkelvinCmp_kelvinCbc_kelvinCeliacTest]:
+            hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+            hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+            hasVariant($state, "kelvinCmp", "kelvinCmp"),
+          [sty.tabbedClueModalshareseCbc]: hasVariant(
             $state,
             "shareseCbc",
             "shareseCbc"
+          ),
+          [sty.tabbedClueModalshareseCeliacTest]: hasVariant(
+            $state,
+            "shareseCeliacTest",
+            "shareseCeliacTest"
+          ),
+          [sty.tabbedClueModaltabs_ivanPcp]: hasVariant(
+            $state,
+            "tabs",
+            "ivanPcp"
+          ),
+          [sty.tabbedClueModaltabs_kelvinPcp]: hasVariant(
+            $state,
+            "tabs",
+            "kelvinPcp"
+          ),
+          [sty.tabbedClueModaltabs_sharesePcp]: hasVariant(
+            $state,
+            "tabs",
+            "sharesePcp"
           )
         })}
       >
         <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__yZgHi,
-            {
-              [sty.texttabs_kelvinPcp__yZgHiKbzSz]: hasVariant(
-                $state,
-                "tabs",
-                "kelvinPcp"
-              )
-            }
-          )}
-        >
-          <React.Fragment>
-            <React.Fragment>{"Date of report: "}</React.Fragment>
-            <span
-              className={"plasmic_default__all plasmic_default__span"}
-              style={{ fontWeight: 700 }}
-            >
-              {"9/29/2025"}
-            </span>
-          </React.Fragment>
-        </div>
-        <div
-          data-plasmic-name={"table"}
-          data-plasmic-override={overrides.table}
-          className={classNames(projectcss.all, sty.table, {
-            [sty.tableivanCbc]: hasVariant($state, "ivanCbc", "ivanCbc"),
-            [sty.tabletabs_kelvinPcp]: hasVariant($state, "tabs", "kelvinPcp")
+          className={classNames(projectcss.all, sty.freeBox__lTgWk, {
+            [sty.freeBoxivanCbc__lTgWkPiQEx]: hasVariant(
+              $state,
+              "ivanCbc",
+              "ivanCbc"
+            ),
+            [sty.freeBoxkelvinCbc__lTgWkYbE4M]: hasVariant(
+              $state,
+              "kelvinCbc",
+              "kelvinCbc"
+            ),
+            [sty.freeBoxkelvinCmp_kelvinCbc_kelvinCeliacTest__lTgWkM5CsGYbE4MBHtw8]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.freeBoxtabs_kelvinPcp__lTgWkKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
           })}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__slWTn)}>
-            <ClueTab
-              active={
-                hasVariant($state, "ivanCbc", "ivanCbc")
-                  ? true
-                  : hasVariant($state, "shareseCbc", "shareseCbc")
-                    ? true
-                    : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                      ? true
-                      : hasVariant($state, "tabs", "ivanPcp")
-                        ? true
-                        : hasVariant($state, "tabs", "kelvinPcp")
-                          ? true
-                          : undefined
-              }
-              className={classNames("__wab_instance", sty.clueTab__k3YsG, {
-                [sty.clueTabivanCbc__k3YsGPiQEx]: hasVariant(
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__far7E,
+              {
+                [sty.textivanCbc__far7EPiQEx]: hasVariant(
                   $state,
                   "ivanCbc",
                   "ivanCbc"
                 ),
-                [sty.clueTabkelvinCbc__k3YsGYbE4M]: hasVariant(
+                [sty.textkelvinCbc__far7EYbE4M]: hasVariant(
                   $state,
                   "kelvinCbc",
                   "kelvinCbc"
                 ),
-                [sty.clueTabshareseCbc__k3YsGtjzU]: hasVariant(
-                  $state,
-                  "shareseCbc",
-                  "shareseCbc"
-                ),
-                [sty.clueTabtabs_ivanPcp__k3YsGLnyQl]: hasVariant(
-                  $state,
-                  "tabs",
-                  "ivanPcp"
-                ),
-                [sty.clueTabtabs_kelvinPcp__k3YsGKbzSz]: hasVariant(
-                  $state,
-                  "tabs",
-                  "kelvinPcp"
-                )
-              })}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__uTFcw,
-                  {
-                    [sty.textivanCbc__uTFcwPiQEx]: hasVariant(
-                      $state,
-                      "ivanCbc",
-                      "ivanCbc"
-                    ),
-                    [sty.texttabs_ivanPcp__uTFcwLnyQl]: hasVariant(
-                      $state,
-                      "tabs",
-                      "ivanPcp"
-                    )
-                  }
-                )}
-              >
-                {hasVariant($state, "ivanCbc", "ivanCbc")
-                  ? "CBC w/ Differential"
-                  : hasVariant($state, "tabs", "ivanPcp")
-                    ? "CBC w/ differential"
-                    : "CBC"}
-              </div>
-            </ClueTab>
-            <ClueTab
-              active={
-                hasVariant($state, "shareseCbc", "shareseCbc")
-                  ? undefined
-                  : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                    ? undefined
-                    : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                      ? undefined
-                      : hasVariant($state, "tabs", "ivanPcp")
-                        ? undefined
-                        : hasVariant($state, "tabs", "sharesePcp")
-                          ? true
-                          : hasVariant($state, "tabs", "kelvinPcp")
-                            ? undefined
-                            : true
-              }
-              className={classNames("__wab_instance", sty.clueTab__q4ZrX, {
-                [sty.clueTabivanCbc__q4ZrXPiQEx]: hasVariant(
-                  $state,
-                  "ivanCbc",
-                  "ivanCbc"
-                ),
-                [sty.clueTabkelvinCbc__q4ZrXYbE4M]: hasVariant(
-                  $state,
-                  "kelvinCbc",
-                  "kelvinCbc"
-                ),
-                [sty.clueTabkelvinCmp__q4ZrXm5CsG]: hasVariant(
+                [sty.textkelvinCmp__far7Em5CsG]: hasVariant(
                   $state,
                   "kelvinCmp",
                   "kelvinCmp"
                 ),
-                [sty.clueTabshareseCbc__q4ZrXtjzU]: hasVariant(
+                [sty.textkelvinCmp_kelvinCbc_kelvinCeliacTest__far7Em5CsGYbE4MBHtw8]:
+                  hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+                  hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+                  hasVariant($state, "kelvinCmp", "kelvinCmp"),
+                [sty.textshareseCbc__far7EtjzU]: hasVariant(
                   $state,
                   "shareseCbc",
                   "shareseCbc"
                 ),
-                [sty.clueTabtabs_ivanPcp__q4ZrXLnyQl]: hasVariant(
-                  $state,
-                  "tabs",
-                  "ivanPcp"
-                ),
-                [sty.clueTabtabs_kelvinPcp__q4ZrXKbzSz]: hasVariant(
-                  $state,
-                  "tabs",
-                  "kelvinPcp"
-                ),
-                [sty.clueTabtabs_sharesePcp__q4ZrXZlEIb]: hasVariant(
-                  $state,
-                  "tabs",
-                  "sharesePcp"
-                )
-              })}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__n03Zu,
-                  {
-                    [sty.textivanCbc__n03ZuPiQEx]: hasVariant(
-                      $state,
-                      "ivanCbc",
-                      "ivanCbc"
-                    ),
-                    [sty.texttabs_ivanPcp__n03ZuLnyQl]: hasVariant(
-                      $state,
-                      "tabs",
-                      "ivanPcp"
-                    ),
-                    [sty.texttabs_kelvinPcp__n03ZuKbzSz]: hasVariant(
-                      $state,
-                      "tabs",
-                      "kelvinPcp"
-                    )
-                  }
-                )}
-              >
-                {"Celiac Test"}
-              </div>
-            </ClueTab>
-            <ClueTab
-              active={
-                hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : undefined
-              }
-              className={classNames("__wab_instance", sty.clueTab___4Z, {
-                [sty.clueTabivanCbc___4ZPiQEx]: hasVariant(
-                  $state,
-                  "ivanCbc",
-                  "ivanCbc"
-                ),
-                [sty.clueTabkelvinCmp___4ZM5CsG]: hasVariant(
-                  $state,
-                  "kelvinCmp",
-                  "kelvinCmp"
-                ),
-                [sty.clueTabshareseCbc___4ZTjzU]: hasVariant(
-                  $state,
-                  "shareseCbc",
-                  "shareseCbc"
-                ),
-                [sty.clueTabshareseCeliacTest___4ZYMclE]: hasVariant(
+                [sty.textshareseCeliacTest__far7EyMclE]: hasVariant(
                   $state,
                   "shareseCeliacTest",
                   "shareseCeliacTest"
                 ),
-                [sty.clueTabtabs_ivanPcp___4ZLnyQl]: hasVariant(
+                [sty.texttabs_ivanPcp__far7ELnyQl]: hasVariant(
                   $state,
                   "tabs",
                   "ivanPcp"
                 ),
-                [sty.clueTabtabs_kelvinPcp___4ZKbzSz]: hasVariant(
-                  $state,
-                  "tabs",
-                  "kelvinPcp"
-                ),
-                [sty.clueTabtabs_sharesePcp___4ZZlEIb]: hasVariant(
+                [sty.texttabs_sharesePcp__far7EZlEIb]: hasVariant(
                   $state,
                   "tabs",
                   "sharesePcp"
                 )
-              })}
-            />
+              }
+            )}
+          >
+            {hasVariant($state, "ivanCbc", "ivanCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCeliacTest", "shareseCeliacTest") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCbc", "shareseCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "ivanPcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "sharesePcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Kelvin's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            )}
           </div>
           <div
-            className={classNames(projectcss.all, sty.freeBox__r02W9, {
-              [sty.freeBoxtabs_kelvinPcp__r02W9KbzSz]: hasVariant(
-                $state,
-                "tabs",
-                "kelvinPcp"
-              )
-            })}
-          >
-            <div className={classNames(projectcss.all, sty.freeBox__xxoE)}>
-              <div className={classNames(projectcss.all, sty.freeBox___8Br7J)}>
-                <div className={classNames(projectcss.all, sty.freeBox__pCym)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___3NgfI
-                    )}
-                  >
-                    {"Lab Test"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__dZCxK)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__plrFi
-                    )}
-                  >
-                    {"Total IgA"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__fAp9G)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__soBrU
-                    )}
-                  >
-                    {"IgA-tTg"}
-                  </div>
-                </div>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox___1Wtxq)}>
-                <div className={classNames(projectcss.all, sty.freeBox__sIcI)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ix6Lt
-                    )}
-                  >
-                    {"Lab Test"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__uy8HM)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vSmCg
-                    )}
-                  >
-                    {"39 mg/dl"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__hmFgs)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__yVtsb
-                    )}
-                  >
-                    {"2.7 U/mL"}
-                  </div>
-                </div>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__cCrKh)}>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___8W7Xb)}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vxyGe
-                    )}
-                  >
-                    {"Lab Test"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__sPhUl, {
-                    [sty.freeBoxtabs_kelvinPcp__sPhUlKbzSz]: hasVariant(
-                      $state,
-                      "tabs",
-                      "kelvinPcp"
-                    )
-                  })}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___8B3Xa
-                    )}
-                  >
-                    {"<94 mg/dl"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__mv8Uv)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__cs0B0
-                    )}
-                  >
-                    {"<4.0 U/mL"}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className={classNames(projectcss.all, sty.freeBox__aiWZn, {
-              [sty.freeBoxivanCbc__aiWZnPiQEx]: hasVariant(
-                $state,
-                "ivanCbc",
-                "ivanCbc"
-              ),
-              [sty.freeBoxkelvinCmp__aiWZnM5CsG]: hasVariant(
-                $state,
-                "kelvinCmp",
-                "kelvinCmp"
-              ),
-              [sty.freeBoxtabs_kelvinPcp__aiWZnKbzSz]: hasVariant(
-                $state,
-                "tabs",
-                "kelvinPcp"
-              )
-            })}
-          >
-            <div
-              className={classNames(projectcss.all, sty.freeBox__ktojZ, {
-                [sty.freeBoxivanCbc__ktojZPiQEx]: hasVariant(
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__zlAzl,
+              {
+                [sty.textivanCbc__zlAzlPiQEx]: hasVariant(
                   $state,
                   "ivanCbc",
                   "ivanCbc"
                 ),
-                [sty.freeBoxkelvinCmp__ktojZm5CsG]: hasVariant(
+                [sty.textkelvinCmp_kelvinCbc_kelvinCeliacTest__zlAzlm5CsGYbE4MBHtw8]:
+                  hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+                  hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+                  hasVariant($state, "kelvinCmp", "kelvinCmp"),
+                [sty.textshareseCbc__zlAzltjzU]: hasVariant(
                   $state,
-                  "kelvinCmp",
-                  "kelvinCmp"
+                  "shareseCbc",
+                  "shareseCbc"
+                ),
+                [sty.textshareseCeliacTest__zlAzlyMclE]: hasVariant(
+                  $state,
+                  "shareseCeliacTest",
+                  "shareseCeliacTest"
+                ),
+                [sty.texttabs_kelvinPcp__zlAzlKbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
                 )
-              })}
-            >
-              <div
-                className={classNames(projectcss.all, sty.freeBox__nwPq3, {
-                  [sty.freeBoxivanCbc__nwPq3PiQEx]: hasVariant(
+              }
+            )}
+          >
+            <React.Fragment>
+              <React.Fragment>{"Abnormal results are in "}</React.Fragment>
+              <span
+                className={"plasmic_default__all plasmic_default__span"}
+                style={{ color: "#D16F54" }}
+              >
+                {"red"}
+              </span>
+              <React.Fragment>{". "}</React.Fragment>
+            </React.Fragment>
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__yKcHi, {
+            [sty.freeBoxivanCbc__yKcHiPiQEx]: hasVariant(
+              $state,
+              "ivanCbc",
+              "ivanCbc"
+            ),
+            [sty.freeBoxshareseCbc__yKcHiTjzU]: hasVariant(
+              $state,
+              "shareseCbc",
+              "shareseCbc"
+            )
+          })}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__yZgHi,
+              {
+                [sty.textkelvinCmp_kelvinCbc_kelvinCeliacTest__yZgHim5CsGYbE4MBHtw8]:
+                  hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+                  hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+                  hasVariant($state, "kelvinCmp", "kelvinCmp"),
+                [sty.texttabs_kelvinPcp__yZgHiKbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              }
+            )}
+          >
+            <React.Fragment>
+              <React.Fragment>{"Date of report: "}</React.Fragment>
+              <span
+                className={"plasmic_default__all plasmic_default__span"}
+                style={{ fontWeight: 700 }}
+              >
+                {"9/29/2025"}
+              </span>
+            </React.Fragment>
+          </div>
+          <div
+            data-plasmic-name={"table"}
+            data-plasmic-override={overrides.table}
+            className={classNames(projectcss.all, sty.table, {
+              [sty.tableivanCbc]: hasVariant($state, "ivanCbc", "ivanCbc"),
+              [sty.tabletabs_kelvinPcp]: hasVariant($state, "tabs", "kelvinPcp")
+            })}
+          >
+            <div className={classNames(projectcss.all, sty.freeBox__slWTn)}>
+              <ClueTab
+                active={
+                  hasVariant($state, "ivanCbc", "ivanCbc")
+                    ? true
+                    : hasVariant($state, "shareseCbc", "shareseCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                        ? true
+                        : hasVariant($state, "tabs", "ivanPcp")
+                          ? true
+                          : hasVariant($state, "tabs", "kelvinPcp")
+                            ? true
+                            : undefined
+                }
+                className={classNames("__wab_instance", sty.clueTab__k3YsG, {
+                  [sty.clueTabivanCbc__k3YsGPiQEx]: hasVariant(
                     $state,
                     "ivanCbc",
                     "ivanCbc"
                   ),
-                  [sty.freeBoxkelvinCmp__nwPq3M5CsG]: hasVariant(
+                  [sty.clueTabkelvinCbc__k3YsGYbE4M]: hasVariant(
+                    $state,
+                    "kelvinCbc",
+                    "kelvinCbc"
+                  ),
+                  [sty.clueTabshareseCbc__k3YsGtjzU]: hasVariant(
+                    $state,
+                    "shareseCbc",
+                    "shareseCbc"
+                  ),
+                  [sty.clueTabtabs_ivanPcp__k3YsGLnyQl]: hasVariant(
+                    $state,
+                    "tabs",
+                    "ivanPcp"
+                  ),
+                  [sty.clueTabtabs_kelvinPcp__k3YsGKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__uTFcw,
+                    {
+                      [sty.textivanCbc__uTFcwPiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.texttabs_ivanPcp__uTFcwLnyQl]: hasVariant(
+                        $state,
+                        "tabs",
+                        "ivanPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "ivanCbc", "ivanCbc")
+                    ? "CBC w/ Differential"
+                    : hasVariant($state, "tabs", "ivanPcp")
+                      ? "CBC w/ differential"
+                      : "CBC"}
+                </div>
+              </ClueTab>
+              <ClueTab
+                active={
+                  hasVariant($state, "shareseCbc", "shareseCbc")
+                    ? undefined
+                    : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                      ? undefined
+                      : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                        ? undefined
+                        : hasVariant($state, "tabs", "ivanPcp")
+                          ? undefined
+                          : hasVariant($state, "tabs", "sharesePcp")
+                            ? true
+                            : hasVariant($state, "tabs", "kelvinPcp")
+                              ? undefined
+                              : true
+                }
+                className={classNames("__wab_instance", sty.clueTab__q4ZrX, {
+                  [sty.clueTabivanCbc__q4ZrXPiQEx]: hasVariant(
+                    $state,
+                    "ivanCbc",
+                    "ivanCbc"
+                  ),
+                  [sty.clueTabkelvinCbc__q4ZrXYbE4M]: hasVariant(
+                    $state,
+                    "kelvinCbc",
+                    "kelvinCbc"
+                  ),
+                  [sty.clueTabkelvinCmp__q4ZrXm5CsG]: hasVariant(
+                    $state,
+                    "kelvinCmp",
+                    "kelvinCmp"
+                  ),
+                  [sty.clueTabshareseCbc__q4ZrXtjzU]: hasVariant(
+                    $state,
+                    "shareseCbc",
+                    "shareseCbc"
+                  ),
+                  [sty.clueTabtabs_ivanPcp__q4ZrXLnyQl]: hasVariant(
+                    $state,
+                    "tabs",
+                    "ivanPcp"
+                  ),
+                  [sty.clueTabtabs_kelvinPcp__q4ZrXKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  ),
+                  [sty.clueTabtabs_sharesePcp__q4ZrXZlEIb]: hasVariant(
+                    $state,
+                    "tabs",
+                    "sharesePcp"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__n03Zu,
+                    {
+                      [sty.textivanCbc__n03ZuPiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.texttabs_ivanPcp__n03ZuLnyQl]: hasVariant(
+                        $state,
+                        "tabs",
+                        "ivanPcp"
+                      ),
+                      [sty.texttabs_kelvinPcp__n03ZuKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {"Celiac Test"}
+                </div>
+              </ClueTab>
+              <ClueTab
+                active={
+                  hasVariant($state, "kelvinCmp", "kelvinCmp")
+                    ? true
+                    : undefined
+                }
+                className={classNames("__wab_instance", sty.clueTab___4Z, {
+                  [sty.clueTabivanCbc___4ZPiQEx]: hasVariant(
+                    $state,
+                    "ivanCbc",
+                    "ivanCbc"
+                  ),
+                  [sty.clueTabkelvinCmp___4ZM5CsG]: hasVariant(
+                    $state,
+                    "kelvinCmp",
+                    "kelvinCmp"
+                  ),
+                  [sty.clueTabshareseCbc___4ZTjzU]: hasVariant(
+                    $state,
+                    "shareseCbc",
+                    "shareseCbc"
+                  ),
+                  [sty.clueTabshareseCeliacTest___4ZYMclE]: hasVariant(
+                    $state,
+                    "shareseCeliacTest",
+                    "shareseCeliacTest"
+                  ),
+                  [sty.clueTabtabs_ivanPcp___4ZLnyQl]: hasVariant(
+                    $state,
+                    "tabs",
+                    "ivanPcp"
+                  ),
+                  [sty.clueTabtabs_kelvinPcp___4ZKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  ),
+                  [sty.clueTabtabs_sharesePcp___4ZZlEIb]: hasVariant(
+                    $state,
+                    "tabs",
+                    "sharesePcp"
+                  )
+                })}
+              />
+            </div>
+            <div
+              className={classNames(projectcss.all, sty.freeBox__r02W9, {
+                [sty.freeBoxtabs_kelvinPcp__r02W9KbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              })}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__xxoE)}>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___8Br7J)}
+                >
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__pCym)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___3NgfI
+                      )}
+                    >
+                      {"Lab Test"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__dZCxK)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__plrFi
+                      )}
+                    >
+                      {"Total IgA"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__fAp9G)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__soBrU
+                      )}
+                    >
+                      {"IgA-tTg"}
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___1Wtxq)}
+                >
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__sIcI)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__ix6Lt
+                      )}
+                    >
+                      {"Lab Test"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__uy8HM)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__vSmCg
+                      )}
+                    >
+                      {"39 mg/dl"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__hmFgs)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__yVtsb
+                      )}
+                    >
+                      {"2.7 U/mL"}
+                    </div>
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__cCrKh)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___8W7Xb)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__vxyGe
+                      )}
+                    >
+                      {"Lab Test"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__sPhUl, {
+                      [sty.freeBoxtabs_kelvinPcp__sPhUlKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___8B3Xa
+                      )}
+                    >
+                      {"<94 mg/dl"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__mv8Uv)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__cs0B0
+                      )}
+                    >
+                      {"<4.0 U/mL"}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className={classNames(projectcss.all, sty.freeBox__aiWZn, {
+                [sty.freeBoxivanCbc__aiWZnPiQEx]: hasVariant(
+                  $state,
+                  "ivanCbc",
+                  "ivanCbc"
+                ),
+                [sty.freeBoxkelvinCmp__aiWZnM5CsG]: hasVariant(
+                  $state,
+                  "kelvinCmp",
+                  "kelvinCmp"
+                ),
+                [sty.freeBoxtabs_kelvinPcp__aiWZnKbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              })}
+            >
+              <div
+                className={classNames(projectcss.all, sty.freeBox__ktojZ, {
+                  [sty.freeBoxivanCbc__ktojZPiQEx]: hasVariant(
+                    $state,
+                    "ivanCbc",
+                    "ivanCbc"
+                  ),
+                  [sty.freeBoxkelvinCmp__ktojZm5CsG]: hasVariant(
                     $state,
                     "kelvinCmp",
                     "kelvinCmp"
@@ -835,634 +925,13 @@ function PlasmicClueModal__RenderFunc(props: {
                 })}
               >
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__vKdMa, {
-                    [sty.freeBoxivanCbc__vKdMaPiQEx]: hasVariant(
-                      $state,
-                      "ivanCbc",
-                      "ivanCbc"
-                    )
-                  })}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__hrD4,
-                      {
-                        [sty.textivanCbc__hrD4PiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.textkelvinCmp__hrD4M5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      }
-                    )}
-                  >
-                    {"Lab Test"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__ggJuD, {
-                    [sty.freeBoxivanCbc__ggJuDPiQEx]: hasVariant(
+                  className={classNames(projectcss.all, sty.freeBox__nwPq3, {
+                    [sty.freeBoxivanCbc__nwPq3PiQEx]: hasVariant(
                       $state,
                       "ivanCbc",
                       "ivanCbc"
                     ),
-                    [sty.freeBoxkelvinCbc__ggJuDYbE4M]: hasVariant(
-                      $state,
-                      "kelvinCbc",
-                      "kelvinCbc"
-                    ),
-                    [sty.freeBoxkelvinCeliacTest__ggJuDbHtw8]: hasVariant(
-                      $state,
-                      "kelvinCeliacTest",
-                      "kelvinCeliacTest"
-                    ),
-                    [sty.freeBoxkelvinCmp__ggJuDm5CsG]: hasVariant(
-                      $state,
-                      "kelvinCmp",
-                      "kelvinCmp"
-                    ),
-                    [sty.freeBoxshareseCbc__ggJuDtjzU]: hasVariant(
-                      $state,
-                      "shareseCbc",
-                      "shareseCbc"
-                    )
-                  })}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__dUxrJ,
-                      {
-                        [sty.textivanCbc__dUxrJPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.textkelvinCbc__dUxrJYbE4M]: hasVariant(
-                          $state,
-                          "kelvinCbc",
-                          "kelvinCbc"
-                        ),
-                        [sty.textkelvinCeliacTest__dUxrJbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        ),
-                        [sty.textkelvinCmp__dUxrJm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.textshareseCeliacTest__dUxrJyMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant($state, "ivanCbc", "ivanCbc")
-                      ? "White blood cell count\r(x10\u2079/L)"
-                      : hasVariant(
-                            $state,
-                            "shareseCeliacTest",
-                            "shareseCeliacTest"
-                          )
-                        ? "Total IgA (mg/dL)"
-                        : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                          ? "Albumin (g/dL)"
-                          : hasVariant(
-                                $state,
-                                "kelvinCeliacTest",
-                                "kelvinCeliacTest"
-                              )
-                            ? "Total IgA (mg/dL)"
-                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                              ? "White blood cell count\r(x10\u2079/L)"
-                              : "Total IgA"}
-                  </div>
-                </div>
-                {(
-                  hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__yFqWm, {
-                      [sty.freeBoxkelvinCbc__yFqWmYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__thwwg
-                      )}
-                    >
-                      {"Hemoglobin (g/dL)"}
-                    </div>
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__oPUeI, {
-                      [sty.freeBoxkelvinCbc__oPUeIYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__hGxal
-                      )}
-                    >
-                      {"Hematocrit (%)"}
-                    </div>
-                  </div>
-                ) : null}
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__n4RUh, {
-                    [sty.freeBoxivanCbc__n4RUhPiQEx]: hasVariant(
-                      $state,
-                      "ivanCbc",
-                      "ivanCbc"
-                    ),
-                    [sty.freeBoxkelvinCbc__n4RUhYbE4M]: hasVariant(
-                      $state,
-                      "kelvinCbc",
-                      "kelvinCbc"
-                    ),
-                    [sty.freeBoxkelvinCeliacTest__n4RUhbHtw8]: hasVariant(
-                      $state,
-                      "kelvinCeliacTest",
-                      "kelvinCeliacTest"
-                    ),
-                    [sty.freeBoxshareseCbc__n4RUhTjzU]: hasVariant(
-                      $state,
-                      "shareseCbc",
-                      "shareseCbc"
-                    ),
-                    [sty.freeBoxshareseCeliacTest__n4RUhYMclE]: hasVariant(
-                      $state,
-                      "shareseCeliacTest",
-                      "shareseCeliacTest"
-                    )
-                  })}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__etoRr,
-                      {
-                        [sty.textivanCbc__etoRrPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.textkelvinCbc__etoRrYbE4M]: hasVariant(
-                          $state,
-                          "kelvinCbc",
-                          "kelvinCbc"
-                        ),
-                        [sty.textkelvinCeliacTest__etoRRbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        ),
-                        [sty.textkelvinCmp__etoRrm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.textshareseCbc__etoRrtjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        ),
-                        [sty.textshareseCeliacTest__etoRryMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant($state, "ivanCbc", "ivanCbc")
-                      ? "Neutrophils (x10\u00b3/\u03bcL)"
-                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                        ? "Alkaline Phosphatase (U/L)"
-                        : hasVariant(
-                              $state,
-                              "kelvinCeliacTest",
-                              "kelvinCeliacTest"
-                            )
-                          ? "IgA-tTg (U/mL)"
-                          : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                            ? "Platelets (x10\u2079/L)"
-                            : "IgA-tTg"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__bwOjg, {
-                    [sty.freeBoxkelvinCeliacTest__bwOjGbHtw8]: hasVariant(
-                      $state,
-                      "kelvinCeliacTest",
-                      "kelvinCeliacTest"
-                    ),
-                    [sty.freeBoxshareseCeliacTest__bwOjgyMclE]: hasVariant(
-                      $state,
-                      "shareseCeliacTest",
-                      "shareseCeliacTest"
-                    )
-                  })}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___9Au0,
-                      {
-                        [sty.textivanCbc___9Au0PiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.textkelvinCbc___9Au0YbE4M]: hasVariant(
-                          $state,
-                          "kelvinCbc",
-                          "kelvinCbc"
-                        ),
-                        [sty.textkelvinCeliacTest___9Au0BHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        ),
-                        [sty.textkelvinCmp___9Au0M5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.textshareseCbc___9Au0TjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant($state, "ivanCbc", "ivanCbc")
-                      ? "Lymphocytes (x10\u00b3/\u03bcL)"
-                      : hasVariant($state, "shareseCbc", "shareseCbc")
-                        ? "White blood cell count\r(x10\u2079/L)"
-                        : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                          ? "ALT (Alanine Aminotransferase) (U/L)"
-                          : hasVariant(
-                                $state,
-                                "kelvinCeliacTest",
-                                "kelvinCeliacTest"
-                              )
-                            ? "IgA-tTg (U/mL)"
-                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                              ? "Platelets (x10\u2079/L)"
-                              : "IgA-tTg"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__lyuQr, {
-                    [sty.freeBoxkelvinCbc__lyuQrYbE4M]: hasVariant(
-                      $state,
-                      "kelvinCbc",
-                      "kelvinCbc"
-                    ),
-                    [sty.freeBoxkelvinCeliacTest__lyuQrbHtw8]: hasVariant(
-                      $state,
-                      "kelvinCeliacTest",
-                      "kelvinCeliacTest"
-                    ),
-                    [sty.freeBoxkelvinCmp__lyuQrM5CsG]: hasVariant(
-                      $state,
-                      "kelvinCmp",
-                      "kelvinCmp"
-                    ),
-                    [sty.freeBoxshareseCbc__lyuQrTjzU]: hasVariant(
-                      $state,
-                      "shareseCbc",
-                      "shareseCbc"
-                    ),
-                    [sty.freeBoxshareseCeliacTest__lyuQrYMclE]: hasVariant(
-                      $state,
-                      "shareseCeliacTest",
-                      "shareseCeliacTest"
-                    )
-                  })}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__bwqYo,
-                      {
-                        [sty.textivanCbc__bwqYoPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.textkelvinCbc__bwqYoYbE4M]: hasVariant(
-                          $state,
-                          "kelvinCbc",
-                          "kelvinCbc"
-                        ),
-                        [sty.textkelvinCeliacTest__bwqYobHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        ),
-                        [sty.textkelvinCmp__bwqYoM5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.textshareseCbc__bwqYoTjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant($state, "ivanCbc", "ivanCbc")
-                      ? "Monocytes (x10\u00b3/\u03bcL)"
-                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                        ? "AST (Aspartate Aminotransferase) (U/L)"
-                        : hasVariant(
-                              $state,
-                              "kelvinCeliacTest",
-                              "kelvinCeliacTest"
-                            )
-                          ? "IgA-tTg (U/mL)"
-                          : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                            ? "Platelets (x10\u2079/L)"
-                            : "IgA-tTg"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__nxzL, {
-                    [sty.freeBoxivanCbc__nxzLPiQEx]: hasVariant(
-                      $state,
-                      "ivanCbc",
-                      "ivanCbc"
-                    ),
-                    [sty.freeBoxkelvinCbc__nxzLYbE4M]: hasVariant(
-                      $state,
-                      "kelvinCbc",
-                      "kelvinCbc"
-                    ),
-                    [sty.freeBoxkelvinCeliacTest__nxzLbHtw8]: hasVariant(
-                      $state,
-                      "kelvinCeliacTest",
-                      "kelvinCeliacTest"
-                    ),
-                    [sty.freeBoxkelvinCmp__nxzLm5CsG]: hasVariant(
-                      $state,
-                      "kelvinCmp",
-                      "kelvinCmp"
-                    ),
-                    [sty.freeBoxshareseCeliacTest__nxzLyMclE]: hasVariant(
-                      $state,
-                      "shareseCeliacTest",
-                      "shareseCeliacTest"
-                    )
-                  })}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__xxiNo,
-                      {
-                        [sty.textivanCbc__xxiNoPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.textkelvinCbc__xxiNoYbE4M]: hasVariant(
-                          $state,
-                          "kelvinCbc",
-                          "kelvinCbc"
-                        ),
-                        [sty.textkelvinCeliacTest__xxiNObHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        ),
-                        [sty.textkelvinCmp__xxiNom5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.textshareseCbc__xxiNotjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant($state, "ivanCbc", "ivanCbc")
-                      ? "Eosinophils (x10\u00b3/\u03bcL)"
-                      : hasVariant($state, "shareseCbc", "shareseCbc")
-                        ? "Hemoglobin (g/dL)"
-                        : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                          ? "BUN (Blood Urea Nitrogen) (mg/dL)"
-                          : hasVariant(
-                                $state,
-                                "kelvinCeliacTest",
-                                "kelvinCeliacTest"
-                              )
-                            ? "IgA-tTg (U/mL)"
-                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                              ? "Platelets (x10\u2079/L)"
-                              : "IgA-tTg"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__z3Hg9, {
-                    [sty.freeBoxkelvinCbc__z3Hg9YbE4M]: hasVariant(
-                      $state,
-                      "kelvinCbc",
-                      "kelvinCbc"
-                    ),
-                    [sty.freeBoxkelvinCeliacTest__z3Hg9BHtw8]: hasVariant(
-                      $state,
-                      "kelvinCeliacTest",
-                      "kelvinCeliacTest"
-                    ),
-                    [sty.freeBoxshareseCbc__z3Hg9TjzU]: hasVariant(
-                      $state,
-                      "shareseCbc",
-                      "shareseCbc"
-                    ),
-                    [sty.freeBoxshareseCeliacTest__z3Hg9YMclE]: hasVariant(
-                      $state,
-                      "shareseCeliacTest",
-                      "shareseCeliacTest"
-                    )
-                  })}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___83Lj,
-                      {
-                        [sty.textivanCbc___83LjPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.textkelvinCbc___83LjYbE4M]: hasVariant(
-                          $state,
-                          "kelvinCbc",
-                          "kelvinCbc"
-                        ),
-                        [sty.textkelvinCeliacTest___83LJbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        ),
-                        [sty.textkelvinCmp___83Ljm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant($state, "ivanCbc", "ivanCbc")
-                      ? "Basophils (x10\u00b3/\u03bcL)"
-                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                        ? "Calcium (mg/dL)"
-                        : hasVariant(
-                              $state,
-                              "kelvinCeliacTest",
-                              "kelvinCeliacTest"
-                            )
-                          ? "IgA-tTg (U/mL)"
-                          : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                            ? "Platelets (x10\u2079/L)"
-                            : "IgA-tTg"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__gc1XF, {
-                    [sty.freeBoxkelvinCbc__gc1XFYbE4M]: hasVariant(
-                      $state,
-                      "kelvinCbc",
-                      "kelvinCbc"
-                    ),
-                    [sty.freeBoxkelvinCeliacTest__gc1XFbHtw8]: hasVariant(
-                      $state,
-                      "kelvinCeliacTest",
-                      "kelvinCeliacTest"
-                    ),
-                    [sty.freeBoxshareseCeliacTest__gc1XFyMclE]: hasVariant(
-                      $state,
-                      "shareseCeliacTest",
-                      "shareseCeliacTest"
-                    )
-                  })}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__kHrna,
-                      {
-                        [sty.textivanCbc__kHrnaPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.textkelvinCbc__kHrnaYbE4M]: hasVariant(
-                          $state,
-                          "kelvinCbc",
-                          "kelvinCbc"
-                        ),
-                        [sty.textkelvinCeliacTest__kHrnabHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        ),
-                        [sty.textkelvinCmp__kHrnaM5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.textshareseCbc__kHrnaTjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        ),
-                        [sty.textshareseCeliacTest__kHrnaYMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant($state, "ivanCbc", "ivanCbc")
-                      ? "Hemoglobin (g/dL)"
-                      : hasVariant(
-                            $state,
-                            "shareseCeliacTest",
-                            "shareseCeliacTest"
-                          )
-                        ? "IgA-tTg (U/mL)"
-                        : hasVariant($state, "shareseCbc", "shareseCbc")
-                          ? "Hematocrit (%)"
-                          : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                            ? "Chloride (mmol/L)"
-                            : hasVariant(
-                                  $state,
-                                  "kelvinCeliacTest",
-                                  "kelvinCeliacTest"
-                                )
-                              ? "IgA-tTg (U/mL)"
-                              : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                                ? "Platelets (x10\u2079/L)"
-                                : "IgA-tTg"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__mb5C3, {
-                    [sty.freeBoxkelvinCbc__mb5C3YbE4M]: hasVariant(
-                      $state,
-                      "kelvinCbc",
-                      "kelvinCbc"
-                    ),
-                    [sty.freeBoxkelvinCeliacTest__mb5C3BHtw8]: hasVariant(
-                      $state,
-                      "kelvinCeliacTest",
-                      "kelvinCeliacTest"
-                    ),
-                    [sty.freeBoxkelvinCmp__mb5C3M5CsG]: hasVariant(
+                    [sty.freeBoxkelvinCmp__nwPq3M5CsG]: hasVariant(
                       $state,
                       "kelvinCmp",
                       "kelvinCmp"
@@ -1470,85 +939,11 @@ function PlasmicClueModal__RenderFunc(props: {
                   })}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__fk2H2,
-                      {
-                        [sty.textivanCbc__fk2H2PiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.textkelvinCbc__fk2H2YbE4M]: hasVariant(
-                          $state,
-                          "kelvinCbc",
-                          "kelvinCbc"
-                        ),
-                        [sty.textkelvinCeliacTest__fk2H2BHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        ),
-                        [sty.textkelvinCmp__fk2H2M5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.textshareseCbc__fk2H2TjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        ),
-                        [sty.textshareseCeliacTest__fk2H2YMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant($state, "ivanCbc", "ivanCbc")
-                      ? "Hematocrit (%)"
-                      : hasVariant(
-                            $state,
-                            "shareseCeliacTest",
-                            "shareseCeliacTest"
-                          )
-                        ? "IgA-EMA"
-                        : hasVariant($state, "shareseCbc", "shareseCbc")
-                          ? "Platelets (x10\u2079/L)"
-                          : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                            ? "CO\u2082 (Carbon Dioxide) (mmol/L)"
-                            : hasVariant(
-                                  $state,
-                                  "kelvinCeliacTest",
-                                  "kelvinCeliacTest"
-                                )
-                              ? "IgA-tTg (U/mL)"
-                              : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                                ? "Platelets (x10\u2079/L)"
-                                : "IgA-tTg"}
-                  </div>
-                </div>
-                {(
-                  hasVariant($state, "ivanCbc", "ivanCbc")
-                    ? true
-                    : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                      ? true
-                      : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__h4Us4, {
-                      [sty.freeBoxivanCbc__h4Us4PiQEx]: hasVariant(
+                    className={classNames(projectcss.all, sty.freeBox__vKdMa, {
+                      [sty.freeBoxivanCbc__vKdMaPiQEx]: hasVariant(
                         $state,
                         "ivanCbc",
                         "ivanCbc"
-                      ),
-                      [sty.freeBoxkelvinCmp__h4Us4M5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
                       )
                     })}
                   >
@@ -1556,24 +951,514 @@ function PlasmicClueModal__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__oXcx9,
+                        sty.text__hrD4,
                         {
-                          [sty.textivanCbc__oXcx9PiQEx]: hasVariant(
+                          [sty.textivanCbc__hrD4PiQEx]: hasVariant(
                             $state,
                             "ivanCbc",
                             "ivanCbc"
                           ),
-                          [sty.textkelvinCbc__oXcx9YbE4M]: hasVariant(
+                          [sty.textkelvinCmp__hrD4M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        }
+                      )}
+                    >
+                      {"Lab Test"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__ggJuD, {
+                      [sty.freeBoxivanCbc__ggJuDPiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.freeBoxkelvinCbc__ggJuDYbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__ggJuDbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxkelvinCmp__ggJuDm5CsG]: hasVariant(
+                        $state,
+                        "kelvinCmp",
+                        "kelvinCmp"
+                      ),
+                      [sty.freeBoxshareseCbc__ggJuDtjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__dUxrJ,
+                        {
+                          [sty.textivanCbc__dUxrJPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__dUxrJYbE4M]: hasVariant(
                             $state,
                             "kelvinCbc",
                             "kelvinCbc"
                           ),
-                          [sty.textkelvinCeliacTest__oXcx9BHtw8]: hasVariant(
+                          [sty.textkelvinCeliacTest__dUxrJbHtw8]: hasVariant(
                             $state,
                             "kelvinCeliacTest",
                             "kelvinCeliacTest"
                           ),
-                          [sty.textkelvinCmp__oXcx9M5CsG]: hasVariant(
+                          [sty.textkelvinCmp__dUxrJm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCeliacTest__dUxrJyMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "White blood cell count\r(x10\u2079/L)"
+                        : hasVariant(
+                              $state,
+                              "shareseCeliacTest",
+                              "shareseCeliacTest"
+                            )
+                          ? "Total IgA (mg/dL)"
+                          : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                            ? "Albumin (g/dL)"
+                            : hasVariant(
+                                  $state,
+                                  "kelvinCeliacTest",
+                                  "kelvinCeliacTest"
+                                )
+                              ? "Total IgA (mg/dL)"
+                              : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                                ? "White blood cell count\r(x10\u2079/L)"
+                                : "Total IgA"}
+                    </div>
+                  </div>
+                  {(
+                    hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__yFqWm,
+                        {
+                          [sty.freeBoxkelvinCbc__yFqWmYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__thwwg
+                        )}
+                      >
+                        {"Hemoglobin (g/dL)"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__oPUeI,
+                        {
+                          [sty.freeBoxkelvinCbc__oPUeIYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__hGxal
+                        )}
+                      >
+                        {"Hematocrit (%)"}
+                      </div>
+                    </div>
+                  ) : null}
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__n4RUh, {
+                      [sty.freeBoxivanCbc__n4RUhPiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.freeBoxkelvinCbc__n4RUhYbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__n4RUhbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxshareseCbc__n4RUhTjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__n4RUhYMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__etoRr,
+                        {
+                          [sty.textivanCbc__etoRrPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__etoRrYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest__etoRRbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp__etoRrm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCbc__etoRrtjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.textshareseCeliacTest__etoRryMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Neutrophils (x10\u00b3/\u03bcL)"
+                        : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Alkaline Phosphatase (U/L)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__bwOjg, {
+                      [sty.freeBoxkelvinCeliacTest__bwOjGbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__bwOjgyMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___9Au0,
+                        {
+                          [sty.textivanCbc___9Au0PiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc___9Au0YbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest___9Au0BHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp___9Au0M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCbc___9Au0TjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Lymphocytes (x10\u00b3/\u03bcL)"
+                        : hasVariant($state, "shareseCbc", "shareseCbc")
+                          ? "White blood cell count\r(x10\u2079/L)"
+                          : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                            ? "ALT (Alanine Aminotransferase) (U/L)"
+                            : hasVariant(
+                                  $state,
+                                  "kelvinCeliacTest",
+                                  "kelvinCeliacTest"
+                                )
+                              ? "IgA-tTg (U/mL)"
+                              : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                                ? "Platelets (x10\u2079/L)"
+                                : "IgA-tTg"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__lyuQr, {
+                      [sty.freeBoxkelvinCbc__lyuQrYbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__lyuQrbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxkelvinCmp__lyuQrM5CsG]: hasVariant(
+                        $state,
+                        "kelvinCmp",
+                        "kelvinCmp"
+                      ),
+                      [sty.freeBoxshareseCbc__lyuQrTjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__lyuQrYMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__bwqYo,
+                        {
+                          [sty.textivanCbc__bwqYoPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__bwqYoYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest__bwqYobHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp__bwqYoM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCbc__bwqYoTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Monocytes (x10\u00b3/\u03bcL)"
+                        : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "AST (Aspartate Aminotransferase) (U/L)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__nxzL, {
+                      [sty.freeBoxivanCbc__nxzLPiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.freeBoxkelvinCbc__nxzLYbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__nxzLbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxkelvinCmp__nxzLm5CsG]: hasVariant(
+                        $state,
+                        "kelvinCmp",
+                        "kelvinCmp"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__nxzLyMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__xxiNo,
+                        {
+                          [sty.textivanCbc__xxiNoPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__xxiNoYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest__xxiNObHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp__xxiNom5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCbc__xxiNotjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Eosinophils (x10\u00b3/\u03bcL)"
+                        : hasVariant($state, "shareseCbc", "shareseCbc")
+                          ? "Hemoglobin (g/dL)"
+                          : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                            ? "BUN (Blood Urea Nitrogen) (mg/dL)"
+                            : hasVariant(
+                                  $state,
+                                  "kelvinCeliacTest",
+                                  "kelvinCeliacTest"
+                                )
+                              ? "IgA-tTg (U/mL)"
+                              : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                                ? "Platelets (x10\u2079/L)"
+                                : "IgA-tTg"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__z3Hg9, {
+                      [sty.freeBoxkelvinCbc__z3Hg9YbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__z3Hg9BHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxshareseCbc__z3Hg9TjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__z3Hg9YMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___83Lj,
+                        {
+                          [sty.textivanCbc___83LjPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc___83LjYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest___83LJbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp___83Ljm5CsG]: hasVariant(
                             $state,
                             "kelvinCmp",
                             "kelvinCmp"
@@ -1582,9 +1467,9 @@ function PlasmicClueModal__RenderFunc(props: {
                       )}
                     >
                       {hasVariant($state, "ivanCbc", "ivanCbc")
-                        ? "Platelets (x10\u2079/L)"
+                        ? "Basophils (x10\u00b3/\u03bcL)"
                         : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                          ? "Creatinine (mg/dL)"
+                          ? "Calcium (mg/dL)"
                           : hasVariant(
                                 $state,
                                 "kelvinCeliacTest",
@@ -1596,2547 +1481,629 @@ function PlasmicClueModal__RenderFunc(props: {
                               : "IgA-tTg"}
                     </div>
                   </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
-                ) ? (
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__ezgj8, {
-                      [sty.freeBoxkelvinCmp__ezgj8M5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__gooM5,
-                        {
-                          [sty.textkelvinCbc__gooM5YbE4M]: hasVariant(
-                            $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.textkelvinCeliacTest__gooM5BHtw8]: hasVariant(
-                            $state,
-                            "kelvinCeliacTest",
-                            "kelvinCeliacTest"
-                          ),
-                          [sty.textkelvinCmp__gooM5M5CsG]: hasVariant(
-                            $state,
-                            "kelvinCmp",
-                            "kelvinCmp"
-                          )
-                        }
-                      )}
-                    >
-                      {hasVariant($state, "kelvinCmp", "kelvinCmp")
-                        ? "Glucose (mmol/L)"
-                        : hasVariant(
-                              $state,
-                              "kelvinCeliacTest",
-                              "kelvinCeliacTest"
-                            )
-                          ? "IgA-tTg (U/mL)"
-                          : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                            ? "Platelets (x10\u2079/L)"
-                            : "IgA-tTg"}
-                    </div>
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___1SKz8, {
-                      [sty.freeBoxkelvinCmp___1SKz8M5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__mZeWi,
-                        {
-                          [sty.textkelvinCbc__mZeWiYbE4M]: hasVariant(
-                            $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.textkelvinCeliacTest__mZeWibHtw8]: hasVariant(
-                            $state,
-                            "kelvinCeliacTest",
-                            "kelvinCeliacTest"
-                          ),
-                          [sty.textkelvinCmp__mZeWiM5CsG]: hasVariant(
-                            $state,
-                            "kelvinCmp",
-                            "kelvinCmp"
-                          )
-                        }
-                      )}
-                    >
-                      {hasVariant($state, "kelvinCmp", "kelvinCmp")
-                        ? "Potassium (mmol/L)"
-                        : hasVariant(
-                              $state,
-                              "kelvinCeliacTest",
-                              "kelvinCeliacTest"
-                            )
-                          ? "IgA-tTg (U/mL)"
-                          : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                            ? "Platelets (x10\u2079/L)"
-                            : "IgA-tTg"}
-                    </div>
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__onLki, {
-                      [sty.freeBoxkelvinCmp__onLkiM5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__vSgAm,
-                        {
-                          [sty.textkelvinCbc__vSgAmYbE4M]: hasVariant(
-                            $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.textkelvinCeliacTest__vSgAMbHtw8]: hasVariant(
-                            $state,
-                            "kelvinCeliacTest",
-                            "kelvinCeliacTest"
-                          ),
-                          [sty.textkelvinCmp__vSgAmm5CsG]: hasVariant(
-                            $state,
-                            "kelvinCmp",
-                            "kelvinCmp"
-                          )
-                        }
-                      )}
-                    >
-                      {hasVariant($state, "kelvinCmp", "kelvinCmp")
-                        ? "Sodium (mmol/L)"
-                        : hasVariant(
-                              $state,
-                              "kelvinCeliacTest",
-                              "kelvinCeliacTest"
-                            )
-                          ? "IgA-tTg (U/mL)"
-                          : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                            ? "Platelets (x10\u2079/L)"
-                            : "IgA-tTg"}
-                    </div>
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__nCb8L, {
-                      [sty.freeBoxkelvinCmp__nCb8Lm5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__h5WYv,
-                        {
-                          [sty.textkelvinCbc__h5WYvYbE4M]: hasVariant(
-                            $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.textkelvinCeliacTest__h5WYVbHtw8]: hasVariant(
-                            $state,
-                            "kelvinCeliacTest",
-                            "kelvinCeliacTest"
-                          ),
-                          [sty.textkelvinCmp__h5WYvm5CsG]: hasVariant(
-                            $state,
-                            "kelvinCmp",
-                            "kelvinCmp"
-                          )
-                        }
-                      )}
-                    >
-                      {hasVariant($state, "kelvinCmp", "kelvinCmp")
-                        ? "Total Bilirubin (mg/dL)"
-                        : hasVariant(
-                              $state,
-                              "kelvinCeliacTest",
-                              "kelvinCeliacTest"
-                            )
-                          ? "IgA-tTg (U/mL)"
-                          : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                            ? "Platelets (x10\u2079/L)"
-                            : "IgA-tTg"}
-                    </div>
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___3Dzt8, {
-                      [sty.freeBoxkelvinCmp___3Dzt8M5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__tNl1L,
-                        {
-                          [sty.textkelvinCbc__tNl1LYbE4M]: hasVariant(
-                            $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.textkelvinCeliacTest__tNl1LbHtw8]: hasVariant(
-                            $state,
-                            "kelvinCeliacTest",
-                            "kelvinCeliacTest"
-                          ),
-                          [sty.textkelvinCmp__tNl1Lm5CsG]: hasVariant(
-                            $state,
-                            "kelvinCmp",
-                            "kelvinCmp"
-                          )
-                        }
-                      )}
-                    >
-                      {hasVariant($state, "kelvinCmp", "kelvinCmp")
-                        ? "Total Protein (g/dL)"
-                        : hasVariant(
-                              $state,
-                              "kelvinCeliacTest",
-                              "kelvinCeliacTest"
-                            )
-                          ? "IgA-tTg (U/mL)"
-                          : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                            ? "Platelets (x10\u2079/L)"
-                            : "IgA-tTg"}
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__xZq4)}>
-                <div className={classNames(projectcss.all, sty.freeBox__rQaPh)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__aIu9
-                    )}
-                  >
-                    {"Lab Test"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__ziyHp)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__h5Qqq
-                    )}
-                  >
-                    {"39 mg/dl"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__eN2DE)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__hIpjr
-                    )}
-                  >
-                    {"2.7 U/mL"}
-                  </div>
-                </div>
-              </div>
-              <div
-                className={classNames(projectcss.all, sty.freeBox___1RW64, {
-                  [sty.freeBoxivanCbc___1RW64PiQEx]: hasVariant(
-                    $state,
-                    "ivanCbc",
-                    "ivanCbc"
-                  ),
-                  [sty.freeBoxkelvinCbc___1RW64YbE4M]: hasVariant(
-                    $state,
-                    "kelvinCbc",
-                    "kelvinCbc"
-                  )
-                })}
-              >
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__cavhm, {
-                    [sty.freeBoxshareseCbc__cavhmtjzU]: hasVariant(
-                      $state,
-                      "shareseCbc",
-                      "shareseCbc"
-                    )
-                  })}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__cqxzP
-                    )}
-                  >
-                    {"Result"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__eGic6, {
-                    [sty.freeBoxivanCbc__eGic6PiQEx]: hasVariant(
-                      $state,
-                      "ivanCbc",
-                      "ivanCbc"
-                    ),
-                    [sty.freeBoxkelvinCbc__eGic6YbE4M]: hasVariant(
-                      $state,
-                      "kelvinCbc",
-                      "kelvinCbc"
-                    ),
-                    [sty.freeBoxkelvinCeliacTest__eGic6BHtw8]: hasVariant(
-                      $state,
-                      "kelvinCeliacTest",
-                      "kelvinCeliacTest"
-                    ),
-                    [sty.freeBoxkelvinCmp__eGic6M5CsG]: hasVariant(
-                      $state,
-                      "kelvinCmp",
-                      "kelvinCmp"
-                    ),
-                    [sty.freeBoxshareseCbc__eGic6TjzU]: hasVariant(
-                      $state,
-                      "shareseCbc",
-                      "shareseCbc"
-                    ),
-                    [sty.freeBoxshareseCeliacTest__eGic6YMclE]: hasVariant(
-                      $state,
-                      "shareseCeliacTest",
-                      "shareseCeliacTest"
-                    ),
-                    [sty.freeBoxtabs_kelvinPcp__eGic6KbzSz]: hasVariant(
-                      $state,
-                      "tabs",
-                      "kelvinPcp"
-                    )
-                  })}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__k1O, {
-                      [sty.imgkelvinCeliacTest__k1ObHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      )
-                    })}
-                    displayHeight={"auto"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"80%"}
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                      fullWidth: 587.58,
-                      fullHeight: 99.93,
-                      aspectRatio: 5.879916
-                    }}
-                  />
-
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img___3FNuf, {
-                      [sty.imgkelvinCmp___3FNufM5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      )
-                    })}
-                    displayHeight={"auto"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"80%"}
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/escape_room/images/kelvinAlbuminSvg.svg",
-                      fullWidth: 566.68,
-                      fullHeight: 81.34,
-                      aspectRatio: 6.966806
-                    }}
-                  />
-
-                  {(
-                    hasVariant($state, "shareseCbc", "shareseCbc")
-                      ? true
-                      : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                  ) ? (
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__n3PVb, {
-                        [sty.imgkelvinCbc__n3PVbYbE4M]: hasVariant(
-                          $state,
-                          "kelvinCbc",
-                          "kelvinCbc"
-                        ),
-                        [sty.imgshareseCbc__n3PVbtjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        ),
-                        [sty.imgtabs_kelvinPcp__n3PVbKbzSz]: hasVariant(
-                          $state,
-                          "tabs",
-                          "kelvinPcp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={
-                        hasVariant($state, "shareseCbc", "shareseCbc")
-                          ? "80%"
-                          : hasVariant($state, "kelvinCbc", "kelvinCbc")
-                            ? "80%"
-                            : "420px"
-                      }
-                      loading={"lazy"}
-                      src={
-                        hasVariant($state, "shareseCbc", "shareseCbc")
-                          ? {
-                              src: "/plasmic/escape_room/images/shareseWbcCountSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 90.19,
-                              aspectRatio: 6.28318
-                            }
-                          : {
-                              src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 99.93,
-                              aspectRatio: 5.67077
-                            }
-                      }
-                    />
-                  ) : null}
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img___7Zy4E, {
-                      [sty.imgshareseCeliacTest___7Zy4EYMclE]: hasVariant(
-                        $state,
-                        "shareseCeliacTest",
-                        "shareseCeliacTest"
-                      )
-                    })}
-                    displayHeight={"auto"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"80%"}
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/escape_room/images/shareseTotalIgASvg.svg",
-                      fullWidth: 566.68,
-                      fullHeight: 91.79,
-                      aspectRatio: 6.173657
-                    }}
-                  />
-
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__eqSw, {
-                      [sty.imgivanCbc__eqSwPiQEx]: hasVariant(
-                        $state,
-                        "ivanCbc",
-                        "ivanCbc"
-                      )
-                    })}
-                    displayHeight={"auto"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"50%"}
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
-                      fullWidth: 566.68,
-                      fullHeight: 91.79,
-                      aspectRatio: 6.173657
-                    }}
-                  />
-                </div>
-                {(
-                  hasVariant($state, "ivanCbc", "ivanCbc")
-                    ? true
-                    : hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      ? true
-                      : hasVariant($state, "shareseCbc", "shareseCbc")
-                        ? true
-                        : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                          ? true
-                          : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__sOPoX, {
-                      [sty.freeBoxivanCbc__sOPoXPiQEx]: hasVariant(
-                        $state,
-                        "ivanCbc",
-                        "ivanCbc"
-                      ),
-                      [sty.freeBoxkelvinCbc__sOPoXYbE4M]: hasVariant(
+                    className={classNames(projectcss.all, sty.freeBox__gc1XF, {
+                      [sty.freeBoxkelvinCbc__gc1XFYbE4M]: hasVariant(
                         $state,
                         "kelvinCbc",
                         "kelvinCbc"
                       ),
-                      [sty.freeBoxkelvinCeliacTest__sOPoXbHtw8]: hasVariant(
+                      [sty.freeBoxkelvinCeliacTest__gc1XFbHtw8]: hasVariant(
                         $state,
                         "kelvinCeliacTest",
                         "kelvinCeliacTest"
                       ),
-                      [sty.freeBoxkelvinCmp__sOPoXm5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      ),
-                      [sty.freeBoxshareseCbc__sOPoXtjzU]: hasVariant(
-                        $state,
-                        "shareseCbc",
-                        "shareseCbc"
-                      ),
-                      [sty.freeBoxshareseCeliacTest__sOPoXyMclE]: hasVariant(
+                      [sty.freeBoxshareseCeliacTest__gc1XFyMclE]: hasVariant(
                         $state,
                         "shareseCeliacTest",
                         "shareseCeliacTest"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__sOPoXKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
                       )
                     })}
                   >
-                    {(
-                      hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                    ) ? (
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__xICd, {
-                          [sty.imgkelvinCbc__xICdYbE4M]: hasVariant(
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__kHrna,
+                        {
+                          [sty.textivanCbc__kHrnaPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__kHrnaYbE4M]: hasVariant(
                             $state,
                             "kelvinCbc",
                             "kelvinCbc"
                           ),
-                          [sty.imgtabs_kelvinPcp__xICdKbzSz]: hasVariant(
+                          [sty.textkelvinCeliacTest__kHrnabHtw8]: hasVariant(
                             $state,
-                            "tabs",
-                            "kelvinPcp"
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp__kHrnaM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCbc__kHrnaTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.textshareseCeliacTest__kHrnaYMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
                           )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"420px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                          fullWidth: 566.68,
-                          fullHeight: 99.93,
-                          aspectRatio: 5.67077
-                        }}
-                      />
-                    ) : null}
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__ivbeX, {
-                        [sty.imgkelvinCeliacTest__ivbeXbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                        fullWidth: 587.58,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.879916
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__ol3S3, {
-                        [sty.imgkelvinCmp__ol3S3M5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinAlkalinePhosphataseSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 81.34,
-                        aspectRatio: 6.966806
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__mYvPl, {
-                        [sty.imgivanCbc__mYvPlPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.imgkelvinCmp__mYvPlm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.imgshareseCbc__mYvPltjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        ),
-                        [sty.imgshareseCeliacTest__mYvPlyMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? "300px"
-                          : hasVariant(
-                                $state,
-                                "shareseCeliacTest",
-                                "shareseCeliacTest"
-                              )
-                            ? "80%"
-                            : hasVariant($state, "shareseCbc", "shareseCbc")
-                              ? "80%"
-                              : "auto"
-                      }
-                      loading={"lazy"}
-                      src={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? {
-                              src: "/plasmic/escape_room/images/ivanNeutrophilsSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                          : hasVariant(
-                                $state,
-                                "shareseCeliacTest",
-                                "shareseCeliacTest"
-                              )
-                            ? {
-                                src: "/plasmic/escape_room/images/shareseIgATTgSvg.svg",
-                                fullWidth: 586.89,
-                                fullHeight: 91.79,
-                                aspectRatio: 6.393834
-                              }
-                            : hasVariant($state, "shareseCbc", "shareseCbc")
-                              ? {
-                                  src: "/plasmic/escape_room/images/shareseHemoglobinSvg.svg",
-                                  fullWidth: 566.68,
-                                  fullHeight: 92.03,
-                                  aspectRatio: 6.157557
-                                }
-                              : undefined
-                      }
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__jaaxv, {
-                        [sty.imgivanCbc__jaaxvPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.imgkelvinCmp__jaaxvm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.imgshareseCbc__jaaxvtjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        ),
-                        [sty.imgshareseCeliacTest__jaaxvyMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? "50%"
-                          : "300px"
-                      }
-                      loading={"lazy"}
-                      src={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? {
-                              src: "/plasmic/escape_room/images/ivanNeutrophilsSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                          : {
-                              src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                      }
-                    />
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Hemoglobin (g/dL)"
+                        : hasVariant(
+                              $state,
+                              "shareseCeliacTest",
+                              "shareseCeliacTest"
+                            )
+                          ? "IgA-tTg (U/mL)"
+                          : hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? "Hematocrit (%)"
+                            : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                              ? "Chloride (mmol/L)"
+                              : hasVariant(
+                                    $state,
+                                    "kelvinCeliacTest",
+                                    "kelvinCeliacTest"
+                                  )
+                                ? "IgA-tTg (U/mL)"
+                                : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                                  ? "Platelets (x10\u2079/L)"
+                                  : "IgA-tTg"}
+                    </div>
                   </div>
-                ) : null}
-                {(
-                  hasVariant($state, "ivanCbc", "ivanCbc")
-                    ? true
-                    : hasVariant($state, "shareseCbc", "shareseCbc")
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__mb5C3, {
+                      [sty.freeBoxkelvinCbc__mb5C3YbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__mb5C3BHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxkelvinCmp__mb5C3M5CsG]: hasVariant(
+                        $state,
+                        "kelvinCmp",
+                        "kelvinCmp"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__fk2H2,
+                        {
+                          [sty.textivanCbc__fk2H2PiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__fk2H2YbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest__fk2H2BHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp__fk2H2M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCbc__fk2H2TjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.textshareseCeliacTest__fk2H2YMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Hematocrit (%)"
+                        : hasVariant(
+                              $state,
+                              "shareseCeliacTest",
+                              "shareseCeliacTest"
+                            )
+                          ? "IgA-EMA"
+                          : hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? "Platelets (x10\u2079/L)"
+                            : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                              ? "CO\u2082 (Carbon Dioxide) (mmol/L)"
+                              : hasVariant(
+                                    $state,
+                                    "kelvinCeliacTest",
+                                    "kelvinCeliacTest"
+                                  )
+                                ? "IgA-tTg (U/mL)"
+                                : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                                  ? "Platelets (x10\u2079/L)"
+                                  : "IgA-tTg"}
+                    </div>
+                  </div>
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
                       ? true
                       : hasVariant($state, "kelvinCmp", "kelvinCmp")
                         ? true
                         : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__vLxNi, {
-                      [sty.freeBoxivanCbc__vLxNiPiQEx]: hasVariant(
-                        $state,
-                        "ivanCbc",
-                        "ivanCbc"
-                      ),
-                      [sty.freeBoxkelvinCbc__vLxNiYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxkelvinCeliacTest__vLxNIbHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      ),
-                      [sty.freeBoxkelvinCmp__vLxNim5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      ),
-                      [sty.freeBoxshareseCbc__vLxNitjzU]: hasVariant(
-                        $state,
-                        "shareseCbc",
-                        "shareseCbc"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__vLxNiKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    {(
-                      hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                    ) ? (
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__kLGe3, {
-                          [sty.imgkelvinCbc__kLGe3YbE4M]: hasVariant(
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__h4Us4,
+                        {
+                          [sty.freeBoxivanCbc__h4Us4PiQEx]: hasVariant(
                             $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
+                            "ivanCbc",
+                            "ivanCbc"
                           ),
-                          [sty.imgtabs_kelvinPcp__kLGe3KbzSz]: hasVariant(
+                          [sty.freeBoxkelvinCmp__h4Us4M5CsG]: hasVariant(
                             $state,
-                            "tabs",
-                            "kelvinPcp"
+                            "kelvinCmp",
+                            "kelvinCmp"
                           )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"420px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                          fullWidth: 566.68,
-                          fullHeight: 99.93,
-                          aspectRatio: 5.67077
-                        }}
-                      />
-                    ) : null}
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img___6LsfF, {
-                        [sty.imgkelvinCeliacTest___6LsfFbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                        fullWidth: 587.58,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.879916
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__b7Wk6, {
-                        [sty.imgkelvinCmp__b7Wk6M5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinAltSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 81.34,
-                        aspectRatio: 6.966806
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__nloyI, {
-                        [sty.imgivanCbc__nloyIPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.imgkelvinCmp__nloyIm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.imgshareseCbc__nloyItjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={
-                        hasVariant($state, "shareseCbc", "shareseCbc")
-                          ? "80%"
-                          : "auto"
-                      }
-                      loading={"lazy"}
-                      src={
-                        hasVariant($state, "shareseCbc", "shareseCbc")
-                          ? {
-                              src: "/plasmic/escape_room/images/shareseHemtaocritSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 92.59,
-                              aspectRatio: 6.120315
-                            }
-                          : undefined
-                      }
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__nNwxi, {
-                        [sty.imgivanCbc__nNwxiPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.imgkelvinCmp__nNwxiM5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.imgshareseCbc__nNwxiTjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        ),
-                        [sty.imgshareseCeliacTest__nNwxiYMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? "50%"
-                          : "300px"
-                      }
-                      loading={"lazy"}
-                      src={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? {
-                              src: "/plasmic/escape_room/images/ivanLymphocytesSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                          : {
-                              src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                      }
-                    />
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "ivanCbc", "ivanCbc")
-                    ? true
-                    : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                      ? true
-                      : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__uu7OD, {
-                      [sty.freeBoxivanCbc__uu7ODPiQEx]: hasVariant(
-                        $state,
-                        "ivanCbc",
-                        "ivanCbc"
-                      ),
-                      [sty.freeBoxkelvinCbc__uu7ODYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxkelvinCeliacTest__uu7ODbHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      ),
-                      [sty.freeBoxkelvinCmp__uu7ODm5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__uu7ODKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    {(
-                      hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                    ) ? (
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__xys80, {
-                          [sty.imgkelvinCbc__xys80YbE4M]: hasVariant(
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__oXcx9,
+                          {
+                            [sty.textivanCbc__oXcx9PiQEx]: hasVariant(
+                              $state,
+                              "ivanCbc",
+                              "ivanCbc"
+                            ),
+                            [sty.textkelvinCbc__oXcx9YbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.textkelvinCeliacTest__oXcx9BHtw8]: hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                            [sty.textkelvinCmp__oXcx9M5CsG]: hasVariant(
+                              $state,
+                              "kelvinCmp",
+                              "kelvinCmp"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "ivanCbc", "ivanCbc")
+                          ? "Platelets (x10\u2079/L)"
+                          : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                            ? "Creatinine (mg/dL)"
+                            : hasVariant(
+                                  $state,
+                                  "kelvinCeliacTest",
+                                  "kelvinCeliacTest"
+                                )
+                              ? "IgA-tTg (U/mL)"
+                              : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                                ? "Platelets (x10\u2079/L)"
+                                : "IgA-tTg"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__ezgj8,
+                        {
+                          [sty.freeBoxkelvinCmp__ezgj8M5CsG]: hasVariant(
                             $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.imgtabs_kelvinPcp__xys80KbzSz]: hasVariant(
-                            $state,
-                            "tabs",
-                            "kelvinPcp"
+                            "kelvinCmp",
+                            "kelvinCmp"
                           )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"420px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                          fullWidth: 566.68,
-                          fullHeight: 99.93,
-                          aspectRatio: 5.67077
-                        }}
-                      />
-                    ) : null}
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__tybPs, {
-                        [sty.imgkelvinCeliacTest__tybPSbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                        fullWidth: 587.58,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.879916
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__pN3Zb, {
-                        [sty.imgkelvinCmp__pN3ZbM5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinAstSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 81.34,
-                        aspectRatio: 6.966806
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__kdiGf, {
-                        [sty.imgivanCbc__kdiGfPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.imgkelvinCmp__kdiGfM5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.imgshareseCbc__kdiGfTjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        ),
-                        [sty.imgshareseCeliacTest__kdiGfYMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? "50%"
-                          : "300px"
-                      }
-                      loading={"lazy"}
-                      src={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? {
-                              src: "/plasmic/escape_room/images/ivanMonocytesSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                          : {
-                              src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                      }
-                    />
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "ivanCbc", "ivanCbc")
-                    ? true
-                    : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                      ? true
-                      : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__a8HqH, {
-                      [sty.freeBoxivanCbc__a8HqHPiQEx]: hasVariant(
-                        $state,
-                        "ivanCbc",
-                        "ivanCbc"
-                      ),
-                      [sty.freeBoxkelvinCbc__a8HqHYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxkelvinCeliacTest__a8HqHbHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      ),
-                      [sty.freeBoxkelvinCmp__a8HqHm5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__a8HqHKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    {(
-                      hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                    ) ? (
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img___6E8K3, {
-                          [sty.imgkelvinCbc___6E8K3YbE4M]: hasVariant(
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__gooM5,
+                          {
+                            [sty.textkelvinCbc__gooM5YbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.textkelvinCeliacTest__gooM5BHtw8]: hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                            [sty.textkelvinCmp__gooM5M5CsG]: hasVariant(
+                              $state,
+                              "kelvinCmp",
+                              "kelvinCmp"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Glucose (mmol/L)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___1SKz8,
+                        {
+                          [sty.freeBoxkelvinCmp___1SKz8M5CsG]: hasVariant(
                             $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.imgtabs_kelvinPcp___6E8K3KbzSz]: hasVariant(
-                            $state,
-                            "tabs",
-                            "kelvinPcp"
+                            "kelvinCmp",
+                            "kelvinCmp"
                           )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"420px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                          fullWidth: 566.68,
-                          fullHeight: 99.93,
-                          aspectRatio: 5.67077
-                        }}
-                      />
-                    ) : null}
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img___5QssD, {
-                        [sty.imgkelvinCeliacTest___5QssDbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                        fullWidth: 587.58,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.879916
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__s7DdG, {
-                        [sty.imgkelvinCmp__s7DdGm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinBunSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 81.34,
-                        aspectRatio: 6.966806
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__exOp, {
-                        [sty.imgivanCbc__exOpPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.imgkelvinCmp__exOpM5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.imgshareseCbc__exOpTjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        ),
-                        [sty.imgshareseCeliacTest__exOpYMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? "50%"
-                          : "300px"
-                      }
-                      loading={"lazy"}
-                      src={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? {
-                              src: "/plasmic/escape_room/images/ivanEosinophilsSvg.svg",
-                              fullWidth: 586.89,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.393834
-                            }
-                          : {
-                              src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                      }
-                    />
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "ivanCbc", "ivanCbc")
-                    ? true
-                    : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                      ? true
-                      : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__oc5Ju, {
-                      [sty.freeBoxivanCbc__oc5JuPiQEx]: hasVariant(
-                        $state,
-                        "ivanCbc",
-                        "ivanCbc"
-                      ),
-                      [sty.freeBoxkelvinCbc__oc5JuYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxkelvinCeliacTest__oc5JubHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      ),
-                      [sty.freeBoxkelvinCmp__oc5JuM5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__oc5JuKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    {(
-                      hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                    ) ? (
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__xyDzI, {
-                          [sty.imgkelvinCbc__xyDzIYbE4M]: hasVariant(
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__mZeWi,
+                          {
+                            [sty.textkelvinCbc__mZeWiYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.textkelvinCeliacTest__mZeWibHtw8]: hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                            [sty.textkelvinCmp__mZeWiM5CsG]: hasVariant(
+                              $state,
+                              "kelvinCmp",
+                              "kelvinCmp"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Potassium (mmol/L)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__onLki,
+                        {
+                          [sty.freeBoxkelvinCmp__onLkiM5CsG]: hasVariant(
                             $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.imgtabs_kelvinPcp__xyDzIKbzSz]: hasVariant(
-                            $state,
-                            "tabs",
-                            "kelvinPcp"
+                            "kelvinCmp",
+                            "kelvinCmp"
                           )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"420px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                          fullWidth: 566.68,
-                          fullHeight: 99.93,
-                          aspectRatio: 5.67077
-                        }}
-                      />
-                    ) : null}
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__dprIh, {
-                        [sty.imgkelvinCeliacTest__dprIhbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                        fullWidth: 587.58,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.879916
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__jQ1R, {
-                        [sty.imgkelvinCmp__jQ1RM5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinCalciumSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 81.34,
-                        aspectRatio: 6.966806
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__qku21, {
-                        [sty.imgivanCbc__qku21PiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.imgkelvinCmp__qku21M5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.imgshareseCbc__qku21TjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        ),
-                        [sty.imgshareseCeliacTest__qku21YMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? "50%"
-                          : "300px"
-                      }
-                      loading={"lazy"}
-                      src={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? {
-                              src: "/plasmic/escape_room/images/ivanBasophilsSvg.svg",
-                              fullWidth: 586.89,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.393834
-                            }
-                          : {
-                              src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                      }
-                    />
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "ivanCbc", "ivanCbc")
-                    ? true
-                    : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                      ? true
-                      : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___3WKUa, {
-                      [sty.freeBoxivanCbc___3WKUaPiQEx]: hasVariant(
-                        $state,
-                        "ivanCbc",
-                        "ivanCbc"
-                      ),
-                      [sty.freeBoxkelvinCbc___3WKUaYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxkelvinCeliacTest___3WKUabHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      ),
-                      [sty.freeBoxkelvinCmp___3WKUaM5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp___3WKUaKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    {(
-                      hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                    ) ? (
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img___7V2Av, {
-                          [sty.imgkelvinCbc___7V2AvYbE4M]: hasVariant(
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__vSgAm,
+                          {
+                            [sty.textkelvinCbc__vSgAmYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.textkelvinCeliacTest__vSgAMbHtw8]: hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                            [sty.textkelvinCmp__vSgAmm5CsG]: hasVariant(
+                              $state,
+                              "kelvinCmp",
+                              "kelvinCmp"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Sodium (mmol/L)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__nCb8L,
+                        {
+                          [sty.freeBoxkelvinCmp__nCb8Lm5CsG]: hasVariant(
                             $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.imgtabs_kelvinPcp___7V2AvKbzSz]: hasVariant(
-                            $state,
-                            "tabs",
-                            "kelvinPcp"
+                            "kelvinCmp",
+                            "kelvinCmp"
                           )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"420px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                          fullWidth: 566.68,
-                          fullHeight: 99.93,
-                          aspectRatio: 5.67077
-                        }}
-                      />
-                    ) : null}
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__h9Wq8, {
-                        [sty.imgkelvinCeliacTest__h9Wq8BHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                        fullWidth: 587.58,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.879916
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__j6PO, {
-                        [sty.imgkelvinCmp__j6POm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinChlorideSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 81.34,
-                        aspectRatio: 6.966806
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__m2Wg8, {
-                        [sty.imgivanCbc__m2Wg8PiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.imgkelvinCmp__m2Wg8M5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.imgshareseCbc__m2Wg8TjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        ),
-                        [sty.imgshareseCeliacTest__m2Wg8YMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? "50%"
-                          : "300px"
-                      }
-                      loading={"lazy"}
-                      src={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? {
-                              src: "/plasmic/escape_room/images/ivanHemoglobinSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                          : {
-                              src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                      }
-                    />
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "ivanCbc", "ivanCbc")
-                    ? true
-                    : hasVariant($state, "kelvinCmp", "kelvinCmp")
-                      ? true
-                      : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__xIVlV, {
-                      [sty.freeBoxivanCbc__xIVlVPiQEx]: hasVariant(
-                        $state,
-                        "ivanCbc",
-                        "ivanCbc"
-                      ),
-                      [sty.freeBoxkelvinCbc__xIVlVYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxkelvinCeliacTest__xIVlVbHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      ),
-                      [sty.freeBoxkelvinCmp__xIVlVm5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__xIVlVKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    {(
-                      hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                    ) ? (
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__atZmY, {
-                          [sty.imgkelvinCbc__atZmYYbE4M]: hasVariant(
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__h5WYv,
+                          {
+                            [sty.textkelvinCbc__h5WYvYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.textkelvinCeliacTest__h5WYVbHtw8]: hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                            [sty.textkelvinCmp__h5WYvm5CsG]: hasVariant(
+                              $state,
+                              "kelvinCmp",
+                              "kelvinCmp"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Total Bilirubin (mg/dL)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___3Dzt8,
+                        {
+                          [sty.freeBoxkelvinCmp___3Dzt8M5CsG]: hasVariant(
                             $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.imgtabs_kelvinPcp__atZmYKbzSz]: hasVariant(
-                            $state,
-                            "tabs",
-                            "kelvinPcp"
+                            "kelvinCmp",
+                            "kelvinCmp"
                           )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"420px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                          fullWidth: 566.68,
-                          fullHeight: 99.93,
-                          aspectRatio: 5.67077
-                        }}
-                      />
-                    ) : null}
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__cxPv1, {
-                        [sty.imgkelvinCeliacTest__cxPv1BHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                        fullWidth: 587.58,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.879916
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__l4X9B, {
-                        [sty.imgkelvinCmp__l4X9Bm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinCo2Svg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 81.34,
-                        aspectRatio: 6.966806
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__orXjb, {
-                        [sty.imgivanCbc__orXjbPiQEx]: hasVariant(
-                          $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.imgkelvinCmp__orXjbm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        ),
-                        [sty.imgshareseCbc__orXjbtjzU]: hasVariant(
-                          $state,
-                          "shareseCbc",
-                          "shareseCbc"
-                        ),
-                        [sty.imgshareseCeliacTest__orXjbyMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? "50%"
-                          : "300px"
-                      }
-                      loading={"lazy"}
-                      src={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? {
-                              src: "/plasmic/escape_room/images/ivanHematocritSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                          : {
-                              src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                      }
-                    />
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
-                ) ? (
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__tNl1L,
+                          {
+                            [sty.textkelvinCbc__tNl1LYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.textkelvinCeliacTest__tNl1LbHtw8]: hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                            [sty.textkelvinCmp__tNl1Lm5CsG]: hasVariant(
+                              $state,
+                              "kelvinCmp",
+                              "kelvinCmp"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Total Protein (g/dL)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__xZq4)}>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__fxNvB, {
-                      [sty.freeBoxkelvinCbc__fxNvBYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxkelvinCeliacTest__fxNvBbHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      ),
-                      [sty.freeBoxkelvinCmp__fxNvBm5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__fxNvBKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
+                    className={classNames(projectcss.all, sty.freeBox__rQaPh)}
                   >
-                    {(
-                      hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                    ) ? (
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__ytnk, {
-                          [sty.imgkelvinCbc__ytnkYbE4M]: hasVariant(
-                            $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.imgtabs_kelvinPcp__ytnkKbzSz]: hasVariant(
-                            $state,
-                            "tabs",
-                            "kelvinPcp"
-                          )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"420px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                          fullWidth: 566.68,
-                          fullHeight: 99.93,
-                          aspectRatio: 5.67077
-                        }}
-                      />
-                    ) : null}
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__wTtRk, {
-                        [sty.imgkelvinCeliacTest__wTtRKbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                        fullWidth: 587.58,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.879916
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__pzonn, {
-                        [sty.imgkelvinCmp__pzonnm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinCreatinineSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 81.34,
-                        aspectRatio: 6.966806
-                      }}
-                    />
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__aIu9
+                      )}
+                    >
+                      {"Lab Test"}
+                    </div>
                   </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
-                ) ? (
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__o6Bcp, {
-                      [sty.freeBoxkelvinCbc__o6BcpYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxkelvinCeliacTest__o6BcPbHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      ),
-                      [sty.freeBoxkelvinCmp__o6Bcpm5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__o6BcpKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
+                    className={classNames(projectcss.all, sty.freeBox__ziyHp)}
                   >
-                    {(
-                      hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                    ) ? (
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__lBcJ, {
-                          [sty.imgkelvinCbc__lBcJYbE4M]: hasVariant(
-                            $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.imgtabs_kelvinPcp__lBcJKbzSz]: hasVariant(
-                            $state,
-                            "tabs",
-                            "kelvinPcp"
-                          )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"420px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                          fullWidth: 566.68,
-                          fullHeight: 99.93,
-                          aspectRatio: 5.67077
-                        }}
-                      />
-                    ) : null}
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__jlTuU, {
-                        [sty.imgkelvinCeliacTest__jlTuUbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                        fullWidth: 587.58,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.879916
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__aWjDu, {
-                        [sty.imgkelvinCmp__aWjDum5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinGlucoseSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 81.34,
-                        aspectRatio: 6.966806
-                      }}
-                    />
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__h5Qqq
+                      )}
+                    >
+                      {"39 mg/dl"}
+                    </div>
                   </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
-                ) ? (
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__yRtse, {
-                      [sty.freeBoxkelvinCbc__yRtseYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxkelvinCeliacTest__yRtsEbHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      ),
-                      [sty.freeBoxkelvinCmp__yRtsem5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__yRtseKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
+                    className={classNames(projectcss.all, sty.freeBox__eN2DE)}
                   >
-                    {(
-                      hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                    ) ? (
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__jZHsn, {
-                          [sty.imgkelvinCbc__jZHsnYbE4M]: hasVariant(
-                            $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.imgtabs_kelvinPcp__jZHsnKbzSz]: hasVariant(
-                            $state,
-                            "tabs",
-                            "kelvinPcp"
-                          )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"420px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                          fullWidth: 566.68,
-                          fullHeight: 99.93,
-                          aspectRatio: 5.67077
-                        }}
-                      />
-                    ) : null}
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__ajIhM, {
-                        [sty.imgkelvinCeliacTest__ajIhMbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                        fullWidth: 587.58,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.879916
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__dyFm, {
-                        [sty.imgkelvinCmp__dyFmm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinPotassiumSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 81.34,
-                        aspectRatio: 6.966806
-                      }}
-                    />
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__hIpjr
+                      )}
+                    >
+                      {"2.7 U/mL"}
+                    </div>
                   </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__vKv5A, {
-                      [sty.freeBoxkelvinCbc__vKv5AYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxkelvinCeliacTest__vKv5AbHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      ),
-                      [sty.freeBoxkelvinCmp__vKv5Am5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__vKv5AKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    {(
-                      hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                    ) ? (
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img___4Cd6A, {
-                          [sty.imgkelvinCbc___4Cd6AYbE4M]: hasVariant(
-                            $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.imgtabs_kelvinPcp___4Cd6AKbzSz]: hasVariant(
-                            $state,
-                            "tabs",
-                            "kelvinPcp"
-                          )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"420px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                          fullWidth: 566.68,
-                          fullHeight: 99.93,
-                          aspectRatio: 5.67077
-                        }}
-                      />
-                    ) : null}
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__ouoUs, {
-                        [sty.imgkelvinCeliacTest__ouoUSbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                        fullWidth: 587.58,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.879916
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__mkYm, {
-                        [sty.imgkelvinCmp__mkYmm5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinSodiumSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 81.34,
-                        aspectRatio: 6.966806
-                      }}
-                    />
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__iYcgn, {
-                      [sty.freeBoxkelvinCbc__iYcgnYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxkelvinCeliacTest__iYcgNbHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      ),
-                      [sty.freeBoxkelvinCmp__iYcgnm5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__iYcgnKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    {(
-                      hasVariant($state, "kelvinCbc", "kelvinCbc")
-                        ? true
-                        : false
-                    ) ? (
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__ydQrc, {
-                          [sty.imgkelvinCbc__ydQrcYbE4M]: hasVariant(
-                            $state,
-                            "kelvinCbc",
-                            "kelvinCbc"
-                          ),
-                          [sty.imgtabs_kelvinPcp__ydQrcKbzSz]: hasVariant(
-                            $state,
-                            "tabs",
-                            "kelvinPcp"
-                          )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"420px"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                          fullWidth: 566.68,
-                          fullHeight: 99.93,
-                          aspectRatio: 5.67077
-                        }}
-                      />
-                    ) : null}
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__vxAwa, {
-                        [sty.imgkelvinCeliacTest__vxAwAbHtw8]: hasVariant(
-                          $state,
-                          "kelvinCeliacTest",
-                          "kelvinCeliacTest"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
-                        fullWidth: 587.58,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.879916
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__guWCb, {
-                        [sty.imgkelvinCmp__guWCbM5CsG]: hasVariant(
-                          $state,
-                          "kelvinCmp",
-                          "kelvinCmp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinTotalBilirubinSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 81.34,
-                        aspectRatio: 6.966806
-                      }}
-                    />
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__kYqV5, {
-                      [sty.freeBoxkelvinCbc__kYqV5YbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__kYqV5KbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__vtXQ, {
-                        [sty.imgkelvinCbc__vtXQYbE4M]: hasVariant(
-                          $state,
-                          "kelvinCbc",
-                          "kelvinCbc"
-                        ),
-                        [sty.imgtabs_kelvinPcp__vtXQKbzSz]: hasVariant(
-                          $state,
-                          "tabs",
-                          "kelvinPcp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinHemoglobinSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.67077
-                      }}
-                    />
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__aGx0I, {
-                      [sty.freeBoxkelvinCbc__aGx0IYbE4M]: hasVariant(
-                        $state,
-                        "kelvinCbc",
-                        "kelvinCbc"
-                      ),
-                      [sty.freeBoxtabs_kelvinPcp__aGx0IKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__uy21Z, {
-                        [sty.imgkelvinCbc__uy21ZYbE4M]: hasVariant(
-                          $state,
-                          "kelvinCbc",
-                          "kelvinCbc"
-                        ),
-                        [sty.imgtabs_kelvinPcp__uy21ZKbzSz]: hasVariant(
-                          $state,
-                          "tabs",
-                          "kelvinPcp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinHematocritSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.67077
-                      }}
-                    />
-                  </div>
-                ) : null}
+                </div>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox___0C752, {
-                    [sty.freeBoxivanCbc___0C752PiQEx]: hasVariant(
+                  className={classNames(projectcss.all, sty.freeBox___1RW64, {
+                    [sty.freeBoxivanCbc___1RW64PiQEx]: hasVariant(
                       $state,
                       "ivanCbc",
                       "ivanCbc"
                     ),
-                    [sty.freeBoxkelvinCbc___0C752YbE4M]: hasVariant(
+                    [sty.freeBoxkelvinCbc___1RW64YbE4M]: hasVariant(
                       $state,
                       "kelvinCbc",
                       "kelvinCbc"
-                    ),
-                    [sty.freeBoxkelvinCeliacTest___0C752BHtw8]: hasVariant(
-                      $state,
-                      "kelvinCeliacTest",
-                      "kelvinCeliacTest"
-                    ),
-                    [sty.freeBoxkelvinCmp___0C752M5CsG]: hasVariant(
-                      $state,
-                      "kelvinCmp",
-                      "kelvinCmp"
-                    ),
-                    [sty.freeBoxshareseCbc___0C752TjzU]: hasVariant(
-                      $state,
-                      "shareseCbc",
-                      "shareseCbc"
-                    ),
-                    [sty.freeBoxshareseCeliacTest___0C752YMclE]: hasVariant(
-                      $state,
-                      "shareseCeliacTest",
-                      "shareseCeliacTest"
                     )
                   })}
                 >
-                  {(
-                    hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
-                  ) ? (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__cavhm, {
+                      [sty.freeBoxshareseCbc__cavhmtjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__cqxzP
+                      )}
+                    >
+                      {"Result"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__eGic6, {
+                      [sty.freeBoxivanCbc__eGic6PiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.freeBoxkelvinCbc__eGic6YbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__eGic6BHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxkelvinCmp__eGic6M5CsG]: hasVariant(
+                        $state,
+                        "kelvinCmp",
+                        "kelvinCmp"
+                      ),
+                      [sty.freeBoxshareseCbc__eGic6TjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__eGic6YMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      ),
+                      [sty.freeBoxtabs_kelvinPcp__eGic6KbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    })}
+                  >
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__h0NPa, {
-                        [sty.imgkelvinCbc__h0NPaYbE4M]: hasVariant(
+                      className={classNames(sty.img__k1O, {
+                        [sty.imgkelvinCeliacTest__k1ObHtw8]: hasVariant(
                           $state,
-                          "kelvinCbc",
-                          "kelvinCbc"
-                        ),
-                        [sty.imgtabs_kelvinPcp__h0NPaKbzSz]: hasVariant(
-                          $state,
-                          "tabs",
-                          "kelvinPcp"
+                          "kelvinCeliacTest",
+                          "kelvinCeliacTest"
                         )
                       })}
                       displayHeight={"auto"}
@@ -4147,100 +2114,140 @@ function PlasmicClueModal__RenderFunc(props: {
                       displayWidth={"80%"}
                       loading={"lazy"}
                       src={{
-                        src: "/plasmic/escape_room/images/kelvinPlateletsSvg.svg",
-                        fullWidth: 566.68,
+                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                        fullWidth: 587.58,
                         fullHeight: 99.93,
-                        aspectRatio: 5.67077
+                        aspectRatio: 5.879916
                       }}
                     />
-                  ) : null}
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__phfmw, {
-                      [sty.imgkelvinCeliacTest__phfmwbHtw8]: hasVariant(
-                        $state,
-                        "kelvinCeliacTest",
-                        "kelvinCeliacTest"
-                      )
-                    })}
-                    displayHeight={"auto"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"80%"}
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/escape_room/images/kelvinIgATTgSvg.svg",
-                      fullWidth: 584.47,
-                      fullHeight: 99.93,
-                      aspectRatio: 5.848794
-                    }}
-                  />
 
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__c3SVg, {
-                      [sty.imgkelvinCmp__c3SVgM5CsG]: hasVariant(
-                        $state,
-                        "kelvinCmp",
-                        "kelvinCmp"
-                      )
-                    })}
-                    displayHeight={"auto"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"80%"}
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/escape_room/images/kelvinTotalProteinSvg.svg",
-                      fullWidth: 566.68,
-                      fullHeight: 81.34,
-                      aspectRatio: 6.966806
-                    }}
-                  />
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img___3FNuf, {
+                        [sty.imgkelvinCmp___3FNufM5CsG]: hasVariant(
+                          $state,
+                          "kelvinCmp",
+                          "kelvinCmp"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"80%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/kelvinAlbuminSvg.svg",
+                        fullWidth: 566.68,
+                        fullHeight: 81.34,
+                        aspectRatio: 6.966806
+                      }}
+                    />
 
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__o3L3S, {
-                      [sty.imgshareseCbc__o3L3STjzU]: hasVariant(
-                        $state,
-                        "shareseCbc",
-                        "shareseCbc"
-                      )
-                    })}
-                    displayHeight={"auto"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"80%"}
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/escape_room/images/sharesePlateletsSvg.svg",
-                      fullWidth: 566.68,
-                      fullHeight: 91.79,
-                      aspectRatio: 6.173657
-                    }}
-                  />
-
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__gym4,
-                      {
-                        [sty.textshareseCeliacTest__gym4YMclE]: hasVariant(
+                    {(
+                      hasVariant($state, "shareseCbc", "shareseCbc")
+                        ? true
+                        : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                    ) ? (
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__n3PVb, {
+                          [sty.imgkelvinCbc__n3PVbYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.imgshareseCbc__n3PVbtjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgtabs_kelvinPcp__n3PVbKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? "80%"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "80%"
+                              : "420px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/shareseWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 90.19,
+                                aspectRatio: 6.28318
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 99.93,
+                                aspectRatio: 5.67077
+                              }
+                        }
+                      />
+                    ) : null}
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img___7Zy4E, {
+                        [sty.imgshareseCeliacTest___7Zy4EYMclE]: hasVariant(
                           $state,
                           "shareseCeliacTest",
                           "shareseCeliacTest"
                         )
-                      }
-                    )}
-                  >
-                    {"Negative"}
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"80%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/shareseTotalIgASvg.svg",
+                        fullWidth: 566.68,
+                        fullHeight: 91.79,
+                        aspectRatio: 6.173657
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__eqSw, {
+                        [sty.imgivanCbc__eqSwPiQEx]: hasVariant(
+                          $state,
+                          "ivanCbc",
+                          "ivanCbc"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"50%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                        fullWidth: 566.68,
+                        fullHeight: 91.79,
+                        aspectRatio: 6.173657
+                      }}
+                    />
                   </div>
                   {(
                     hasVariant($state, "ivanCbc", "ivanCbc")
@@ -4257,28 +2264,2153 @@ function PlasmicClueModal__RenderFunc(props: {
                             ? true
                             : false
                   ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__sOPoX,
+                        {
+                          [sty.freeBoxivanCbc__sOPoXPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc__sOPoXYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__sOPoXbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__sOPoXm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxshareseCbc__sOPoXtjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.freeBoxshareseCeliacTest__sOPoXyMclE]:
+                            hasVariant(
+                              $state,
+                              "shareseCeliacTest",
+                              "shareseCeliacTest"
+                            ),
+                          [sty.freeBoxtabs_kelvinPcp__sOPoXKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__xICd, {
+                            [sty.imgkelvinCbc__xICdYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__xICdKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__ivbeX, {
+                          [sty.imgkelvinCeliacTest__ivbeXbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__ol3S3, {
+                          [sty.imgkelvinCmp__ol3S3M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinAlkalinePhosphataseSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__mYvPl, {
+                          [sty.imgivanCbc__mYvPlPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__mYvPlm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__mYvPltjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__mYvPlyMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "300px"
+                            : hasVariant(
+                                  $state,
+                                  "shareseCeliacTest",
+                                  "shareseCeliacTest"
+                                )
+                              ? "80%"
+                              : hasVariant($state, "shareseCbc", "shareseCbc")
+                                ? "80%"
+                                : "auto"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanNeutrophilsSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : hasVariant(
+                                  $state,
+                                  "shareseCeliacTest",
+                                  "shareseCeliacTest"
+                                )
+                              ? {
+                                  src: "/plasmic/escape_room/images/shareseIgATTgSvg.svg",
+                                  fullWidth: 586.89,
+                                  fullHeight: 91.79,
+                                  aspectRatio: 6.393834
+                                }
+                              : hasVariant($state, "shareseCbc", "shareseCbc")
+                                ? {
+                                    src: "/plasmic/escape_room/images/shareseHemoglobinSvg.svg",
+                                    fullWidth: 566.68,
+                                    fullHeight: 92.03,
+                                    aspectRatio: 6.157557
+                                  }
+                                : undefined
+                        }
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__jaaxv, {
+                          [sty.imgivanCbc__jaaxvPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__jaaxvm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__jaaxvtjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__jaaxvyMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanNeutrophilsSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "shareseCbc", "shareseCbc")
+                        ? true
+                        : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? true
+                          : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__vLxNi,
+                        {
+                          [sty.freeBoxivanCbc__vLxNiPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc__vLxNiYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__vLxNIbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__vLxNim5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxshareseCbc__vLxNitjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__vLxNiKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__kLGe3, {
+                            [sty.imgkelvinCbc__kLGe3YbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__kLGe3KbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img___6LsfF, {
+                          [sty.imgkelvinCeliacTest___6LsfFbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__b7Wk6, {
+                          [sty.imgkelvinCmp__b7Wk6M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinAltSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__nloyI, {
+                          [sty.imgivanCbc__nloyIPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__nloyIm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__nloyItjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? "80%"
+                            : "auto"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/shareseHemtaocritSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 92.59,
+                                aspectRatio: 6.120315
+                              }
+                            : undefined
+                        }
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__nNwxi, {
+                          [sty.imgivanCbc__nNwxiPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__nNwxiM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__nNwxiTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__nNwxiYMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanLymphocytesSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                        ? true
+                        : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__uu7OD,
+                        {
+                          [sty.freeBoxivanCbc__uu7ODPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc__uu7ODYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__uu7ODbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__uu7ODm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__uu7ODKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__xys80, {
+                            [sty.imgkelvinCbc__xys80YbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__xys80KbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__tybPs, {
+                          [sty.imgkelvinCeliacTest__tybPSbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__pN3Zb, {
+                          [sty.imgkelvinCmp__pN3ZbM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinAstSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__kdiGf, {
+                          [sty.imgivanCbc__kdiGfPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__kdiGfM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__kdiGfTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__kdiGfYMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanMonocytesSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                        ? true
+                        : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__a8HqH,
+                        {
+                          [sty.freeBoxivanCbc__a8HqHPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc__a8HqHYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__a8HqHbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__a8HqHm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__a8HqHKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img___6E8K3, {
+                            [sty.imgkelvinCbc___6E8K3YbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp___6E8K3KbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img___5QssD, {
+                          [sty.imgkelvinCeliacTest___5QssDbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__s7DdG, {
+                          [sty.imgkelvinCmp__s7DdGm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinBunSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__exOp, {
+                          [sty.imgivanCbc__exOpPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__exOpM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__exOpTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__exOpYMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanEosinophilsSvg.svg",
+                                fullWidth: 586.89,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.393834
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                        ? true
+                        : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__oc5Ju,
+                        {
+                          [sty.freeBoxivanCbc__oc5JuPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc__oc5JuYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__oc5JubHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__oc5JuM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__oc5JuKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__xyDzI, {
+                            [sty.imgkelvinCbc__xyDzIYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__xyDzIKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__dprIh, {
+                          [sty.imgkelvinCeliacTest__dprIhbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__jQ1R, {
+                          [sty.imgkelvinCmp__jQ1RM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinCalciumSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__qku21, {
+                          [sty.imgivanCbc__qku21PiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__qku21M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__qku21TjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__qku21YMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanBasophilsSvg.svg",
+                                fullWidth: 586.89,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.393834
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                        ? true
+                        : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___3WKUa,
+                        {
+                          [sty.freeBoxivanCbc___3WKUaPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc___3WKUaYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest___3WKUabHtw8]:
+                            hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                          [sty.freeBoxkelvinCmp___3WKUaM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp___3WKUaKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img___7V2Av, {
+                            [sty.imgkelvinCbc___7V2AvYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp___7V2AvKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__h9Wq8, {
+                          [sty.imgkelvinCeliacTest__h9Wq8BHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__j6PO, {
+                          [sty.imgkelvinCmp__j6POm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinChlorideSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__m2Wg8, {
+                          [sty.imgivanCbc__m2Wg8PiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__m2Wg8M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__m2Wg8TjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__m2Wg8YMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanHemoglobinSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                        ? true
+                        : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__xIVlV,
+                        {
+                          [sty.freeBoxivanCbc__xIVlVPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc__xIVlVYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__xIVlVbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__xIVlVm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__xIVlVKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__atZmY, {
+                            [sty.imgkelvinCbc__atZmYYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__atZmYKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__cxPv1, {
+                          [sty.imgkelvinCeliacTest__cxPv1BHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__l4X9B, {
+                          [sty.imgkelvinCmp__l4X9Bm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinCo2Svg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__orXjb, {
+                          [sty.imgivanCbc__orXjbPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__orXjbm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__orXjbtjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__orXjbyMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanHematocritSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__fxNvB,
+                        {
+                          [sty.freeBoxkelvinCbc__fxNvBYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__fxNvBbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__fxNvBm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__fxNvBKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__ytnk, {
+                            [sty.imgkelvinCbc__ytnkYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__ytnkKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__wTtRk, {
+                          [sty.imgkelvinCeliacTest__wTtRKbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__pzonn, {
+                          [sty.imgkelvinCmp__pzonnm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinCreatinineSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__o6Bcp,
+                        {
+                          [sty.freeBoxkelvinCbc__o6BcpYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__o6BcPbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__o6Bcpm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__o6BcpKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__lBcJ, {
+                            [sty.imgkelvinCbc__lBcJYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__lBcJKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__jlTuU, {
+                          [sty.imgkelvinCeliacTest__jlTuUbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__aWjDu, {
+                          [sty.imgkelvinCmp__aWjDum5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinGlucoseSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__yRtse,
+                        {
+                          [sty.freeBoxkelvinCbc__yRtseYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__yRtsEbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__yRtsem5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__yRtseKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__jZHsn, {
+                            [sty.imgkelvinCbc__jZHsnYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__jZHsnKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__ajIhM, {
+                          [sty.imgkelvinCeliacTest__ajIhMbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__dyFm, {
+                          [sty.imgkelvinCmp__dyFmm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinPotassiumSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__vKv5A,
+                        {
+                          [sty.freeBoxkelvinCbc__vKv5AYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__vKv5AbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__vKv5Am5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__vKv5AKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img___4Cd6A, {
+                            [sty.imgkelvinCbc___4Cd6AYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp___4Cd6AKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__ouoUs, {
+                          [sty.imgkelvinCeliacTest__ouoUSbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__mkYm, {
+                          [sty.imgkelvinCmp__mkYmm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinSodiumSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__iYcgn,
+                        {
+                          [sty.freeBoxkelvinCbc__iYcgnYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__iYcgNbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__iYcgnm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__iYcgnKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__ydQrc, {
+                            [sty.imgkelvinCbc__ydQrcYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__ydQrcKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__vxAwa, {
+                          [sty.imgkelvinCeliacTest__vxAwAbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__guWCb, {
+                          [sty.imgkelvinCmp__guWCbM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalBilirubinSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__kYqV5,
+                        {
+                          [sty.freeBoxkelvinCbc__kYqV5YbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__kYqV5KbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__vtXQ, {
+                          [sty.imgkelvinCbc__vtXQYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.imgtabs_kelvinPcp__vtXQKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinHemoglobinSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__aGx0I,
+                        {
+                          [sty.freeBoxkelvinCbc__aGx0IYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__aGx0IKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__uy21Z, {
+                          [sty.imgkelvinCbc__uy21ZYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.imgtabs_kelvinPcp__uy21ZKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinHematocritSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___0C752, {
+                      [sty.freeBoxivanCbc___0C752PiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.freeBoxkelvinCbc___0C752YbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest___0C752BHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxkelvinCmp___0C752M5CsG]: hasVariant(
+                        $state,
+                        "kelvinCmp",
+                        "kelvinCmp"
+                      ),
+                      [sty.freeBoxshareseCbc___0C752TjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      ),
+                      [sty.freeBoxshareseCeliacTest___0C752YMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    {(
+                      hasVariant($state, "kelvinCbc", "kelvinCbc")
+                        ? true
+                        : false
+                    ) ? (
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__h0NPa, {
+                          [sty.imgkelvinCbc__h0NPaYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.imgtabs_kelvinPcp__h0NPaKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinPlateletsSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    ) : null}
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__m0NwN, {
-                        [sty.imgivanCbc__m0NwNPiQEx]: hasVariant(
+                      className={classNames(sty.img__phfmw, {
+                        [sty.imgkelvinCeliacTest__phfmwbHtw8]: hasVariant(
                           $state,
-                          "ivanCbc",
-                          "ivanCbc"
-                        ),
-                        [sty.imgkelvinCmp__m0NwNm5CsG]: hasVariant(
+                          "kelvinCeliacTest",
+                          "kelvinCeliacTest"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"80%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/kelvinIgATTgSvg.svg",
+                        fullWidth: 584.47,
+                        fullHeight: 99.93,
+                        aspectRatio: 5.848794
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__c3SVg, {
+                        [sty.imgkelvinCmp__c3SVgM5CsG]: hasVariant(
                           $state,
                           "kelvinCmp",
                           "kelvinCmp"
-                        ),
-                        [sty.imgshareseCbc__m0NwNtjzU]: hasVariant(
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"80%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/kelvinTotalProteinSvg.svg",
+                        fullWidth: 566.68,
+                        fullHeight: 81.34,
+                        aspectRatio: 6.966806
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__o3L3S, {
+                        [sty.imgshareseCbc__o3L3STjzU]: hasVariant(
                           $state,
                           "shareseCbc",
                           "shareseCbc"
-                        ),
-                        [sty.imgshareseCeliacTest__m0NwNyMclE]: hasVariant(
-                          $state,
-                          "shareseCeliacTest",
-                          "shareseCeliacTest"
                         )
                       })}
                       displayHeight={"auto"}
@@ -4286,435 +4418,623 @@ function PlasmicClueModal__RenderFunc(props: {
                       displayMaxWidth={"100%"}
                       displayMinHeight={"0"}
                       displayMinWidth={"0"}
-                      displayWidth={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? "50%"
-                          : "300px"
-                      }
+                      displayWidth={"80%"}
                       loading={"lazy"}
-                      src={
-                        hasVariant($state, "ivanCbc", "ivanCbc")
-                          ? {
-                              src: "/plasmic/escape_room/images/ivanPlateletsSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                          : {
-                              src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
-                              fullWidth: 566.68,
-                              fullHeight: 91.79,
-                              aspectRatio: 6.173657
-                            }
-                      }
+                      src={{
+                        src: "/plasmic/escape_room/images/sharesePlateletsSvg.svg",
+                        fullWidth: 566.68,
+                        fullHeight: 91.79,
+                        aspectRatio: 6.173657
+                      }}
                     />
-                  ) : null}
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__gym4,
+                        {
+                          [sty.textshareseCeliacTest__gym4YMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        }
+                      )}
+                    >
+                      {"Negative"}
+                    </div>
+                    {(
+                      hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? true
+                        : hasVariant(
+                              $state,
+                              "shareseCeliacTest",
+                              "shareseCeliacTest"
+                            )
+                          ? true
+                          : hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? true
+                            : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                              ? true
+                              : false
+                    ) ? (
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__m0NwN, {
+                          [sty.imgivanCbc__m0NwNPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__m0NwNm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__m0NwNtjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__m0NwNyMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanPlateletsSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    ) : null}
+                  </div>
                 </div>
               </div>
             </div>
+            {(hasVariant($state, "tabs", "kelvinPcp") ? true : false) ? (
+              <div
+                className={classNames(projectcss.all, sty.freeBox__vcD9P, {
+                  [sty.freeBoxtabs_kelvinPcp__vcD9PKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                })}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__vd5Hw)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__dbTfu)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___7068C
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__rFpLg
+                        )}
+                      >
+                        {"Lab Test"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___3Gh95
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__eUrJu
+                        )}
+                      >
+                        {"White blood cell count\r(x10\u2079/L)"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__olOv)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__kQliv
+                        )}
+                      >
+                        {"Hemoglobin (g/dL)"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___8Ty0I,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp___8Ty0IKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__xuaM
+                        )}
+                      >
+                        {"Hematocrit (%)"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__qoJqj,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp__qoJqjKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__n0Fol
+                        )}
+                      >
+                        {"Platelets (x10\u2079/L)"}
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__zk5, {
+                      [sty.freeBoxtabs_kelvinPcp__zk5KbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__yRGu)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___8XPs
+                        )}
+                      >
+                        {"Lab Test"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__foqmt)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__tEu3X
+                        )}
+                      >
+                        {"39 mg/dl"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__mYtfD)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__xOcp
+                        )}
+                      >
+                        {"2.7 U/mL"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__rBjP, {
+                        [sty.freeBoxtabs_kelvinPcp__rBjPKbzSz]: hasVariant(
+                          $state,
+                          "tabs",
+                          "kelvinPcp"
+                        )
+                      })}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__xkDa5
+                        )}
+                      >
+                        {"2.7 U/mL"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__mMA, {
+                        [sty.freeBoxtabs_kelvinPcp__mMAKbzSz]: hasVariant(
+                          $state,
+                          "tabs",
+                          "kelvinPcp"
+                        )
+                      })}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___136F
+                        )}
+                      >
+                        {"2.7 U/mL"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___8MEhN,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp___8MEhNKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__fln1D
+                        )}
+                      >
+                        {"2.7 U/mL"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__ukjul,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp__ukjulKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___05thO
+                        )}
+                      >
+                        {"2.7 U/mL"}
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__iS89D)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__s97Lf)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__hlRqt
+                        )}
+                      >
+                        {"Result"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__x0Gmh,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp__x0GmhKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__gxtLm, {
+                          [sty.imgtabs_kelvinPcp__gxtLmKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__rtLy, {
+                        [sty.freeBoxtabs_kelvinPcp__rtLyKbzSz]: hasVariant(
+                          $state,
+                          "tabs",
+                          "kelvinPcp"
+                        )
+                      })}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img___2Qe4F, {
+                          [sty.imgtabs_kelvinPcp___2Qe4FKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinHemoglobinSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___6QvfT,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp___6QvfTKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__bwiA7, {
+                          [sty.imgtabs_kelvinPcp__bwiA7KbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinHematocritSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__y3XjD)}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__xmybC, {
+                          [sty.imgtabs_kelvinPcp__xmybCKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinPlateletsSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : null}
           </div>
-          {(hasVariant($state, "tabs", "kelvinPcp") ? true : false) ? (
-            <div
-              className={classNames(projectcss.all, sty.freeBox__vcD9P, {
-                [sty.freeBoxtabs_kelvinPcp__vcD9PKbzSz]: hasVariant(
-                  $state,
-                  "tabs",
-                  "kelvinPcp"
-                )
-              })}
-            >
-              <div className={classNames(projectcss.all, sty.freeBox__vd5Hw)}>
-                <div className={classNames(projectcss.all, sty.freeBox__dbTfu)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___7068C)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__rFpLg
-                      )}
-                    >
-                      {"Lab Test"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___3Gh95)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__eUrJu
-                      )}
-                    >
-                      {"White blood cell count\r(x10\u2079/L)"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__olOv)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__kQliv
-                      )}
-                    >
-                      {"Hemoglobin (g/dL)"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___8Ty0I, {
-                      [sty.freeBoxtabs_kelvinPcp___8Ty0IKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__xuaM
-                      )}
-                    >
-                      {"Hematocrit (%)"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__qoJqj, {
-                      [sty.freeBoxtabs_kelvinPcp__qoJqjKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__n0Fol
-                      )}
-                    >
-                      {"Platelets (x10\u2079/L)"}
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__zk5, {
-                    [sty.freeBoxtabs_kelvinPcp__zk5KbzSz]: hasVariant(
-                      $state,
-                      "tabs",
-                      "kelvinPcp"
-                    )
-                  })}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__yRGu)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___8XPs
-                      )}
-                    >
-                      {"Lab Test"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__foqmt)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__tEu3X
-                      )}
-                    >
-                      {"39 mg/dl"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__mYtfD)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__xOcp
-                      )}
-                    >
-                      {"2.7 U/mL"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__rBjP, {
-                      [sty.freeBoxtabs_kelvinPcp__rBjPKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__xkDa5
-                      )}
-                    >
-                      {"2.7 U/mL"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__mMA, {
-                      [sty.freeBoxtabs_kelvinPcp__mMAKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___136F
-                      )}
-                    >
-                      {"2.7 U/mL"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___8MEhN, {
-                      [sty.freeBoxtabs_kelvinPcp___8MEhNKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__fln1D
-                      )}
-                    >
-                      {"2.7 U/mL"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ukjul, {
-                      [sty.freeBoxtabs_kelvinPcp__ukjulKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___05thO
-                      )}
-                    >
-                      {"2.7 U/mL"}
-                    </div>
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__iS89D)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__s97Lf)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__hlRqt
-                      )}
-                    >
-                      {"Result"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__x0Gmh, {
-                      [sty.freeBoxtabs_kelvinPcp__x0GmhKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__gxtLm, {
-                        [sty.imgtabs_kelvinPcp__gxtLmKbzSz]: hasVariant(
-                          $state,
-                          "tabs",
-                          "kelvinPcp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"420px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.67077
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__rtLy, {
-                      [sty.freeBoxtabs_kelvinPcp__rtLyKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img___2Qe4F, {
-                        [sty.imgtabs_kelvinPcp___2Qe4FKbzSz]: hasVariant(
-                          $state,
-                          "tabs",
-                          "kelvinPcp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinHemoglobinSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.67077
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___6QvfT, {
-                      [sty.freeBoxtabs_kelvinPcp___6QvfTKbzSz]: hasVariant(
-                        $state,
-                        "tabs",
-                        "kelvinPcp"
-                      )
-                    })}
-                  >
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__bwiA7, {
-                        [sty.imgtabs_kelvinPcp__bwiA7KbzSz]: hasVariant(
-                          $state,
-                          "tabs",
-                          "kelvinPcp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinHematocritSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.67077
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__y3XjD)}
-                  >
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__xmybC, {
-                        [sty.imgtabs_kelvinPcp__xmybCKbzSz]: hasVariant(
-                          $state,
-                          "tabs",
-                          "kelvinPcp"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"80%"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/escape_room/images/kelvinPlateletsSvg.svg",
-                        fullWidth: 566.68,
-                        fullHeight: 99.93,
-                        aspectRatio: 5.67077
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : null}
         </div>
-      </div>
-      <div
-        className={classNames(projectcss.all, sty.freeBox___45HtZ, {
-          [sty.freeBoxtabs_kelvinPcp___45HtZKbzSz]: hasVariant(
-            $state,
-            "tabs",
-            "kelvinPcp"
-          )
-        })}
-      >
         <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__qj9S2
-          )}
+          className={classNames(projectcss.all, sty.freeBox___45HtZ, {
+            [sty.freeBoxtabs_kelvinPcp___45HtZKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
         >
-          {"Return to the exam room"}
-        </div>
-        <IconIcon
-          data-plasmic-name={"svg"}
-          data-plasmic-override={overrides.svg}
-          className={classNames(projectcss.all, sty.svg)}
-          role={"img"}
-        />
-      </div>
-      <div className={classNames(projectcss.all, sty.freeBox__bxlZf)}>
-        <div className={classNames(projectcss.all, sty.freeBox___3Ky00)}>
           <div
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.text___3U9VK
+              sty.text__qj9S2
             )}
           >
-            {"Review Question"}
+            {"Return to the exam room"}
+          </div>
+          <IconIcon
+            className={classNames(projectcss.all, sty.svg__sfDyl)}
+            role={"img"}
+          />
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__bxlZf, {
+            [sty.freeBoxkelvinCmp_kelvinCbc_kelvinCeliacTest__bxlZfM5CsGYbE4MBHtw8]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp")
+          })}
+        >
+          <div className={classNames(projectcss.all, sty.freeBox___3Ky00)}>
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___3U9VK
+              )}
+            >
+              {"Review Question"}
+            </div>
+          </div>
+          <ProgressBar
+            data-plasmic-name={"progressBar"}
+            data-plasmic-override={overrides.progressBar}
+            className={classNames("__wab_instance", sty.progressBar, {
+              [sty.progressBarkelvinCeliacTest]: hasVariant(
+                $state,
+                "kelvinCeliacTest",
+                "kelvinCeliacTest"
+              )
+            })}
+          />
+        </div>
+      </div>
+      <div
+        data-plasmic-name={"patientChartClueModal"}
+        data-plasmic-override={overrides.patientChartClueModal}
+        className={classNames(projectcss.all, sty.patientChartClueModal, {
+          [sty.patientChartClueModalkelvinCmp]: hasVariant(
+            $state,
+            "kelvinCmp",
+            "kelvinCmp"
+          ),
+          [sty.patientChartClueModalkelvinCmp_kelvinCbc_kelvinCeliacTest]:
+            hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+            hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+            hasVariant($state, "kelvinCmp", "kelvinCmp"),
+          [sty.patientChartClueModalkelvinCmp_kelvinCeliacTest]:
+            hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+            hasVariant($state, "kelvinCmp", "kelvinCmp"),
+          [sty.patientChartClueModalshareseCbc]: hasVariant(
+            $state,
+            "shareseCbc",
+            "shareseCbc"
+          )
+        })}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox__tLr2M)}>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__iiM5N
+            )}
+          >
+            {"Your clue is:"}
+          </div>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__mGez7
+            )}
+          >
+            {"Kelvin's Patient Chart"}
           </div>
         </div>
-        <ProgressBar
-          data-plasmic-name={"progressBar"}
-          data-plasmic-override={overrides.progressBar}
-          className={classNames("__wab_instance", sty.progressBar)}
+        <div
+          className={classNames(projectcss.all, sty.freeBox__eoqxj, {
+            [sty.freeBoxtabs_kelvinPcp__eoqxjKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text___0UnQg
+            )}
+          >
+            {"Return to the exam room"}
+          </div>
+          <IconIcon
+            className={classNames(projectcss.all, sty.svg__jdOtp)}
+            role={"img"}
+          />
+        </div>
+        <ClueTabbedContainer
+          data-plasmic-name={"clueTabbedContainer"}
+          data-plasmic-override={overrides.clueTabbedContainer}
+          className={classNames("__wab_instance", sty.clueTabbedContainer)}
         />
       </div>
     </div>
@@ -4722,19 +5042,30 @@ function PlasmicClueModal__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "table", "svg", "progressBar"],
+  root: [
+    "root",
+    "tabbedClueModal",
+    "table",
+    "progressBar",
+    "patientChartClueModal",
+    "clueTabbedContainer"
+  ],
+  tabbedClueModal: ["tabbedClueModal", "table", "progressBar"],
   table: ["table"],
-  svg: ["svg"],
-  progressBar: ["progressBar"]
+  progressBar: ["progressBar"],
+  patientChartClueModal: ["patientChartClueModal", "clueTabbedContainer"],
+  clueTabbedContainer: ["clueTabbedContainer"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  tabbedClueModal: "div";
   table: "div";
-  svg: "svg";
   progressBar: typeof ProgressBar;
+  patientChartClueModal: "div";
+  clueTabbedContainer: typeof ClueTabbedContainer;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4799,9 +5130,11 @@ export const PlasmicClueModal = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    tabbedClueModal: makeNodeComponent("tabbedClueModal"),
     table: makeNodeComponent("table"),
-    svg: makeNodeComponent("svg"),
     progressBar: makeNodeComponent("progressBar"),
+    patientChartClueModal: makeNodeComponent("patientChartClueModal"),
+    clueTabbedContainer: makeNodeComponent("clueTabbedContainer"),
 
     // Metadata about props expected for PlasmicClueModal
     internalVariantProps: PlasmicClueModal__VariantProps,
