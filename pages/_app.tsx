@@ -8,8 +8,8 @@ import Script from 'next/script';
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <PlasmicRootProvider Head={Head} Link={Link}>
-      {/* Google Analytics - Only load in MAIN environment */}
-      {process.env.NEXT_PUBLIC_ENV_NAME === 'MAIN' && (
+      {/* Google Analytics */}
+      {(
         <>
           <Script
             src="https://www.googletagmanager.com/gtag/js?id=G-P7JFBHBD1F"
