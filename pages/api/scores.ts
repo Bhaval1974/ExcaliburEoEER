@@ -90,6 +90,41 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 throw new Error(`Failed to save score: ${response.statusText}`);
             }
 
+            // Sort the sheet by score (column C) in descending order
+            const sortRequest = {
+                requests: [{
+                    sortRange: {
+                        range: {
+                            sheetId: 0, // Assuming first sheet
+                            startRowIndex: 0,
+                            startColumnIndex: 0,
+                            endColumnIndex: 3
+                        },
+                        sortSpecs: [{
+                            dimensionIndex: 2, // Column C (score)
+                            sortOrder: 'DESCENDING'
+                        }]
+                    }
+                }]
+            };
+
+            const sortResponse = await fetch(
+                `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}:batchUpdate`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken.token}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(sortRequest)
+                }
+            );
+
+            if (!sortResponse.ok) {
+                console.error('Failed to sort sheet:', sortResponse.statusText);
+                // Don't fail the entire request if sorting fails
+            }
+
             res.status(200).json({ message: 'Score saved successfully' });
         } else {
             res.setHeader('Allow', ['GET', 'POST']);
