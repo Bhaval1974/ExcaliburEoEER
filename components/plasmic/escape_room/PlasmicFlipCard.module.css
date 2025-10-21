@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+  background: var(--token-Eozza9wjGW1p);
+  transform: none;
+  backdrop-filter: blur(0px);
+  min-width: 0;
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 10px;
+}

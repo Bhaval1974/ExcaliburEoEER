@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 2" viewBox="0 0 61 61">
+  <rect width="60" height="60" x=".5" y=".5" fill="#fff" stroke="#a47764" stroke-miterlimit="10" rx="10" ry="10"/>
+  <circle cx="30.5" cy="30.5" r="16.02" fill="none" stroke="#a47764" stroke-miterlimit="10"/>
+  <path fill="#fff" d="M30.81 30.24a.726.726 0 0 0-1.05-.06l-8.58 8.17 9.5-7.07c.33-.25.39-.72.12-1.04Z"/>
+  <path fill="#fff" d="M31.17 31.11c.28-.3.23-.78-.1-1.02l-5.6-4.16 4.67 5.18c.27.3.75.31 1.03 0"/>
+  <g fill="#a47764">
+    <rect width=".36" height="2.38" x="30.32" y="17.43" rx=".18" ry=".18"/>
+    <rect width=".36" height="2.38" x="24.38" y="19.02" rx=".18" ry=".18" transform="rotate(-30 24.567 20.203)"/>
+    <rect width=".36" height="2.38" x="20.03" y="23.37" rx=".18" ry=".18" transform="rotate(-60 20.21 24.555)"/>
+    <rect width=".36" height="2.38" x="18.44" y="29.31" rx=".18" ry=".18" transform="rotate(-90 18.62 30.5)"/>
+    <rect width=".36" height="2.38" x="20.03" y="35.25" rx=".18" ry=".18" transform="rotate(-120 20.21 36.438)"/>
+    <rect width=".36" height="2.38" x="24.38" y="39.6" rx=".18" ry=".18" transform="rotate(-150 24.558 40.793)"/>
+    <rect width=".36" height="2.38" x="30.32" y="41.19" rx=".18" ry=".18" transform="rotate(180 30.5 42.385)"/>
+    <rect width=".36" height="2.38" x="36.26" y="39.6" rx=".18" ry=".18" transform="rotate(150 36.443 40.793)"/>
+    <rect width=".36" height="2.38" x="40.61" y="35.25" rx=".18" ry=".18" transform="rotate(120 40.792 36.445)"/>
+    <rect width=".36" height="2.38" x="42.2" y="29.31" rx=".18" ry=".18" transform="rotate(90 42.38 30.5)"/>
+    <rect width=".36" height="2.38" x="40.61" y="23.37" rx=".18" ry=".18" transform="rotate(60 40.792 24.554)"/>
+    <rect width=".36" height="2.38" x="36.26" y="19.02" rx=".18" ry=".18" transform="rotate(30 36.437 20.217)"/>
+  </g>
+  <circle cx="30.5" cy="30.5" r=".7" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width=".5"/>
+  <rect width="5.3" height="27.36" x="20.66" y="25.66" fill="#a47764" stroke="#a47764" stroke-miterlimit="10" rx=".52" ry=".52" transform="rotate(45 23.312 39.346)"/>
+  <rect width="1.63" height="13.42" x="19.86" y="35.27" fill="#fff" rx=".54" ry=".54" transform="rotate(45 20.67 41.982)"/>
+  <path fill="#fff" stroke="#a47764" stroke-miterlimit="10" d="m34.546 26.183 1.924 1.923-2.525 2.525-1.923-1.924zM48.44 10.47l-14.3 14.3c-.28.28-.34.67-.13.87l1.82 1.82c1.98 1.98 4.78-1.08 6.12-2.4 2.49-2.44 4.79-5.43 6.08-8.7.73-1.85 1.08-3.82.99-5.81-.01-.27-.34-.32-.57-.09Z"/>
+  <rect width=".99" height="1.83" x="31.45" y="32.24" fill="#fff" rx=".3" ry=".3" transform="rotate(-45 31.945 33.158)"/>
+  <rect width=".99" height="1.83" x="29.9" y="33.79" fill="#fff" rx=".3" ry=".3" transform="rotate(-45 30.397 34.71)"/>
+</svg>

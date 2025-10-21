@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 2" viewBox="0 0 61 61">
+  <rect width="60" height="60" x=".5" y=".5" fill="#fff" stroke="#a47764" stroke-miterlimit="10" rx="10" ry="10"/>
+  <ellipse cx="30.5" cy="30.5" fill="#a47764" rx="12.88" ry="16.59"/>
+  <path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" d="M37.48 40.11c-1.79 2.46-4.26 3.99-6.98 3.99-1.36 0-2.66-.38-3.84-1.07m13.62-10.6a17.5 17.5 0 0 1-.92 4.07"/>
+</svg>

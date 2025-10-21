@@ -1,0 +1,39 @@
+/* eslint-disable */
+/* tslint:disable */
+// @ts-nocheck
+/* prettier-ignore-start */
+import React from "react";
+import { classNames } from "@plasmicapp/react-web";
+
+export type Lock1SvgIconProps = React.ComponentProps<"svg"> & {
+  title?: string;
+};
+
+export function Lock1SvgIcon(props: Lock1SvgIconProps) {
+  const { className, style, title, ...restProps } = props;
+  return (
+    <svg
+      xmlns={"http://www.w3.org/2000/svg"}
+      data-name={"Layer 2"}
+      viewBox={"0 0 76.24 76.24"}
+      height={"1em"}
+      className={classNames("plasmic-default__svg", className)}
+      style={style}
+      {...restProps}
+    >
+      {title && <title>{title}</title>}
+
+      <circle cx={"38.12"} cy={"38.12"} r={"38.12"} fill={"#382f2c"}></circle>
+
+      <path
+        fill={"#fff"}
+        d={
+          "M50.78 32.47H47.9v-4.03c0-2.55-2.07-4.63-4.63-4.63h-10.3c-2.56 0-4.63 2.07-4.63 4.63v4.03h-2.88c-1.44 0-2.61 1.17-2.61 2.61v14.73c0 1.44 1.17 2.61 2.61 2.61h25.32c1.44 0 2.61-1.17 2.61-2.61V35.08c0-1.44-1.17-2.61-2.61-2.61M38.6 43.59v2.09H40v.96h-1.4v1.14h-.96v-4.19a3.26 3.26 0 0 1-2.79-3.22 3.26 3.26 0 0 1 6.52 0c0 1.64-1.21 2.98-2.79 3.22Zm7.01-11.12H30.63v-4.03c0-1.29 1.05-2.34 2.34-2.34h10.3c1.29 0 2.34 1.05 2.34 2.34z"
+        }
+      ></path>
+    </svg>
+  );
+}
+
+export default Lock1SvgIcon;
+/* prettier-ignore-end */

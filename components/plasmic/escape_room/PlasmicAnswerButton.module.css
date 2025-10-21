@@ -1,0 +1,119 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 3px;
+  cursor: pointer;
+  min-width: 0;
+}
+.freeBox__tFjs {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100%;
+  background: var(--token-4d2b8dnQq875);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  min-height: 75px;
+  flex-shrink: 0;
+  padding: 10px;
+}
+.freeBoxanswerState_correct__tFjSsJ5F {
+  background: var(--token-Eozza9wjGW1p);
+}
+.freeBoxanswerState_incorrect__tFjs2DjXg {
+  background: var(--token-vbOi9-1Zo0_Y);
+}
+.freeBoxstyle2_final__tFjs45Lf {
+  background: var(--token-B0KYi8EazF9b);
+}
+.freeBox__fE6X {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.freeBoxanswerState_correct__fE6XsJ5F {
+  background: none;
+}
+.freeBox__uIxQq {
+  display: flex;
+}
+.slotTargetChildren {
+  font-weight: 700;
+  font-size: 30pt;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+}
+.slotTargetChildrenanswerState_correct {
+  color: var(--token-A0PHvu8gKc_i);
+}
+.slotTargetChildrenanswerState_incorrect {
+  color: var(--token-A0PHvu8gKc_i);
+}
+.freeBox__djHnV {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  background: var(--token-VVyFY1Vg9kDN);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  min-height: 75px;
+  min-width: 0;
+  padding: 15px 30px;
+}
+.freeBoxselected__djHnVIfe6D {
+  background: var(--token-4d2b8dnQq875);
+}
+.freeBoxanswerState_correct__djHnVsJ5F {
+  background: var(--token-Eozza9wjGW1p);
+}
+.freeBoxanswerState_incorrect__djHnV2DjXg {
+  background: var(--token-vbOi9-1Zo0_Y);
+}
+.freeBoxstyle2_final__djHnV45Lf {
+  background: var(--token-7j032B0jYQJt);
+}
+.freeBoxstyle2_final_selected__djHnV45LfIfe6D {
+  background: var(--token-B0KYi8EazF9b);
+}
+.freeBox__th5Kh {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.freeBox__vgE1O {
+  display: flex;
+}
+.slotTargetSlot {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 20pt;
+}
+.slotTargetSlotanswerState_correct {
+  color: var(--token-A0PHvu8gKc_i);
+}
+.slotTargetSlotanswerState_incorrect {
+  color: var(--token-A0PHvu8gKc_i);
+}
