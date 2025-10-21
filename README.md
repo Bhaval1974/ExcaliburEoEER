@@ -1,5 +1,7 @@
 # Multiple Myeloma Escape Room
 
+> **Disclaimer**: This README was generated with AI assistance and may not be fully accurate. Please verify all technical details and implementation specifics independently.
+
 An interactive, gamified educational experience designed to teach healthcare professionals about multiple myeloma diagnosis, treatment, and the evolving role of bispecific T-cell antibodies (bsAbs) in patient care.
 
 ## Project Overview
