@@ -59,11 +59,13 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import RoomMap from "../../RoomMap"; // plasmic-import: QwShmI9xWLXM/component
 import Hotspot from "../../Hotspot"; // plasmic-import: Fhh6u1WI2G9i/component
 import InstructionBanner from "../../InstructionBanner"; // plasmic-import: XeE2UeZFWwVr/component
 import ReferencePanel from "../../ReferencePanel"; // plasmic-import: dm8P2fnSqnl1/component
 import QuestionModal from "../../QuestionModal"; // plasmic-import: k8q3s-VwBO0i/component
 import WrongAnswer from "../../WrongAnswer"; // plasmic-import: N85BHE1JruFS/component
+import FinalTest from "../../FinalTest"; // plasmic-import: hYHCVxAKLCEX/component
 import BottomToolbar from "../../BottomToolbar"; // plasmic-import: 2RFJUesBV3VF/component
 import ClueModal from "../../ClueModal"; // plasmic-import: 0lm5ubHxYbp_/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/projectModule
@@ -82,7 +84,6 @@ export type PlasmicExamRoomPcp__VariantMembers = {
     | "rm1Hs2"
     | "rm1Hs3"
     | "rm1Hs4"
-    | "kelvinDoor"
     | "rm2Hs1"
     | "rm2Hs2"
     | "rm2Hs3"
@@ -105,6 +106,12 @@ export type PlasmicExamRoomPcp__VariantMembers = {
     | "ivanPcp2"
     | "ivanPcp3"
     | "unnamedVariant";
+  room: "kelvin" | "sharese" | "ivan";
+  kelvinFinal:
+    | "kelvinDoorFour"
+    | "kelvinDoorThree"
+    | "kelvinDoorTwo"
+    | "kelvinDoorOne";
 };
 export type PlasmicExamRoomPcp__VariantsArgs = {
   modal?: SingleChoiceArg<
@@ -112,7 +119,6 @@ export type PlasmicExamRoomPcp__VariantsArgs = {
     | "rm1Hs2"
     | "rm1Hs3"
     | "rm1Hs4"
-    | "kelvinDoor"
     | "rm2Hs1"
     | "rm2Hs2"
     | "rm2Hs3"
@@ -136,10 +142,16 @@ export type PlasmicExamRoomPcp__VariantsArgs = {
     | "ivanPcp3"
     | "unnamedVariant"
   >;
+  room?: SingleChoiceArg<"kelvin" | "sharese" | "ivan">;
+  kelvinFinal?: SingleChoiceArg<
+    "kelvinDoorFour" | "kelvinDoorThree" | "kelvinDoorTwo" | "kelvinDoorOne"
+  >;
 };
 type VariantPropType = keyof PlasmicExamRoomPcp__VariantsArgs;
 export const PlasmicExamRoomPcp__VariantProps = new Array<VariantPropType>(
-  "modal"
+  "modal",
+  "room",
+  "kelvinFinal"
 );
 
 export type PlasmicExamRoomPcp__ArgsType = { questions?: any };
@@ -149,10 +161,12 @@ export const PlasmicExamRoomPcp__ArgProps = new Array<ArgPropType>("questions");
 export type PlasmicExamRoomPcp__OverridesType = {
   root?: Flex__<"div">;
   roomPlan?: Flex__<"div">;
+  roomMap?: Flex__<typeof RoomMap>;
   roomScene?: Flex__<"div">;
   kelvinTitleBanner?: Flex__<"div">;
   kelvinPcp?: Flex__<"div">;
   bookshelf6?: Flex__<"div">;
+  kf?: Flex__<typeof Hotspot>;
   sharesePcp?: Flex__<"div">;
   hotspot42?: Flex__<"div">;
   bookshelf5?: Flex__<"div">;
@@ -185,6 +199,7 @@ export type PlasmicExamRoomPcp__OverridesType = {
   sharese4?: Flex__<typeof QuestionModal>;
   bookshelf?: Flex__<typeof QuestionModal>;
   bed?: Flex__<typeof QuestionModal>;
+  kelvinModal?: Flex__<typeof FinalTest>;
   bottomToolbar?: Flex__<typeof BottomToolbar>;
   clueModal?: Flex__<typeof ClueModal>;
 };
@@ -196,7 +211,6 @@ export interface DefaultExamRoomPcpProps {
     | "rm1Hs2"
     | "rm1Hs3"
     | "rm1Hs4"
-    | "kelvinDoor"
     | "rm2Hs1"
     | "rm2Hs2"
     | "rm2Hs3"
@@ -219,6 +233,10 @@ export interface DefaultExamRoomPcpProps {
     | "ivanPcp2"
     | "ivanPcp3"
     | "unnamedVariant"
+  >;
+  room?: SingleChoiceArg<"kelvin" | "sharese" | "ivan">;
+  kelvinFinal?: SingleChoiceArg<
+    "kelvinDoorFour" | "kelvinDoorThree" | "kelvinDoorTwo" | "kelvinDoorOne"
   >;
   className?: string;
 }
@@ -772,6 +790,308 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "activeQuestionId",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "isQuestionOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "room",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.room
+      },
+      {
+        path: "computer.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "ivanPcp42.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "ivanPcp2.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "ivanPcp3.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "ivanPcp4.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "sharesePcp1.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "sharesePcp2.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "sharesePcp3.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "sharesePcp4.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "kelvinPcp1.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "kelvinPcp2.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "kelvinPcp3.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "kelvinPcp4.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "ivanBed.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "sharese1.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "sharese2.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "sharese3.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "diagram.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "sharese4.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "bookshelf.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "bed.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "computer.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "ivanPcp42.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "ivanPcp2.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "ivanPcp3.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "ivanPcp4.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sharesePcp1.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sharesePcp2.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sharesePcp3.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sharesePcp4.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "kelvinPcp1.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "kelvinPcp2.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "kelvinPcp3.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "kelvinPcp4.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "ivanBed.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sharese1.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sharese2.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sharese3.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "diagram.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sharese4.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "bookshelf.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "bed.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "kelvinFinal",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return (
+                {
+                  1: "kelvinDoorOne",
+                  2: "kelvinDoorTwo",
+                  3: "kelvinDoorThree",
+                  4: "kelvinDoorFour"
+                }[$state.kelvinStep] || "kelvinDoorOne"
+              );
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })() ?? $props.kelvinFinal
+      },
+      {
+        path: "kelvinStep",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 1
       }
     ],
     [$props, $ctx, $refs]
@@ -799,11 +1119,30 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
         styleTokensClassNames,
         sty.root,
         {
+          [sty.rootkelvinFinal_kelvinDoorFour]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorFour"
+          ),
+          [sty.rootkelvinFinal_kelvinDoorOne]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorOne"
+          ),
+          [sty.rootkelvinFinal_kelvinDoorThree]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorThree"
+          ),
+          [sty.rootkelvinFinal_kelvinDoorTwo]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorTwo"
+          ),
           [sty.rootmodal_ivanDoor]: hasVariant($state, "modal", "ivanDoor"),
           [sty.rootmodal_ivanPcp2]: hasVariant($state, "modal", "ivanPcp2"),
           [sty.rootmodal_ivanPcp3]: hasVariant($state, "modal", "ivanPcp3"),
           [sty.rootmodal_ivanPcp42]: hasVariant($state, "modal", "ivanPcp42"),
-          [sty.rootmodal_kelvinDoor]: hasVariant($state, "modal", "kelvinDoor"),
           [sty.rootmodal_kelvinPcp1]: hasVariant($state, "modal", "kelvinPcp1"),
           [sty.rootmodal_kelvinPcp2]: hasVariant($state, "modal", "kelvinPcp2"),
           [sty.rootmodal_kelvinPcp3]: hasVariant($state, "modal", "kelvinPcp3"),
@@ -845,7 +1184,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             $state,
             "modal",
             "unnamedVariant"
-          )
+          ),
+          [sty.rootroom_ivan]: hasVariant($state, "room", "ivan"),
+          [sty.rootroom_kelvin]: hasVariant($state, "room", "kelvin"),
+          [sty.rootroom_sharese]: hasVariant($state, "room", "sharese")
         }
       )}
     >
@@ -853,6 +1195,26 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
         data-plasmic-name={"roomPlan"}
         data-plasmic-override={overrides.roomPlan}
         className={classNames(projectcss.all, sty.roomPlan, {
+          [sty.roomPlankelvinFinal_kelvinDoorFour]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorFour"
+          ),
+          [sty.roomPlankelvinFinal_kelvinDoorOne]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorOne"
+          ),
+          [sty.roomPlankelvinFinal_kelvinDoorThree]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorThree"
+          ),
+          [sty.roomPlankelvinFinal_kelvinDoorTwo]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorTwo"
+          ),
           [sty.roomPlanmodal_ivanDoor]: hasVariant($state, "modal", "ivanDoor"),
           [sty.roomPlanmodal_ivanPcp2]: hasVariant($state, "modal", "ivanPcp2"),
           [sty.roomPlanmodal_ivanPcp3]: hasVariant($state, "modal", "ivanPcp3"),
@@ -860,11 +1222,6 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             $state,
             "modal",
             "ivanPcp42"
-          ),
-          [sty.roomPlanmodal_kelvinDoor]: hasVariant(
-            $state,
-            "modal",
-            "kelvinDoor"
           ),
           [sty.roomPlanmodal_kelvinPcp1]: hasVariant(
             $state,
@@ -919,10 +1276,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
       >
         <div
           className={classNames(projectcss.all, sty.freeBox__wSdKy, {
-            [sty.freeBoxmodal_kelvinDoor__wSdKy8FMxe]: hasVariant(
+            [sty.freeBoxkelvinFinal_kelvinDoorFour__wSdKyttTwu]: hasVariant(
               $state,
-              "modal",
-              "kelvinDoor"
+              "kelvinFinal",
+              "kelvinDoorFour"
+            ),
+            [sty.freeBoxkelvinFinal_kelvinDoorOne__wSdKy8FMxe]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorOne"
+            ),
+            [sty.freeBoxkelvinFinal_kelvinDoorThree__wSdKyfeDsf]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorThree"
+            ),
+            [sty.freeBoxkelvinFinal_kelvinDoorTwo__wSdKyUHd]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorTwo"
             ),
             [sty.freeBoxmodal_kelvinPcp1__wSdKyh2RA4]: hasVariant(
               $state,
@@ -931,21 +1303,134 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             )
           })}
         >
-          <PlasmicImg__
-            alt={""}
-            className={classNames(sty.img___9RZqI)}
-            displayHeight={"auto"}
-            displayMaxHeight={"none"}
-            displayMaxWidth={"500px"}
-            displayMinHeight={"0"}
-            displayMinWidth={"0"}
-            displayWidth={"auto"}
-            loading={"lazy"}
-            src={{
-              src: "/plasmic/escape_room/images/image7.svg",
-              fullWidth: 645.49,
-              fullHeight: 364.11,
-              aspectRatio: 1.772788
+          <RoomMap
+            data-plasmic-name={"roomMap"}
+            data-plasmic-override={overrides.roomMap}
+            active={
+              hasVariant($state, "room", "ivan")
+                ? "_3"
+                : hasVariant($state, "room", "sharese")
+                  ? "_2"
+                  : undefined
+            }
+            className={classNames("__wab_instance", sty.roomMap, {
+              [sty.roomMaproom_ivan]: hasVariant($state, "room", "ivan"),
+              [sty.roomMaproom_sharese]: hasVariant($state, "room", "sharese")
+            })}
+            onClickRoom={async event => {
+              const $steps = {};
+
+              $steps["updateRoom"] = true
+                ? (() => {
+                    const actionArgs = {
+                      vgroup: "room",
+                      operation: 0,
+                      value: "kelvin"
+                    };
+                    return (({ vgroup, value }) => {
+                      if (typeof value === "string") {
+                        value = [value];
+                      }
+
+                      $stateSet($state, vgroup, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateRoom"] != null &&
+                typeof $steps["updateRoom"] === "object" &&
+                typeof $steps["updateRoom"].then === "function"
+              ) {
+                $steps["updateRoom"] = await $steps["updateRoom"];
+              }
+            }}
+            onClickRoomTopLeft={async event => {
+              const $steps = {};
+
+              $steps["updateQ1Answer"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["q1Answer"]
+                      },
+                      operation: 0
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateQ1Answer"] != null &&
+                typeof $steps["updateQ1Answer"] === "object" &&
+                typeof $steps["updateQ1Answer"].then === "function"
+              ) {
+                $steps["updateQ1Answer"] = await $steps["updateQ1Answer"];
+              }
+            }}
+            onClickRoomTopMiddle={async event => {
+              const $steps = {};
+
+              $steps["updateRoom"] = true
+                ? (() => {
+                    const actionArgs = {
+                      vgroup: "room",
+                      operation: 0,
+                      value: "sharese"
+                    };
+                    return (({ vgroup, value }) => {
+                      if (typeof value === "string") {
+                        value = [value];
+                      }
+
+                      $stateSet($state, vgroup, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateRoom"] != null &&
+                typeof $steps["updateRoom"] === "object" &&
+                typeof $steps["updateRoom"].then === "function"
+              ) {
+                $steps["updateRoom"] = await $steps["updateRoom"];
+              }
+            }}
+            onClickRoomTopRight={async event => {
+              const $steps = {};
+
+              $steps["updateRoom"] = true
+                ? (() => {
+                    const actionArgs = {
+                      vgroup: "room",
+                      operation: 0,
+                      value: "ivan"
+                    };
+                    return (({ vgroup, value }) => {
+                      if (typeof value === "string") {
+                        value = [value];
+                      }
+
+                      $stateSet($state, vgroup, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateRoom"] != null &&
+                typeof $steps["updateRoom"] === "object" &&
+                typeof $steps["updateRoom"].then === "function"
+              ) {
+                $steps["updateRoom"] = await $steps["updateRoom"];
+              }
             }}
           />
         </div>
@@ -954,6 +1439,26 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
         data-plasmic-name={"roomScene"}
         data-plasmic-override={overrides.roomScene}
         className={classNames(projectcss.all, sty.roomScene, {
+          [sty.roomScenekelvinFinal_kelvinDoorFour]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorFour"
+          ),
+          [sty.roomScenekelvinFinal_kelvinDoorOne]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorOne"
+          ),
+          [sty.roomScenekelvinFinal_kelvinDoorThree]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorThree"
+          ),
+          [sty.roomScenekelvinFinal_kelvinDoorTwo]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorTwo"
+          ),
           [sty.roomScenemodal_ivanDoor]: hasVariant(
             $state,
             "modal",
@@ -973,11 +1478,6 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             $state,
             "modal",
             "ivanPcp42"
-          ),
-          [sty.roomScenemodal_kelvinDoor]: hasVariant(
-            $state,
-            "modal",
-            "kelvinDoor"
           ),
           [sty.roomScenemodal_kelvinPcp1]: hasVariant(
             $state,
@@ -1129,6 +1629,26 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           data-plasmic-name={"kelvinPcp"}
           data-plasmic-override={overrides.kelvinPcp}
           className={classNames(projectcss.all, sty.kelvinPcp, {
+            [sty.kelvinPcpkelvinFinal_kelvinDoorFour]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorFour"
+            ),
+            [sty.kelvinPcpkelvinFinal_kelvinDoorOne]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorOne"
+            ),
+            [sty.kelvinPcpkelvinFinal_kelvinDoorThree]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorThree"
+            ),
+            [sty.kelvinPcpkelvinFinal_kelvinDoorTwo]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorTwo"
+            ),
             [sty.kelvinPcpmodal_ivanDoor]: hasVariant(
               $state,
               "modal",
@@ -1148,11 +1668,6 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               $state,
               "modal",
               "ivanPcp42"
-            ),
-            [sty.kelvinPcpmodal_kelvinDoor]: hasVariant(
-              $state,
-              "modal",
-              "kelvinDoor"
             ),
             [sty.kelvinPcpmodal_kelvinPcp1]: hasVariant(
               $state,
@@ -1204,15 +1719,32 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               $state,
               "modal",
               "sharesePcp4"
-            )
+            ),
+            [sty.kelvinPcproom_ivan]: hasVariant($state, "room", "ivan"),
+            [sty.kelvinPcproom_sharese]: hasVariant($state, "room", "sharese")
           })}
         >
           <div
             className={classNames(projectcss.all, sty.freeBox___2HBe, {
-              [sty.freeBoxmodal_kelvinDoor___2HBe8FMxe]: hasVariant(
+              [sty.freeBoxkelvinFinal_kelvinDoorFour___2HBettTwu]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorOne___2HBe8FMxe]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorThree___2HBefeDsf]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorTwo___2HBeUHd]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.freeBoxmodal_lamp___2HBehjhM3]: hasVariant(
                 $state,
@@ -1256,6 +1788,19 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           >
             <Hotspot
               className={classNames("__wab_instance", sty.hotspot__yVthU)}
+              questionId={(() => {
+                try {
+                  return $props.questions.questions[0].id;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
               size={"_50Px"}
             />
           </div>
@@ -1284,10 +1829,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           </div>
           <div
             className={classNames(projectcss.all, sty.freeBox__nqrhN, {
-              [sty.freeBoxmodal_kelvinDoor__nqrhN8FMxe]: hasVariant(
+              [sty.freeBoxkelvinFinal_kelvinDoorFour__nqrhNttTwu]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorOne__nqrhN8FMxe]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorThree__nqrhNfeDsf]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorTwo__nqrhNUHd]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               )
             })}
             onClick={async event => {
@@ -1317,10 +1877,83 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
               }
+
+              $steps["updateActiveQuestionId"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["activeQuestionId"]
+                      },
+                      operation: 0,
+                      value: $props.questions.questions[0].id
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateActiveQuestionId"] != null &&
+                typeof $steps["updateActiveQuestionId"] === "object" &&
+                typeof $steps["updateActiveQuestionId"].then === "function"
+              ) {
+                $steps["updateActiveQuestionId"] =
+                  await $steps["updateActiveQuestionId"];
+              }
+
+              $steps["updateIsQuestionOpen"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["isQuestionOpen"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateIsQuestionOpen"] != null &&
+                typeof $steps["updateIsQuestionOpen"] === "object" &&
+                typeof $steps["updateIsQuestionOpen"].then === "function"
+              ) {
+                $steps["updateIsQuestionOpen"] =
+                  await $steps["updateIsQuestionOpen"];
+              }
             }}
           >
             <Hotspot
               className={classNames("__wab_instance", sty.hotspot__hf4Fz)}
+              questionId={(() => {
+                try {
+                  return $props.questions.questions[1].id;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
               size={"_50Px"}
             />
           </div>
@@ -1340,40 +1973,86 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
 
           <div
             className={classNames(projectcss.all, sty.freeBox__xXuzF, {
-              [sty.freeBoxmodal_kelvinDoor__xXuzF8FMxe]: hasVariant(
+              [sty.freeBoxkelvinFinal_kelvinDoorFour__xXuzFttTwu]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorOne__xXuzF8FMxe]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorThree__xXuzFfeDsf]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorTwo__xXuzFUHd]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               )
             })}
             onClick={async event => {
               const $steps = {};
+
+              $steps["updateKelvinFinal"] = true
+                ? (() => {
+                    const actionArgs = {
+                      vgroup: "kelvinFinal",
+                      operation: 0,
+                      value: "kelvinDoorOne"
+                    };
+                    return (({ vgroup, value }) => {
+                      if (typeof value === "string") {
+                        value = [value];
+                      }
+
+                      $stateSet($state, vgroup, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateKelvinFinal"] != null &&
+                typeof $steps["updateKelvinFinal"] === "object" &&
+                typeof $steps["updateKelvinFinal"].then === "function"
+              ) {
+                $steps["updateKelvinFinal"] = await $steps["updateKelvinFinal"];
+              }
             }}
           >
-            <PlasmicImg__
-              alt={""}
-              className={classNames(sty.img___4Ita4)}
-              displayHeight={"50px"}
-              displayMaxHeight={"none"}
-              displayMaxWidth={"100%"}
-              displayMinHeight={"0"}
-              displayMinWidth={"0"}
-              displayWidth={"50px"}
-              loading={"lazy"}
-              src={{
-                src: "/plasmic/escape_room/images/image3.svg",
-                fullWidth: 76.24,
-                fullHeight: 76.24,
-                aspectRatio: 1
-              }}
+            <Hotspot
+              data-plasmic-name={"kf"}
+              data-plasmic-override={overrides.kf}
+              className={classNames("__wab_instance", sty.kf)}
+              locked={true}
+              questionId={"kelvin-final"}
+              size={"_50Px"}
             />
           </div>
           <div
             className={classNames(projectcss.all, sty.freeBox___2Q5Rw, {
-              [sty.freeBoxmodal_kelvinDoor___2Q5Rw8FMxe]: hasVariant(
+              [sty.freeBoxkelvinFinal_kelvinDoorFour___2Q5RWttTwu]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorOne___2Q5Rw8FMxe]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorThree___2Q5RWfeDsf]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorTwo___2Q5RwUHd]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               )
             })}
             onClick={async event => {
@@ -1407,12 +2086,37 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           >
             <Hotspot
               className={classNames("__wab_instance", sty.hotspot__qywxv, {
-                [sty.hotspotmodal_kelvinDoor__qywxv8FMxe]: hasVariant(
+                [sty.hotspotkelvinFinal_kelvinDoorFour__qywxvttTwu]: hasVariant(
                   $state,
-                  "modal",
-                  "kelvinDoor"
+                  "kelvinFinal",
+                  "kelvinDoorFour"
+                ),
+                [sty.hotspotkelvinFinal_kelvinDoorOne__qywxv8FMxe]: hasVariant(
+                  $state,
+                  "kelvinFinal",
+                  "kelvinDoorOne"
+                ),
+                [sty.hotspotkelvinFinal_kelvinDoorThree__qywxvfeDsf]:
+                  hasVariant($state, "kelvinFinal", "kelvinDoorThree"),
+                [sty.hotspotkelvinFinal_kelvinDoorTwo__qywxvUHd]: hasVariant(
+                  $state,
+                  "kelvinFinal",
+                  "kelvinDoorTwo"
                 )
               })}
+              questionId={(() => {
+                try {
+                  return $props.questions.questions[3].id;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
               size={"_50Px"}
             />
           </div>
@@ -1449,6 +2153,7 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           >
             <Hotspot
               className={classNames("__wab_instance", sty.hotspot___7Th5Z)}
+              questionId={`${$props.questions.questions[2].id} `}
               size={"_50Px"}
             />
           </div>
@@ -1457,15 +2162,30 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           data-plasmic-name={"sharesePcp"}
           data-plasmic-override={overrides.sharesePcp}
           className={classNames(projectcss.all, sty.sharesePcp, {
+            [sty.sharesePcpkelvinFinal_kelvinDoorFour]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorFour"
+            ),
+            [sty.sharesePcpkelvinFinal_kelvinDoorOne]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorOne"
+            ),
+            [sty.sharesePcpkelvinFinal_kelvinDoorThree]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorThree"
+            ),
+            [sty.sharesePcpkelvinFinal_kelvinDoorTwo]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorTwo"
+            ),
             [sty.sharesePcpmodal_ivanDoor]: hasVariant(
               $state,
               "modal",
               "ivanDoor"
-            ),
-            [sty.sharesePcpmodal_kelvinDoor]: hasVariant(
-              $state,
-              "modal",
-              "kelvinDoor"
             ),
             [sty.sharesePcpmodal_lamp]: hasVariant($state, "modal", "lamp"),
             [sty.sharesePcpmodal_rm1Hs1]: hasVariant($state, "modal", "rm1Hs1"),
@@ -1497,17 +2217,33 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               $state,
               "modal",
               "sharesePcp4"
-            )
+            ),
+            [sty.sharesePcproom_sharese]: hasVariant($state, "room", "sharese")
           })}
         >
           <div
             data-plasmic-name={"hotspot42"}
             data-plasmic-override={overrides.hotspot42}
             className={classNames(projectcss.all, sty.hotspot42, {
-              [sty.hotspot42modal_kelvinDoor]: hasVariant(
+              [sty.hotspot42kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.hotspot42kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.hotspot42kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.hotspot42kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.hotspot42modal_lamp]: hasVariant($state, "modal", "lamp"),
               [sty.hotspot42modal_rm2Hs1]: hasVariant(
@@ -1554,6 +2290,19 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                   "sharesePcp3"
                 )
               })}
+              questionId={(() => {
+                try {
+                  return $props.questions.questions[11].id;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
               size={"_50Px"}
             />
           </div>
@@ -1643,10 +2392,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"hotspot32"}
             data-plasmic-override={overrides.hotspot32}
             className={classNames(projectcss.all, sty.hotspot32, {
-              [sty.hotspot32modal_kelvinDoor]: hasVariant(
+              [sty.hotspot32kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.hotspot32kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.hotspot32kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.hotspot32kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.hotspot32modal_rm2Hs1]: hasVariant($state, "modal", "rm2Hs1")
             })}
@@ -1687,6 +2451,19 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                   "rm2Hs1"
                 )
               })}
+              questionId={(() => {
+                try {
+                  return $props.questions.questions[10].id;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
               size={"_50Px"}
             />
           </div>
@@ -1711,10 +2488,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
 
           <div
             className={classNames(projectcss.all, sty.freeBox__dujEt, {
-              [sty.freeBoxmodal_kelvinDoor__dujEt8FMxe]: hasVariant(
+              [sty.freeBoxkelvinFinal_kelvinDoorFour__dujETttTwu]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorOne__dujEt8FMxe]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorThree__dujETfeDsf]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorTwo__dujEtUHd]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.freeBoxmodal_rm2Hs1__dujETcjkeU]: hasVariant(
                 $state,
@@ -1726,43 +2518,35 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               const $steps = {};
             }}
           >
-            <PlasmicImg__
-              alt={""}
-              className={classNames(sty.img__kq6O, {
-                [sty.imgmodal_rm2Hs1__kq6OcjkeU]: hasVariant(
-                  $state,
-                  "modal",
-                  "rm2Hs1"
-                ),
-                [sty.imgmodal_rm2Hs2__kq6OfqRuS]: hasVariant(
-                  $state,
-                  "modal",
-                  "rm2Hs2"
-                )
-              })}
-              displayHeight={"50px"}
-              displayMaxHeight={"none"}
-              displayMaxWidth={"100%"}
-              displayMinHeight={"0"}
-              displayMinWidth={"0"}
-              displayWidth={"50px"}
-              loading={"lazy"}
-              src={{
-                src: "/plasmic/escape_room/images/image3.svg",
-                fullWidth: 76.24,
-                fullHeight: 76.24,
-                aspectRatio: 1
-              }}
+            <Hotspot
+              className={classNames("__wab_instance", sty.hotspot__sEKl)}
+              locked={true}
+              questionId={"sharese-final"}
             />
           </div>
           <div
             data-plasmic-name={"hotspot22"}
             data-plasmic-override={overrides.hotspot22}
             className={classNames(projectcss.all, sty.hotspot22, {
-              [sty.hotspot22modal_kelvinDoor]: hasVariant(
+              [sty.hotspot22kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.hotspot22kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.hotspot22kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.hotspot22kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.hotspot22modal_rm2Hs1]: hasVariant($state, "modal", "rm2Hs1")
             })}
@@ -1797,10 +2581,22 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           >
             <Hotspot
               className={classNames("__wab_instance", sty.hotspot__j9Sof, {
-                [sty.hotspotmodal_kelvinDoor__j9Sof8FMxe]: hasVariant(
+                [sty.hotspotkelvinFinal_kelvinDoorFour__j9SofttTwu]: hasVariant(
                   $state,
-                  "modal",
-                  "kelvinDoor"
+                  "kelvinFinal",
+                  "kelvinDoorFour"
+                ),
+                [sty.hotspotkelvinFinal_kelvinDoorOne__j9Sof8FMxe]: hasVariant(
+                  $state,
+                  "kelvinFinal",
+                  "kelvinDoorOne"
+                ),
+                [sty.hotspotkelvinFinal_kelvinDoorThree__j9SoffeDsf]:
+                  hasVariant($state, "kelvinFinal", "kelvinDoorThree"),
+                [sty.hotspotkelvinFinal_kelvinDoorTwo__j9SofUHd]: hasVariant(
+                  $state,
+                  "kelvinFinal",
+                  "kelvinDoorTwo"
                 ),
                 [sty.hotspotmodal_rm2Hs1__j9SofcjkeU]: hasVariant(
                   $state,
@@ -1808,6 +2604,7 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                   "rm2Hs1"
                 )
               })}
+              questionId={`${$props.questions.questions[9].id}                                                                                                                                                                                                                                                                                              `}
               size={"_50Px"}
             />
           </div>
@@ -1859,6 +2656,19 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                   "rm2Hs1"
                 )
               })}
+              questionId={(() => {
+                try {
+                  return $props.questions.questions[8].id;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
               size={"_50Px"}
             />
           </div>
@@ -1867,6 +2677,26 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           data-plasmic-name={"ivanPcp"}
           data-plasmic-override={overrides.ivanPcp}
           className={classNames(projectcss.all, sty.ivanPcp, {
+            [sty.ivanPcpkelvinFinal_kelvinDoorFour]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorFour"
+            ),
+            [sty.ivanPcpkelvinFinal_kelvinDoorOne]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorOne"
+            ),
+            [sty.ivanPcpkelvinFinal_kelvinDoorThree]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorThree"
+            ),
+            [sty.ivanPcpkelvinFinal_kelvinDoorTwo]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorTwo"
+            ),
             [sty.ivanPcpmodal_ivanDoor]: hasVariant(
               $state,
               "modal",
@@ -1877,11 +2707,6 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               "modal",
               "ivanPcp42"
             ),
-            [sty.ivanPcpmodal_kelvinDoor]: hasVariant(
-              $state,
-              "modal",
-              "kelvinDoor"
-            ),
             [sty.ivanPcpmodal_lamp]: hasVariant($state, "modal", "lamp"),
             [sty.ivanPcpmodal_rm1Hs1]: hasVariant($state, "modal", "rm1Hs1"),
             [sty.ivanPcpmodal_rm1Hs3]: hasVariant($state, "modal", "rm1Hs3"),
@@ -1889,15 +2714,31 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             [sty.ivanPcpmodal_rm3Hs1]: hasVariant($state, "modal", "rm3Hs1"),
             [sty.ivanPcpmodal_rm3Hs2]: hasVariant($state, "modal", "rm3Hs2"),
             [sty.ivanPcpmodal_rm3Hs3]: hasVariant($state, "modal", "rm3Hs3"),
-            [sty.ivanPcpmodal_rm3Hs4]: hasVariant($state, "modal", "rm3Hs4")
+            [sty.ivanPcpmodal_rm3Hs4]: hasVariant($state, "modal", "rm3Hs4"),
+            [sty.ivanPcproom_ivan]: hasVariant($state, "room", "ivan")
           })}
         >
           <div
             className={classNames(projectcss.all, sty.freeBox__nns8K, {
-              [sty.freeBoxmodal_kelvinDoor__nns8K8FMxe]: hasVariant(
+              [sty.freeBoxkelvinFinal_kelvinDoorFour__nns8KttTwu]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorOne__nns8K8FMxe]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorThree__nns8KfeDsf]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorTwo__nns8KUHd]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               )
             })}
             onClick={async event => {
@@ -1936,10 +2777,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           </div>
           <div
             className={classNames(projectcss.all, sty.freeBox__h8Mcx, {
-              [sty.freeBoxmodal_kelvinDoor__h8Mcx8FMxe]: hasVariant(
+              [sty.freeBoxkelvinFinal_kelvinDoorFour__h8McxttTwu]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorOne__h8Mcx8FMxe]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorThree__h8McxfeDsf]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorTwo__h8McxUHd]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               )
             })}
             onClick={async event => {
@@ -2015,10 +2871,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
 
           <div
             className={classNames(projectcss.all, sty.freeBox__ko0P6, {
-              [sty.freeBoxmodal_kelvinDoor__ko0P68FMxe]: hasVariant(
+              [sty.freeBoxkelvinFinal_kelvinDoorFour__ko0P6TtTwu]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorOne__ko0P68FMxe]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorThree__ko0P6FeDsf]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorTwo__ko0P6UHd]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               )
             })}
             onClick={async event => {
@@ -2052,10 +2923,22 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           >
             <Hotspot
               className={classNames("__wab_instance", sty.hotspot__bgvq9, {
-                [sty.hotspotmodal_kelvinDoor__bgvq98FMxe]: hasVariant(
+                [sty.hotspotkelvinFinal_kelvinDoorFour__bgvq9TtTwu]: hasVariant(
                   $state,
-                  "modal",
-                  "kelvinDoor"
+                  "kelvinFinal",
+                  "kelvinDoorFour"
+                ),
+                [sty.hotspotkelvinFinal_kelvinDoorOne__bgvq98FMxe]: hasVariant(
+                  $state,
+                  "kelvinFinal",
+                  "kelvinDoorOne"
+                ),
+                [sty.hotspotkelvinFinal_kelvinDoorThree__bgvq9FeDsf]:
+                  hasVariant($state, "kelvinFinal", "kelvinDoorThree"),
+                [sty.hotspotkelvinFinal_kelvinDoorTwo__bgvq9UHd]: hasVariant(
+                  $state,
+                  "kelvinFinal",
+                  "kelvinDoorTwo"
                 )
               })}
               size={"_50Px"}
@@ -2099,10 +2982,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           </div>
           <div
             className={classNames(projectcss.all, sty.freeBox___3X8KW, {
-              [sty.freeBoxmodal_kelvinDoor___3X8KW8FMxe]: hasVariant(
+              [sty.freeBoxkelvinFinal_kelvinDoorFour___3X8KWttTwu]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorOne___3X8KW8FMxe]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorThree___3X8KWfeDsf]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.freeBoxkelvinFinal_kelvinDoorTwo___3X8KWUHd]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               )
             })}
             onClick={async event => {
@@ -2134,28 +3032,9 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               }
             }}
           >
-            <PlasmicImg__
-              alt={""}
-              className={classNames(sty.img__a7FY, {
-                [sty.imgmodal_rm3Hs2__a7FYjLsEv]: hasVariant(
-                  $state,
-                  "modal",
-                  "rm3Hs2"
-                )
-              })}
-              displayHeight={"50px"}
-              displayMaxHeight={"none"}
-              displayMaxWidth={"100%"}
-              displayMinHeight={"0"}
-              displayMinWidth={"0"}
-              displayWidth={"50px"}
-              loading={"lazy"}
-              src={{
-                src: "/plasmic/escape_room/images/image3.svg",
-                fullWidth: 76.24,
-                fullHeight: 76.24,
-                aspectRatio: 1
-              }}
+            <Hotspot
+              className={classNames("__wab_instance", sty.hotspot__iGXkS)}
+              locked={true}
             />
           </div>
         </div>
@@ -2239,15 +3118,30 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               projectcss.__wab_text,
               sty.text__wtheB,
               {
+                [sty.textkelvinFinal_kelvinDoorFour__wtheBttTwu]: hasVariant(
+                  $state,
+                  "kelvinFinal",
+                  "kelvinDoorFour"
+                ),
+                [sty.textkelvinFinal_kelvinDoorOne__wtheB8FMxe]: hasVariant(
+                  $state,
+                  "kelvinFinal",
+                  "kelvinDoorOne"
+                ),
+                [sty.textkelvinFinal_kelvinDoorThree__wtheBfeDsf]: hasVariant(
+                  $state,
+                  "kelvinFinal",
+                  "kelvinDoorThree"
+                ),
+                [sty.textkelvinFinal_kelvinDoorTwo__wtheBUHd]: hasVariant(
+                  $state,
+                  "kelvinFinal",
+                  "kelvinDoorTwo"
+                ),
                 [sty.textmodal_ivanDoor__wtheBao3U]: hasVariant(
                   $state,
                   "modal",
                   "ivanDoor"
-                ),
-                [sty.textmodal_kelvinDoor__wtheB8FMxe]: hasVariant(
-                  $state,
-                  "modal",
-                  "kelvinDoor"
                 ),
                 [sty.textmodal_rm1Hs1__wtheBAmduI]: hasVariant(
                   $state,
@@ -2817,10 +3711,30 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
         data-plasmic-name={"questionContainer"}
         data-plasmic-override={overrides.questionContainer}
         className={classNames(projectcss.all, sty.questionContainer, {
-          [sty.questionContainermodal_kelvinDoor]: hasVariant(
+          [sty.questionContainerkelvinFinal_kelvinDoorFour]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorFour"
+          ),
+          [sty.questionContainerkelvinFinal_kelvinDoorOne]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorOne"
+          ),
+          [sty.questionContainerkelvinFinal_kelvinDoorThree]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorThree"
+          ),
+          [sty.questionContainerkelvinFinal_kelvinDoorTwo]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorTwo"
+          ),
+          [sty.questionContainermodal_ivanPcp3]: hasVariant(
             $state,
             "modal",
-            "kelvinDoor"
+            "ivanPcp3"
           ),
           [sty.questionContainermodal_kelvinPcp1]: hasVariant(
             $state,
@@ -2878,17 +3792,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           data-plasmic-name={"computer"}
           data-plasmic-override={overrides.computer}
           active={
-            hasVariant($state, "modal", "kelvinDoor")
+            hasVariant($state, "kelvinFinal", "kelvinDoorOne")
               ? true
-              : hasVariant($state, "modal", "rm1Hs4")
+              : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs3")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs2")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs1")
+                    : hasVariant($state, "modal", "rm1Hs4")
                       ? true
-                      : undefined
+                      : hasVariant($state, "modal", "rm1Hs3")
+                        ? true
+                        : hasVariant($state, "modal", "rm1Hs2")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs1")
+                            ? true
+                            : undefined
           }
           answerA={
             hasVariant($state, "modal", "ivanDoor")
@@ -3127,15 +4047,30 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                     : undefined
           }
           className={classNames("__wab_instance", sty.computer, {
+            [sty.computerkelvinFinal_kelvinDoorFour]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorFour"
+            ),
+            [sty.computerkelvinFinal_kelvinDoorOne]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorOne"
+            ),
+            [sty.computerkelvinFinal_kelvinDoorThree]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorThree"
+            ),
+            [sty.computerkelvinFinal_kelvinDoorTwo]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorTwo"
+            ),
             [sty.computermodal_ivanDoor]: hasVariant(
               $state,
               "modal",
               "ivanDoor"
-            ),
-            [sty.computermodal_kelvinDoor]: hasVariant(
-              $state,
-              "modal",
-              "kelvinDoor"
             ),
             [sty.computermodal_kelvinPcp1]: hasVariant(
               $state,
@@ -3156,7 +4091,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             [sty.computermodal_rm3Hs3]: hasVariant($state, "modal", "rm3Hs3"),
             [sty.computermodal_rm3Hs4]: hasVariant($state, "modal", "rm3Hs4")
           })}
-          correctReasoning={
+          correctAnswer={
+            hasVariant($state, "modal", "rm1Hs1")
+              ? (() => {
+                  try {
+                    return $props.questions.questions[0].correctAnswer;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
+                  }
+                })()
+              : undefined
+          }
+          correctReasoning={null}
+          correctReasoning2={
             <div
               className={classNames(projectcss.all, sty.freeBox__zy0Sp, {
                 [sty.freeBoxmodal_rm1Hs1__zy0SpAmduI]: hasVariant(
@@ -3479,7 +4432,8 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               </div>
             </div>
           }
-          incorrectReasoning={
+          incorrectReasoning={null}
+          incorrectReasoning2={
             <WrongAnswer
               className={classNames("__wab_instance", sty.wrongAnswer__o2Tr0, {
                 [sty.wrongAnswermodal_rm1Hs1__o2Tr0AmduI]: hasVariant(
@@ -3498,6 +4452,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               }
             />
           }
+          isSelected={generateStateValueProp($state, [
+            "computer",
+            "isSelected"
+          ])}
           onClickClose={async event => {
             const $steps = {};
 
@@ -3552,6 +4510,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               typeof $steps["updateModal"].then === "function"
             ) {
               $steps["updateModal"] = await $steps["updateModal"];
+            }
+          }}
+          onIsSelectedChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["computer", "isSelected"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onStepChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["computer", "step"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
             }
           }}
           question={
@@ -3709,19 +4695,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"ivanPcp42"}
             data-plasmic-override={overrides.ivanPcp42}
             active={
-              hasVariant($state, "modal", "rm3Hs3")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "kelvinDoor")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs4")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs3")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs2")
+                      : hasVariant($state, "modal", "rm3Hs3")
                         ? true
-                        : hasVariant($state, "modal", "rm1Hs1")
+                        : hasVariant($state, "modal", "rm1Hs4")
                           ? true
-                          : undefined
+                          : hasVariant($state, "modal", "rm1Hs3")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs2")
+                              ? true
+                              : hasVariant($state, "modal", "rm1Hs1")
+                                ? true
+                                : undefined
             }
             answerA={
               hasVariant($state, "modal", "ivanPcp42")
@@ -4340,6 +5332,26 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                                   : undefined
             }
             className={classNames("__wab_instance", sty.ivanPcp42, {
+              [sty.ivanPcp42kelvinFinal_kelvinDoorFour]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.ivanPcp42kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.ivanPcp42kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.ivanPcp42kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
+              ),
               [sty.ivanPcp42modal_ivanPcp2]: hasVariant(
                 $state,
                 "modal",
@@ -4349,11 +5361,6 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 $state,
                 "modal",
                 "ivanPcp42"
-              ),
-              [sty.ivanPcp42modal_kelvinDoor]: hasVariant(
-                $state,
-                "modal",
-                "kelvinDoor"
               ),
               [sty.ivanPcp42modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -4818,6 +5825,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "ivanPcp42",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -4872,6 +5883,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "ivanPcp42",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["ivanPcp42", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -5226,19 +6265,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"ivanPcp2"}
             data-plasmic-override={overrides.ivanPcp2}
             active={
-              hasVariant($state, "modal", "rm3Hs2")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "kelvinDoor")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs4")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs3")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs2")
+                      : hasVariant($state, "modal", "rm3Hs2")
                         ? true
-                        : hasVariant($state, "modal", "rm1Hs1")
+                        : hasVariant($state, "modal", "rm1Hs4")
                           ? true
-                          : undefined
+                          : hasVariant($state, "modal", "rm1Hs3")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs2")
+                              ? true
+                              : hasVariant($state, "modal", "rm1Hs1")
+                                ? true
+                                : undefined
             }
             answerA={
               hasVariant($state, "modal", "ivanPcp2")
@@ -5921,6 +6966,26 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                                     : undefined
             }
             className={classNames("__wab_instance", sty.ivanPcp2, {
+              [sty.ivanPcp2kelvinFinal_kelvinDoorFour]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.ivanPcp2kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.ivanPcp2kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.ivanPcp2kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
+              ),
               [sty.ivanPcp2modal_ivanPcp2]: hasVariant(
                 $state,
                 "modal",
@@ -5935,11 +7000,6 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 $state,
                 "modal",
                 "ivanPcp42"
-              ),
-              [sty.ivanPcp2modal_kelvinDoor]: hasVariant(
-                $state,
-                "modal",
-                "kelvinDoor"
               ),
               [sty.ivanPcp2modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -6254,6 +7314,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "ivanPcp2",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -6308,6 +7372,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "ivanPcp2",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["ivanPcp2", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -6694,17 +7786,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"ivanPcp3"}
             data-plasmic-override={overrides.ivanPcp3}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "ivanPcp3")
@@ -7387,6 +8485,26 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                                     : undefined
             }
             className={classNames("__wab_instance", sty.ivanPcp3, {
+              [sty.ivanPcp3kelvinFinal_kelvinDoorFour]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.ivanPcp3kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.ivanPcp3kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.ivanPcp3kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
+              ),
               [sty.ivanPcp3modal_ivanPcp2]: hasVariant(
                 $state,
                 "modal",
@@ -7401,11 +8519,6 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 $state,
                 "modal",
                 "ivanPcp42"
-              ),
-              [sty.ivanPcp3modal_kelvinDoor]: hasVariant(
-                $state,
-                "modal",
-                "kelvinDoor"
               ),
               [sty.ivanPcp3modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -7444,6 +8557,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "sharesePcp2"
               )
             })}
+            isSelected={generateStateValueProp($state, [
+              "ivanPcp3",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -7498,6 +8615,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "ivanPcp3",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["ivanPcp3", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -7886,19 +9031,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"ivanPcp4"}
             data-plasmic-override={overrides.ivanPcp4}
             active={
-              hasVariant($state, "modal", "rm3Hs4")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "kelvinDoor")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs4")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs3")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs2")
+                      : hasVariant($state, "modal", "rm3Hs4")
                         ? true
-                        : hasVariant($state, "modal", "rm1Hs1")
+                        : hasVariant($state, "modal", "rm1Hs4")
                           ? true
-                          : undefined
+                          : hasVariant($state, "modal", "rm1Hs3")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs2")
+                              ? true
+                              : hasVariant($state, "modal", "rm1Hs1")
+                                ? true
+                                : undefined
             }
             answerA={
               hasVariant($state, "modal", "ivanPcp3")
@@ -8645,6 +9796,26 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                                       : undefined
             }
             className={classNames("__wab_instance", sty.ivanPcp4, {
+              [sty.ivanPcp4kelvinFinal_kelvinDoorFour]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.ivanPcp4kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.ivanPcp4kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.ivanPcp4kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
+              ),
               [sty.ivanPcp4modal_ivanPcp2]: hasVariant(
                 $state,
                 "modal",
@@ -8659,11 +9830,6 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 $state,
                 "modal",
                 "ivanPcp42"
-              ),
-              [sty.ivanPcp4modal_kelvinDoor]: hasVariant(
-                $state,
-                "modal",
-                "kelvinDoor"
               ),
               [sty.ivanPcp4modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -9063,6 +10229,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "ivanPcp4",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -9117,6 +10287,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "ivanPcp4",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["ivanPcp4", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -9529,17 +10727,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"sharesePcp1"}
             data-plasmic-override={overrides.sharesePcp1}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "kelvinPcp1")
@@ -10030,15 +11234,30 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                               : undefined
             }
             className={classNames("__wab_instance", sty.sharesePcp1, {
+              [sty.sharesePcp1kelvinFinal_kelvinDoorFour]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.sharesePcp1kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.sharesePcp1kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.sharesePcp1kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
+              ),
               [sty.sharesePcp1modal_ivanPcp42]: hasVariant(
                 $state,
                 "modal",
                 "ivanPcp42"
-              ),
-              [sty.sharesePcp1modal_kelvinDoor]: hasVariant(
-                $state,
-                "modal",
-                "kelvinDoor"
               ),
               [sty.sharesePcp1modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -10116,6 +11335,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "sharesePcp2"
               )
             })}
+            isSelected={generateStateValueProp($state, [
+              "sharesePcp1",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -10170,6 +11393,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "sharesePcp1",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["sharesePcp1", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -10458,17 +11709,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"sharesePcp2"}
             data-plasmic-override={overrides.sharesePcp2}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "sharesePcp2")
@@ -11023,10 +12280,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                                 : undefined
             }
             className={classNames("__wab_instance", sty.sharesePcp2, {
-              [sty.sharesePcp2modal_kelvinDoor]: hasVariant(
+              [sty.sharesePcp2kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.sharesePcp2kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.sharesePcp2kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.sharesePcp2kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.sharesePcp2modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -11109,6 +12381,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "sharesePcp3"
               )
             })}
+            isSelected={generateStateValueProp($state, [
+              "sharesePcp2",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -11163,6 +12439,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "sharesePcp2",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["sharesePcp2", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -11484,17 +12788,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"sharesePcp3"}
             data-plasmic-override={overrides.sharesePcp3}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "sharesePcp3")
@@ -12113,10 +13423,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                                   : undefined
             }
             className={classNames("__wab_instance", sty.sharesePcp3, {
-              [sty.sharesePcp3modal_kelvinDoor]: hasVariant(
+              [sty.sharesePcp3kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.sharesePcp3kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.sharesePcp3kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.sharesePcp3kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.sharesePcp3modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -12204,6 +13529,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "sharesePcp4"
               )
             })}
+            isSelected={generateStateValueProp($state, [
+              "sharesePcp3",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -12258,6 +13587,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "sharesePcp3",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["sharesePcp3", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -12612,17 +13969,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"sharesePcp4"}
             data-plasmic-override={overrides.sharesePcp4}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "sharesePcp4")
@@ -13305,10 +14668,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                                     : undefined
             }
             className={classNames("__wab_instance", sty.sharesePcp4, {
-              [sty.sharesePcp4modal_kelvinDoor]: hasVariant(
+              [sty.sharesePcp4kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.sharesePcp4kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.sharesePcp4kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.sharesePcp4kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.sharesePcp4modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -13396,6 +14774,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "sharesePcp4"
               )
             })}
+            isSelected={generateStateValueProp($state, [
+              "sharesePcp4",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -13450,6 +14832,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "sharesePcp4",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["sharesePcp4", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -13830,17 +15240,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"kelvinPcp1"}
             data-plasmic-override={overrides.kelvinPcp1}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "kelvinPcp1")
@@ -14267,10 +15683,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                             : undefined
             }
             className={classNames("__wab_instance", sty.kelvinPcp1, {
-              [sty.kelvinPcp1modal_kelvinDoor]: hasVariant(
+              [sty.kelvinPcp1kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.kelvinPcp1kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.kelvinPcp1kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.kelvinPcp1kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.kelvinPcp1modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -14343,6 +15774,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "shareseDoor"
               )
             })}
+            isSelected={generateStateValueProp($state, [
+              "kelvinPcp1",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -14397,6 +15832,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "kelvinPcp1",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["kelvinPcp1", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -14651,17 +16114,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"kelvinPcp2"}
             data-plasmic-override={overrides.kelvinPcp2}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "kelvinPcp2")
@@ -15152,10 +16621,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                               : undefined
             }
             className={classNames("__wab_instance", sty.kelvinPcp2, {
-              [sty.kelvinPcp2modal_kelvinDoor]: hasVariant(
+              [sty.kelvinPcp2kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.kelvinPcp2kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.kelvinPcp2kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.kelvinPcp2kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.kelvinPcp2modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -15228,6 +16712,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "rm3Hs2"
               )
             })}
+            isSelected={generateStateValueProp($state, [
+              "kelvinPcp2",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -15282,6 +16770,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "kelvinPcp2",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["kelvinPcp2", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -15570,17 +17086,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"kelvinPcp3"}
             data-plasmic-override={overrides.kelvinPcp3}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "kelvinPcp3")
@@ -16135,10 +17657,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                                 : undefined
             }
             className={classNames("__wab_instance", sty.kelvinPcp3, {
-              [sty.kelvinPcp3modal_kelvinDoor]: hasVariant(
+              [sty.kelvinPcp3kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.kelvinPcp3kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.kelvinPcp3kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.kelvinPcp3kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.kelvinPcp3modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -16211,6 +17748,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "rm3Hs2"
               )
             })}
+            isSelected={generateStateValueProp($state, [
+              "kelvinPcp3",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -16265,6 +17806,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "kelvinPcp3",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["kelvinPcp3", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -16588,17 +18157,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"kelvinPcp4"}
             data-plasmic-override={overrides.kelvinPcp4}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "kelvinPcp4")
@@ -17217,10 +18792,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                                   : undefined
             }
             className={classNames("__wab_instance", sty.kelvinPcp4, {
-              [sty.kelvinPcp4modal_kelvinDoor]: hasVariant(
+              [sty.kelvinPcp4kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.kelvinPcp4kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.kelvinPcp4kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.kelvinPcp4kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.kelvinPcp4modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -17293,6 +18883,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 "rm3Hs2"
               )
             })}
+            isSelected={generateStateValueProp($state, [
+              "kelvinPcp4",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -17347,6 +18941,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "kelvinPcp4",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["kelvinPcp4", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -17671,19 +19293,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"ivanBed"}
             data-plasmic-override={overrides.ivanBed}
             active={
-              hasVariant($state, "modal", "rm3Hs1")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "kelvinDoor")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs4")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs3")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs2")
+                      : hasVariant($state, "modal", "rm3Hs1")
                         ? true
-                        : hasVariant($state, "modal", "rm1Hs1")
+                        : hasVariant($state, "modal", "rm1Hs4")
                           ? true
-                          : undefined
+                          : hasVariant($state, "modal", "rm1Hs3")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs2")
+                              ? true
+                              : hasVariant($state, "modal", "rm1Hs1")
+                                ? true
+                                : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm3Hs1")
@@ -17810,10 +19438,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                   : undefined
             }
             className={classNames("__wab_instance", sty.ivanBed, {
-              [sty.ivanBedmodal_kelvinDoor]: hasVariant(
+              [sty.ivanBedkelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.ivanBedkelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.ivanBedkelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.ivanBedkelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.ivanBedmodal_rm1Hs1]: hasVariant($state, "modal", "rm1Hs1"),
               [sty.ivanBedmodal_rm1Hs2]: hasVariant($state, "modal", "rm1Hs2"),
@@ -17972,6 +19615,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "ivanBed",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -18026,6 +19673,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "ivanBed",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["ivanBed", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -18113,19 +19788,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           data-plasmic-name={"sharese1"}
           data-plasmic-override={overrides.sharese1}
           active={
-            hasVariant($state, "modal", "rm2Hs1")
+            hasVariant($state, "kelvinFinal", "kelvinDoorOne")
               ? true
-              : hasVariant($state, "modal", "kelvinDoor")
+              : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "modal", "rm2Hs1")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
           }
           answerA={
             hasVariant($state, "modal", "rm3Hs1")
@@ -18308,10 +19989,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                   : undefined
           }
           className={classNames("__wab_instance", sty.sharese1, {
-            [sty.sharese1modal_kelvinDoor]: hasVariant(
+            [sty.sharese1kelvinFinal_kelvinDoorFour]: hasVariant(
               $state,
-              "modal",
-              "kelvinDoor"
+              "kelvinFinal",
+              "kelvinDoorFour"
+            ),
+            [sty.sharese1kelvinFinal_kelvinDoorOne]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorOne"
+            ),
+            [sty.sharese1kelvinFinal_kelvinDoorThree]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorThree"
+            ),
+            [sty.sharese1kelvinFinal_kelvinDoorTwo]: hasVariant(
+              $state,
+              "kelvinFinal",
+              "kelvinDoorTwo"
             ),
             [sty.sharese1modal_kelvinPcp1]: hasVariant(
               $state,
@@ -18566,6 +20262,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               })}
             />
           }
+          isSelected={generateStateValueProp($state, [
+            "sharese1",
+            "isSelected"
+          ])}
           onClickClose={async event => {
             const $steps = {};
 
@@ -18620,6 +20320,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               typeof $steps["updateModal"].then === "function"
             ) {
               $steps["updateModal"] = await $steps["updateModal"];
+            }
+          }}
+          onIsSelectedChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["sharese1", "isSelected"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onStepChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["sharese1", "step"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
             }
           }}
           question={
@@ -18754,19 +20482,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"sharese2"}
             data-plasmic-override={overrides.sharese2}
             active={
-              hasVariant($state, "modal", "rm2Hs2")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "kelvinDoor")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs4")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs3")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs2")
+                      : hasVariant($state, "modal", "rm2Hs2")
                         ? true
-                        : hasVariant($state, "modal", "rm1Hs1")
+                        : hasVariant($state, "modal", "rm1Hs4")
                           ? true
-                          : undefined
+                          : hasVariant($state, "modal", "rm1Hs3")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs2")
+                              ? true
+                              : hasVariant($state, "modal", "rm1Hs1")
+                                ? true
+                                : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm3Hs1")
@@ -19129,10 +20863,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                           : undefined
             }
             className={classNames("__wab_instance", sty.sharese2, {
-              [sty.sharese2modal_kelvinDoor]: hasVariant(
+              [sty.sharese2kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.sharese2kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.sharese2kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.sharese2kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.sharese2modal_rm1Hs1]: hasVariant($state, "modal", "rm1Hs1"),
               [sty.sharese2modal_rm1Hs2]: hasVariant($state, "modal", "rm1Hs2"),
@@ -19401,6 +21150,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "sharese2",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -19455,6 +21208,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "sharese2",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["sharese2", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -19674,19 +21455,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"sharese3"}
             data-plasmic-override={overrides.sharese3}
             active={
-              hasVariant($state, "modal", "rm2Hs3")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "kelvinDoor")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs4")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs3")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs2")
+                      : hasVariant($state, "modal", "rm2Hs3")
                         ? true
-                        : hasVariant($state, "modal", "rm1Hs1")
+                        : hasVariant($state, "modal", "rm1Hs4")
                           ? true
-                          : undefined
+                          : hasVariant($state, "modal", "rm1Hs3")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs2")
+                              ? true
+                              : hasVariant($state, "modal", "rm1Hs1")
+                                ? true
+                                : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm3Hs1")
@@ -20049,10 +21836,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                           : undefined
             }
             className={classNames("__wab_instance", sty.sharese3, {
-              [sty.sharese3modal_kelvinDoor]: hasVariant(
+              [sty.sharese3kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.sharese3kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.sharese3kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.sharese3kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.sharese3modal_kelvinPcp1]: hasVariant(
                 $state,
@@ -20278,6 +22080,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "sharese3",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -20332,6 +22138,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "sharese3",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["sharese3", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -20539,17 +22373,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"diagram"}
             data-plasmic-override={overrides.diagram}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm1Hs3")
@@ -20620,10 +22460,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 : undefined
             }
             className={classNames("__wab_instance", sty.diagram, {
-              [sty.diagrammodal_kelvinDoor]: hasVariant(
+              [sty.diagramkelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.diagramkelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.diagramkelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.diagramkelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.diagrammodal_rm1Hs1]: hasVariant($state, "modal", "rm1Hs1"),
               [sty.diagrammodal_rm1Hs2]: hasVariant($state, "modal", "rm1Hs2"),
@@ -20631,6 +22486,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               [sty.diagrammodal_rm1Hs4]: hasVariant($state, "modal", "rm1Hs4"),
               [sty.diagrammodal_rm3Hs1]: hasVariant($state, "modal", "rm3Hs1")
             })}
+            correctAnswer={
+              hasVariant($state, "modal", "rm1Hs3")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[2].correctAnswer;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : undefined
+            }
             correctReasoning={
               <div
                 className={classNames(projectcss.all, sty.freeBox___2Pmfs, {
@@ -20937,6 +22809,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "diagram",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -20991,6 +22867,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "diagram",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["diagram", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -21067,17 +22971,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"sharese4"}
             data-plasmic-override={overrides.sharese4}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm3Hs1")
@@ -21440,10 +23350,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                           : undefined
             }
             className={classNames("__wab_instance", sty.sharese4, {
-              [sty.sharese4modal_kelvinDoor]: hasVariant(
+              [sty.sharese4kelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.sharese4kelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.sharese4kelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.sharese4kelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.sharese4modal_rm1Hs1]: hasVariant($state, "modal", "rm1Hs1"),
               [sty.sharese4modal_rm1Hs2]: hasVariant($state, "modal", "rm1Hs2"),
@@ -21690,6 +23615,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "sharese4",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -21744,6 +23673,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "sharese4",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["sharese4", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -21945,17 +23902,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"bookshelf"}
             data-plasmic-override={overrides.bookshelf}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm1Hs2")
@@ -22026,10 +23989,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 : undefined
             }
             className={classNames("__wab_instance", sty.bookshelf, {
-              [sty.bookshelfmodal_kelvinDoor]: hasVariant(
+              [sty.bookshelfkelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.bookshelfkelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.bookshelfkelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.bookshelfkelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.bookshelfmodal_rm1Hs1]: hasVariant(
                 $state,
@@ -22048,6 +24026,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               ),
               [sty.bookshelfmodal_rm1Hs4]: hasVariant($state, "modal", "rm1Hs4")
             })}
+            correctAnswer={
+              hasVariant($state, "modal", "rm1Hs2")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[1].correctAnswer;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : undefined
+            }
             correctReasoning={
               <div
                 className={classNames(projectcss.all, sty.freeBox__pSBdk, {
@@ -22289,6 +24284,10 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "bookshelf",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -22345,6 +24344,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 $steps["updateModal"] = await $steps["updateModal"];
               }
             }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "bookshelf",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["bookshelf", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
             question={
               hasVariant($state, "modal", "rm1Hs2")
                 ? (() => {
@@ -22379,6 +24406,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                   })()
                 : undefined
             }
+            questions={
+              hasVariant($state, "modal", "rm1Hs2")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[1];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()
+                : undefined
+            }
           />
         ) : null}
         {(
@@ -22394,17 +24438,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             data-plasmic-name={"bed"}
             data-plasmic-override={overrides.bed}
             active={
-              hasVariant($state, "modal", "kelvinDoor")
+              hasVariant($state, "kelvinFinal", "kelvinDoorOne")
                 ? true
-                : hasVariant($state, "modal", "rm1Hs4")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
                   ? true
-                  : hasVariant($state, "modal", "rm1Hs3")
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                     ? true
-                    : hasVariant($state, "modal", "rm1Hs2")
+                    : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                       ? true
-                      : hasVariant($state, "modal", "rm1Hs1")
+                      : hasVariant($state, "modal", "rm1Hs4")
                         ? true
-                        : undefined
+                        : hasVariant($state, "modal", "rm1Hs3")
+                          ? true
+                          : hasVariant($state, "modal", "rm1Hs2")
+                            ? true
+                            : hasVariant($state, "modal", "rm1Hs1")
+                              ? true
+                              : undefined
             }
             answerA={
               hasVariant($state, "modal", "rm1Hs4")
@@ -22475,10 +24525,25 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 : undefined
             }
             className={classNames("__wab_instance", sty.bed, {
-              [sty.bedmodal_kelvinDoor]: hasVariant(
+              [sty.bedkelvinFinal_kelvinDoorFour]: hasVariant(
                 $state,
-                "modal",
-                "kelvinDoor"
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.bedkelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.bedkelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.bedkelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
               ),
               [sty.bedmodal_lamp]: hasVariant($state, "modal", "lamp"),
               [sty.bedmodal_rm1Hs1]: hasVariant($state, "modal", "rm1Hs1"),
@@ -22486,6 +24551,23 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
               [sty.bedmodal_rm1Hs3]: hasVariant($state, "modal", "rm1Hs3"),
               [sty.bedmodal_rm1Hs4]: hasVariant($state, "modal", "rm1Hs4")
             })}
+            correctAnswer={
+              hasVariant($state, "modal", "rm1Hs4")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[4].correctAnswer;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : undefined
+            }
             correctReasoning={
               <div
                 className={classNames(projectcss.all, sty.freeBox__oea3S, {
@@ -23002,6 +25084,7 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, ["bed", "isSelected"])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -23058,6 +25141,34 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 $steps["updateModal"] = await $steps["updateModal"];
               }
             }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["bed", "isSelected"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["bed", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
             question={
               hasVariant($state, "modal", "rm1Hs4")
                 ? (() => {
@@ -23076,8 +25187,548 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
                 : undefined
             }
             questionId={
-              hasVariant($state, "modal", "rm1Hs4") ? "q4" : undefined
+              hasVariant($state, "modal", "rm1Hs4")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[3].id;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : undefined
             }
+            questions={
+              hasVariant($state, "modal", "rm1Hs4")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[3];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()
+                : undefined
+            }
+          />
+        ) : null}
+        {(
+          hasVariant($state, "kelvinFinal", "kelvinDoorOne")
+            ? true
+            : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
+              ? true
+              : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
+                ? true
+                : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
+                  ? true
+                  : (() => {
+                      try {
+                        return true;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })()
+        ) ? (
+          <FinalTest
+            data-plasmic-name={"kelvinModal"}
+            data-plasmic-override={overrides.kelvinModal}
+            className={classNames("__wab_instance", sty.kelvinModal, {
+              [sty.kelvinModalkelvinFinal_kelvinDoorFour]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorFour"
+              ),
+              [sty.kelvinModalkelvinFinal_kelvinDoorOne]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorOne"
+              ),
+              [sty.kelvinModalkelvinFinal_kelvinDoorThree]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorThree"
+              ),
+              [sty.kelvinModalkelvinFinal_kelvinDoorTwo]: hasVariant(
+                $state,
+                "kelvinFinal",
+                "kelvinDoorTwo"
+              )
+            })}
+            finalA={
+              hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[5].options[0].text;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
+                  ? (() => {
+                      try {
+                        return $props.questions.questions[6].options[0].text;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
+                    ? (() => {
+                        try {
+                          return $props.questions.questions[7].options[0].text;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    : (() => {
+                        try {
+                          return $props.questions.questions[6].options[0].text;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+            }
+            finalB={
+              hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[5].options[1].text;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
+                  ? (() => {
+                      try {
+                        return $props.questions.questions[6].options[1].text;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
+                    ? (() => {
+                        try {
+                          return $props.questions.questions[7].options[1].text;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    : (() => {
+                        try {
+                          return $props.questions.questions[6].options[1].text;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+            }
+            finalC={
+              hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[5].options[2].text;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
+                  ? (() => {
+                      try {
+                        return $props.questions.questions[6].options[2].text;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
+                    ? (() => {
+                        try {
+                          return $props.questions.questions[7].options[2].text;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    : (() => {
+                        try {
+                          return $props.questions.questions[6].options[2].text;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+            }
+            finalCorrect={
+              hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[5].correctAnswer;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
+                  ? (() => {
+                      try {
+                        return $props.questions.questions[6].correctAnswer;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
+                    ? (() => {
+                        try {
+                          return $props.questions.questions[7].correctAnswer;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    : (() => {
+                        try {
+                          return $props.questions.questions[6].correctAnswer;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+            }
+            finalD={
+              hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[5].options[3].text;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
+                  ? (() => {
+                      try {
+                        return $props.questions.questions[6].options[3].text;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
+                    ? (() => {
+                        try {
+                          return $props.questions.questions[7].options[3].text;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    : (() => {
+                        try {
+                          return $props.questions.questions[6].options[3].text;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+            }
+            finalQuestion={
+              hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[5].questionText;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
+                  ? (() => {
+                      try {
+                        return $props.questions.questions[6].questionText;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
+                    ? (() => {
+                        try {
+                          return $props.questions.questions[7].questionText;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    : (() => {
+                        try {
+                          return $props.questions.questions[6].questionText;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+            }
+            finalQuestionId={
+              hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
+                ? (() => {
+                    try {
+                      return $props.questions.questions[5].id;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
+                  ? (() => {
+                      try {
+                        return $props.questions.questions[6].id;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()
+                  : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
+                    ? (() => {
+                        try {
+                          return $props.questions.questions[7].id;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    : (() => {
+                        try {
+                          return $props.questions.questions[6].id;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+            }
+            onClickContinue={async event => {
+              const $steps = {};
+
+              $steps["updateKelvinStep"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["kelvinStep"]
+                      },
+                      operation: 0,
+                      value: 3
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateKelvinStep"] != null &&
+                typeof $steps["updateKelvinStep"] === "object" &&
+                typeof $steps["updateKelvinStep"].then === "function"
+              ) {
+                $steps["updateKelvinStep"] = await $steps["updateKelvinStep"];
+              }
+            }}
+            onClickSubmit={async event => {
+              const $steps = {};
+
+              $steps["updateModal"] = true
+                ? (() => {
+                    const actionArgs = {
+                      vgroup: "modal",
+                      operation: 0,
+                      value: "kelvinDoorTwo"
+                    };
+                    return (({ vgroup, value }) => {
+                      if (typeof value === "string") {
+                        value = [value];
+                      }
+
+                      $stateSet($state, vgroup, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateModal"] != null &&
+                typeof $steps["updateModal"] === "object" &&
+                typeof $steps["updateModal"].then === "function"
+              ) {
+                $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
           />
         ) : null}
       </div>
@@ -23085,6 +25736,26 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
         data-plasmic-name={"bottomToolbar"}
         data-plasmic-override={overrides.bottomToolbar}
         className={classNames("__wab_instance", sty.bottomToolbar, {
+          [sty.bottomToolbarkelvinFinal_kelvinDoorFour]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorFour"
+          ),
+          [sty.bottomToolbarkelvinFinal_kelvinDoorOne]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorOne"
+          ),
+          [sty.bottomToolbarkelvinFinal_kelvinDoorThree]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorThree"
+          ),
+          [sty.bottomToolbarkelvinFinal_kelvinDoorTwo]: hasVariant(
+            $state,
+            "kelvinFinal",
+            "kelvinDoorTwo"
+          ),
           [sty.bottomToolbarmodal_ivanDoor]: hasVariant(
             $state,
             "modal",
@@ -23104,11 +25775,6 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
             $state,
             "modal",
             "ivanPcp42"
-          ),
-          [sty.bottomToolbarmodal_kelvinDoor]: hasVariant(
-            $state,
-            "modal",
-            "kelvinDoor"
           ),
           [sty.bottomToolbarmodal_kelvinPcp1]: hasVariant(
             $state,
@@ -23218,105 +25884,127 @@ function PlasmicExamRoomPcp__RenderFunc(props: {
           )
         })}
         hasReference={
-          hasVariant($state, "modal", "unnamedVariant")
+          hasVariant($state, "kelvinFinal", "kelvinDoorOne")
             ? "visible"
-            : hasVariant($state, "modal", "ivanPcp3")
+            : hasVariant($state, "kelvinFinal", "kelvinDoorTwo")
               ? "visible"
-              : hasVariant($state, "modal", "ivanPcp2")
+              : hasVariant($state, "kelvinFinal", "kelvinDoorThree")
                 ? "visible"
-                : hasVariant($state, "modal", "ivanPcp42")
+                : hasVariant($state, "kelvinFinal", "kelvinDoorFour")
                   ? "visible"
-                  : hasVariant($state, "modal", "sharesePcp4")
+                  : hasVariant($state, "modal", "unnamedVariant")
                     ? "visible"
-                    : hasVariant($state, "modal", "sharesePcp3")
+                    : hasVariant($state, "modal", "ivanPcp3")
                       ? "visible"
-                      : hasVariant($state, "modal", "sharesePcp2")
+                      : hasVariant($state, "modal", "ivanPcp2")
                         ? "visible"
-                        : hasVariant($state, "modal", "kelvinPcp4")
+                        : hasVariant($state, "modal", "ivanPcp42")
                           ? "visible"
-                          : hasVariant($state, "modal", "kelvinPcp3")
+                          : hasVariant($state, "modal", "sharesePcp4")
                             ? "visible"
-                            : hasVariant($state, "modal", "kelvinPcp2")
+                            : hasVariant($state, "modal", "sharesePcp3")
                               ? "visible"
-                              : hasVariant($state, "modal", "kelvinPcp1")
+                              : hasVariant($state, "modal", "sharesePcp2")
                                 ? "visible"
-                                : hasVariant($state, "modal", "lamp")
+                                : hasVariant($state, "modal", "kelvinPcp4")
                                   ? "visible"
-                                  : hasVariant($state, "modal", "ivanDoor")
+                                  : hasVariant($state, "modal", "kelvinPcp3")
                                     ? "visible"
-                                    : hasVariant($state, "modal", "rm3Hs4")
+                                    : hasVariant($state, "modal", "kelvinPcp2")
                                       ? "visible"
-                                      : hasVariant($state, "modal", "rm3Hs3")
+                                      : hasVariant(
+                                            $state,
+                                            "modal",
+                                            "kelvinPcp1"
+                                          )
                                         ? "visible"
-                                        : hasVariant($state, "modal", "rm3Hs2")
+                                        : hasVariant($state, "modal", "lamp")
                                           ? "visible"
                                           : hasVariant(
                                                 $state,
                                                 "modal",
-                                                "rm3Hs1"
+                                                "ivanDoor"
                                               )
                                             ? "visible"
                                             : hasVariant(
                                                   $state,
                                                   "modal",
-                                                  "shareseDoor"
+                                                  "rm3Hs4"
                                                 )
                                               ? "visible"
                                               : hasVariant(
                                                     $state,
                                                     "modal",
-                                                    "rm2Hs4"
+                                                    "rm3Hs3"
                                                   )
                                                 ? "visible"
                                                 : hasVariant(
                                                       $state,
                                                       "modal",
-                                                      "rm2Hs3"
+                                                      "rm3Hs2"
                                                     )
                                                   ? "visible"
                                                   : hasVariant(
                                                         $state,
                                                         "modal",
-                                                        "rm2Hs2"
+                                                        "rm3Hs1"
                                                       )
                                                     ? "visible"
                                                     : hasVariant(
                                                           $state,
                                                           "modal",
-                                                          "rm2Hs1"
+                                                          "shareseDoor"
                                                         )
                                                       ? "visible"
                                                       : hasVariant(
                                                             $state,
                                                             "modal",
-                                                            "kelvinDoor"
+                                                            "rm2Hs4"
                                                           )
                                                         ? "visible"
                                                         : hasVariant(
                                                               $state,
                                                               "modal",
-                                                              "rm1Hs4"
+                                                              "rm2Hs3"
                                                             )
                                                           ? "visible"
                                                           : hasVariant(
                                                                 $state,
                                                                 "modal",
-                                                                "rm1Hs3"
+                                                                "rm2Hs2"
                                                               )
                                                             ? "visible"
                                                             : hasVariant(
                                                                   $state,
                                                                   "modal",
-                                                                  "rm1Hs2"
+                                                                  "rm2Hs1"
                                                                 )
                                                               ? "visible"
                                                               : hasVariant(
                                                                     $state,
                                                                     "modal",
-                                                                    "rm1Hs1"
+                                                                    "rm1Hs4"
                                                                   )
                                                                 ? "visible"
-                                                                : undefined
+                                                                : hasVariant(
+                                                                      $state,
+                                                                      "modal",
+                                                                      "rm1Hs3"
+                                                                    )
+                                                                  ? "visible"
+                                                                  : hasVariant(
+                                                                        $state,
+                                                                        "modal",
+                                                                        "rm1Hs2"
+                                                                      )
+                                                                    ? "visible"
+                                                                    : hasVariant(
+                                                                          $state,
+                                                                          "modal",
+                                                                          "rm1Hs1"
+                                                                        )
+                                                                      ? "visible"
+                                                                      : undefined
         }
       />
 
@@ -23337,10 +26025,12 @@ const PlasmicDescendants = {
   root: [
     "root",
     "roomPlan",
+    "roomMap",
     "roomScene",
     "kelvinTitleBanner",
     "kelvinPcp",
     "bookshelf6",
+    "kf",
     "sharesePcp",
     "hotspot42",
     "bookshelf5",
@@ -23373,15 +26063,18 @@ const PlasmicDescendants = {
     "sharese4",
     "bookshelf",
     "bed",
+    "kelvinModal",
     "bottomToolbar",
     "clueModal"
   ],
-  roomPlan: ["roomPlan"],
+  roomPlan: ["roomPlan", "roomMap"],
+  roomMap: ["roomMap"],
   roomScene: [
     "roomScene",
     "kelvinTitleBanner",
     "kelvinPcp",
     "bookshelf6",
+    "kf",
     "sharesePcp",
     "hotspot42",
     "bookshelf5",
@@ -23393,8 +26086,9 @@ const PlasmicDescendants = {
     "bookshelf7"
   ],
   kelvinTitleBanner: ["kelvinTitleBanner"],
-  kelvinPcp: ["kelvinPcp", "bookshelf6"],
+  kelvinPcp: ["kelvinPcp", "bookshelf6", "kf"],
   bookshelf6: ["bookshelf6"],
+  kf: ["kf"],
   sharesePcp: [
     "sharesePcp",
     "hotspot42",
@@ -23435,7 +26129,8 @@ const PlasmicDescendants = {
     "diagram",
     "sharese4",
     "bookshelf",
-    "bed"
+    "bed",
+    "kelvinModal"
   ],
   computer: ["computer"],
   ivanPcp42: ["ivanPcp42"],
@@ -23458,6 +26153,7 @@ const PlasmicDescendants = {
   sharese4: ["sharese4"],
   bookshelf: ["bookshelf"],
   bed: ["bed"],
+  kelvinModal: ["kelvinModal"],
   bottomToolbar: ["bottomToolbar"],
   clueModal: ["clueModal"]
 } as const;
@@ -23467,10 +26163,12 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   roomPlan: "div";
+  roomMap: typeof RoomMap;
   roomScene: "div";
   kelvinTitleBanner: "div";
   kelvinPcp: "div";
   bookshelf6: "div";
+  kf: typeof Hotspot;
   sharesePcp: "div";
   hotspot42: "div";
   bookshelf5: "div";
@@ -23503,6 +26201,7 @@ type NodeDefaultElementType = {
   sharese4: typeof QuestionModal;
   bookshelf: typeof QuestionModal;
   bed: typeof QuestionModal;
+  kelvinModal: typeof FinalTest;
   bottomToolbar: typeof BottomToolbar;
   clueModal: typeof ClueModal;
 };
@@ -23570,10 +26269,12 @@ export const PlasmicExamRoomPcp = Object.assign(
   {
     // Helper components rendering sub-elements
     roomPlan: makeNodeComponent("roomPlan"),
+    roomMap: makeNodeComponent("roomMap"),
     roomScene: makeNodeComponent("roomScene"),
     kelvinTitleBanner: makeNodeComponent("kelvinTitleBanner"),
     kelvinPcp: makeNodeComponent("kelvinPcp"),
     bookshelf6: makeNodeComponent("bookshelf6"),
+    kf: makeNodeComponent("kf"),
     sharesePcp: makeNodeComponent("sharesePcp"),
     hotspot42: makeNodeComponent("hotspot42"),
     bookshelf5: makeNodeComponent("bookshelf5"),
@@ -23606,6 +26307,7 @@ export const PlasmicExamRoomPcp = Object.assign(
     sharese4: makeNodeComponent("sharese4"),
     bookshelf: makeNodeComponent("bookshelf"),
     bed: makeNodeComponent("bed"),
+    kelvinModal: makeNodeComponent("kelvinModal"),
     bottomToolbar: makeNodeComponent("bottomToolbar"),
     clueModal: makeNodeComponent("clueModal"),
 

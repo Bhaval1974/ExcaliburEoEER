@@ -62,6 +62,7 @@ import {
 import ClueTab from "../../ClueTab"; // plasmic-import: AHLWtbHHbn2R/component
 import ProgressBar from "../../ProgressBar"; // plasmic-import: uN6JtswiqsYW/component
 import ClueTabbedContainer from "../../ClueTabbedContainer"; // plasmic-import: M2HdJEYFli90/component
+import AudioClue from "../../AudioClue"; // plasmic-import: c4Zno2TVCEGN/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/styleTokensProvider
 
@@ -71,6 +72,9 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: 7WvC14QG9b5jXa
 import sty from "./PlasmicClueModal.module.css"; // plasmic-import: 0lm5ubHxYbp_/css
 
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: 3DFQxdCHWfpb/icon
+import Icon6Icon from "./icons/PlasmicIcon__Icon6"; // plasmic-import: kaF7Ytbq5Rdn/icon
+import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: 4cQx4pt93Oe5/icon
+import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: uMEgRpyHPuKq/icon
 
 createPlasmicElementProxy;
 
@@ -103,20 +107,40 @@ export const PlasmicClueModal__VariantProps = new Array<VariantPropType>(
   "ivanCbc"
 );
 
-export type PlasmicClueModal__ArgsType = {};
+export type PlasmicClueModal__ArgsType = {
+  onClickClose?: (event: any) => void;
+};
 type ArgPropType = keyof PlasmicClueModal__ArgsType;
-export const PlasmicClueModal__ArgProps = new Array<ArgPropType>();
+export const PlasmicClueModal__ArgProps = new Array<ArgPropType>(
+  "onClickClose"
+);
 
 export type PlasmicClueModal__OverridesType = {
   root?: Flex__<"div">;
   tabbedClueModal?: Flex__<"div">;
   table?: Flex__<"div">;
-  progressBar?: Flex__<typeof ProgressBar>;
+  iseeResults?: Flex__<"div">;
+  table2?: Flex__<"div">;
   patientChartClueModal?: Flex__<"div">;
-  clueTabbedContainer?: Flex__<typeof ClueTabbedContainer>;
+  pcpKelvinPatientChartClueModal2?: Flex__<"div">;
+  specialistKelvinPatientChartClueModal3?: Flex__<"div">;
+  pcpKelvinPatientChartClueModal?: Flex__<"div">;
+  specialistSharesePatientChartClueModal?: Flex__<"div">;
+  pcpSharesePatientChartClueModal?: Flex__<"div">;
+  pcpIvanPatientChartClueModal?: Flex__<"div">;
+  specialistIvanPatientChartClueModal1?: Flex__<"div">;
+  specialistIvanPatientChartClueModal2?: Flex__<"div">;
+  audioClue?: Flex__<"div">;
+  pcpKelvinAudio?: Flex__<"div">;
+  specialistKelvinAudio?: Flex__<"div">;
+  pcpShareseAudio?: Flex__<"div">;
+  specialistShareseAudio?: Flex__<"div">;
+  specialistIvanAudio?: Flex__<"div">;
+  pcpIvanAudio?: Flex__<"div">;
 };
 
 export interface DefaultClueModalProps {
+  onClickClose?: (event: any) => void;
   tabs?: SingleChoiceArg<"kelvinPcp" | "sharesePcp" | "ivanPcp">;
   kelvinCbc?: SingleBooleanChoiceArg<"kelvinCbc">;
   kelvinCeliacTest?: SingleBooleanChoiceArg<"kelvinCeliacTest">;
@@ -4953,10 +4977,4653 @@ function PlasmicClueModal__RenderFunc(props: {
             </div>
           </div>
           <ProgressBar
-            data-plasmic-name={"progressBar"}
-            data-plasmic-override={overrides.progressBar}
-            className={classNames("__wab_instance", sty.progressBar, {
-              [sty.progressBarkelvinCeliacTest]: hasVariant(
+            className={classNames("__wab_instance", sty.progressBar__xESjG, {
+              [sty.progressBarkelvinCeliacTest__xESjGbHtw8]: hasVariant(
+                $state,
+                "kelvinCeliacTest",
+                "kelvinCeliacTest"
+              )
+            })}
+          />
+        </div>
+      </div>
+      <div
+        data-plasmic-name={"iseeResults"}
+        data-plasmic-override={overrides.iseeResults}
+        className={classNames(projectcss.all, sty.iseeResults, {
+          [sty.iseeResultsivanCbc]: hasVariant($state, "ivanCbc", "ivanCbc"),
+          [sty.iseeResultskelvinCbc]: hasVariant(
+            $state,
+            "kelvinCbc",
+            "kelvinCbc"
+          ),
+          [sty.iseeResultskelvinCbc_kelvinCeliacTest]:
+            hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+            hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest"),
+          [sty.iseeResultskelvinCeliacTest]: hasVariant(
+            $state,
+            "kelvinCeliacTest",
+            "kelvinCeliacTest"
+          ),
+          [sty.iseeResultskelvinCmp]: hasVariant(
+            $state,
+            "kelvinCmp",
+            "kelvinCmp"
+          ),
+          [sty.iseeResultskelvinCmp_kelvinCbc_kelvinCeliacTest]:
+            hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+            hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+            hasVariant($state, "kelvinCmp", "kelvinCmp"),
+          [sty.iseeResultsshareseCbc]: hasVariant(
+            $state,
+            "shareseCbc",
+            "shareseCbc"
+          ),
+          [sty.iseeResultsshareseCeliacTest]: hasVariant(
+            $state,
+            "shareseCeliacTest",
+            "shareseCeliacTest"
+          ),
+          [sty.iseeResultstabs_ivanPcp]: hasVariant($state, "tabs", "ivanPcp"),
+          [sty.iseeResultstabs_kelvinPcp]: hasVariant(
+            $state,
+            "tabs",
+            "kelvinPcp"
+          ),
+          [sty.iseeResultstabs_sharesePcp]: hasVariant(
+            $state,
+            "tabs",
+            "sharesePcp"
+          )
+        })}
+      >
+        <div
+          className={classNames(projectcss.all, sty.freeBox__vcXtH, {
+            [sty.freeBoxivanCbc__vcXtHPiQEx]: hasVariant(
+              $state,
+              "ivanCbc",
+              "ivanCbc"
+            ),
+            [sty.freeBoxkelvinCbc__vcXtHYbE4M]: hasVariant(
+              $state,
+              "kelvinCbc",
+              "kelvinCbc"
+            ),
+            [sty.freeBoxkelvinCmp_kelvinCbc_kelvinCeliacTest__vcXtHm5CsGYbE4MBHtw8]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.freeBoxtabs_kelvinPcp__vcXtHKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__lZk3E,
+              {
+                [sty.textivanCbc__lZk3EPiQEx]: hasVariant(
+                  $state,
+                  "ivanCbc",
+                  "ivanCbc"
+                ),
+                [sty.textkelvinCbc__lZk3EYbE4M]: hasVariant(
+                  $state,
+                  "kelvinCbc",
+                  "kelvinCbc"
+                ),
+                [sty.textkelvinCmp__lZk3Em5CsG]: hasVariant(
+                  $state,
+                  "kelvinCmp",
+                  "kelvinCmp"
+                ),
+                [sty.textkelvinCmp_kelvinCbc_kelvinCeliacTest__lZk3Em5CsGYbE4MBHtw8]:
+                  hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+                  hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+                  hasVariant($state, "kelvinCmp", "kelvinCmp"),
+                [sty.textshareseCbc__lZk3EtjzU]: hasVariant(
+                  $state,
+                  "shareseCbc",
+                  "shareseCbc"
+                ),
+                [sty.textshareseCeliacTest__lZk3EyMclE]: hasVariant(
+                  $state,
+                  "shareseCeliacTest",
+                  "shareseCeliacTest"
+                ),
+                [sty.texttabs_ivanPcp__lZk3ELnyQl]: hasVariant(
+                  $state,
+                  "tabs",
+                  "ivanPcp"
+                ),
+                [sty.texttabs_sharesePcp__lZk3EZlEIb]: hasVariant(
+                  $state,
+                  "tabs",
+                  "sharesePcp"
+                )
+              }
+            )}
+          >
+            {hasVariant($state, "ivanCbc", "ivanCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCeliacTest", "shareseCeliacTest") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCbc", "shareseCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "ivanPcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "sharesePcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Kelvin's I-SEE Results"}
+                </span>
+              </React.Fragment>
+            )}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox___4QhzD, {
+            [sty.freeBoxivanCbc___4QhzDPiQEx]: hasVariant(
+              $state,
+              "ivanCbc",
+              "ivanCbc"
+            ),
+            [sty.freeBoxshareseCbc___4QhzDtjzU]: hasVariant(
+              $state,
+              "shareseCbc",
+              "shareseCbc"
+            )
+          })}
+        >
+          <div className={classNames(projectcss.all, sty.freeBox__qKbB)}>
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__oq6Qm,
+                {
+                  [sty.textkelvinCmp_kelvinCbc_kelvinCeliacTest__oq6Qmm5CsGYbE4MBHtw8]:
+                    hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+                    hasVariant(
+                      $state,
+                      "kelvinCeliacTest",
+                      "kelvinCeliacTest"
+                    ) &&
+                    hasVariant($state, "kelvinCmp", "kelvinCmp"),
+                  [sty.texttabs_kelvinPcp__oq6QmKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                }
+              )}
+            >
+              <React.Fragment>
+                <React.Fragment>{"Date of report: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"9/29/2025"}
+                </span>
+              </React.Fragment>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__o3Woq)} />
+          </div>
+          <div
+            data-plasmic-name={"table2"}
+            data-plasmic-override={overrides.table2}
+            className={classNames(projectcss.all, sty.table2, {
+              [sty.table2ivanCbc]: hasVariant($state, "ivanCbc", "ivanCbc"),
+              [sty.table2tabs_kelvinPcp]: hasVariant(
+                $state,
+                "tabs",
+                "kelvinPcp"
+              )
+            })}
+          >
+            <div className={classNames(projectcss.all, sty.freeBox__xxyvo)}>
+              <ClueTab
+                active={
+                  hasVariant($state, "ivanCbc", "ivanCbc")
+                    ? true
+                    : hasVariant($state, "shareseCbc", "shareseCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                        ? true
+                        : hasVariant($state, "tabs", "ivanPcp")
+                          ? true
+                          : hasVariant($state, "tabs", "kelvinPcp")
+                            ? true
+                            : undefined
+                }
+                className={classNames("__wab_instance", sty.clueTab__tc1VT, {
+                  [sty.clueTabivanCbc__tc1VTPiQEx]: hasVariant(
+                    $state,
+                    "ivanCbc",
+                    "ivanCbc"
+                  ),
+                  [sty.clueTabkelvinCbc__tc1VTYbE4M]: hasVariant(
+                    $state,
+                    "kelvinCbc",
+                    "kelvinCbc"
+                  ),
+                  [sty.clueTabshareseCbc__tc1VTtjzU]: hasVariant(
+                    $state,
+                    "shareseCbc",
+                    "shareseCbc"
+                  ),
+                  [sty.clueTabtabs_ivanPcp__tc1VTLnyQl]: hasVariant(
+                    $state,
+                    "tabs",
+                    "ivanPcp"
+                  ),
+                  [sty.clueTabtabs_kelvinPcp__tc1VTKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                })}
+                hasText={"yes"}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__s32E,
+                    {
+                      [sty.textivanCbc__s32EPiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.texttabs_ivanPcp__s32ELnyQl]: hasVariant(
+                        $state,
+                        "tabs",
+                        "ivanPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "ivanCbc", "ivanCbc")
+                    ? "CBC w/ Differential"
+                    : hasVariant($state, "tabs", "ivanPcp")
+                      ? "CBC w/ differential"
+                      : "CBC"}
+                </div>
+              </ClueTab>
+              <ClueTab
+                active={
+                  hasVariant($state, "shareseCbc", "shareseCbc")
+                    ? undefined
+                    : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                      ? undefined
+                      : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                        ? undefined
+                        : hasVariant($state, "tabs", "ivanPcp")
+                          ? undefined
+                          : hasVariant($state, "tabs", "sharesePcp")
+                            ? true
+                            : hasVariant($state, "tabs", "kelvinPcp")
+                              ? undefined
+                              : true
+                }
+                className={classNames("__wab_instance", sty.clueTab__m8LvM, {
+                  [sty.clueTabivanCbc__m8LvMPiQEx]: hasVariant(
+                    $state,
+                    "ivanCbc",
+                    "ivanCbc"
+                  ),
+                  [sty.clueTabkelvinCbc__m8LvMYbE4M]: hasVariant(
+                    $state,
+                    "kelvinCbc",
+                    "kelvinCbc"
+                  ),
+                  [sty.clueTabkelvinCmp__m8LvMm5CsG]: hasVariant(
+                    $state,
+                    "kelvinCmp",
+                    "kelvinCmp"
+                  ),
+                  [sty.clueTabshareseCbc__m8LvMtjzU]: hasVariant(
+                    $state,
+                    "shareseCbc",
+                    "shareseCbc"
+                  ),
+                  [sty.clueTabtabs_ivanPcp__m8LvMLnyQl]: hasVariant(
+                    $state,
+                    "tabs",
+                    "ivanPcp"
+                  ),
+                  [sty.clueTabtabs_kelvinPcp__m8LvMKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  ),
+                  [sty.clueTabtabs_sharesePcp__m8LvMZlEIb]: hasVariant(
+                    $state,
+                    "tabs",
+                    "sharesePcp"
+                  )
+                })}
+                hasText={"yes"}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___1JtFm,
+                    {
+                      [sty.textivanCbc___1JtFmPiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.texttabs_ivanPcp___1JtFmLnyQl]: hasVariant(
+                        $state,
+                        "tabs",
+                        "ivanPcp"
+                      ),
+                      [sty.texttabs_kelvinPcp___1JtFmKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {"Celiac Test"}
+                </div>
+              </ClueTab>
+              <ClueTab
+                active={
+                  hasVariant($state, "kelvinCmp", "kelvinCmp")
+                    ? true
+                    : undefined
+                }
+                className={classNames("__wab_instance", sty.clueTab__lHVft, {
+                  [sty.clueTabivanCbc__lHVftPiQEx]: hasVariant(
+                    $state,
+                    "ivanCbc",
+                    "ivanCbc"
+                  ),
+                  [sty.clueTabkelvinCmp__lHVftM5CsG]: hasVariant(
+                    $state,
+                    "kelvinCmp",
+                    "kelvinCmp"
+                  ),
+                  [sty.clueTabshareseCbc__lHVftTjzU]: hasVariant(
+                    $state,
+                    "shareseCbc",
+                    "shareseCbc"
+                  ),
+                  [sty.clueTabshareseCeliacTest__lHVftYMclE]: hasVariant(
+                    $state,
+                    "shareseCeliacTest",
+                    "shareseCeliacTest"
+                  ),
+                  [sty.clueTabtabs_ivanPcp__lHVftLnyQl]: hasVariant(
+                    $state,
+                    "tabs",
+                    "ivanPcp"
+                  ),
+                  [sty.clueTabtabs_kelvinPcp__lHVftKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  ),
+                  [sty.clueTabtabs_sharesePcp__lHVftZlEIb]: hasVariant(
+                    $state,
+                    "tabs",
+                    "sharesePcp"
+                  )
+                })}
+                hasText={"yes"}
+              />
+            </div>
+            <div
+              className={classNames(projectcss.all, sty.freeBox__gzejk, {
+                [sty.freeBoxtabs_kelvinPcp__gzejkKbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              })}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__zbvKy)}>
+                <div className={classNames(projectcss.all, sty.freeBox__ysDqt)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__ne5OH)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__yY3Os
+                      )}
+                    >
+                      {"Lab Test"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__dWk9)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__tyJpg
+                      )}
+                    >
+                      {"Total IgA"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__fXeUy)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___3OjFm
+                      )}
+                    >
+                      {"IgA-tTg"}
+                    </div>
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__bTxwa)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__uKq5D)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__mvt07
+                      )}
+                    >
+                      {"Lab Test"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__tZuHv)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__hu04P
+                      )}
+                    >
+                      {"39 mg/dl"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__aXQ9)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__ffF8L
+                      )}
+                    >
+                      {"2.7 U/mL"}
+                    </div>
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__gJ5Zg)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___6YoDt)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__baXp3
+                      )}
+                    >
+                      {"Lab Test"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__zm3AR, {
+                      [sty.freeBoxtabs_kelvinPcp__zm3ARKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___8NsqI
+                      )}
+                    >
+                      {"<94 mg/dl"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__pFuVg)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__oTt5B
+                      )}
+                    >
+                      {"<4.0 U/mL"}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className={classNames(projectcss.all, sty.freeBox__nsPw9, {
+                [sty.freeBoxivanCbc__nsPw9PiQEx]: hasVariant(
+                  $state,
+                  "ivanCbc",
+                  "ivanCbc"
+                ),
+                [sty.freeBoxkelvinCmp__nsPw9M5CsG]: hasVariant(
+                  $state,
+                  "kelvinCmp",
+                  "kelvinCmp"
+                ),
+                [sty.freeBoxtabs_kelvinPcp__nsPw9KbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              })}
+            >
+              <div
+                className={classNames(projectcss.all, sty.freeBox__iIPaX, {
+                  [sty.freeBoxivanCbc__iIPaXPiQEx]: hasVariant(
+                    $state,
+                    "ivanCbc",
+                    "ivanCbc"
+                  ),
+                  [sty.freeBoxkelvinCmp__iIPaXm5CsG]: hasVariant(
+                    $state,
+                    "kelvinCmp",
+                    "kelvinCmp"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__wBNfj, {
+                    [sty.freeBoxivanCbc__wBNfjPiQEx]: hasVariant(
+                      $state,
+                      "ivanCbc",
+                      "ivanCbc"
+                    ),
+                    [sty.freeBoxkelvinCmp__wBNfjM5CsG]: hasVariant(
+                      $state,
+                      "kelvinCmp",
+                      "kelvinCmp"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__d8Dcb, {
+                      [sty.freeBoxivanCbc__d8DcbPiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__nh8Gi,
+                        {
+                          [sty.textivanCbc__nh8GiPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCmp__nh8Gim5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        }
+                      )}
+                    >
+                      {"Lab Test"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__xBuB4, {
+                      [sty.freeBoxivanCbc__xBuB4PiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.freeBoxkelvinCbc__xBuB4YbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__xBuB4BHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxkelvinCmp__xBuB4M5CsG]: hasVariant(
+                        $state,
+                        "kelvinCmp",
+                        "kelvinCmp"
+                      ),
+                      [sty.freeBoxshareseCbc__xBuB4TjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__vbgKf,
+                        {
+                          [sty.textivanCbc__vbgKfPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__vbgKfYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest__vbgKfbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp__vbgKfM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCeliacTest__vbgKfYMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "White blood cell count\r(x10\u2079/L)"
+                        : hasVariant(
+                              $state,
+                              "shareseCeliacTest",
+                              "shareseCeliacTest"
+                            )
+                          ? "Total IgA (mg/dL)"
+                          : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                            ? "Albumin (g/dL)"
+                            : hasVariant(
+                                  $state,
+                                  "kelvinCeliacTest",
+                                  "kelvinCeliacTest"
+                                )
+                              ? "Total IgA (mg/dL)"
+                              : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                                ? "White blood cell count\r(x10\u2079/L)"
+                                : "Total IgA"}
+                    </div>
+                  </div>
+                  {(
+                    hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___4HdX0,
+                        {
+                          [sty.freeBoxkelvinCbc___4HdX0YbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__jlot0
+                        )}
+                      >
+                        {"Hemoglobin (g/dL)"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__oAKpp,
+                        {
+                          [sty.freeBoxkelvinCbc__oAKppYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__qvqW
+                        )}
+                      >
+                        {"Hematocrit (%)"}
+                      </div>
+                    </div>
+                  ) : null}
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__pkGzC, {
+                      [sty.freeBoxivanCbc__pkGzCPiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.freeBoxkelvinCbc__pkGzCYbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__pkGzCbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxshareseCbc__pkGzCtjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__pkGzCyMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__zkyQ5,
+                        {
+                          [sty.textivanCbc__zkyQ5PiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__zkyQ5YbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest__zkyQ5BHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp__zkyQ5M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCbc__zkyQ5TjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.textshareseCeliacTest__zkyQ5YMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Neutrophils (x10\u00b3/\u03bcL)"
+                        : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Alkaline Phosphatase (U/L)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__wBup7, {
+                      [sty.freeBoxkelvinCeliacTest__wBup7BHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__wBup7YMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__t7NIe,
+                        {
+                          [sty.textivanCbc__t7NIePiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__t7NIeYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest__t7NIebHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp__t7NIeM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCbc__t7NIeTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Lymphocytes (x10\u00b3/\u03bcL)"
+                        : hasVariant($state, "shareseCbc", "shareseCbc")
+                          ? "White blood cell count\r(x10\u2079/L)"
+                          : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                            ? "ALT (Alanine Aminotransferase) (U/L)"
+                            : hasVariant(
+                                  $state,
+                                  "kelvinCeliacTest",
+                                  "kelvinCeliacTest"
+                                )
+                              ? "IgA-tTg (U/mL)"
+                              : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                                ? "Platelets (x10\u2079/L)"
+                                : "IgA-tTg"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__jo4Kq, {
+                      [sty.freeBoxkelvinCbc__jo4KqYbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__jo4KQbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxkelvinCmp__jo4Kqm5CsG]: hasVariant(
+                        $state,
+                        "kelvinCmp",
+                        "kelvinCmp"
+                      ),
+                      [sty.freeBoxshareseCbc__jo4KqtjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__jo4KqyMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___1EQ94,
+                        {
+                          [sty.textivanCbc___1EQ94PiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc___1EQ94YbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest___1EQ94BHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp___1EQ94M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCbc___1EQ94TjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Monocytes (x10\u00b3/\u03bcL)"
+                        : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "AST (Aspartate Aminotransferase) (U/L)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__hcYrY, {
+                      [sty.freeBoxivanCbc__hcYrYPiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.freeBoxkelvinCbc__hcYrYYbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__hcYrYbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxkelvinCmp__hcYrYm5CsG]: hasVariant(
+                        $state,
+                        "kelvinCmp",
+                        "kelvinCmp"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__hcYrYyMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__oMf0P,
+                        {
+                          [sty.textivanCbc__oMf0PPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__oMf0PYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest__oMf0PbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp__oMf0PM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCbc__oMf0PTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Eosinophils (x10\u00b3/\u03bcL)"
+                        : hasVariant($state, "shareseCbc", "shareseCbc")
+                          ? "Hemoglobin (g/dL)"
+                          : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                            ? "BUN (Blood Urea Nitrogen) (mg/dL)"
+                            : hasVariant(
+                                  $state,
+                                  "kelvinCeliacTest",
+                                  "kelvinCeliacTest"
+                                )
+                              ? "IgA-tTg (U/mL)"
+                              : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                                ? "Platelets (x10\u2079/L)"
+                                : "IgA-tTg"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___73Bg, {
+                      [sty.freeBoxkelvinCbc___73BgYbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest___73BgbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxshareseCbc___73BgTjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      ),
+                      [sty.freeBoxshareseCeliacTest___73BgYMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__r4Qjd,
+                        {
+                          [sty.textivanCbc__r4QjdPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__r4QjdYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest__r4QjDbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp__r4Qjdm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Basophils (x10\u00b3/\u03bcL)"
+                        : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Calcium (mg/dL)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__knbvR, {
+                      [sty.freeBoxkelvinCbc__knbvRYbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__knbvRbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__knbvRyMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__vuydq,
+                        {
+                          [sty.textivanCbc__vuydqPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__vuydqYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest__vuydqbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp__vuydqM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCbc__vuydqTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.textshareseCeliacTest__vuydqYMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Hemoglobin (g/dL)"
+                        : hasVariant(
+                              $state,
+                              "shareseCeliacTest",
+                              "shareseCeliacTest"
+                            )
+                          ? "IgA-tTg (U/mL)"
+                          : hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? "Hematocrit (%)"
+                            : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                              ? "Chloride (mmol/L)"
+                              : hasVariant(
+                                    $state,
+                                    "kelvinCeliacTest",
+                                    "kelvinCeliacTest"
+                                  )
+                                ? "IgA-tTg (U/mL)"
+                                : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                                  ? "Platelets (x10\u2079/L)"
+                                  : "IgA-tTg"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__bmThm, {
+                      [sty.freeBoxkelvinCbc__bmThmYbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__bmThMbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxkelvinCmp__bmThmm5CsG]: hasVariant(
+                        $state,
+                        "kelvinCmp",
+                        "kelvinCmp"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__tsKkl,
+                        {
+                          [sty.textivanCbc__tsKklPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.textkelvinCbc__tsKklYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.textkelvinCeliacTest__tsKklbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.textkelvinCmp__tsKklM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.textshareseCbc__tsKklTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.textshareseCeliacTest__tsKklYMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? "Hematocrit (%)"
+                        : hasVariant(
+                              $state,
+                              "shareseCeliacTest",
+                              "shareseCeliacTest"
+                            )
+                          ? "IgA-EMA"
+                          : hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? "Platelets (x10\u2079/L)"
+                            : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                              ? "CO\u2082 (Carbon Dioxide) (mmol/L)"
+                              : hasVariant(
+                                    $state,
+                                    "kelvinCeliacTest",
+                                    "kelvinCeliacTest"
+                                  )
+                                ? "IgA-tTg (U/mL)"
+                                : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                                  ? "Platelets (x10\u2079/L)"
+                                  : "IgA-tTg"}
+                    </div>
+                  </div>
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                        ? true
+                        : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__jKxv8,
+                        {
+                          [sty.freeBoxivanCbc__jKxv8PiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCmp__jKxv8M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__fydoB,
+                          {
+                            [sty.textivanCbc__fydoBPiQEx]: hasVariant(
+                              $state,
+                              "ivanCbc",
+                              "ivanCbc"
+                            ),
+                            [sty.textkelvinCbc__fydoBYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.textkelvinCeliacTest__fydoBbHtw8]: hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                            [sty.textkelvinCmp__fydoBm5CsG]: hasVariant(
+                              $state,
+                              "kelvinCmp",
+                              "kelvinCmp"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "ivanCbc", "ivanCbc")
+                          ? "Platelets (x10\u2079/L)"
+                          : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                            ? "Creatinine (mg/dL)"
+                            : hasVariant(
+                                  $state,
+                                  "kelvinCeliacTest",
+                                  "kelvinCeliacTest"
+                                )
+                              ? "IgA-tTg (U/mL)"
+                              : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                                ? "Platelets (x10\u2079/L)"
+                                : "IgA-tTg"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__ifGs, {
+                        [sty.freeBoxkelvinCmp__ifGsm5CsG]: hasVariant(
+                          $state,
+                          "kelvinCmp",
+                          "kelvinCmp"
+                        )
+                      })}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__m4AvA,
+                          {
+                            [sty.textkelvinCbc__m4AvAYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.textkelvinCeliacTest__m4AvAbHtw8]: hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                            [sty.textkelvinCmp__m4AvAm5CsG]: hasVariant(
+                              $state,
+                              "kelvinCmp",
+                              "kelvinCmp"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Glucose (mmol/L)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__tw8X, {
+                        [sty.freeBoxkelvinCmp__tw8Xm5CsG]: hasVariant(
+                          $state,
+                          "kelvinCmp",
+                          "kelvinCmp"
+                        )
+                      })}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__dswZa,
+                          {
+                            [sty.textkelvinCbc__dswZaYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.textkelvinCeliacTest__dswZAbHtw8]: hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                            [sty.textkelvinCmp__dswZam5CsG]: hasVariant(
+                              $state,
+                              "kelvinCmp",
+                              "kelvinCmp"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Potassium (mmol/L)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__gGhH, {
+                        [sty.freeBoxkelvinCmp__gGhHm5CsG]: hasVariant(
+                          $state,
+                          "kelvinCmp",
+                          "kelvinCmp"
+                        )
+                      })}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__fJe7Z,
+                          {
+                            [sty.textkelvinCbc__fJe7ZYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.textkelvinCeliacTest__fJe7ZbHtw8]: hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                            [sty.textkelvinCmp__fJe7ZM5CsG]: hasVariant(
+                              $state,
+                              "kelvinCmp",
+                              "kelvinCmp"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Sodium (mmol/L)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___7UGvq,
+                        {
+                          [sty.freeBoxkelvinCmp___7UGvqm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__femMq,
+                          {
+                            [sty.textkelvinCbc__femMqYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.textkelvinCeliacTest__femMqbHtw8]: hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                            [sty.textkelvinCmp__femMqM5CsG]: hasVariant(
+                              $state,
+                              "kelvinCmp",
+                              "kelvinCmp"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Total Bilirubin (mg/dL)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__mbGjV,
+                        {
+                          [sty.freeBoxkelvinCmp__mbGjVm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__wIG6,
+                          {
+                            [sty.textkelvinCbc__wIG6YbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.textkelvinCeliacTest__wIG6BHtw8]: hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                            [sty.textkelvinCmp__wIG6M5CsG]: hasVariant(
+                              $state,
+                              "kelvinCmp",
+                              "kelvinCmp"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? "Total Protein (g/dL)"
+                          : hasVariant(
+                                $state,
+                                "kelvinCeliacTest",
+                                "kelvinCeliacTest"
+                              )
+                            ? "IgA-tTg (U/mL)"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "Platelets (x10\u2079/L)"
+                              : "IgA-tTg"}
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__a9Hpt)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__eBqYn)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__oDByW
+                      )}
+                    >
+                      {"Lab Test"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__e6AF)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__vf5Od
+                      )}
+                    >
+                      {"39 mg/dl"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__gdLfz)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___5XlzQ
+                      )}
+                    >
+                      {"2.7 U/mL"}
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__xzaj6, {
+                    [sty.freeBoxivanCbc__xzaj6PiQEx]: hasVariant(
+                      $state,
+                      "ivanCbc",
+                      "ivanCbc"
+                    ),
+                    [sty.freeBoxkelvinCbc__xzaj6YbE4M]: hasVariant(
+                      $state,
+                      "kelvinCbc",
+                      "kelvinCbc"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___0XbRy, {
+                      [sty.freeBoxshareseCbc___0XbRyTjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___4Vagk
+                      )}
+                    >
+                      {"Result"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__lSkpE, {
+                      [sty.freeBoxivanCbc__lSkpEPiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.freeBoxkelvinCbc__lSkpEYbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__lSkpEbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxkelvinCmp__lSkpEm5CsG]: hasVariant(
+                        $state,
+                        "kelvinCmp",
+                        "kelvinCmp"
+                      ),
+                      [sty.freeBoxshareseCbc__lSkpEtjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__lSkpEyMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      ),
+                      [sty.freeBoxtabs_kelvinPcp__lSkpEKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    })}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__grYh, {
+                        [sty.imgkelvinCeliacTest__grYhbHtw8]: hasVariant(
+                          $state,
+                          "kelvinCeliacTest",
+                          "kelvinCeliacTest"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"80%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                        fullWidth: 587.58,
+                        fullHeight: 99.93,
+                        aspectRatio: 5.879916
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__eqg4P, {
+                        [sty.imgkelvinCmp__eqg4Pm5CsG]: hasVariant(
+                          $state,
+                          "kelvinCmp",
+                          "kelvinCmp"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"80%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/kelvinAlbuminSvg.svg",
+                        fullWidth: 566.68,
+                        fullHeight: 81.34,
+                        aspectRatio: 6.966806
+                      }}
+                    />
+
+                    {(
+                      hasVariant($state, "shareseCbc", "shareseCbc")
+                        ? true
+                        : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                    ) ? (
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__vllv0, {
+                          [sty.imgkelvinCbc__vllv0YbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.imgshareseCbc__vllv0TjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgtabs_kelvinPcp__vllv0KbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? "80%"
+                            : hasVariant($state, "kelvinCbc", "kelvinCbc")
+                              ? "80%"
+                              : "420px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/shareseWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 90.19,
+                                aspectRatio: 6.28318
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 99.93,
+                                aspectRatio: 5.67077
+                              }
+                        }
+                      />
+                    ) : null}
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__k0URw, {
+                        [sty.imgshareseCeliacTest__k0URwYMclE]: hasVariant(
+                          $state,
+                          "shareseCeliacTest",
+                          "shareseCeliacTest"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"80%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/shareseTotalIgASvg.svg",
+                        fullWidth: 566.68,
+                        fullHeight: 91.79,
+                        aspectRatio: 6.173657
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__wdiPo, {
+                        [sty.imgivanCbc__wdiPoPiQEx]: hasVariant(
+                          $state,
+                          "ivanCbc",
+                          "ivanCbc"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"50%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                        fullWidth: 566.68,
+                        fullHeight: 91.79,
+                        aspectRatio: 6.173657
+                      }}
+                    />
+                  </div>
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        ? true
+                        : hasVariant($state, "shareseCbc", "shareseCbc")
+                          ? true
+                          : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                            ? true
+                            : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__hSlyu,
+                        {
+                          [sty.freeBoxivanCbc__hSlyuPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc__hSlyuYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__hSlyubHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__hSlyuM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxshareseCbc__hSlyuTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.freeBoxshareseCeliacTest__hSlyuYMclE]:
+                            hasVariant(
+                              $state,
+                              "shareseCeliacTest",
+                              "shareseCeliacTest"
+                            ),
+                          [sty.freeBoxtabs_kelvinPcp__hSlyuKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__djN1A, {
+                            [sty.imgkelvinCbc__djN1AYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__djN1AKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__nCBd, {
+                          [sty.imgkelvinCeliacTest__nCBDbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__uqdMp, {
+                          [sty.imgkelvinCmp__uqdMpM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinAlkalinePhosphataseSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__zyXg1, {
+                          [sty.imgivanCbc__zyXg1PiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__zyXg1M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__zyXg1TjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__zyXg1YMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "300px"
+                            : hasVariant(
+                                  $state,
+                                  "shareseCeliacTest",
+                                  "shareseCeliacTest"
+                                )
+                              ? "80%"
+                              : hasVariant($state, "shareseCbc", "shareseCbc")
+                                ? "80%"
+                                : "auto"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanNeutrophilsSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : hasVariant(
+                                  $state,
+                                  "shareseCeliacTest",
+                                  "shareseCeliacTest"
+                                )
+                              ? {
+                                  src: "/plasmic/escape_room/images/shareseIgATTgSvg.svg",
+                                  fullWidth: 586.89,
+                                  fullHeight: 91.79,
+                                  aspectRatio: 6.393834
+                                }
+                              : hasVariant($state, "shareseCbc", "shareseCbc")
+                                ? {
+                                    src: "/plasmic/escape_room/images/shareseHemoglobinSvg.svg",
+                                    fullWidth: 566.68,
+                                    fullHeight: 92.03,
+                                    aspectRatio: 6.157557
+                                  }
+                                : undefined
+                        }
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__hQ1Xa, {
+                          [sty.imgivanCbc__hQ1XaPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__hQ1XaM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__hQ1XaTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__hQ1XaYMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanNeutrophilsSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "shareseCbc", "shareseCbc")
+                        ? true
+                        : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                          ? true
+                          : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__o6Kme,
+                        {
+                          [sty.freeBoxivanCbc__o6KmePiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc__o6KmeYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__o6KmebHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__o6KmeM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxshareseCbc__o6KmeTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__o6KmeKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__yljAv, {
+                            [sty.imgkelvinCbc__yljAvYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__yljAvKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__lCmh, {
+                          [sty.imgkelvinCeliacTest__lCmhbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__vp9Cv, {
+                          [sty.imgkelvinCmp__vp9Cvm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinAltSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__ygbX, {
+                          [sty.imgivanCbc__ygbXPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__ygbXM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__ygbXTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? "80%"
+                            : "auto"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/shareseHemtaocritSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 92.59,
+                                aspectRatio: 6.120315
+                              }
+                            : undefined
+                        }
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img___6OfQj, {
+                          [sty.imgivanCbc___6OfQjPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp___6OfQjM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc___6OfQjTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest___6OfQjYMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanLymphocytesSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                        ? true
+                        : false
+                  ) ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__aRp3, {
+                        [sty.freeBoxivanCbc__aRp3PiQEx]: hasVariant(
+                          $state,
+                          "ivanCbc",
+                          "ivanCbc"
+                        ),
+                        [sty.freeBoxkelvinCbc__aRp3YbE4M]: hasVariant(
+                          $state,
+                          "kelvinCbc",
+                          "kelvinCbc"
+                        ),
+                        [sty.freeBoxkelvinCeliacTest__aRp3BHtw8]: hasVariant(
+                          $state,
+                          "kelvinCeliacTest",
+                          "kelvinCeliacTest"
+                        ),
+                        [sty.freeBoxkelvinCmp__aRp3M5CsG]: hasVariant(
+                          $state,
+                          "kelvinCmp",
+                          "kelvinCmp"
+                        ),
+                        [sty.freeBoxtabs_kelvinPcp__aRp3KbzSz]: hasVariant(
+                          $state,
+                          "tabs",
+                          "kelvinPcp"
+                        )
+                      })}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__gHr9B, {
+                            [sty.imgkelvinCbc__gHr9BYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__gHr9BKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__unFyF, {
+                          [sty.imgkelvinCeliacTest__unFyFbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__xsL5N, {
+                          [sty.imgkelvinCmp__xsL5NM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinAstSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__iHmz, {
+                          [sty.imgivanCbc__iHmzPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__iHmzm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__iHmztjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__iHmzyMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanMonocytesSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                        ? true
+                        : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__azwwd,
+                        {
+                          [sty.freeBoxivanCbc__azwwdPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc__azwwdYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__azwwdbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__azwwdM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__azwwdKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__cTswM, {
+                            [sty.imgkelvinCbc__cTswMYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__cTswMKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__zRWrg, {
+                          [sty.imgkelvinCeliacTest__zRWrgbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__awqBf, {
+                          [sty.imgkelvinCmp__awqBfM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinBunSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__dsJcW, {
+                          [sty.imgivanCbc__dsJcWPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__dsJcWm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__dsJcWtjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__dsJcWyMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanEosinophilsSvg.svg",
+                                fullWidth: 586.89,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.393834
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                        ? true
+                        : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__l9HkP,
+                        {
+                          [sty.freeBoxivanCbc__l9HkPPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc__l9HkPYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__l9HkPbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__l9HkPm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__l9HkPKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__mfhks, {
+                            [sty.imgkelvinCbc__mfhksYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__mfhksKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img___9BNcX, {
+                          [sty.imgkelvinCeliacTest___9BNcXbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img___5RzR, {
+                          [sty.imgkelvinCmp___5RzRM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinCalciumSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__mDtZc, {
+                          [sty.imgivanCbc__mDtZcPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__mDtZcM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__mDtZcTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__mDtZcYMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanBasophilsSvg.svg",
+                                fullWidth: 586.89,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.393834
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                        ? true
+                        : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__rrfwM,
+                        {
+                          [sty.freeBoxivanCbc__rrfwMPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc__rrfwMYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__rrfwMbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__rrfwMm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__rrfwMKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__u2Bhl, {
+                            [sty.imgkelvinCbc__u2BhlYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__u2BhlKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__fofxh, {
+                          [sty.imgkelvinCeliacTest__fofxHbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__cehlw, {
+                          [sty.imgkelvinCmp__cehlwm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinChlorideSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__bar6K, {
+                          [sty.imgivanCbc__bar6KPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__bar6Km5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__bar6KtjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__bar6KyMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanHemoglobinSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "ivanCbc", "ivanCbc")
+                      ? true
+                      : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                        ? true
+                        : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__r84Px,
+                        {
+                          [sty.freeBoxivanCbc__r84PxPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.freeBoxkelvinCbc__r84PxYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__r84PxbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__r84PxM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__r84PxKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__rmOUv, {
+                            [sty.imgkelvinCbc__rmOUvYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__rmOUvKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__ua19O, {
+                          [sty.imgkelvinCeliacTest__ua19ObHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__s86Dk, {
+                          [sty.imgkelvinCmp__s86DkM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinCo2Svg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__mimbn, {
+                          [sty.imgivanCbc__mimbnPiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__mimbnM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__mimbnTjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__mimbnYMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanHematocritSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__y5Qqv,
+                        {
+                          [sty.freeBoxkelvinCbc__y5QqvYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__y5QqvbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__y5QqvM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__y5QqvKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img___4BmOo, {
+                            [sty.imgkelvinCbc___4BmOoYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp___4BmOoKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__qHuB4, {
+                          [sty.imgkelvinCeliacTest__qHuB4BHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__zpDdK, {
+                          [sty.imgkelvinCmp__zpDdKm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinCreatinineSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__jmi0Q,
+                        {
+                          [sty.freeBoxkelvinCbc__jmi0QYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__jmi0QbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__jmi0Qm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__jmi0QKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__tP7Am, {
+                            [sty.imgkelvinCbc__tP7AmYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__tP7AmKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__gL3Ht, {
+                          [sty.imgkelvinCeliacTest__gL3HTbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__aFlG, {
+                          [sty.imgkelvinCmp__aFlGm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinGlucoseSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___3TOy,
+                        {
+                          [sty.freeBoxkelvinCbc___3TOyYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest___3TOybHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp___3TOyM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp___3TOyKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__kgfsv, {
+                            [sty.imgkelvinCbc__kgfsvYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__kgfsvKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__eqxCs, {
+                          [sty.imgkelvinCeliacTest__eqxCsbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__vYgbM, {
+                          [sty.imgkelvinCmp__vYgbMm5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinPotassiumSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___3ABwl,
+                        {
+                          [sty.freeBoxkelvinCbc___3ABwlYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest___3ABwlbHtw8]:
+                            hasVariant(
+                              $state,
+                              "kelvinCeliacTest",
+                              "kelvinCeliacTest"
+                            ),
+                          [sty.freeBoxkelvinCmp___3ABwlM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp___3ABwlKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__bplDo, {
+                            [sty.imgkelvinCbc__bplDoYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__bplDoKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__sGQaH, {
+                          [sty.imgkelvinCeliacTest__sGQaHbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__fK35, {
+                          [sty.imgkelvinCmp__fK35M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinSodiumSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCmp", "kelvinCmp") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__szr3T,
+                        {
+                          [sty.freeBoxkelvinCbc__szr3TYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxkelvinCeliacTest__szr3TbHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          ),
+                          [sty.freeBoxkelvinCmp__szr3TM5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__szr3TKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      {(
+                        hasVariant($state, "kelvinCbc", "kelvinCbc")
+                          ? true
+                          : false
+                      ) ? (
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__gdTfx, {
+                            [sty.imgkelvinCbc__gdTfxYbE4M]: hasVariant(
+                              $state,
+                              "kelvinCbc",
+                              "kelvinCbc"
+                            ),
+                            [sty.imgtabs_kelvinPcp__gdTfxKbzSz]: hasVariant(
+                              $state,
+                              "tabs",
+                              "kelvinPcp"
+                            )
+                          })}
+                          displayHeight={"auto"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"420px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                            fullWidth: 566.68,
+                            fullHeight: 99.93,
+                            aspectRatio: 5.67077
+                          }}
+                        />
+                      ) : null}
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__ago4, {
+                          [sty.imgkelvinCeliacTest__ago4BHtw8]: hasVariant(
+                            $state,
+                            "kelvinCeliacTest",
+                            "kelvinCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalIgASvg.svg",
+                          fullWidth: 587.58,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.879916
+                        }}
+                      />
+
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img___0Tk32, {
+                          [sty.imgkelvinCmp___0Tk32M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinTotalBilirubinSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 81.34,
+                          aspectRatio: 6.966806
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___9Uahy,
+                        {
+                          [sty.freeBoxkelvinCbc___9UahyYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp___9UahyKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__posq1, {
+                          [sty.imgkelvinCbc__posq1YbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.imgtabs_kelvinPcp__posq1KbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinHemoglobinSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant($state, "kelvinCbc", "kelvinCbc") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__ysYSu,
+                        {
+                          [sty.freeBoxkelvinCbc__ysYSuYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.freeBoxtabs_kelvinPcp__ysYSuKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__sm89X, {
+                          [sty.imgkelvinCbc__sm89XYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.imgtabs_kelvinPcp__sm89XKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinHematocritSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    </div>
+                  ) : null}
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__rcjHt, {
+                      [sty.freeBoxivanCbc__rcjHtPiQEx]: hasVariant(
+                        $state,
+                        "ivanCbc",
+                        "ivanCbc"
+                      ),
+                      [sty.freeBoxkelvinCbc__rcjHtYbE4M]: hasVariant(
+                        $state,
+                        "kelvinCbc",
+                        "kelvinCbc"
+                      ),
+                      [sty.freeBoxkelvinCeliacTest__rcjHtbHtw8]: hasVariant(
+                        $state,
+                        "kelvinCeliacTest",
+                        "kelvinCeliacTest"
+                      ),
+                      [sty.freeBoxkelvinCmp__rcjHtM5CsG]: hasVariant(
+                        $state,
+                        "kelvinCmp",
+                        "kelvinCmp"
+                      ),
+                      [sty.freeBoxshareseCbc__rcjHtTjzU]: hasVariant(
+                        $state,
+                        "shareseCbc",
+                        "shareseCbc"
+                      ),
+                      [sty.freeBoxshareseCeliacTest__rcjHtYMclE]: hasVariant(
+                        $state,
+                        "shareseCeliacTest",
+                        "shareseCeliacTest"
+                      )
+                    })}
+                  >
+                    {(
+                      hasVariant($state, "kelvinCbc", "kelvinCbc")
+                        ? true
+                        : false
+                    ) ? (
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__dq1Fg, {
+                          [sty.imgkelvinCbc__dq1FgYbE4M]: hasVariant(
+                            $state,
+                            "kelvinCbc",
+                            "kelvinCbc"
+                          ),
+                          [sty.imgtabs_kelvinPcp__dq1FgKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinPlateletsSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    ) : null}
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__l8IPj, {
+                        [sty.imgkelvinCeliacTest__l8IPjbHtw8]: hasVariant(
+                          $state,
+                          "kelvinCeliacTest",
+                          "kelvinCeliacTest"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"80%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/kelvinIgATTgSvg.svg",
+                        fullWidth: 584.47,
+                        fullHeight: 99.93,
+                        aspectRatio: 5.848794
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__gl1Xy, {
+                        [sty.imgkelvinCmp__gl1XyM5CsG]: hasVariant(
+                          $state,
+                          "kelvinCmp",
+                          "kelvinCmp"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"80%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/kelvinTotalProteinSvg.svg",
+                        fullWidth: 566.68,
+                        fullHeight: 81.34,
+                        aspectRatio: 6.966806
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__isxU4, {
+                        [sty.imgshareseCbc__isxU4TjzU]: hasVariant(
+                          $state,
+                          "shareseCbc",
+                          "shareseCbc"
+                        )
+                      })}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"80%"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/escape_room/images/sharesePlateletsSvg.svg",
+                        fullWidth: 566.68,
+                        fullHeight: 91.79,
+                        aspectRatio: 6.173657
+                      }}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___1Xjmt,
+                        {
+                          [sty.textshareseCeliacTest___1XjmtYMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        }
+                      )}
+                    >
+                      {"Negative"}
+                    </div>
+                    {(
+                      hasVariant($state, "ivanCbc", "ivanCbc")
+                        ? true
+                        : hasVariant(
+                              $state,
+                              "shareseCeliacTest",
+                              "shareseCeliacTest"
+                            )
+                          ? true
+                          : hasVariant($state, "shareseCbc", "shareseCbc")
+                            ? true
+                            : hasVariant($state, "kelvinCmp", "kelvinCmp")
+                              ? true
+                              : false
+                    ) ? (
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__kMa79, {
+                          [sty.imgivanCbc__kMa79PiQEx]: hasVariant(
+                            $state,
+                            "ivanCbc",
+                            "ivanCbc"
+                          ),
+                          [sty.imgkelvinCmp__kMa79M5CsG]: hasVariant(
+                            $state,
+                            "kelvinCmp",
+                            "kelvinCmp"
+                          ),
+                          [sty.imgshareseCbc__kMa79TjzU]: hasVariant(
+                            $state,
+                            "shareseCbc",
+                            "shareseCbc"
+                          ),
+                          [sty.imgshareseCeliacTest__kMa79YMclE]: hasVariant(
+                            $state,
+                            "shareseCeliacTest",
+                            "shareseCeliacTest"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? "50%"
+                            : "300px"
+                        }
+                        loading={"lazy"}
+                        src={
+                          hasVariant($state, "ivanCbc", "ivanCbc")
+                            ? {
+                                src: "/plasmic/escape_room/images/ivanPlateletsSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                            : {
+                                src: "/plasmic/escape_room/images/ivanWbcCountSvg.svg",
+                                fullWidth: 566.68,
+                                fullHeight: 91.79,
+                                aspectRatio: 6.173657
+                              }
+                        }
+                      />
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {(hasVariant($state, "tabs", "kelvinPcp") ? true : false) ? (
+              <div
+                className={classNames(projectcss.all, sty.freeBox__cC6WS, {
+                  [sty.freeBoxtabs_kelvinPcp__cC6WSKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___6INow)}
+                >
+                  <div className={classNames(projectcss.all, sty.freeBox__kKR)}>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__exIp2)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__jgyTf
+                        )}
+                      >
+                        {"Lab Test"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__eMyZw)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__invdx
+                        )}
+                      >
+                        {"White blood cell count\r(x10\u2079/L)"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__c61Kn)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___4QY70
+                        )}
+                      >
+                        {"Hemoglobin (g/dL)"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__ctzVp,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp__ctzVpKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__piWa1
+                        )}
+                      >
+                        {"Hematocrit (%)"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___8Y731,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp___8Y731KbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__rCJnO
+                        )}
+                      >
+                        {"Platelets (x10\u2079/L)"}
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__kHYhd, {
+                      [sty.freeBoxtabs_kelvinPcp__kHYhdKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___9CUxf
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__t8Zac
+                        )}
+                      >
+                        {"Lab Test"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__yzTov)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__wfX9
+                        )}
+                      >
+                        {"39 mg/dl"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__f1T4)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___1Mxn
+                        )}
+                      >
+                        {"2.7 U/mL"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__udtop,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp__udtopKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__iLeCy
+                        )}
+                      >
+                        {"2.7 U/mL"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__ko5Pr,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp__ko5PrKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__scBya
+                        )}
+                      >
+                        {"2.7 U/mL"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__fjYl, {
+                        [sty.freeBoxtabs_kelvinPcp__fjYlKbzSz]: hasVariant(
+                          $state,
+                          "tabs",
+                          "kelvinPcp"
+                        )
+                      })}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__uQ7F1
+                        )}
+                      >
+                        {"2.7 U/mL"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__ev8Rj,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp__ev8RjKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__tI5N
+                        )}
+                      >
+                        {"2.7 U/mL"}
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___6EuOj)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__qDl4P)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__drbYc
+                        )}
+                      >
+                        {"Result"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__v2WMv,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp__v2WMvKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__qn27Q, {
+                          [sty.imgtabs_kelvinPcp__qn27QKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"420px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinWbcCountSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__oLy2G,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp__oLy2GKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__vDeRl, {
+                          [sty.imgtabs_kelvinPcp__vDeRlKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinHemoglobinSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__trlJq,
+                        {
+                          [sty.freeBoxtabs_kelvinPcp__trlJqKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        }
+                      )}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__fcKbI, {
+                          [sty.imgtabs_kelvinPcp__fcKbIKbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinHematocritSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__vdcdB)}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__mxw46, {
+                          [sty.imgtabs_kelvinPcp__mxw46KbzSz]: hasVariant(
+                            $state,
+                            "tabs",
+                            "kelvinPcp"
+                          )
+                        })}
+                        displayHeight={"auto"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"80%"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/escape_room/images/kelvinPlateletsSvg.svg",
+                          fullWidth: 566.68,
+                          fullHeight: 99.93,
+                          aspectRatio: 5.67077
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__wi3Ht, {
+            [sty.freeBoxtabs_kelvinPcp__wi3HtKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text___00Oig
+            )}
+          >
+            {"Return to the exam room"}
+          </div>
+          <IconIcon
+            className={classNames(projectcss.all, sty.svg__mfcpa)}
+            role={"img"}
+          />
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__os9P0, {
+            [sty.freeBoxkelvinCmp_kelvinCbc_kelvinCeliacTest__os9P0M5CsGYbE4MBHtw8]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp")
+          })}
+        >
+          <div className={classNames(projectcss.all, sty.freeBox___32Icf)}>
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__l33Vg
+              )}
+            >
+              {"Review Question"}
+            </div>
+          </div>
+          <ProgressBar
+            className={classNames("__wab_instance", sty.progressBar__f5BTj, {
+              [sty.progressBarkelvinCeliacTest__f5BTjbHtw8]: hasVariant(
                 $state,
                 "kelvinCeliacTest",
                 "kelvinCeliacTest"
@@ -5018,24 +9685,6454 @@ function PlasmicClueModal__RenderFunc(props: {
           })}
         >
           <div
+            className={classNames(projectcss.all, sty.freeBox__gDFnV)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___0UnQg
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <IconIcon
+              className={classNames(projectcss.all, sty.svg__jdOtp)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <ClueTabbedContainer
+          className={classNames(
+            "__wab_instance",
+            sty.clueTabbedContainer__ua0Ml
+          )}
+        />
+      </div>
+      <div
+        data-plasmic-name={"pcpKelvinPatientChartClueModal2"}
+        data-plasmic-override={overrides.pcpKelvinPatientChartClueModal2}
+        className={classNames(
+          projectcss.all,
+          sty.pcpKelvinPatientChartClueModal2,
+          {
+            [sty.pcpKelvinPatientChartClueModal2kelvinCmp]: hasVariant(
+              $state,
+              "kelvinCmp",
+              "kelvinCmp"
+            ),
+            [sty.pcpKelvinPatientChartClueModal2kelvinCmp_kelvinCbc_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.pcpKelvinPatientChartClueModal2kelvinCmp_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.pcpKelvinPatientChartClueModal2shareseCbc]: hasVariant(
+              $state,
+              "shareseCbc",
+              "shareseCbc"
+            )
+          }
+        )}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox__qxqMg)}>
+          <div
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.text___0UnQg
+              sty.text__zfnKc
             )}
           >
-            {"Return to the exam room"}
+            {"Your clue is:"}
           </div>
-          <IconIcon
-            className={classNames(projectcss.all, sty.svg__jdOtp)}
-            role={"img"}
-          />
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text___9FwFd
+            )}
+          >
+            {"Kelvin's Patient Chart"}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox___7JIu0, {
+            [sty.freeBoxtabs_kelvinPcp___7JIu0KbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__janXn)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__ha8Oz
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <IconIcon
+              className={classNames(projectcss.all, sty.svg__vdefI)}
+              role={"img"}
+            />
+          </div>
         </div>
         <ClueTabbedContainer
-          data-plasmic-name={"clueTabbedContainer"}
-          data-plasmic-override={overrides.clueTabbedContainer}
-          className={classNames("__wab_instance", sty.clueTabbedContainer)}
+          children2={
+            <div className={classNames(projectcss.all, sty.freeBox__oHCj)}>
+              <div className={classNames(projectcss.all, sty.freeBox__lnz6P)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ko0
+                  )}
+                >
+                  {"General:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___9ERTp
+                  )}
+                >
+                  {
+                    "Alert, interactive, age-appropriate behavior. Well-nourhsed and well-hydrated."
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__oQMaE)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zf53X
+                  )}
+                >
+                  {"HEENT"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__i4DBm
+                  )}
+                >
+                  {
+                    "Normocephalic, oropharynx clear with moist mucous membranes"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__axcCn)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__gRjuO
+                  )}
+                >
+                  {"CV"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xdsRs
+                  )}
+                >
+                  {"Regular rate and rhythm"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__lXfK2)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__aRwrV
+                  )}
+                >
+                  {"Respiratory:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___5Pitx
+                  )}
+                >
+                  {
+                    "Clear to auscultation bilaterally. No wheezes, rales, or rhonchi."
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__z748H)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__oPJq3
+                  )}
+                >
+                  {"Abdomen:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__pr1Oa
+                  )}
+                >
+                  {"Soft, no distention, no rebound or guarding"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__nEzMt)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__i7P8M
+                  )}
+                >
+                  {"Musculoskeletal"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__syO8
+                  )}
+                >
+                  {"Typical range of motion. Normal gait observed for age."}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__qfYyp)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ilD6M
+                  )}
+                >
+                  {"Skin:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__g21Wb
+                  )}
+                >
+                  {
+                    "Dry, slightly rough patches noted on bilateral antecubital fossae and behind knees, consistent with mild eczema"
+                  }
+                </div>
+              </div>
+            </div>
+          }
+          className={classNames(
+            "__wab_instance",
+            sty.clueTabbedContainer__bArwG
+          )}
+          dob={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__gIQpA
+              )}
+            >
+              {"7/1/2022"}
+            </div>
+          }
+          image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__prAkD)}
+              displayHeight={"auto"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"auto"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/image20.svg",
+                fullWidth: 365.08,
+                fullHeight: 304.52,
+                aspectRatio: 1.19887
+              }}
+            />
+          }
+          name={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__upU9
+              )}
+            >
+              {"Kelvin Thompson"}
+            </div>
+          }
+          tab2Image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__xjL)}
+              displayHeight={"100%"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"125%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"600px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/image21.svg",
+                fullWidth: 451.35,
+                fullHeight: 494.68,
+                aspectRatio: 0.912408
+              }}
+            />
+          }
+        >
+          <div className={classNames(projectcss.all, sty.columns__blDfg)}>
+            <div className={classNames(projectcss.all, sty.column__o27Mq)}>
+              <div className={classNames(projectcss.all, sty.freeBox__ift3X)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ufvf
+                  )}
+                >
+                  {"Vital Signs:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___92Xe2
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Temperature: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"97.9\u00b0F"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__jxnMy
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Pulse: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"98 bpm"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__hJe0L
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Respiratory rate: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"22 bpm"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__gsmAj
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Blood pressure: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"86/42 mmHg"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__bUsxs
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Oxygen saturation: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"96%"}
+                    </span>
+                    <React.Fragment>{" on room air"}</React.Fragment>
+                  </React.Fragment>
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__xoDyA)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___8EE8N
+                  )}
+                >
+                  {"Height/Weight:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__e6YVu
+                  )}
+                >
+                  {
+                    "37.0 inches, 35.2 lbs \r(~70th percentile for both height and weight)"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__mtYoO)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kuJnt
+                  )}
+                >
+                  {"Social History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__yzbQ
+                  )}
+                >
+                  {
+                    "\u2022 Lives at home with parents and \t\t\t\tolder sister (age 5)"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__rut8L
+                  )}
+                >
+                  {"\u2022 Goes to private daycare 5 days a week"}
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.column__nVmPf)}>
+              <div className={classNames(projectcss.all, sty.freeBox__diuFn)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nEnsN
+                  )}
+                >
+                  {"Medical History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__mcCo
+                  )}
+                >
+                  {"\u2022 C-section birth full term"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__tj33I
+                  )}
+                >
+                  {
+                    "\u2022 Occasional vomiting and reflux (1-2x month) \t\t\t\treported at regularly scheduled pediatrician \t\t\t\tvisits at age 6/12/24 months"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__llRms
+                  )}
+                >
+                  {
+                    "\u2022 Mild eczema since age 12 months, managed \t\t\t\twith fragrance-free products and colloidal \t\t\t\toatmeal moisturizer"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__oBjpa)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ylPRm
+                  )}
+                >
+                  {"Surgical History: "}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__aoCm
+                  )}
+                >
+                  {"None"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__iOtt5)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__t4982
+                  )}
+                >
+                  {"Allergies"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__qAjJc
+                  )}
+                >
+                  {"No known allergies"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__duTm8)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ewBvU
+                  )}
+                >
+                  {"Current Medications:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__rqVxw
+                  )}
+                >
+                  {"None"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox___7HjH3)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__oQnPf
+                  )}
+                >
+                  {"Current Symptoms:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__hJ7Pn
+                  )}
+                >
+                  {
+                    "Patient presents with increased regularity of vomiting (1-3x weekly) and chronic throat pain"
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </ClueTabbedContainer>
+      </div>
+      <div
+        data-plasmic-name={"specialistKelvinPatientChartClueModal3"}
+        data-plasmic-override={overrides.specialistKelvinPatientChartClueModal3}
+        className={classNames(
+          projectcss.all,
+          sty.specialistKelvinPatientChartClueModal3,
+          {
+            [sty.specialistKelvinPatientChartClueModal3kelvinCmp]: hasVariant(
+              $state,
+              "kelvinCmp",
+              "kelvinCmp"
+            ),
+            [sty.specialistKelvinPatientChartClueModal3kelvinCmp_kelvinCbc_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.specialistKelvinPatientChartClueModal3kelvinCmp_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.specialistKelvinPatientChartClueModal3shareseCbc]: hasVariant(
+              $state,
+              "shareseCbc",
+              "shareseCbc"
+            )
+          }
+        )}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox__i18Rd)}>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__r4Hzp
+            )}
+          >
+            {"Your clue is:"}
+          </div>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__oUm4X
+            )}
+          >
+            {"Kelvin's Patient Chart"}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox___98Puh, {
+            [sty.freeBoxtabs_kelvinPcp___98PuhKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__hkAdm)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__mtvfu
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <IconIcon
+              className={classNames(projectcss.all, sty.svg__zjbC6)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <ClueTabbedContainer
+          children2={
+            <div className={classNames(projectcss.all, sty.freeBox___2QUc0)}>
+              <div className={classNames(projectcss.all, sty.freeBox__ln9KF)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__r0Mpk
+                  )}
+                >
+                  {"General:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__b181
+                  )}
+                >
+                  {
+                    "Alert, interactive, age-appropriate behavior. Well-nourhsed and well-hydrated."
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox___2WU6)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__efweX
+                  )}
+                >
+                  {"HEENT"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__pTchQ
+                  )}
+                >
+                  {
+                    "Normocephalic, oropharynx clear with moist mucous membranes"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__pJhR4)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__qgD6W
+                  )}
+                >
+                  {"CV"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__q7PW
+                  )}
+                >
+                  {"Regular rate and rhythm"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__kMJtt)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__vv9Cj
+                  )}
+                >
+                  {"Respiratory:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__m0Q4A
+                  )}
+                >
+                  {
+                    "Clear to auscultation bilaterally. No wheezes, rales, or rhonchi."
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__mSxVl)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xydv5
+                  )}
+                >
+                  {"Abdomen:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___3ShtZ
+                  )}
+                >
+                  {"Soft, no distention, no rebound or guarding"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__d79BA)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__koJB
+                  )}
+                >
+                  {"Musculoskeletal"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___0LRgc
+                  )}
+                >
+                  {"Typical range of motion. Normal gait observed for age."}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__sxesn)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__imBiR
+                  )}
+                >
+                  {"Skin:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___3ZwTi
+                  )}
+                >
+                  {
+                    "Dry, slightly rough patches noted on bilateral antecubital fossae and behind knees, consistent with mild eczema"
+                  }
+                </div>
+              </div>
+            </div>
+          }
+          className={classNames(
+            "__wab_instance",
+            sty.clueTabbedContainer__nvlea
+          )}
+          dob={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___6NiMh
+              )}
+            >
+              {"7/1/2022"}
+            </div>
+          }
+          image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img___8ZEcE)}
+              displayHeight={"auto"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"auto"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/image20.svg",
+                fullWidth: 365.08,
+                fullHeight: 304.52,
+                aspectRatio: 1.19887
+              }}
+            />
+          }
+          name={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__b8RkS
+              )}
+            >
+              {"Kelvin Thompson"}
+            </div>
+          }
+          tab2Image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__psBbY)}
+              displayHeight={"100%"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"125%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"600px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/image21.svg",
+                fullWidth: 451.35,
+                fullHeight: 494.68,
+                aspectRatio: 0.912408
+              }}
+            />
+          }
+        >
+          <div className={classNames(projectcss.all, sty.columns__niHCd)}>
+            <div className={classNames(projectcss.all, sty.column__wXd44)}>
+              <div className={classNames(projectcss.all, sty.freeBox___50U6X)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__qvWxW
+                  )}
+                >
+                  {"Vital Signs:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__u1QHw
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Temperature: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"97.9\u00b0F"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__thUmt
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Pulse: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"98 bpm"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__syUIa
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Respiratory rate: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"22 bpm"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___69KY0
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Blood pressure: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"86/42 mmHg"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__gFvEw
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Oxygen saturation: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"96%"}
+                    </span>
+                    <React.Fragment>{" on room air"}</React.Fragment>
+                  </React.Fragment>
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox___9YBnN)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__gz5Hn
+                  )}
+                >
+                  {"Height/Weight:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__eHyIb
+                  )}
+                >
+                  {
+                    "37.0 inches, 35.2 lbs \r(~70th percentile for both height and weight)"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__waivW)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__f2HOy
+                  )}
+                >
+                  {"Social History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__k7CQe
+                  )}
+                >
+                  {
+                    "\u2022 Lives at home with parents and \t\t\t\tolder sister (age 5)"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__aHxiy
+                  )}
+                >
+                  {"\u2022 Goes to private daycare 5 days a week"}
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.column__jvTw8)}>
+              <div className={classNames(projectcss.all, sty.freeBox__a2Wd3)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__pgzUl
+                  )}
+                >
+                  {"Medical History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__gMPwh
+                  )}
+                >
+                  {"\u2022 C-section birth full term"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__wc6C2
+                  )}
+                >
+                  {
+                    "\u2022 Occasional vomiting and reflux (1-2x month) \t\t\t\treported at regularly scheduled pediatrician \t\t\t\tvisits at age 6/12/24 months"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__mz0N4
+                  )}
+                >
+                  {
+                    "\u2022 Mild eczema since age 12 months, managed \t\t\t\twith fragrance-free products and colloidal \t\t\t\toatmeal moisturizer"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__o4Vk5)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__it8X
+                  )}
+                >
+                  {"Surgical History: "}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__cnlij
+                  )}
+                >
+                  {"None"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__ltXts)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___58EhN
+                  )}
+                >
+                  {"Allergies"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__cwugo
+                  )}
+                >
+                  {"No known allergies"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__jXn1X)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__oNgZx
+                  )}
+                >
+                  {"Current Medications:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__peeLl
+                  )}
+                >
+                  {"None"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__f6VKq)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__guJfz
+                  )}
+                >
+                  {"Current Symptoms:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___9YlV5
+                  )}
+                >
+                  {
+                    "Patient presents with increased regularity of vomiting (1-3x weekly) and chronic throat pain"
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </ClueTabbedContainer>
+      </div>
+      <div
+        data-plasmic-name={"pcpKelvinPatientChartClueModal"}
+        data-plasmic-override={overrides.pcpKelvinPatientChartClueModal}
+        className={classNames(
+          projectcss.all,
+          sty.pcpKelvinPatientChartClueModal,
+          {
+            [sty.pcpKelvinPatientChartClueModalkelvinCmp]: hasVariant(
+              $state,
+              "kelvinCmp",
+              "kelvinCmp"
+            ),
+            [sty.pcpKelvinPatientChartClueModalkelvinCmp_kelvinCbc_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.pcpKelvinPatientChartClueModalkelvinCmp_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.pcpKelvinPatientChartClueModalshareseCbc]: hasVariant(
+              $state,
+              "shareseCbc",
+              "shareseCbc"
+            )
+          }
+        )}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox__rgLU)}>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__vS8V8
+            )}
+          >
+            {"Your clue is:"}
+          </div>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__iSv2Z
+            )}
+          >
+            {"Kelvin's Patient Chart"}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__p3Ngy, {
+            [sty.freeBoxtabs_kelvinPcp__p3NgyKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__jxRj4)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___6Un26
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <IconIcon
+              className={classNames(projectcss.all, sty.svg__oJfVi)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <ClueTabbedContainer
+          className={classNames(
+            "__wab_instance",
+            sty.clueTabbedContainer___9DFjm
+          )}
         />
+      </div>
+      <div
+        data-plasmic-name={"specialistSharesePatientChartClueModal"}
+        data-plasmic-override={overrides.specialistSharesePatientChartClueModal}
+        className={classNames(
+          projectcss.all,
+          sty.specialistSharesePatientChartClueModal,
+          {
+            [sty.specialistSharesePatientChartClueModalkelvinCmp]: hasVariant(
+              $state,
+              "kelvinCmp",
+              "kelvinCmp"
+            ),
+            [sty.specialistSharesePatientChartClueModalkelvinCmp_kelvinCbc_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.specialistSharesePatientChartClueModalkelvinCmp_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.specialistSharesePatientChartClueModalshareseCbc]: hasVariant(
+              $state,
+              "shareseCbc",
+              "shareseCbc"
+            )
+          }
+        )}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox__net10)}>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__oism1
+            )}
+          >
+            {"Your clue is:"}
+          </div>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__iqmHu
+            )}
+          >
+            {"Sharese's Patient Chart"}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__cSkCl, {
+            [sty.freeBoxtabs_kelvinPcp__cSkClKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__m2XGk)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__fEj8R
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <IconIcon
+              className={classNames(projectcss.all, sty.svg__qsp6Y)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <ClueTabbedContainer
+          children2={
+            <div className={classNames(projectcss.all, sty.freeBox__kY30N)}>
+              <div className={classNames(projectcss.all, sty.freeBox__tr53T)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__d65Uh
+                  )}
+                >
+                  {"General:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__n8W0T
+                  )}
+                >
+                  {"Well-appearing woman in no acute distress"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__oxrk7)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__dIdz6
+                  )}
+                >
+                  {"HEENT"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zWqFu
+                  )}
+                >
+                  {
+                    "Normocephalic, oropharynx clear with moist mucous membranes"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__zfQf3)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__csrfd
+                  )}
+                >
+                  {"CV"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___9UsR6
+                  )}
+                >
+                  {"Regular rate and rhythm"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__vNgm)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ev1Lw
+                  )}
+                >
+                  {"Respiratory:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__o8M5J
+                  )}
+                >
+                  {"Clear to auscultation bilaterally"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__jUtTu)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__uo9YQ
+                  )}
+                >
+                  {"Abdomen:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__wBu8U
+                  )}
+                >
+                  {"Soft, no distention, no rebound or guarding"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__iq0E)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xjTkD
+                  )}
+                >
+                  {"Musculoskeletal"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kRf22
+                  )}
+                >
+                  {
+                    "No joint swelling, erythema, or deformity. Full range of motion in all extremities. Gait steady."
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__u2Ybn)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__vUbp
+                  )}
+                >
+                  {"Skin:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__dcq17
+                  )}
+                >
+                  {"No bruises or rashes noted"}
+                </div>
+              </div>
+            </div>
+          }
+          className={classNames(
+            "__wab_instance",
+            sty.clueTabbedContainer__qIAld
+          )}
+          dob={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___5CcAc
+              )}
+            >
+              {"09/14/2004"}
+            </div>
+          }
+          image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__kOnKd, {
+                [sty.imgtabs_kelvinPcp__kOnKdKbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              })}
+              displayHeight={"auto"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"auto"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/shareseSvg.svg",
+                fullWidth: 256.613,
+                fullHeight: 264.833,
+                aspectRatio: 0.968962
+              }}
+            />
+          }
+          name={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___72Y6D
+              )}
+            >
+              {"Sharese Lopez"}
+            </div>
+          }
+          sex={"Female"}
+          tab2Image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__r2C0E)}
+              displayHeight={"100%"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"125%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"600px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/image24.svg",
+                fullWidth: 451.35,
+                fullHeight: 544.15,
+                aspectRatio: 0.829459
+              }}
+            />
+          }
+        >
+          <div className={classNames(projectcss.all, sty.columns__chRnH)}>
+            <div className={classNames(projectcss.all, sty.column__bTf1S)}>
+              <div className={classNames(projectcss.all, sty.freeBox__qDvk)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___4Doxn
+                  )}
+                >
+                  {"Vital Signs:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__wQ2X
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Temperature: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"98.7\u00b0F"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__evQqE
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Pulse: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"72 bpm"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__asRdr
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Respiratory rate: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"16 bpm"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kAx4H
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Blood pressure: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"112/70 mmHg"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__tlJpl
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Oxygen saturation: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"98%"}
+                    </span>
+                    <React.Fragment>{" on room air"}</React.Fragment>
+                  </React.Fragment>
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__sil7C)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__iwn2S
+                  )}
+                >
+                  {"Height/Weight:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__wEon
+                  )}
+                >
+                  {"5-foot-1, 142 lbs\r(BMI: 26.8)"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox___7VoYn)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__iImGn
+                  )}
+                >
+                  {"Social History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__acir8
+                  )}
+                >
+                  {
+                    "\u2022 Full-time undergraduate student (lives in on-campus dormitory)"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__c93I1
+                  )}
+                >
+                  {"\u2022 Drinks 3-5 alcoholic beverages/week"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__dtLlb
+                  )}
+                >
+                  {"\u2022 Physically active"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__lbvOc)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__dzJ2P
+                  )}
+                >
+                  {"Family History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__hkRH
+                  )}
+                >
+                  {"\u2022 Fraternal twin sister with Celiac disease"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__uNw3G
+                  )}
+                >
+                  {"\u2022 Father with type 2 diabetes"}
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.column__xqhMd)}>
+              <div className={classNames(projectcss.all, sty.freeBox___6HIGh)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__hExM
+                  )}
+                >
+                  {"Medical History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__deqmm
+                  )}
+                >
+                  {"\u2022 Diagnosed at age 9 with EoE via EGD"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ujH4E
+                  )}
+                >
+                  {"\u2022 Last endoscopy 10/3/2021: 12 eos/hpf, 1 EREFS score"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___78Ld0
+                  )}
+                >
+                  {
+                    "\u2022 Treatment with three-food elimination diet \t\t\t\t(wheat, milk, eggs) since age 10"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__g7Hl4)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__poCvZ
+                  )}
+                >
+                  {"Surgical History: "}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__mmMy3
+                  )}
+                >
+                  {"Appendectomy age 15"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox___6Vpzp)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__qgJbe
+                  )}
+                >
+                  {"Allergies"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__snmFn
+                  )}
+                >
+                  {"Allergic rhinitis"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__hHMyW)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__qNvGr
+                  )}
+                >
+                  {"Current Medications:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ueiag
+                  )}
+                >
+                  {"Omeprazole 20 mg twice daily"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox___8Dtcb)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__veGM
+                  )}
+                >
+                  {"Current Symptoms:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__qnuPp
+                  )}
+                >
+                  {
+                    "\u2022 Presents today with worsening dysphagia symptoms (difficuty swallowing, gagging); heartburn 3-4x week\r"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___0U78Q
+                  )}
+                >
+                  {
+                    "\u2022 Food impaction treated at ER 5 weeks ago: glucagon (1-2 mg intravenously)"
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </ClueTabbedContainer>
+      </div>
+      <div
+        data-plasmic-name={"pcpSharesePatientChartClueModal"}
+        data-plasmic-override={overrides.pcpSharesePatientChartClueModal}
+        className={classNames(
+          projectcss.all,
+          sty.pcpSharesePatientChartClueModal,
+          {
+            [sty.pcpSharesePatientChartClueModalkelvinCmp]: hasVariant(
+              $state,
+              "kelvinCmp",
+              "kelvinCmp"
+            ),
+            [sty.pcpSharesePatientChartClueModalkelvinCmp_kelvinCbc_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.pcpSharesePatientChartClueModalkelvinCmp_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.pcpSharesePatientChartClueModalshareseCbc]: hasVariant(
+              $state,
+              "shareseCbc",
+              "shareseCbc"
+            )
+          }
+        )}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox__qrIfQ)}>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__sN0Nj
+            )}
+          >
+            {"Your clue is:"}
+          </div>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__bMyLl
+            )}
+          >
+            {"Sharese's Patient Chart"}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__dEojp, {
+            [sty.freeBoxtabs_kelvinPcp__dEojpKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__sF9Wv)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___5YtA9
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <IconIcon
+              className={classNames(projectcss.all, sty.svg__kBZed)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <ClueTabbedContainer
+          children2={
+            <div className={classNames(projectcss.all, sty.freeBox__jbHx8)}>
+              <div className={classNames(projectcss.all, sty.freeBox__rlpdh)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__g8H93
+                  )}
+                >
+                  {"General:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__koi2X
+                  )}
+                >
+                  {"Well-appearing woman in no acute distress"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__n3M4O)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__m6HhF
+                  )}
+                >
+                  {"HEENT"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___5Jt8F
+                  )}
+                >
+                  {
+                    "Normocephalic, oropharynx clear with moist mucous membranes"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__sk2Dj)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___4WGd
+                  )}
+                >
+                  {"CV"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zPoo
+                  )}
+                >
+                  {"Regular rate and rhythm"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__dInU)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__esocF
+                  )}
+                >
+                  {"Respiratory:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___7EZtu
+                  )}
+                >
+                  {"Clear to auscultation bilaterally"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox___6IyDc)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__qmkKg
+                  )}
+                >
+                  {"Abdomen:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__p7ABw
+                  )}
+                >
+                  {"Soft, no distention, no rebound or guarding"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__gkSmr)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__dt7Tz
+                  )}
+                >
+                  {"Musculoskeletal"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__fbzAq
+                  )}
+                >
+                  {
+                    "No joint swelling, erythema, or deformity. Full range of motion in all extremities. Gait steady."
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__cWtm5)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__cds2S
+                  )}
+                >
+                  {"Skin:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__y0Qxw
+                  )}
+                >
+                  {"No bruises or rashes noted"}
+                </div>
+              </div>
+            </div>
+          }
+          className={classNames(
+            "__wab_instance",
+            sty.clueTabbedContainer__cjcix
+          )}
+          dob={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__vPdB
+              )}
+            >
+              {"09/14/2004"}
+            </div>
+          }
+          image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__m5JR, {
+                [sty.imgtabs_kelvinPcp__m5JRKbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              })}
+              displayHeight={"auto"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"auto"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/shareseSvg.svg",
+                fullWidth: 256.613,
+                fullHeight: 264.833,
+                aspectRatio: 0.968962
+              }}
+            />
+          }
+          name={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__nf3Op
+              )}
+            >
+              {"Sharese Lopez"}
+            </div>
+          }
+          sex={"Female"}
+          tab2Image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__hzl0L)}
+              displayHeight={"100%"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"125%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"600px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/image24.svg",
+                fullWidth: 451.35,
+                fullHeight: 544.15,
+                aspectRatio: 0.829459
+              }}
+            />
+          }
+        >
+          <div className={classNames(projectcss.all, sty.columns__c7N7A)}>
+            <div className={classNames(projectcss.all, sty.column__jke2X)}>
+              <div className={classNames(projectcss.all, sty.freeBox__x35Y1)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__vlvdP
+                  )}
+                >
+                  {"Vital Signs:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__gPpzt
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Temperature: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"98.7\u00b0F"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__z57Oq
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Pulse: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"72 bpm"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xHbDc
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Respiratory rate: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"16 bpm"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__lA4G6
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Blood pressure: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"112/70 mmHg"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xYyBd
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Oxygen saturation: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"98%"}
+                    </span>
+                    <React.Fragment>{" on room air"}</React.Fragment>
+                  </React.Fragment>
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__p3YG)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__siMl3
+                  )}
+                >
+                  {"Height/Weight:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nijTn
+                  )}
+                >
+                  {"5-foot-1, 142 lbs\r(BMI: 26.8)"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__zWpyx)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__h8F5T
+                  )}
+                >
+                  {"Social History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__h5ZjQ
+                  )}
+                >
+                  {
+                    "\u2022 Full-time undergraduate student (lives in on-campus dormitory)"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__lAu3Z
+                  )}
+                >
+                  {"\u2022 Drinks 3-5 alcoholic beverages/week"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__dqeLj
+                  )}
+                >
+                  {"\u2022 Physically active"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__pDhGz)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xxKay
+                  )}
+                >
+                  {"Family History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__x6RiQ
+                  )}
+                >
+                  {"\u2022 Fraternal twin sister with Celiac disease"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__hdCth
+                  )}
+                >
+                  {"\u2022 Father with type 2 diabetes"}
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.column__wWsuk)}>
+              <div className={classNames(projectcss.all, sty.freeBox__ahdo1)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ueV9Y
+                  )}
+                >
+                  {"Medical History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__j9D5I
+                  )}
+                >
+                  {"\u2022 Diagnosed at age 9 with EoE via EGD"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nLEy
+                  )}
+                >
+                  {"\u2022 Last endoscopy 10/3/2021: 12 eos/hpf, 1 EREFS score"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___8HRub
+                  )}
+                >
+                  {
+                    "\u2022 Treatment with three-food elimination diet \t\t\t\t(wheat, milk, eggs) since age 10"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__tMlx)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__jZbM8
+                  )}
+                >
+                  {"Surgical History: "}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__vs5CW
+                  )}
+                >
+                  {"Appendectomy age 15"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__idMi)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__mi6Z6
+                  )}
+                >
+                  {"Allergies"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kdMs
+                  )}
+                >
+                  {"Allergic rhinitis"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox___8JIZs)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ipkUy
+                  )}
+                >
+                  {"Current Medications:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___0YmqB
+                  )}
+                >
+                  {"Omeprazole 20 mg twice daily"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__xDAo)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kizGp
+                  )}
+                >
+                  {"Current Symptoms:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__gbb2O
+                  )}
+                >
+                  {
+                    "\u2022 Presents today with worsening dysphagia symptoms (difficuty swallowing, gagging); heartburn 3-4x week\r"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__bcaW7
+                  )}
+                >
+                  {
+                    "\u2022 Food impaction treated at ER 5 weeks ago: glucagon (1-2 mg intravenously)"
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </ClueTabbedContainer>
+      </div>
+      <div
+        data-plasmic-name={"pcpIvanPatientChartClueModal"}
+        data-plasmic-override={overrides.pcpIvanPatientChartClueModal}
+        className={classNames(
+          projectcss.all,
+          sty.pcpIvanPatientChartClueModal,
+          {
+            [sty.pcpIvanPatientChartClueModalkelvinCmp]: hasVariant(
+              $state,
+              "kelvinCmp",
+              "kelvinCmp"
+            ),
+            [sty.pcpIvanPatientChartClueModalkelvinCmp_kelvinCbc_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.pcpIvanPatientChartClueModalkelvinCmp_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.pcpIvanPatientChartClueModalshareseCbc]: hasVariant(
+              $state,
+              "shareseCbc",
+              "shareseCbc"
+            ),
+            [sty.pcpIvanPatientChartClueModaltabs_kelvinPcp]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          }
+        )}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox__ttdjZ)}>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__rmXfd
+            )}
+          >
+            {"Your clue is:"}
+          </div>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__i3KPe,
+              {
+                [sty.texttabs_kelvinPcp__i3KPeKbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              }
+            )}
+          >
+            {"Ivan's Patient Chart"}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__b3JV, {
+            [sty.freeBoxtabs_kelvinPcp__b3JVKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__wO7U)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__pdJ0G
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <IconIcon
+              className={classNames(projectcss.all, sty.svg__kdvQs)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <ClueTabbedContainer
+          children2={
+            <div className={classNames(projectcss.all, sty.freeBox__efwYa)}>
+              <div className={classNames(projectcss.all, sty.freeBox__pRngV)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__qHuqs
+                  )}
+                >
+                  {"General:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__hCjL
+                  )}
+                >
+                  {"Well-appearing man in no acute distress"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__i797G)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__a8DHm
+                  )}
+                >
+                  {"HEENT"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__iZzKz
+                  )}
+                >
+                  {
+                    "Normocephalic, oropharynx clear with moist mucous membranes"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__diRmT)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__iJq2I
+                  )}
+                >
+                  {"CV"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___8GjTj
+                  )}
+                >
+                  {"Regular rate and rhythm"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__bkIRj)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___9OCvZ
+                  )}
+                >
+                  {"Respiratory:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__tdJpN
+                  )}
+                >
+                  {"Clear to auscultation bilaterally"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__hpTtJ)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___2PakG
+                  )}
+                >
+                  {"Abdomen:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__dX8Ey
+                  )}
+                >
+                  {"Soft, no distention, no rebound or guarding"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__ts5Cj)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__hBgtr
+                  )}
+                >
+                  {"Musculoskeletal"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__fLyd
+                  )}
+                >
+                  {"Mild lower back pain"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__hd8Nn)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nHreO
+                  )}
+                >
+                  {"Skin:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__o3VRg
+                  )}
+                >
+                  {"No bruises or rashes noted"}
+                </div>
+              </div>
+            </div>
+          }
+          className={classNames(
+            "__wab_instance",
+            sty.clueTabbedContainer__nJtW,
+            {
+              [sty.clueTabbedContainertabs_kelvinPcp__nJtWKbzSz]: hasVariant(
+                $state,
+                "tabs",
+                "kelvinPcp"
+              )
+            }
+          )}
+          dob={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__ioVqv,
+                {
+                  [sty.texttabs_kelvinPcp__ioVqvKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                }
+              )}
+            >
+              {hasVariant($state, "tabs", "kelvinPcp")
+                ? "4/4/1990"
+                : "4/4/1990"}
+            </div>
+          }
+          image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__qsh80, {
+                [sty.imgtabs_kelvinPcp__qsh80KbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              })}
+              displayHeight={"auto"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"auto"}
+              loading={"lazy"}
+              src={
+                hasVariant($state, "tabs", "kelvinPcp")
+                  ? {
+                      src: "/plasmic/escape_room/images/ivanSvg.svg",
+                      fullWidth: 256.613,
+                      fullHeight: 264.833,
+                      aspectRatio: 0.968962
+                    }
+                  : {
+                      src: "/plasmic/escape_room/images/ivanSvg.svg",
+                      fullWidth: 256.613,
+                      fullHeight: 264.833,
+                      aspectRatio: 0.968962
+                    }
+              }
+            />
+          }
+          name={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__uOaYw,
+                {
+                  [sty.texttabs_kelvinPcp__uOaYwKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                }
+              )}
+            >
+              {hasVariant($state, "tabs", "kelvinPcp")
+                ? "Ivan Mikkelson"
+                : "Ivan Mikkelson"}
+            </div>
+          }
+          sex={hasVariant($state, "tabs", "kelvinPcp") ? "Male" : "Male"}
+          tab2Image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__peWGv)}
+              displayHeight={"100%"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"125%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"600px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/image25.svg",
+                fullWidth: 451.35,
+                fullHeight: 494.68,
+                aspectRatio: 0.912408
+              }}
+            />
+          }
+        >
+          <div className={classNames(projectcss.all, sty.columns__vftBr)}>
+            <div className={classNames(projectcss.all, sty.column__vAbMq)}>
+              <div className={classNames(projectcss.all, sty.freeBox__pgmhY)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kFFnc
+                  )}
+                >
+                  {"Vital Signs:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__yAkBh,
+                    {
+                      [sty.texttabs_kelvinPcp__yAkBhKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "tabs", "kelvinPcp") ? (
+                    <React.Fragment>
+                      <React.Fragment>{"Temperature: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"99.0\u00b0F"}
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <React.Fragment>{"Temperature: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"99.0\u00b0F"}
+                      </span>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__rEbz,
+                    {
+                      [sty.texttabs_kelvinPcp__rEbzKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "tabs", "kelvinPcp") ? (
+                    <React.Fragment>
+                      <React.Fragment>{"Pulse: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ color: "#000000", fontWeight: 700 }}
+                      >
+                        {"92 bpm"}
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <React.Fragment>{"Pulse: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"92 bpm"}
+                      </span>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___6DZMw,
+                    {
+                      [sty.texttabs_kelvinPcp___6DZMwKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "tabs", "kelvinPcp") ? (
+                    <React.Fragment>
+                      <React.Fragment>{"Respiratory rate: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"20 bpm"}
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <React.Fragment>{"Respiratory rate: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"20 bpm"}
+                      </span>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___3JqC,
+                    {
+                      [sty.texttabs_kelvinPcp___3JqCKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "tabs", "kelvinPcp") ? (
+                    <React.Fragment>
+                      <React.Fragment>{"Blood pressure: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"152/84 mmHg "}
+                      </span>
+                      <React.Fragment>{""}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 400 }}
+                      >
+                        {"(1 year ago)"}
+                      </span>
+                      <React.Fragment>{"\n"}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"118/72 mmHg"}
+                      </span>
+                      <React.Fragment>{""}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 400 }}
+                      >
+                        {" (today)"}
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <React.Fragment>{"Blood pressure: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"152/84 mmHg "}
+                      </span>
+                      <React.Fragment>{"(1 year ago)\n"}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"118/72 mmHg"}
+                      </span>
+                      <React.Fragment>{" (today)"}</React.Fragment>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ui9Oa
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Oxygen saturation: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"96%"}
+                    </span>
+                    <React.Fragment>{" on room air"}</React.Fragment>
+                  </React.Fragment>
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__mJuJm)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__uVrr
+                  )}
+                >
+                  {"Height/Weight:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__qNp6X
+                  )}
+                >
+                  {"6-foot, 212 lbs\r\n(BMI: 28.7)"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__lN9Vp)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___9Lfjm
+                  )}
+                >
+                  {"Social History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__wRv1S
+                  )}
+                >
+                  {"\u2022 Married, 2 children"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nsR7X
+                  )}
+                >
+                  {"\u2022 Landscape architect"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kZkfd
+                  )}
+                >
+                  {
+                    "\u2022 Former smoker (quit 8 years ago)\n\u2022 Does not consume alcohol"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__w6Uu)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xXZwy
+                  )}
+                >
+                  {"Family History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__w1NTe
+                  )}
+                >
+                  {"\u2022 Fraternal twin sister with Celiac disease"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__niqIt
+                  )}
+                >
+                  {"\u2022 Father with type 2 diabetes"}
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.column__qapLt)}>
+              <div className={classNames(projectcss.all, sty.freeBox__qGhxm)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__pmw3L
+                  )}
+                >
+                  {"Family History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__htba1
+                  )}
+                >
+                  {"\u2022 Mother with chronic obstructive pulmonary disease"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__c1Pb
+                  )}
+                >
+                  {"\u2022 Brother with asthma"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__eGmHq)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__brmvL
+                  )}
+                >
+                  {"Medical History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kh63D
+                  )}
+                >
+                  {"\u2022 Seasonal allergies/allergic rhinitis"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__lW2U
+                  )}
+                >
+                  {
+                    "\u2022 August 2025: Heartburn 2-3 times per week,\r intermittent difficulty swallowing. Initial\r diagnosis of GERD."
+                  }
+                </div>
+              </div>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__heZ41, {
+                  [sty.freeBoxtabs_kelvinPcp__heZ41KbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kUkaR,
+                    {
+                      [sty.texttabs_kelvinPcp__kUkaRKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {"Surgical History: "}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___3GR2
+                  )}
+                >
+                  {"Septoplasty, 13 years ago"}
+                </div>
+              </div>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__urTe, {
+                  [sty.freeBoxtabs_kelvinPcp__urTeKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nfx90,
+                    {
+                      [sty.texttabs_kelvinPcp__nfx90KbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {"Current Medications:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___1NgDw
+                  )}
+                >
+                  {"\u2022 Esomeprazole 40 mg once daily"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___74YPh
+                  )}
+                >
+                  {
+                    "Intranasal fluticasone (50 mg/once daily) taken\r seasonally for allergic rhinitis"
+                  }
+                </div>
+              </div>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__lIqNp, {
+                  [sty.freeBoxtabs_kelvinPcp__lIqNpKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zKyqC,
+                    {
+                      [sty.texttabs_kelvinPcp__zKyqCKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {"Current Symptoms:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ubUkb
+                  )}
+                >
+                  {
+                    "Patient reports a 10+ year history of difficulty\r swallowing that has progressively worsened in\r the last 3-4 years"
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </ClueTabbedContainer>
+      </div>
+      <div
+        data-plasmic-name={"specialistIvanPatientChartClueModal1"}
+        data-plasmic-override={overrides.specialistIvanPatientChartClueModal1}
+        className={classNames(
+          projectcss.all,
+          sty.specialistIvanPatientChartClueModal1,
+          {
+            [sty.specialistIvanPatientChartClueModal1kelvinCmp]: hasVariant(
+              $state,
+              "kelvinCmp",
+              "kelvinCmp"
+            ),
+            [sty.specialistIvanPatientChartClueModal1kelvinCmp_kelvinCbc_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.specialistIvanPatientChartClueModal1kelvinCmp_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.specialistIvanPatientChartClueModal1shareseCbc]: hasVariant(
+              $state,
+              "shareseCbc",
+              "shareseCbc"
+            ),
+            [sty.specialistIvanPatientChartClueModal1tabs_kelvinPcp]:
+              hasVariant($state, "tabs", "kelvinPcp")
+          }
+        )}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox___1Lwa)}>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text___6Sluc
+            )}
+          >
+            {"Your clue is:"}
+          </div>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__qpO8P,
+              {
+                [sty.texttabs_kelvinPcp__qpO8PKbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              }
+            )}
+          >
+            {"Ivan's Patient Chart"}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__xayjA, {
+            [sty.freeBoxtabs_kelvinPcp__xayjAKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__qMh23)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__j4Q7R
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <IconIcon
+              className={classNames(projectcss.all, sty.svg__h9Jj7)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <ClueTabbedContainer
+          children2={
+            <div className={classNames(projectcss.all, sty.freeBox__oo6Fy)}>
+              <div className={classNames(projectcss.all, sty.freeBox__oGxTm)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__owxHg
+                  )}
+                >
+                  {"General:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__qxg4
+                  )}
+                >
+                  {"Well-appearing man in no acute distress"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__yjaG)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__hfnuO
+                  )}
+                >
+                  {"HEENT"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___2VoDs
+                  )}
+                >
+                  {
+                    "Normocephalic, oropharynx clear with moist mucous membranes"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__y7G8X)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___1YNFd
+                  )}
+                >
+                  {"CV"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__p7WmI
+                  )}
+                >
+                  {"Regular rate and rhythm"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__g1TEe)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ptLrF
+                  )}
+                >
+                  {"Respiratory:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__p2BXh
+                  )}
+                >
+                  {"Clear to auscultation bilaterally"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__qEns4)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zyOpT
+                  )}
+                >
+                  {"Abdomen:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__sHiId
+                  )}
+                >
+                  {"Soft, no distention, no rebound or guarding"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__jSh)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___0Iwf5
+                  )}
+                >
+                  {"Musculoskeletal"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___0Xgh6
+                  )}
+                >
+                  {"Mild lower back pain"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__eobij)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___3MyEg
+                  )}
+                >
+                  {"Skin:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__b32XV
+                  )}
+                >
+                  {"No bruises or rashes noted"}
+                </div>
+              </div>
+            </div>
+          }
+          className={classNames(
+            "__wab_instance",
+            sty.clueTabbedContainer__bpMQk,
+            {
+              [sty.clueTabbedContainertabs_kelvinPcp__bpMQkKbzSz]: hasVariant(
+                $state,
+                "tabs",
+                "kelvinPcp"
+              )
+            }
+          )}
+          dob={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__ix041,
+                {
+                  [sty.texttabs_kelvinPcp__ix041KbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                }
+              )}
+            >
+              {hasVariant($state, "tabs", "kelvinPcp")
+                ? "4/4/1990"
+                : "4/4/1990"}
+            </div>
+          }
+          image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__pF, {
+                [sty.imgtabs_kelvinPcp__pFKbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              })}
+              displayHeight={"auto"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"auto"}
+              loading={"lazy"}
+              src={
+                hasVariant($state, "tabs", "kelvinPcp")
+                  ? {
+                      src: "/plasmic/escape_room/images/ivanSvg.svg",
+                      fullWidth: 256.613,
+                      fullHeight: 264.833,
+                      aspectRatio: 0.968962
+                    }
+                  : {
+                      src: "/plasmic/escape_room/images/ivanSvg.svg",
+                      fullWidth: 256.613,
+                      fullHeight: 264.833,
+                      aspectRatio: 0.968962
+                    }
+              }
+            />
+          }
+          name={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__jCuG7,
+                {
+                  [sty.texttabs_kelvinPcp__jCuG7KbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                }
+              )}
+            >
+              {hasVariant($state, "tabs", "kelvinPcp")
+                ? "Ivan Mikkelson"
+                : "Ivan Mikkelson"}
+            </div>
+          }
+          sex={hasVariant($state, "tabs", "kelvinPcp") ? "Male" : "Male"}
+          tab2Image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__sZsVu)}
+              displayHeight={"100%"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"125%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"600px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/image25.svg",
+                fullWidth: 451.35,
+                fullHeight: 494.68,
+                aspectRatio: 0.912408
+              }}
+            />
+          }
+        >
+          <div className={classNames(projectcss.all, sty.columns__iJmDb)}>
+            <div className={classNames(projectcss.all, sty.column__dvx5)}>
+              <div className={classNames(projectcss.all, sty.freeBox___3IyC)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__yXyIp
+                  )}
+                >
+                  {"Vital Signs:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__oiHXp,
+                    {
+                      [sty.texttabs_kelvinPcp__oiHXpKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "tabs", "kelvinPcp") ? (
+                    <React.Fragment>
+                      <React.Fragment>{"Temperature: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"99.0\u00b0F"}
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <React.Fragment>{"Temperature: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"99.0\u00b0F"}
+                      </span>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kbCf7,
+                    {
+                      [sty.texttabs_kelvinPcp__kbCf7KbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "tabs", "kelvinPcp") ? (
+                    <React.Fragment>
+                      <React.Fragment>{"Pulse: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ color: "#000000", fontWeight: 700 }}
+                      >
+                        {"92 bpm"}
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <React.Fragment>{"Pulse: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"92 bpm"}
+                      </span>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___3RGw5,
+                    {
+                      [sty.texttabs_kelvinPcp___3RGw5KbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "tabs", "kelvinPcp") ? (
+                    <React.Fragment>
+                      <React.Fragment>{"Respiratory rate: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"20 bpm"}
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <React.Fragment>{"Respiratory rate: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"20 bpm"}
+                      </span>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xxuV0,
+                    {
+                      [sty.texttabs_kelvinPcp__xxuV0KbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "tabs", "kelvinPcp") ? (
+                    <React.Fragment>
+                      <React.Fragment>{"Blood pressure: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"152/84 mmHg "}
+                      </span>
+                      <React.Fragment>{""}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 400 }}
+                      >
+                        {"(1 year ago)"}
+                      </span>
+                      <React.Fragment>{"\n"}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"118/72 mmHg"}
+                      </span>
+                      <React.Fragment>{""}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 400 }}
+                      >
+                        {" (today)"}
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <React.Fragment>{"Blood pressure: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"152/84 mmHg "}
+                      </span>
+                      <React.Fragment>{"(1 year ago)\n"}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"118/72 mmHg"}
+                      </span>
+                      <React.Fragment>{" (today)"}</React.Fragment>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__gt2Sd
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Oxygen saturation: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"96%"}
+                    </span>
+                    <React.Fragment>{" on room air"}</React.Fragment>
+                  </React.Fragment>
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__c7G1)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__vjbPu
+                  )}
+                >
+                  {"Height/Weight:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__jLfAd
+                  )}
+                >
+                  {"6-foot, 212 lbs\r\n(BMI: 28.7)"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__uFa02)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nVxmc
+                  )}
+                >
+                  {"Social History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__edVaz
+                  )}
+                >
+                  {"\u2022 Married, 2 children"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__wVbwo
+                  )}
+                >
+                  {"\u2022 Landscape architect"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__bHdZj
+                  )}
+                >
+                  {
+                    "\u2022 Former smoker (quit 8 years ago)\n\u2022 Does not consume alcohol"
+                  }
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.column__xTffZ)}>
+              <div className={classNames(projectcss.all, sty.freeBox__iW4Nd)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__azade
+                  )}
+                >
+                  {"Family History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__msKn1
+                  )}
+                >
+                  {"\u2022 Mother with chronic obstructive pulmonary disease"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__jbPPu
+                  )}
+                >
+                  {"\u2022 Brother with asthma"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__dAndB)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__keTne
+                  )}
+                >
+                  {"Medical History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__yVdg
+                  )}
+                >
+                  {"\u2022 Seasonal allergies/allergic rhinitis"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__qAt9S
+                  )}
+                >
+                  {
+                    "\u2022 July 2025: Heartburn 2-3 times per week,\rintermittent difficulty swallowing. Referred by\r PCP for dysphagia assessment + endoscopy for \rpotential EoE"
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </ClueTabbedContainer>
+      </div>
+      <div
+        data-plasmic-name={"specialistIvanPatientChartClueModal2"}
+        data-plasmic-override={overrides.specialistIvanPatientChartClueModal2}
+        className={classNames(
+          projectcss.all,
+          sty.specialistIvanPatientChartClueModal2,
+          {
+            [sty.specialistIvanPatientChartClueModal2kelvinCmp]: hasVariant(
+              $state,
+              "kelvinCmp",
+              "kelvinCmp"
+            ),
+            [sty.specialistIvanPatientChartClueModal2kelvinCmp_kelvinCbc_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.specialistIvanPatientChartClueModal2kelvinCmp_kelvinCeliacTest]:
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.specialistIvanPatientChartClueModal2shareseCbc]: hasVariant(
+              $state,
+              "shareseCbc",
+              "shareseCbc"
+            ),
+            [sty.specialistIvanPatientChartClueModal2tabs_kelvinPcp]:
+              hasVariant($state, "tabs", "kelvinPcp")
+          }
+        )}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox__fLUio)}>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__wBm8E
+            )}
+          >
+            {"Your clue is:"}
+          </div>
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__aJFg,
+              {
+                [sty.texttabs_kelvinPcp__aJFgKbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              }
+            )}
+          >
+            {"Ivan's Complete Patient Chart"}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__g3PgM, {
+            [sty.freeBoxtabs_kelvinPcp__g3PgMKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__goIz)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___9ITsn
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <IconIcon
+              className={classNames(projectcss.all, sty.svg__e4Gra)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <ClueTabbedContainer
+          children2={
+            <div className={classNames(projectcss.all, sty.freeBox__igqS5)}>
+              <div className={classNames(projectcss.all, sty.freeBox__lzae3)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__unqJv
+                  )}
+                >
+                  {"General:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___58U1O
+                  )}
+                >
+                  {"Well-appearing man in no acute distress"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__hc365)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__eqfe1
+                  )}
+                >
+                  {"HEENT"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___0TCm
+                  )}
+                >
+                  {
+                    "Normocephalic, oropharynx clear with moist mucous membranes"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__of0R8)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kOcZn
+                  )}
+                >
+                  {"CV"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__piIo5
+                  )}
+                >
+                  {"Regular rate and rhythm"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__etIbe)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__uASsV
+                  )}
+                >
+                  {"Respiratory:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zlHz
+                  )}
+                >
+                  {"Clear to auscultation bilaterally"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__jq7E)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__jjF1
+                  )}
+                >
+                  {"Abdomen:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___5CTbh
+                  )}
+                >
+                  {"Soft, no distention, no rebound or guarding"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__d0Cy)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__pChKy
+                  )}
+                >
+                  {"Musculoskeletal"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__obIuO
+                  )}
+                >
+                  {"Mild lower back pain"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox___3AsP)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__wExXo
+                  )}
+                >
+                  {"Skin:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__wnUdI
+                  )}
+                >
+                  {"No bruises or rashes noted"}
+                </div>
+              </div>
+            </div>
+          }
+          className={classNames(
+            "__wab_instance",
+            sty.clueTabbedContainer__b0J1D,
+            {
+              [sty.clueTabbedContainertabs_kelvinPcp__b0J1DKbzSz]: hasVariant(
+                $state,
+                "tabs",
+                "kelvinPcp"
+              )
+            }
+          )}
+          dob={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___1Zkdc,
+                {
+                  [sty.texttabs_kelvinPcp___1ZkdcKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                }
+              )}
+            >
+              {hasVariant($state, "tabs", "kelvinPcp")
+                ? "4/4/1990"
+                : "4/4/1990"}
+            </div>
+          }
+          image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__dK5Nb, {
+                [sty.imgtabs_kelvinPcp__dK5NbKbzSz]: hasVariant(
+                  $state,
+                  "tabs",
+                  "kelvinPcp"
+                )
+              })}
+              displayHeight={"auto"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"auto"}
+              loading={"lazy"}
+              src={
+                hasVariant($state, "tabs", "kelvinPcp")
+                  ? {
+                      src: "/plasmic/escape_room/images/ivanSvg.svg",
+                      fullWidth: 256.613,
+                      fullHeight: 264.833,
+                      aspectRatio: 0.968962
+                    }
+                  : {
+                      src: "/plasmic/escape_room/images/ivanSvg.svg",
+                      fullWidth: 256.613,
+                      fullHeight: 264.833,
+                      aspectRatio: 0.968962
+                    }
+              }
+            />
+          }
+          name={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___3E2In,
+                {
+                  [sty.texttabs_kelvinPcp___3E2InKbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                }
+              )}
+            >
+              {hasVariant($state, "tabs", "kelvinPcp")
+                ? "Ivan Mikkelson"
+                : "Ivan Mikkelson"}
+            </div>
+          }
+          sex={hasVariant($state, "tabs", "kelvinPcp") ? "Male" : "Male"}
+          tab2Image={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__qtIok)}
+              displayHeight={"100%"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"125%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"600px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/image25.svg",
+                fullWidth: 451.35,
+                fullHeight: 494.68,
+                aspectRatio: 0.912408
+              }}
+            />
+          }
+        >
+          <div className={classNames(projectcss.all, sty.columns__amOt)}>
+            <div className={classNames(projectcss.all, sty.column__jbEkC)}>
+              <div className={classNames(projectcss.all, sty.freeBox__y209Y)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___6DAtU
+                  )}
+                >
+                  {"Vital Signs:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___9DFsq,
+                    {
+                      [sty.texttabs_kelvinPcp___9DFsqKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "tabs", "kelvinPcp") ? (
+                    <React.Fragment>
+                      <React.Fragment>{"Temperature: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"99.0\u00b0F"}
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <React.Fragment>{"Temperature: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"99.0\u00b0F"}
+                      </span>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xkOua,
+                    {
+                      [sty.texttabs_kelvinPcp__xkOuaKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "tabs", "kelvinPcp") ? (
+                    <React.Fragment>
+                      <React.Fragment>{"Pulse: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ color: "#000000", fontWeight: 700 }}
+                      >
+                        {"92 bpm"}
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <React.Fragment>{"Pulse: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"92 bpm"}
+                      </span>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__bzfEd,
+                    {
+                      [sty.texttabs_kelvinPcp__bzfEdKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "tabs", "kelvinPcp") ? (
+                    <React.Fragment>
+                      <React.Fragment>{"Respiratory rate: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"20 bpm"}
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <React.Fragment>{"Respiratory rate: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"20 bpm"}
+                      </span>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__cBjmv,
+                    {
+                      [sty.texttabs_kelvinPcp__cBjmvKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "tabs", "kelvinPcp") ? (
+                    <React.Fragment>
+                      <React.Fragment>{"Blood pressure: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"152/84 mmHg "}
+                      </span>
+                      <React.Fragment>{""}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 400 }}
+                      >
+                        {"(1 year ago)"}
+                      </span>
+                      <React.Fragment>{"\n"}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"118/72 mmHg"}
+                      </span>
+                      <React.Fragment>{""}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 400 }}
+                      >
+                        {" (today)"}
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <React.Fragment>{"Blood pressure: "}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"152/84 mmHg "}
+                      </span>
+                      <React.Fragment>{"(1 year ago)\n"}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"118/72 mmHg"}
+                      </span>
+                      <React.Fragment>{" (today)"}</React.Fragment>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kthKz
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>{"Oxygen saturation: "}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"96%"}
+                    </span>
+                    <React.Fragment>{" on room air"}</React.Fragment>
+                  </React.Fragment>
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__sK1Ki)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__arUrb
+                  )}
+                >
+                  {"Height/Weight:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__v6I5S
+                  )}
+                >
+                  {"6-foot, 212 lbs\r\n(BMI: 28.7)"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__qOfk0)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__lOExX
+                  )}
+                >
+                  {"Social History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__a9P1K
+                  )}
+                >
+                  {"\u2022 Married, 2 children"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___7NVfz
+                  )}
+                >
+                  {"\u2022 Landscape architect"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__awzWt
+                  )}
+                >
+                  {
+                    "\u2022 Former smoker (quit 8 years ago)\n\u2022 Does not consume alcohol"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__zkePd)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___5Yg
+                  )}
+                >
+                  {"Family History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ev6Nz
+                  )}
+                >
+                  {"\u2022 Fraternal twin sister with Celiac disease"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ehi1E
+                  )}
+                >
+                  {"\u2022 Father with type 2 diabetes"}
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.column__myg6R)}>
+              <div className={classNames(projectcss.all, sty.freeBox__koxxp)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__sJxUr
+                  )}
+                >
+                  {"Family History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__lfV0N
+                  )}
+                >
+                  {"\u2022 Mother with chronic obstructive pulmonary disease"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__bt7Kp
+                  )}
+                >
+                  {"\u2022 Brother with asthma"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__pc5Ye)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___9Hm0M
+                  )}
+                >
+                  {"Medical History:"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__qdwTn
+                  )}
+                >
+                  {"\u2022 Seasonal allergies/allergic rhinitis"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zsSmm
+                  )}
+                >
+                  {
+                    "\u2022 August 2025: Heartburn 2-3 times per week,\r intermittent difficulty swallowing. Initial\r diagnosis of GERD."
+                  }
+                </div>
+              </div>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__lfVf9, {
+                  [sty.freeBoxtabs_kelvinPcp__lfVf9KbzSz]: hasVariant(
+                    $state,
+                    "tabs",
+                    "kelvinPcp"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kkAhH,
+                    {
+                      [sty.texttabs_kelvinPcp__kkAhHKbzSz]: hasVariant(
+                        $state,
+                        "tabs",
+                        "kelvinPcp"
+                      )
+                    }
+                  )}
+                >
+                  {"Surgical History: "}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__c3Jmc
+                  )}
+                >
+                  {"Septoplasty, 13 years ago"}
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__qatu6)}>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__qav2S, {
+                    [sty.freeBoxtabs_kelvinPcp__qav2SKbzSz]: hasVariant(
+                      $state,
+                      "tabs",
+                      "kelvinPcp"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__fJ471,
+                      {
+                        [sty.texttabs_kelvinPcp__fJ471KbzSz]: hasVariant(
+                          $state,
+                          "tabs",
+                          "kelvinPcp"
+                        )
+                      }
+                    )}
+                  >
+                    {"Current Medications:"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__vs2Kz
+                    )}
+                  >
+                    {"\u2022 Esomeprazole 40 mg once daily"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__e0OmM
+                    )}
+                  >
+                    {
+                      "Intranasal fluticasone (50 mg/once daily) taken\r seasonally for allergic rhinitis"
+                    }
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___6B65P, {
+                    [sty.freeBoxtabs_kelvinPcp___6B65PKbzSz]: hasVariant(
+                      $state,
+                      "tabs",
+                      "kelvinPcp"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__j4FwJ,
+                      {
+                        [sty.texttabs_kelvinPcp__j4FwJKbzSz]: hasVariant(
+                          $state,
+                          "tabs",
+                          "kelvinPcp"
+                        )
+                      }
+                    )}
+                  >
+                    {"Current Symptoms:"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__wdANc
+                    )}
+                  >
+                    {
+                      "Patient reports a 10+ year history of difficulty\r swallowing that has progressively worsened in\r the last 3-4 years"
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ClueTabbedContainer>
+      </div>
+      <div
+        data-plasmic-name={"audioClue"}
+        data-plasmic-override={overrides.audioClue}
+        className={classNames(projectcss.all, sty.audioClue)}
+      >
+        <div
+          className={classNames(projectcss.all, sty.freeBox__qGt7, {
+            [sty.freeBoxivanCbc__qGt7PiQEx]: hasVariant(
+              $state,
+              "ivanCbc",
+              "ivanCbc"
+            ),
+            [sty.freeBoxkelvinCbc__qGt7YbE4M]: hasVariant(
+              $state,
+              "kelvinCbc",
+              "kelvinCbc"
+            ),
+            [sty.freeBoxkelvinCmp_kelvinCbc_kelvinCeliacTest__qGt7M5CsGYbE4MBHtw8]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.freeBoxtabs_kelvinPcp__qGt7KbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__vmoSz,
+              {
+                [sty.textivanCbc__vmoSzPiQEx]: hasVariant(
+                  $state,
+                  "ivanCbc",
+                  "ivanCbc"
+                ),
+                [sty.textkelvinCbc__vmoSzYbE4M]: hasVariant(
+                  $state,
+                  "kelvinCbc",
+                  "kelvinCbc"
+                ),
+                [sty.textkelvinCmp__vmoSzM5CsG]: hasVariant(
+                  $state,
+                  "kelvinCmp",
+                  "kelvinCmp"
+                ),
+                [sty.textkelvinCmp_kelvinCbc_kelvinCeliacTest__vmoSzM5CsGYbE4MBHtw8]:
+                  hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+                  hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+                  hasVariant($state, "kelvinCmp", "kelvinCmp"),
+                [sty.textshareseCbc__vmoSzTjzU]: hasVariant(
+                  $state,
+                  "shareseCbc",
+                  "shareseCbc"
+                ),
+                [sty.textshareseCeliacTest__vmoSzYMclE]: hasVariant(
+                  $state,
+                  "shareseCeliacTest",
+                  "shareseCeliacTest"
+                ),
+                [sty.texttabs_ivanPcp__vmoSzLnyQl]: hasVariant(
+                  $state,
+                  "tabs",
+                  "ivanPcp"
+                ),
+                [sty.texttabs_sharesePcp__vmoSzZlEIb]: hasVariant(
+                  $state,
+                  "tabs",
+                  "sharesePcp"
+                )
+              }
+            )}
+          >
+            {hasVariant($state, "ivanCbc", "ivanCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCeliacTest", "shareseCeliacTest") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCbc", "shareseCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "ivanPcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "sharesePcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Patient Complaint/Oral History"}
+                </span>
+              </React.Fragment>
+            )}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__x7C8D, {
+            [sty.freeBoxtabs_kelvinPcp__x7C8DKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__okVjq)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__p2TK4
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <IconIcon
+              className={classNames(projectcss.all, sty.svg__iQRiu)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <AudioClue
+          className={classNames("__wab_instance", sty.audioClue__gk2N)}
+        />
+      </div>
+      <div
+        data-plasmic-name={"pcpKelvinAudio"}
+        data-plasmic-override={overrides.pcpKelvinAudio}
+        className={classNames(projectcss.all, sty.pcpKelvinAudio)}
+      >
+        <div
+          className={classNames(projectcss.all, sty.freeBox__l2FnA, {
+            [sty.freeBoxivanCbc__l2FnAPiQEx]: hasVariant(
+              $state,
+              "ivanCbc",
+              "ivanCbc"
+            ),
+            [sty.freeBoxkelvinCbc__l2FnAYbE4M]: hasVariant(
+              $state,
+              "kelvinCbc",
+              "kelvinCbc"
+            ),
+            [sty.freeBoxkelvinCmp_kelvinCbc_kelvinCeliacTest__l2FnAm5CsGYbE4MBHtw8]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.freeBoxtabs_kelvinPcp__l2FnAKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__iOkSr,
+              {
+                [sty.textivanCbc__iOkSrPiQEx]: hasVariant(
+                  $state,
+                  "ivanCbc",
+                  "ivanCbc"
+                ),
+                [sty.textkelvinCbc__iOkSrYbE4M]: hasVariant(
+                  $state,
+                  "kelvinCbc",
+                  "kelvinCbc"
+                ),
+                [sty.textkelvinCmp__iOkSrM5CsG]: hasVariant(
+                  $state,
+                  "kelvinCmp",
+                  "kelvinCmp"
+                ),
+                [sty.textkelvinCmp_kelvinCbc_kelvinCeliacTest__iOkSrM5CsGYbE4MBHtw8]:
+                  hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+                  hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+                  hasVariant($state, "kelvinCmp", "kelvinCmp"),
+                [sty.textshareseCbc__iOkSrTjzU]: hasVariant(
+                  $state,
+                  "shareseCbc",
+                  "shareseCbc"
+                ),
+                [sty.textshareseCeliacTest__iOkSrYMclE]: hasVariant(
+                  $state,
+                  "shareseCeliacTest",
+                  "shareseCeliacTest"
+                ),
+                [sty.texttabs_ivanPcp__iOkSrLnyQl]: hasVariant(
+                  $state,
+                  "tabs",
+                  "ivanPcp"
+                ),
+                [sty.texttabs_sharesePcp__iOkSrZlEIb]: hasVariant(
+                  $state,
+                  "tabs",
+                  "sharesePcp"
+                )
+              }
+            )}
+          >
+            {hasVariant($state, "ivanCbc", "ivanCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCeliacTest", "shareseCeliacTest") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCbc", "shareseCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "ivanPcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "sharesePcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{
+                    color: "var(--token-h1IJQpQlo5HQ)",
+                    fontWeight: 700
+                  }}
+                >
+                  {"Your clue is:"}
+                </span>
+                <React.Fragment> </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Patient Complaint/Oral History"}
+                </span>
+              </React.Fragment>
+            )}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__z0Hyu, {
+            [sty.freeBoxtabs_kelvinPcp__z0HyuKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__hW1I)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__kvhFv
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <Icon6Icon
+              className={classNames(projectcss.all, sty.svg__igCh)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <AudioClue
+          className={classNames("__wab_instance", sty.audioClue__bPHgE)}
+          slot={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__c7Ap0)}
+              displayHeight={"300px"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"250px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/kelvinsmomSvg.svg",
+                fullWidth: 256.613,
+                fullHeight: 264.833,
+                aspectRatio: 0.968962
+              }}
+            />
+          }
+          slot2={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__snk5B
+              )}
+            >
+              {"1 minute 10 seconds"}
+            </div>
+          }
+          slot3={
+            <React.Fragment>
+              <Icon2Icon
+                className={classNames(projectcss.all, sty.svg__mljbX)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__goq8G
+                )}
+              >
+                {
+                  "As a baby, Kelvin would throw up every now and then, which we a\rlways just figured was normal baby\rbehavior. But then a few months ago, it started happening much more regularly, maybe once or\r twice a month, and didn\u2019t seem to have anything to do with him being sick. Our pediatrician said it\r was likely just a little kid with an upset stomach, but she told us to keep an eye on it.\n\n\r\nIn the last few weeks, Kelvin is throwing up much more often, at least once a week, and sometimes\r nearly every day. He\u2019s told us his throat hurts too, especially later in the day. Mealtimes are really\r hard. He\u2019s always fussy while eating, and he refuses a lot of foods, especially things like raw\r vegetables and meat that is chewy. He\u2019s much better with soft foods like applesauce, yogurt, and\r chicken nuggets. It was taking us an hour or more to feed him a single meal at home, so we just\r stopped giving him things he couldn\u2019t swallow easily.\n\n\r\nSince he\u2019s started going to daycare, we\u2019ve been packing protein shakes in his lunch so we can be sure\r he gets enough calories. Kelvin seems to be growing OK, but we\u2019re really worried that his vomiting\r and eating problems are a sign that something more is going on with him. What do you think?"
+                }
+              </div>
+              <Icon3Icon
+                className={classNames(projectcss.all, sty.svg__ttQlr)}
+                role={"img"}
+              />
+            </React.Fragment>
+          }
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__vtoKg
+            )}
+          >
+            {"Kelvin's mom"}
+          </div>
+        </AudioClue>
+      </div>
+      <div
+        data-plasmic-name={"specialistKelvinAudio"}
+        data-plasmic-override={overrides.specialistKelvinAudio}
+        className={classNames(projectcss.all, sty.specialistKelvinAudio)}
+      >
+        <div
+          className={classNames(projectcss.all, sty.freeBox__m58YN, {
+            [sty.freeBoxivanCbc__m58YNPiQEx]: hasVariant(
+              $state,
+              "ivanCbc",
+              "ivanCbc"
+            ),
+            [sty.freeBoxkelvinCbc__m58YNYbE4M]: hasVariant(
+              $state,
+              "kelvinCbc",
+              "kelvinCbc"
+            ),
+            [sty.freeBoxkelvinCmp_kelvinCbc_kelvinCeliacTest__m58YNm5CsGYbE4MBHtw8]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.freeBoxtabs_kelvinPcp__m58YNKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text___3TLDu,
+              {
+                [sty.textivanCbc___3TLDuPiQEx]: hasVariant(
+                  $state,
+                  "ivanCbc",
+                  "ivanCbc"
+                ),
+                [sty.textkelvinCbc___3TLDuYbE4M]: hasVariant(
+                  $state,
+                  "kelvinCbc",
+                  "kelvinCbc"
+                ),
+                [sty.textkelvinCmp___3TLDuM5CsG]: hasVariant(
+                  $state,
+                  "kelvinCmp",
+                  "kelvinCmp"
+                ),
+                [sty.textkelvinCmp_kelvinCbc_kelvinCeliacTest___3TLDuM5CsGYbE4MBHtw8]:
+                  hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+                  hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+                  hasVariant($state, "kelvinCmp", "kelvinCmp"),
+                [sty.textshareseCbc___3TLDuTjzU]: hasVariant(
+                  $state,
+                  "shareseCbc",
+                  "shareseCbc"
+                ),
+                [sty.textshareseCeliacTest___3TLDuYMclE]: hasVariant(
+                  $state,
+                  "shareseCeliacTest",
+                  "shareseCeliacTest"
+                ),
+                [sty.texttabs_ivanPcp___3TLDuLnyQl]: hasVariant(
+                  $state,
+                  "tabs",
+                  "ivanPcp"
+                ),
+                [sty.texttabs_sharesePcp___3TLDuZlEIb]: hasVariant(
+                  $state,
+                  "tabs",
+                  "sharesePcp"
+                )
+              }
+            )}
+          >
+            {hasVariant($state, "ivanCbc", "ivanCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCeliacTest", "shareseCeliacTest") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCbc", "shareseCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "ivanPcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "sharesePcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{
+                    color: "var(--token-h1IJQpQlo5HQ)",
+                    fontWeight: 700
+                  }}
+                >
+                  {"Your clue is:"}
+                </span>
+                <React.Fragment> </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Patient Complaint/Oral History"}
+                </span>
+              </React.Fragment>
+            )}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__ouE9D, {
+            [sty.freeBoxtabs_kelvinPcp__ouE9DKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__rqX9)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__kA61
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <Icon6Icon
+              className={classNames(projectcss.all, sty.svg__ioHW, {
+                [sty.svgkelvinCeliacTest__ioHWbHtw8]: hasVariant(
+                  $state,
+                  "kelvinCeliacTest",
+                  "kelvinCeliacTest"
+                ),
+                [sty.svgkelvinCmp__ioHWm5CsG]: hasVariant(
+                  $state,
+                  "kelvinCmp",
+                  "kelvinCmp"
+                )
+              })}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <AudioClue
+          className={classNames("__wab_instance", sty.audioClue___7Sd4X)}
+          slot={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__uxUx)}
+              displayHeight={"300px"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"250px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/kelvinsmomSvg.svg",
+                fullWidth: 256.613,
+                fullHeight: 264.833,
+                aspectRatio: 0.968962
+              }}
+            />
+          }
+          slot2={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__eiV3M
+              )}
+            >
+              {"1 minute 10 seconds"}
+            </div>
+          }
+          slot3={
+            <React.Fragment>
+              <Icon2Icon
+                className={classNames(projectcss.all, sty.svg__qiOz5)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___1XhcW
+                )}
+              >
+                {
+                  "As a baby, Kelvin would throw up every now and then, which we always just figured was normal baby behavior. But then a few months ago, it started happening much more regularly, maybe once or twice a month, and didn\u2019t seem to have anything to do with him being sick. Our pediatrician said it was likely just a little kid with an upset stomach, but she told us to keep an eye on it. \r\n\nIn the last few weeks, Kelvin is throwing up much more often, at least once a week, and sometimes nearly every day. He\u2019s told us his throat hurts too, especially later in the day. Mealtimes are really hard. He\u2019s always fussy while eating, and he refuses a lot of foods, especially things like raw vegetables and meat that is chewy. He\u2019s much better with soft foods like applesauce, yogurt, and chicken nuggets. It was taking us an hour or more to feed him a single meal at home, so we just stopped giving him things he couldn\u2019t swallow easily. \r\n\nSince he\u2019s started going to daycare, we\u2019ve been packing protein shakes in his lunch so we can be sure he gets enough calories. Kelvin seems to be growing OK, but we\u2019re really worried that his vomiting and eating problems are a sign that something more is going on with him. What do you think?"
+                }
+              </div>
+              <Icon3Icon
+                className={classNames(projectcss.all, sty.svg__iG6Cu)}
+                role={"img"}
+              />
+            </React.Fragment>
+          }
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__gUlSn
+            )}
+          >
+            {"Kelvin's mom"}
+          </div>
+        </AudioClue>
+      </div>
+      <div
+        data-plasmic-name={"pcpShareseAudio"}
+        data-plasmic-override={overrides.pcpShareseAudio}
+        className={classNames(projectcss.all, sty.pcpShareseAudio)}
+      >
+        <div
+          className={classNames(projectcss.all, sty.freeBox__uqZkb, {
+            [sty.freeBoxivanCbc__uqZkbPiQEx]: hasVariant(
+              $state,
+              "ivanCbc",
+              "ivanCbc"
+            ),
+            [sty.freeBoxkelvinCbc__uqZkbYbE4M]: hasVariant(
+              $state,
+              "kelvinCbc",
+              "kelvinCbc"
+            ),
+            [sty.freeBoxkelvinCmp_kelvinCbc_kelvinCeliacTest__uqZkbm5CsGYbE4MBHtw8]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.freeBoxtabs_kelvinPcp__uqZkbKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__xKFfZ,
+              {
+                [sty.textivanCbc__xKFfZPiQEx]: hasVariant(
+                  $state,
+                  "ivanCbc",
+                  "ivanCbc"
+                ),
+                [sty.textkelvinCbc__xKFfZYbE4M]: hasVariant(
+                  $state,
+                  "kelvinCbc",
+                  "kelvinCbc"
+                ),
+                [sty.textkelvinCmp__xKFfZm5CsG]: hasVariant(
+                  $state,
+                  "kelvinCmp",
+                  "kelvinCmp"
+                ),
+                [sty.textkelvinCmp_kelvinCbc_kelvinCeliacTest__xKFfZm5CsGYbE4MBHtw8]:
+                  hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+                  hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+                  hasVariant($state, "kelvinCmp", "kelvinCmp"),
+                [sty.textshareseCbc__xKFfZtjzU]: hasVariant(
+                  $state,
+                  "shareseCbc",
+                  "shareseCbc"
+                ),
+                [sty.textshareseCeliacTest__xKFfZyMclE]: hasVariant(
+                  $state,
+                  "shareseCeliacTest",
+                  "shareseCeliacTest"
+                ),
+                [sty.texttabs_ivanPcp__xKFfZLnyQl]: hasVariant(
+                  $state,
+                  "tabs",
+                  "ivanPcp"
+                ),
+                [sty.texttabs_sharesePcp__xKFfZZlEIb]: hasVariant(
+                  $state,
+                  "tabs",
+                  "sharesePcp"
+                )
+              }
+            )}
+          >
+            {hasVariant($state, "ivanCbc", "ivanCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCeliacTest", "shareseCeliacTest") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCbc", "shareseCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "ivanPcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "sharesePcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{
+                    color: "var(--token-h1IJQpQlo5HQ)",
+                    fontWeight: 700
+                  }}
+                >
+                  {"Your clue is:"}
+                </span>
+                <React.Fragment> </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Patient Complaint/Oral History"}
+                </span>
+              </React.Fragment>
+            )}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox___99Yx6, {
+            [sty.freeBoxtabs_kelvinPcp___99Yx6KbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__qzj6X)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__fN1H
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <Icon6Icon
+              className={classNames(projectcss.all, sty.svg___4FnRh)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <AudioClue
+          className={classNames("__wab_instance", sty.audioClue__rPyQi)}
+          slot={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__kQljB)}
+              displayHeight={"300px"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"250px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/shareseSvg.svg",
+                fullWidth: 256.613,
+                fullHeight: 264.833,
+                aspectRatio: 0.968962
+              }}
+            />
+          }
+          slot2={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___7QvVo
+              )}
+            >
+              {"1 minute 35 seconds"}
+            </div>
+          }
+          slot3={
+            <React.Fragment>
+              <Icon2Icon
+                className={classNames(projectcss.all, sty.svg__ghfV)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___2IchT
+                )}
+              >
+                {
+                  "Growing up, my parents helped me so much with my condition. They would pack my meals and snacks for school. At home, we didn\u2019t use ingredients like dairy or wheat that would trigger my disease or affect my sister\u2019s Celiac disease. For a long time, that was good enough and I really didn\u2019t have a lot of problems as long as I stuck to my diet and took my medicine regularly.\r\n\nBut it\u2019s been much harder to manage by myself since I left for college 2 years ago. I don\u2019t have a lot of options for what I can afford at the school cafeteria, and I don\u2019t always know if there\u2019s triggers in the stuff I can afford to buy. I still take my medicine every day, but I keep having heartburn and trouble eating. \r\n\nWhen I\u2019m out to eat with my soccer team, sometimes I just go along with whatever they order\u2014like pizza\u2014even though I know I shouldn\u2019t have that. It\u2019s just hard to say no. Lately, I don\u2019t eat at all around my friends because I\u2019m scared that I might start choking. It\u2019s really embarrassing, especially when I had to go to the ER because food got stuck in my throat. My friends were freaking out, even though it all turned out OK.\n\n\rI\u2019d really like to be able to eat around my friends without worrying this will happen again. My gastroenterologist keeps telling me I need to stick with my dietary plan, but it\u2019s just not realistic all the time. I really don\u2019t want to start limiting my diet even more \u2013 that would be really hard. Maybe something with my medications could be changed. Do you have any suggestions?"
+                }
+              </div>
+              <Icon3Icon
+                className={classNames(projectcss.all, sty.svg__fpbUt)}
+                role={"img"}
+              />
+            </React.Fragment>
+          }
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__vbuFl
+            )}
+          >
+            {"Sharese Lopez"}
+          </div>
+        </AudioClue>
+      </div>
+      <div
+        data-plasmic-name={"specialistShareseAudio"}
+        data-plasmic-override={overrides.specialistShareseAudio}
+        className={classNames(projectcss.all, sty.specialistShareseAudio)}
+      >
+        <div
+          className={classNames(projectcss.all, sty.freeBox__sA28, {
+            [sty.freeBoxivanCbc__sA28PiQEx]: hasVariant(
+              $state,
+              "ivanCbc",
+              "ivanCbc"
+            ),
+            [sty.freeBoxkelvinCbc__sA28YbE4M]: hasVariant(
+              $state,
+              "kelvinCbc",
+              "kelvinCbc"
+            ),
+            [sty.freeBoxkelvinCmp_kelvinCbc_kelvinCeliacTest__sA28M5CsGYbE4MBHtw8]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.freeBoxtabs_kelvinPcp__sA28KbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__myGdl,
+              {
+                [sty.textivanCbc__myGdlPiQEx]: hasVariant(
+                  $state,
+                  "ivanCbc",
+                  "ivanCbc"
+                ),
+                [sty.textkelvinCbc__myGdlYbE4M]: hasVariant(
+                  $state,
+                  "kelvinCbc",
+                  "kelvinCbc"
+                ),
+                [sty.textkelvinCmp__myGdlM5CsG]: hasVariant(
+                  $state,
+                  "kelvinCmp",
+                  "kelvinCmp"
+                ),
+                [sty.textkelvinCmp_kelvinCbc_kelvinCeliacTest__myGdlM5CsGYbE4MBHtw8]:
+                  hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+                  hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+                  hasVariant($state, "kelvinCmp", "kelvinCmp"),
+                [sty.textshareseCbc__myGdlTjzU]: hasVariant(
+                  $state,
+                  "shareseCbc",
+                  "shareseCbc"
+                ),
+                [sty.textshareseCeliacTest__myGdlYMclE]: hasVariant(
+                  $state,
+                  "shareseCeliacTest",
+                  "shareseCeliacTest"
+                ),
+                [sty.texttabs_ivanPcp__myGdlLnyQl]: hasVariant(
+                  $state,
+                  "tabs",
+                  "ivanPcp"
+                ),
+                [sty.texttabs_sharesePcp__myGdlZlEIb]: hasVariant(
+                  $state,
+                  "tabs",
+                  "sharesePcp"
+                )
+              }
+            )}
+          >
+            {hasVariant($state, "ivanCbc", "ivanCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCeliacTest", "shareseCeliacTest") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCbc", "shareseCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "ivanPcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "sharesePcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{
+                    color: "var(--token-h1IJQpQlo5HQ)",
+                    fontWeight: 700
+                  }}
+                >
+                  {"Your clue is:"}
+                </span>
+                <React.Fragment> </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Patient Complaint/Oral History"}
+                </span>
+              </React.Fragment>
+            )}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__ydd5F, {
+            [sty.freeBoxtabs_kelvinPcp__ydd5FKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__h39Ym)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__ajSzS
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <Icon6Icon
+              className={classNames(projectcss.all, sty.svg__uMxSs)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <AudioClue
+          className={classNames("__wab_instance", sty.audioClue__ga8Ex)}
+          slot={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__i6M53)}
+              displayHeight={"300px"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"250px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/shareseSvg.svg",
+                fullWidth: 256.613,
+                fullHeight: 264.833,
+                aspectRatio: 0.968962
+              }}
+            />
+          }
+          slot2={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__ra6Bh
+              )}
+            >
+              {"1 minute 35 seconds"}
+            </div>
+          }
+          slot3={
+            <React.Fragment>
+              <Icon2Icon
+                className={classNames(projectcss.all, sty.svg__jhnHo)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___0IFcg
+                )}
+              >
+                {
+                  "Growing up, my parents helped me so much with my condition. They would pack my meals and snacks for school. At home, we didn\u2019t use ingredients like dairy or wheat that would trigger my disease or affect my sister\u2019s Celiac disease. For a long time, that was good enough and I really didn\u2019t have a lot of problems as long as I stuck to my diet and took my medicine regularly.\r\n\nBut it\u2019s been much harder to manage by myself since I left for college 2 years ago. I don\u2019t have a lot of options for what I can afford at the school cafeteria, and I don\u2019t always know if there\u2019s triggers in the stuff I can afford to buy. I still take my medicine every day, but I keep having heartburn and trouble eating. \r\n\nWhen I\u2019m out to eat with my soccer team, sometimes I just go along with whatever they order\u2014like pizza\u2014even though I know I shouldn\u2019t have that. It\u2019s just hard to say no. Lately, I don\u2019t eat at all around my friends because I\u2019m scared that I might start choking. It\u2019s really embarrassing, especially when I had to go to the ER because food got stuck in my throat. My friends were freaking out, even though it all turned out OK.\n\n\rI\u2019d really like to be able to eat around my friends without worrying this will happen again. My gastroenterologist keeps telling me I need to stick with my dietary plan, but it\u2019s just not realistic all the time. I really don\u2019t want to start limiting my diet even more \u2013 that would be really hard. Maybe something with my medications could be changed. Do you have any suggestions?"
+                }
+              </div>
+              <Icon3Icon
+                className={classNames(projectcss.all, sty.svg__lozbQ)}
+                role={"img"}
+              />
+            </React.Fragment>
+          }
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__eWmDw
+            )}
+          >
+            {"Sharese Lopez"}
+          </div>
+        </AudioClue>
+      </div>
+      <div
+        data-plasmic-name={"specialistIvanAudio"}
+        data-plasmic-override={overrides.specialistIvanAudio}
+        className={classNames(projectcss.all, sty.specialistIvanAudio)}
+      >
+        <div
+          className={classNames(projectcss.all, sty.freeBox__rRwep, {
+            [sty.freeBoxivanCbc__rRwepPiQEx]: hasVariant(
+              $state,
+              "ivanCbc",
+              "ivanCbc"
+            ),
+            [sty.freeBoxkelvinCbc__rRwepYbE4M]: hasVariant(
+              $state,
+              "kelvinCbc",
+              "kelvinCbc"
+            ),
+            [sty.freeBoxkelvinCmp_kelvinCbc_kelvinCeliacTest__rRwepM5CsGYbE4MBHtw8]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.freeBoxtabs_kelvinPcp__rRwepKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__ofgZe,
+              {
+                [sty.textivanCbc__ofgZePiQEx]: hasVariant(
+                  $state,
+                  "ivanCbc",
+                  "ivanCbc"
+                ),
+                [sty.textkelvinCbc__ofgZeYbE4M]: hasVariant(
+                  $state,
+                  "kelvinCbc",
+                  "kelvinCbc"
+                ),
+                [sty.textkelvinCmp__ofgZeM5CsG]: hasVariant(
+                  $state,
+                  "kelvinCmp",
+                  "kelvinCmp"
+                ),
+                [sty.textkelvinCmp_kelvinCbc_kelvinCeliacTest__ofgZeM5CsGYbE4MBHtw8]:
+                  hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+                  hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+                  hasVariant($state, "kelvinCmp", "kelvinCmp"),
+                [sty.textshareseCbc__ofgZeTjzU]: hasVariant(
+                  $state,
+                  "shareseCbc",
+                  "shareseCbc"
+                ),
+                [sty.textshareseCeliacTest__ofgZeYMclE]: hasVariant(
+                  $state,
+                  "shareseCeliacTest",
+                  "shareseCeliacTest"
+                ),
+                [sty.texttabs_ivanPcp__ofgZeLnyQl]: hasVariant(
+                  $state,
+                  "tabs",
+                  "ivanPcp"
+                ),
+                [sty.texttabs_sharesePcp__ofgZeZlEIb]: hasVariant(
+                  $state,
+                  "tabs",
+                  "sharesePcp"
+                )
+              }
+            )}
+          >
+            {hasVariant($state, "ivanCbc", "ivanCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCeliacTest", "shareseCeliacTest") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCbc", "shareseCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "ivanPcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "sharesePcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{
+                    color: "var(--token-h1IJQpQlo5HQ)",
+                    fontWeight: 700
+                  }}
+                >
+                  {"Your clue is:"}
+                </span>
+                <React.Fragment> </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Patient Complaint/Oral History"}
+                </span>
+              </React.Fragment>
+            )}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox___1LSav, {
+            [sty.freeBoxtabs_kelvinPcp___1LSavKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox__tapxl)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__rgAQc
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <Icon6Icon
+              className={classNames(projectcss.all, sty.svg__fnVRd)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <AudioClue
+          className={classNames("__wab_instance", sty.audioClue__bjy4G)}
+          slot={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__m5Q7)}
+              displayHeight={"300px"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"250px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/ivanSvg.svg",
+                fullWidth: 256.613,
+                fullHeight: 264.833,
+                aspectRatio: 0.968962
+              }}
+            />
+          }
+          slot2={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__vQhn5
+              )}
+            >
+              {"49 seconds"}
+            </div>
+          }
+          slot3={
+            <React.Fragment>
+              <Icon2Icon
+                className={classNames(projectcss.all, sty.svg__kesLt)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__xO9Yk
+                )}
+              >
+                {
+                  "My problem seems pretty common for a guy my age. I just get some heartburn every few days, sometimes once a day during bad weeks. One of my doctors prescribed a PPI for me a few months ago and told me that I probably had GERD. Sometimes, the PPI seemed like it was helping, but not so much lately.\n\n\r\rI guess I\u2019ve been having difficulty swallowing for the last three or four years. I figured it\u2019s just because I\u2019m dehydrated. I know I don\u2019t drink enough water when I\u2019m at work. Or maybe it\u2019s the kind of food I tend to eat. My family eats rye bread at every meal, but it can be kind of dry, so I just make sure I have a lot of water to wash it down. \n\n\r\rIf there is something simple to make sure the heartburn doesn\u2019t come back every day and fix whatever\u2019s going on with my throat that\u2019s making swallowing difficult, I\u2019d be open to that, but nothing super complicated that makes me change what I eat every day. Things really aren\u2019t that bad."
+                }
+              </div>
+              <Icon3Icon
+                className={classNames(projectcss.all, sty.svg__jxFpK)}
+                role={"img"}
+              />
+            </React.Fragment>
+          }
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text___2Htjy
+            )}
+          >
+            {"Ivan Mikkelson"}
+          </div>
+        </AudioClue>
+      </div>
+      <div
+        data-plasmic-name={"pcpIvanAudio"}
+        data-plasmic-override={overrides.pcpIvanAudio}
+        className={classNames(projectcss.all, sty.pcpIvanAudio)}
+      >
+        <div
+          className={classNames(projectcss.all, sty.freeBox__cekpj, {
+            [sty.freeBoxivanCbc__cekpjPiQEx]: hasVariant(
+              $state,
+              "ivanCbc",
+              "ivanCbc"
+            ),
+            [sty.freeBoxkelvinCbc__cekpjYbE4M]: hasVariant(
+              $state,
+              "kelvinCbc",
+              "kelvinCbc"
+            ),
+            [sty.freeBoxkelvinCmp_kelvinCbc_kelvinCeliacTest__cekpjm5CsGYbE4MBHtw8]:
+              hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+              hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+              hasVariant($state, "kelvinCmp", "kelvinCmp"),
+            [sty.freeBoxtabs_kelvinPcp__cekpjKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__uzUxu,
+              {
+                [sty.textivanCbc__uzUxuPiQEx]: hasVariant(
+                  $state,
+                  "ivanCbc",
+                  "ivanCbc"
+                ),
+                [sty.textkelvinCbc__uzUxuYbE4M]: hasVariant(
+                  $state,
+                  "kelvinCbc",
+                  "kelvinCbc"
+                ),
+                [sty.textkelvinCmp__uzUxuM5CsG]: hasVariant(
+                  $state,
+                  "kelvinCmp",
+                  "kelvinCmp"
+                ),
+                [sty.textkelvinCmp_kelvinCbc_kelvinCeliacTest__uzUxuM5CsGYbE4MBHtw8]:
+                  hasVariant($state, "kelvinCbc", "kelvinCbc") &&
+                  hasVariant($state, "kelvinCeliacTest", "kelvinCeliacTest") &&
+                  hasVariant($state, "kelvinCmp", "kelvinCmp"),
+                [sty.textshareseCbc__uzUxuTjzU]: hasVariant(
+                  $state,
+                  "shareseCbc",
+                  "shareseCbc"
+                ),
+                [sty.textshareseCeliacTest__uzUxuYMclE]: hasVariant(
+                  $state,
+                  "shareseCeliacTest",
+                  "shareseCeliacTest"
+                ),
+                [sty.texttabs_ivanPcp__uzUxuLnyQl]: hasVariant(
+                  $state,
+                  "tabs",
+                  "ivanPcp"
+                ),
+                [sty.texttabs_sharesePcp__uzUxuZlEIb]: hasVariant(
+                  $state,
+                  "tabs",
+                  "sharesePcp"
+                )
+              }
+            )}
+          >
+            {hasVariant($state, "ivanCbc", "ivanCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCeliacTest", "shareseCeliacTest") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "shareseCbc", "shareseCbc") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "ivanPcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Ivan's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : hasVariant($state, "tabs", "sharesePcp") ? (
+              <React.Fragment>
+                <React.Fragment>{"Your clue is: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Sharese's Lab Report & Endoscopy Images"}
+                </span>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{
+                    color: "var(--token-h1IJQpQlo5HQ)",
+                    fontWeight: 700
+                  }}
+                >
+                  {"Your clue is:"}
+                </span>
+                <React.Fragment> </React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"Patient Complaint/Oral History"}
+                </span>
+              </React.Fragment>
+            )}
+          </div>
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__ns7GX, {
+            [sty.freeBoxtabs_kelvinPcp__ns7GXKbzSz]: hasVariant(
+              $state,
+              "tabs",
+              "kelvinPcp"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox___7ZJ2P)}
+            onClick={args.onClickClose}
+          >
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__sz4Ib
+              )}
+            >
+              {"Return to the exam room"}
+            </div>
+            <Icon6Icon
+              className={classNames(projectcss.all, sty.svg__exd0)}
+              role={"img"}
+            />
+          </div>
+        </div>
+        <AudioClue
+          className={classNames("__wab_instance", sty.audioClue__f91R4)}
+          slot={
+            <PlasmicImg__
+              alt={""}
+              className={classNames(sty.img__phorl)}
+              displayHeight={"300px"}
+              displayMaxHeight={"none"}
+              displayMaxWidth={"100%"}
+              displayMinHeight={"0"}
+              displayMinWidth={"0"}
+              displayWidth={"250px"}
+              loading={"lazy"}
+              src={{
+                src: "/plasmic/escape_room/images/ivanSvg.svg",
+                fullWidth: 256.613,
+                fullHeight: 264.833,
+                aspectRatio: 0.968962
+              }}
+            />
+          }
+          slot2={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__sWnyw
+              )}
+            >
+              {"49 seconds"}
+            </div>
+          }
+          slot3={
+            <React.Fragment>
+              <Icon2Icon
+                className={classNames(projectcss.all, sty.svg__dnwRy)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__baYkd
+                )}
+              >
+                {
+                  "My problem seems pretty common for a guy my age. I just get some heartburn every few days, sometimes once a day during bad weeks. One of my doctors prescribed a PPI for me a few months ago and told me that I probably had GERD. Sometimes, the PPI seemed like it was helping, but not so much lately.\n\n\r\rI guess I\u2019ve been having difficulty swallowing for the last three or four years. I figured it\u2019s just because I\u2019m dehydrated. I know I don\u2019t drink enough water when I\u2019m at work. Or maybe it\u2019s the kind of food I tend to eat. My family eats rye bread at every meal, but it can be kind of dry, so I just make sure I have a lot of water to wash it down. \n\n\r\rIf there is something simple to make sure the heartburn doesn\u2019t come back every day and fix whatever\u2019s going on with my throat that\u2019s making swallowing difficult, I\u2019d be open to that, but nothing super complicated that makes me change what I eat every day. Things really aren\u2019t that bad."
+                }
+              </div>
+              <Icon3Icon
+                className={classNames(projectcss.all, sty.svg__pcVL)}
+                role={"img"}
+              />
+            </React.Fragment>
+          }
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__n16RG
+            )}
+          >
+            {"Ivan Mikkelson"}
+          </div>
+        </AudioClue>
       </div>
     </div>
   ) as React.ReactElement | null;
@@ -5046,15 +16143,53 @@ const PlasmicDescendants = {
     "root",
     "tabbedClueModal",
     "table",
-    "progressBar",
+    "iseeResults",
+    "table2",
     "patientChartClueModal",
-    "clueTabbedContainer"
+    "pcpKelvinPatientChartClueModal2",
+    "specialistKelvinPatientChartClueModal3",
+    "pcpKelvinPatientChartClueModal",
+    "specialistSharesePatientChartClueModal",
+    "pcpSharesePatientChartClueModal",
+    "pcpIvanPatientChartClueModal",
+    "specialistIvanPatientChartClueModal1",
+    "specialistIvanPatientChartClueModal2",
+    "audioClue",
+    "pcpKelvinAudio",
+    "specialistKelvinAudio",
+    "pcpShareseAudio",
+    "specialistShareseAudio",
+    "specialistIvanAudio",
+    "pcpIvanAudio"
   ],
-  tabbedClueModal: ["tabbedClueModal", "table", "progressBar"],
+  tabbedClueModal: ["tabbedClueModal", "table"],
   table: ["table"],
-  progressBar: ["progressBar"],
-  patientChartClueModal: ["patientChartClueModal", "clueTabbedContainer"],
-  clueTabbedContainer: ["clueTabbedContainer"]
+  iseeResults: ["iseeResults", "table2"],
+  table2: ["table2"],
+  patientChartClueModal: ["patientChartClueModal"],
+  pcpKelvinPatientChartClueModal2: ["pcpKelvinPatientChartClueModal2"],
+  specialistKelvinPatientChartClueModal3: [
+    "specialistKelvinPatientChartClueModal3"
+  ],
+  pcpKelvinPatientChartClueModal: ["pcpKelvinPatientChartClueModal"],
+  specialistSharesePatientChartClueModal: [
+    "specialistSharesePatientChartClueModal"
+  ],
+  pcpSharesePatientChartClueModal: ["pcpSharesePatientChartClueModal"],
+  pcpIvanPatientChartClueModal: ["pcpIvanPatientChartClueModal"],
+  specialistIvanPatientChartClueModal1: [
+    "specialistIvanPatientChartClueModal1"
+  ],
+  specialistIvanPatientChartClueModal2: [
+    "specialistIvanPatientChartClueModal2"
+  ],
+  audioClue: ["audioClue"],
+  pcpKelvinAudio: ["pcpKelvinAudio"],
+  specialistKelvinAudio: ["specialistKelvinAudio"],
+  pcpShareseAudio: ["pcpShareseAudio"],
+  specialistShareseAudio: ["specialistShareseAudio"],
+  specialistIvanAudio: ["specialistIvanAudio"],
+  pcpIvanAudio: ["pcpIvanAudio"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5063,9 +16198,24 @@ type NodeDefaultElementType = {
   root: "div";
   tabbedClueModal: "div";
   table: "div";
-  progressBar: typeof ProgressBar;
+  iseeResults: "div";
+  table2: "div";
   patientChartClueModal: "div";
-  clueTabbedContainer: typeof ClueTabbedContainer;
+  pcpKelvinPatientChartClueModal2: "div";
+  specialistKelvinPatientChartClueModal3: "div";
+  pcpKelvinPatientChartClueModal: "div";
+  specialistSharesePatientChartClueModal: "div";
+  pcpSharesePatientChartClueModal: "div";
+  pcpIvanPatientChartClueModal: "div";
+  specialistIvanPatientChartClueModal1: "div";
+  specialistIvanPatientChartClueModal2: "div";
+  audioClue: "div";
+  pcpKelvinAudio: "div";
+  specialistKelvinAudio: "div";
+  pcpShareseAudio: "div";
+  specialistShareseAudio: "div";
+  specialistIvanAudio: "div";
+  pcpIvanAudio: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5132,9 +16282,40 @@ export const PlasmicClueModal = Object.assign(
     // Helper components rendering sub-elements
     tabbedClueModal: makeNodeComponent("tabbedClueModal"),
     table: makeNodeComponent("table"),
-    progressBar: makeNodeComponent("progressBar"),
+    iseeResults: makeNodeComponent("iseeResults"),
+    table2: makeNodeComponent("table2"),
     patientChartClueModal: makeNodeComponent("patientChartClueModal"),
-    clueTabbedContainer: makeNodeComponent("clueTabbedContainer"),
+    pcpKelvinPatientChartClueModal2: makeNodeComponent(
+      "pcpKelvinPatientChartClueModal2"
+    ),
+    specialistKelvinPatientChartClueModal3: makeNodeComponent(
+      "specialistKelvinPatientChartClueModal3"
+    ),
+    pcpKelvinPatientChartClueModal: makeNodeComponent(
+      "pcpKelvinPatientChartClueModal"
+    ),
+    specialistSharesePatientChartClueModal: makeNodeComponent(
+      "specialistSharesePatientChartClueModal"
+    ),
+    pcpSharesePatientChartClueModal: makeNodeComponent(
+      "pcpSharesePatientChartClueModal"
+    ),
+    pcpIvanPatientChartClueModal: makeNodeComponent(
+      "pcpIvanPatientChartClueModal"
+    ),
+    specialistIvanPatientChartClueModal1: makeNodeComponent(
+      "specialistIvanPatientChartClueModal1"
+    ),
+    specialistIvanPatientChartClueModal2: makeNodeComponent(
+      "specialistIvanPatientChartClueModal2"
+    ),
+    audioClue: makeNodeComponent("audioClue"),
+    pcpKelvinAudio: makeNodeComponent("pcpKelvinAudio"),
+    specialistKelvinAudio: makeNodeComponent("specialistKelvinAudio"),
+    pcpShareseAudio: makeNodeComponent("pcpShareseAudio"),
+    specialistShareseAudio: makeNodeComponent("specialistShareseAudio"),
+    specialistIvanAudio: makeNodeComponent("specialistIvanAudio"),
+    pcpIvanAudio: makeNodeComponent("pcpIvanAudio"),
 
     // Metadata about props expected for PlasmicClueModal
     internalVariantProps: PlasmicClueModal__VariantProps,

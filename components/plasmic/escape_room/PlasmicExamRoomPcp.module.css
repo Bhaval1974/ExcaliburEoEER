@@ -28,16 +28,34 @@
 .roomPlanmodal_rm1Hs4 {
   display: none;
 }
-.roomPlanmodal_kelvinDoor {
+.roomPlanmodal_rm3Hs1 {
+  display: none;
+}
+.roomPlanmodal_lamp {
+  display: none;
+}
+.roomPlankelvinFinal_kelvinDoorFour {
   position: relative;
   left: auto;
   top: auto;
   display: none;
 }
-.roomPlanmodal_rm3Hs1 {
+.roomPlankelvinFinal_kelvinDoorThree {
+  position: relative;
+  left: auto;
+  top: auto;
   display: none;
 }
-.roomPlanmodal_lamp {
+.roomPlankelvinFinal_kelvinDoorTwo {
+  position: relative;
+  left: auto;
+  top: auto;
+  display: none;
+}
+.roomPlankelvinFinal_kelvinDoorOne {
+  position: relative;
+  left: auto;
+  top: auto;
   display: none;
 }
 .freeBox__wSdKy {
@@ -53,14 +71,21 @@
   left: auto;
   right: auto;
   background: linear-gradient(#ffffff00, #ffffff00), var(--token-A0PHvu8gKc_i);
-  padding: 0px;
+  margin-right: 20px;
+  margin-top: 20px;
+  border-radius: 15px;
+  padding: 35px;
+  border: 1px solid var(--token-h1IJQpQlo5HQ);
 }
-.img___9RZqI {
-  object-fit: cover;
-  max-width: 500px;
+.roomMap:global(.__wab_instance) {
+  max-width: 100%;
+  flex-shrink: 0;
 }
-.img___9RZqI > picture > img {
-  object-fit: cover;
+.roomMaproom_sharese:global(.__wab_instance) {
+  flex-shrink: 0;
+}
+.roomMaproom_ivan:global(.__wab_instance) {
+  flex-shrink: 0;
 }
 .roomScene {
   display: flex;
@@ -84,9 +109,6 @@
   display: none;
 }
 .roomScenemodal_rm1Hs4 {
-  display: none;
-}
-.roomScenemodal_kelvinDoor {
   display: none;
 }
 .roomScenemodal_rm2Hs1 {
@@ -153,6 +175,18 @@
   display: none;
 }
 .roomScenemodal_unnamedVariant {
+  display: none;
+}
+.roomScenekelvinFinal_kelvinDoorFour {
+  display: none;
+}
+.roomScenekelvinFinal_kelvinDoorThree {
+  display: none;
+}
+.roomScenekelvinFinal_kelvinDoorTwo {
+  display: none;
+}
+.roomScenekelvinFinal_kelvinDoorOne {
   display: none;
 }
 .kelvinTitleBanner {
@@ -257,6 +291,12 @@
 .kelvinPcpmodal_kelvinPcp4 {
   display: flex;
 }
+.kelvinPcproom_sharese {
+  display: none;
+}
+.kelvinPcproom_ivan {
+  display: none;
+}
 .freeBox___2HBe {
   display: flex;
   flex-direction: row;
@@ -317,7 +357,7 @@
   width: auto;
 }
 .instructionBanner__xbAil:global(.__wab_instance) {
-  max-width: 60%;
+  max-width: 950px;
   height: 50px;
   margin-left: 50px;
   z-index: 1;
@@ -336,16 +376,9 @@
   z-index: 2;
   padding: 0px;
 }
-.img___4Ita4 {
-  object-fit: cover;
+.kf:global(.__wab_instance) {
   max-width: 100%;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.img___4Ita4 > picture > img {
-  object-fit: cover;
+  width: auto;
 }
 .freeBox___2Q5Rw {
   display: flex;
@@ -384,6 +417,7 @@
   width: auto;
 }
 .sharesePcp {
+  display: flex;
   flex-direction: row;
   position: relative;
   align-items: stretch;
@@ -394,7 +428,6 @@
   min-height: 600px;
   background: url("/plasmic/escape_room/images/sharesesRoomPcpSvg2.svg") top 50% left 50% / cover repeat;
   min-width: 0;
-  display: none;
   padding: 0px;
 }
 .sharesePcpmodal_rm2Hs1 {
@@ -441,6 +474,9 @@
   display: flex;
 }
 .sharesePcpmodal_sharesePcp4 {
+  display: flex;
+}
+.sharesePcproom_sharese {
   display: flex;
 }
 .hotspot42 {
@@ -565,16 +601,8 @@
   z-index: 2;
   padding: 0px;
 }
-.img__kq6O {
-  object-fit: cover;
+.hotspot__sEKl:global(.__wab_instance) {
   max-width: 100%;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.img__kq6O > picture > img {
-  object-fit: cover;
 }
 .hotspot22 {
   display: flex;
@@ -653,6 +681,9 @@
 }
 .ivanPcpmodal_ivanPcp42 {
   background: url("/plasmic/escape_room/images/ivansRoomPcpSvg.svg") top 50% left 50% / cover repeat;
+  display: flex;
+}
+.ivanPcproom_ivan {
   display: flex;
 }
 .freeBox__nns8K {
@@ -771,16 +802,8 @@
   z-index: 2;
   padding: 0px;
 }
-.img__a7FY {
-  object-fit: cover;
+.hotspot__iGXkS:global(.__wab_instance) {
   max-width: 100%;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.img__a7FY > picture > img {
-  object-fit: cover;
 }
 .referencePanel:global(.__wab_instance) {
   position: fixed;
@@ -833,9 +856,6 @@
 .textmodal_rm1Hs4__wtheBeiGL {
   font-family: "Open Sans", sans-serif;
 }
-.textmodal_kelvinDoor__wtheB8FMxe {
-  font-family: "Open Sans", sans-serif;
-}
 .textmodal_rm2Hs1__wtheBcjkeU {
   font-family: "Open Sans", sans-serif;
 }
@@ -854,6 +874,18 @@
 .textmodal_rm3Hs2__wtheBjLsEv {
   height: auto;
   padding-top: 0px;
+}
+.textkelvinFinal_kelvinDoorFour__wtheBttTwu {
+  font-family: "Open Sans", sans-serif;
+}
+.textkelvinFinal_kelvinDoorThree__wtheBfeDsf {
+  font-family: "Open Sans", sans-serif;
+}
+.textkelvinFinal_kelvinDoorTwo__wtheBUHd {
+  font-family: "Open Sans", sans-serif;
+}
+.textkelvinFinal_kelvinDoorOne__wtheB8FMxe {
+  font-family: "Open Sans", sans-serif;
 }
 .questionContainer {
   display: flex;
@@ -911,9 +943,6 @@
 .computermodal_rm1Hs4:global(.__wab_instance) {
   display: none;
 }
-.computermodal_kelvinDoor:global(.__wab_instance) {
-  display: none;
-}
 .computermodal_rm2Hs1:global(.__wab_instance) {
   display: none;
 }
@@ -936,6 +965,18 @@
   display: none;
 }
 .computermodal_kelvinPcp1:global(.__wab_instance) {
+  display: none;
+}
+.computerkelvinFinal_kelvinDoorFour:global(.__wab_instance) {
+  display: none;
+}
+.computerkelvinFinal_kelvinDoorThree:global(.__wab_instance) {
+  display: none;
+}
+.computerkelvinFinal_kelvinDoorTwo:global(.__wab_instance) {
+  display: none;
+}
+.computerkelvinFinal_kelvinDoorOne:global(.__wab_instance) {
   display: none;
 }
 .freeBox__zy0Sp {
@@ -3475,6 +3516,21 @@
 }
 .wrongAnswermodal_rm1Hs4__hryideiGL:global(.__wab_instance) {
   display: none;
+}
+.kelvinModal:global(.__wab_instance) {
+  max-width: 100%;
+}
+.kelvinModalkelvinFinal_kelvinDoorFour:global(.__wab_instance) {
+  display: flex;
+}
+.kelvinModalkelvinFinal_kelvinDoorThree:global(.__wab_instance) {
+  display: flex;
+}
+.kelvinModalkelvinFinal_kelvinDoorTwo:global(.__wab_instance) {
+  display: flex;
+}
+.kelvinModalkelvinFinal_kelvinDoorOne:global(.__wab_instance) {
+  display: flex;
 }
 .bottomToolbar:global(.__wab_instance) {
   max-width: 100%;

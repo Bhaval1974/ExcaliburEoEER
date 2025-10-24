@@ -128,7 +128,7 @@ export class AnalyticsService {
     if (typeof window !== 'undefined') {
       const path = window.location.pathname;
       if (path.includes('specialty')) return "Alice's Exam Room";
-      if (path.includes('william')) return "William's Exam Room";
+      if (path.includes('william')) return "Kelvins's Exam Room";
       // Add more mappings as needed
     }
     return '';

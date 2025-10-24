@@ -52,6 +52,9 @@
   border-width: 1px;
   border-style: solid;
 }
+.freeBoxcolor_gray__wvapSfUbxi {
+  background: #e8e8e8;
+}
 .freeBox___07Nrh {
   display: flex;
   flex-direction: column;
@@ -78,7 +81,7 @@
   color: var(--token-HqmJL_ouMwsr);
   text-align: center;
 }
-.freeBox__xeni {
+.activeButtonWrapper {
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
@@ -87,17 +90,17 @@
   max-width: 100%;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  background: var(--token-eicqt-ssaXax);
+  background: #a37a68;
   min-width: 0;
   display: none;
   padding: 10px 30px;
   border-width: 1px;
   border-style: solid;
 }
-.freeBoxactive__xeniDl3D {
+.activeButtonWrapperactive {
   display: flex;
 }
-.activeButton {
+.freeBox__arKmn {
   display: flex;
   flex-direction: column;
   position: relative;

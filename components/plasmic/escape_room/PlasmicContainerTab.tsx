@@ -71,13 +71,16 @@ createPlasmicElementProxy;
 
 export type PlasmicContainerTab__VariantMembers = {
   active: "active";
+  color: "gray";
 };
 export type PlasmicContainerTab__VariantsArgs = {
   active?: SingleBooleanChoiceArg<"active">;
+  color?: SingleChoiceArg<"gray">;
 };
 type VariantPropType = keyof PlasmicContainerTab__VariantsArgs;
 export const PlasmicContainerTab__VariantProps = new Array<VariantPropType>(
-  "active"
+  "active",
+  "color"
 );
 
 export type PlasmicContainerTab__ArgsType = {
@@ -93,13 +96,14 @@ export const PlasmicContainerTab__ArgProps = new Array<ArgPropType>(
 export type PlasmicContainerTab__OverridesType = {
   root?: Flex__<"div">;
   baseButtonWrapper?: Flex__<"div">;
-  activeButton?: Flex__<"div">;
+  activeButtonWrapper?: Flex__<"div">;
 };
 
 export interface DefaultContainerTabProps {
   children4?: React.ReactNode;
   children?: React.ReactNode;
   active?: SingleBooleanChoiceArg<"active">;
+  color?: SingleChoiceArg<"gray">;
   className?: string;
 }
 
@@ -149,6 +153,12 @@ function PlasmicContainerTab__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.active
+      },
+      {
+        path: "color",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.color
       }
     ],
     [$props, $ctx, $refs]
@@ -175,7 +185,10 @@ function PlasmicContainerTab__RenderFunc(props: {
         projectcss.plasmic_mixins,
         styleTokensClassNames,
         sty.root,
-        { [sty.rootactive]: hasVariant($state, "active", "active") }
+        {
+          [sty.rootactive]: hasVariant($state, "active", "active"),
+          [sty.rootcolor_gray]: hasVariant($state, "color", "gray")
+        }
       )}
     >
       <div
@@ -200,11 +213,24 @@ function PlasmicContainerTab__RenderFunc(props: {
               $state,
               "active",
               "active"
+            ),
+            [sty.freeBoxcolor_gray__wvapSfUbxi]: hasVariant(
+              $state,
+              "color",
+              "gray"
             )
           })}
         >
           <div className={classNames(projectcss.all, sty.freeBox___07Nrh)}>
-            <div className={classNames(projectcss.all, sty.freeBox___0XvL)}>
+            <div
+              className={classNames(projectcss.all, sty.freeBox___0XvL, {
+                [sty.freeBoxactive___0XvLDl3D]: hasVariant(
+                  $state,
+                  "active",
+                  "active"
+                )
+              })}
+            >
               {renderPlasmicSlot({
                 defaultContents: "Physical Examination",
                 value: args.children4,
@@ -221,15 +247,17 @@ function PlasmicContainerTab__RenderFunc(props: {
         </div>
       </div>
       <div
-        className={classNames(projectcss.all, sty.freeBox__xeni, {
-          [sty.freeBoxactive__xeniDl3D]: hasVariant($state, "active", "active")
+        data-plasmic-name={"activeButtonWrapper"}
+        data-plasmic-override={overrides.activeButtonWrapper}
+        className={classNames(projectcss.all, sty.activeButtonWrapper, {
+          [sty.activeButtonWrapperactive]: hasVariant(
+            $state,
+            "active",
+            "active"
+          )
         })}
       >
-        <div
-          data-plasmic-name={"activeButton"}
-          data-plasmic-override={overrides.activeButton}
-          className={classNames(projectcss.all, sty.activeButton)}
-        >
+        <div className={classNames(projectcss.all, sty.freeBox__arKmn)}>
           <div
             className={classNames(
               projectcss.all,
@@ -259,9 +287,9 @@ function PlasmicContainerTab__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "baseButtonWrapper", "activeButton"],
+  root: ["root", "baseButtonWrapper", "activeButtonWrapper"],
   baseButtonWrapper: ["baseButtonWrapper"],
-  activeButton: ["activeButton"]
+  activeButtonWrapper: ["activeButtonWrapper"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -269,7 +297,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   baseButtonWrapper: "div";
-  activeButton: "div";
+  activeButtonWrapper: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -335,7 +363,7 @@ export const PlasmicContainerTab = Object.assign(
   {
     // Helper components rendering sub-elements
     baseButtonWrapper: makeNodeComponent("baseButtonWrapper"),
-    activeButton: makeNodeComponent("activeButton"),
+    activeButtonWrapper: makeNodeComponent("activeButtonWrapper"),
 
     // Metadata about props expected for PlasmicContainerTab
     internalVariantProps: PlasmicContainerTab__VariantProps,

@@ -1464,6 +1464,138 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "computer.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "ivanSpecialist4.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "ivanShelf.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "ivanScreen.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "sharese1.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "sharese2.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "sharese3.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "diagram.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "sharese4.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "bookshelf.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "bed.isSelected",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "computer.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "ivanSpecialist4.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "ivanShelf.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "ivanScreen.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sharese1.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sharese2.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sharese3.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "diagram.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sharese4.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "bookshelf.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "bed.step",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -3896,6 +4028,10 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
               })}
             />
           }
+          isSelected={generateStateValueProp($state, [
+            "computer",
+            "isSelected"
+          ])}
           onClickClose={async event => {
             const $steps = {};
 
@@ -3950,6 +4086,34 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
               typeof $steps["updateModal"].then === "function"
             ) {
               $steps["updateModal"] = await $steps["updateModal"];
+            }
+          }}
+          onIsSelectedChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["computer", "isSelected"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onStepChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["computer", "step"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
             }
           }}
           question={
@@ -5144,6 +5308,10 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "ivanSpecialist4",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -5198,6 +5366,34 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "ivanSpecialist4",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "ivanSpecialist4",
+                "step"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -6506,6 +6702,10 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "ivanShelf",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -6560,6 +6760,34 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "ivanShelf",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["ivanShelf", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -7355,6 +7583,10 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "ivanScreen",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -7409,6 +7641,34 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "ivanScreen",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["ivanScreen", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -7855,6 +8115,10 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
               })}
             />
           }
+          isSelected={generateStateValueProp($state, [
+            "sharese1",
+            "isSelected"
+          ])}
           onClickClose={async event => {
             const $steps = {};
 
@@ -7909,6 +8173,34 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
               typeof $steps["updateModal"].then === "function"
             ) {
               $steps["updateModal"] = await $steps["updateModal"];
+            }
+          }}
+          onIsSelectedChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["sharese1", "isSelected"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onStepChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["sharese1", "step"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
             }
           }}
           question={
@@ -8564,6 +8856,10 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "sharese2",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -8618,6 +8914,34 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "sharese2",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["sharese2", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -9425,6 +9749,10 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "sharese3",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -9479,6 +9807,34 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "sharese3",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["sharese3", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -9939,6 +10295,10 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "diagram",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -9993,6 +10353,34 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "diagram",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["diagram", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -10631,6 +11019,10 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "sharese4",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -10685,6 +11077,34 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "sharese4",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["sharese4", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -11112,6 +11532,10 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, [
+              "bookshelf",
+              "isSelected"
+            ])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -11166,6 +11590,34 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "bookshelf",
+                "isSelected"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["bookshelf", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={
@@ -11548,6 +12000,7 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 )}
               />
             }
+            isSelected={generateStateValueProp($state, ["bed", "isSelected"])}
             onClickClose={async event => {
               const $steps = {};
 
@@ -11602,6 +12055,34 @@ function PlasmicExamRoomSpecialty__RenderFunc(props: {
                 typeof $steps["updateModal"].then === "function"
               ) {
                 $steps["updateModal"] = await $steps["updateModal"];
+              }
+            }}
+            onIsSelectedChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["bed", "isSelected"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onStepChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["bed", "step"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
               }
             }}
             question={

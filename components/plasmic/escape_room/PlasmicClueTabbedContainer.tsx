@@ -70,11 +70,15 @@ import sty from "./PlasmicClueTabbedContainer.module.css"; // plasmic-import: M2
 
 createPlasmicElementProxy;
 
-export type PlasmicClueTabbedContainer__VariantMembers = {};
-export type PlasmicClueTabbedContainer__VariantsArgs = {};
+export type PlasmicClueTabbedContainer__VariantMembers = {
+  tab: "two";
+};
+export type PlasmicClueTabbedContainer__VariantsArgs = {
+  tab?: SingleChoiceArg<"two">;
+};
 type VariantPropType = keyof PlasmicClueTabbedContainer__VariantsArgs;
 export const PlasmicClueTabbedContainer__VariantProps =
-  new Array<VariantPropType>();
+  new Array<VariantPropType>("tab");
 
 export type PlasmicClueTabbedContainer__ArgsType = {
   image?: React.ReactNode;
@@ -82,6 +86,8 @@ export type PlasmicClueTabbedContainer__ArgsType = {
   dob?: React.ReactNode;
   sex?: React.ReactNode;
   children?: React.ReactNode;
+  tab2Image?: React.ReactNode;
+  children2?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicClueTabbedContainer__ArgsType;
 export const PlasmicClueTabbedContainer__ArgProps = new Array<ArgPropType>(
@@ -89,13 +95,17 @@ export const PlasmicClueTabbedContainer__ArgProps = new Array<ArgPropType>(
   "name",
   "dob",
   "sex",
-  "children"
+  "children",
+  "tab2Image",
+  "children2"
 );
 
 export type PlasmicClueTabbedContainer__OverridesType = {
   tabWrapper?: Flex__<"div">;
   tab1?: Flex__<"div">;
   scrollContainer?: Flex__<"div">;
+  tab2?: Flex__<"div">;
+  scrollContainer2?: Flex__<"div">;
 };
 
 export interface DefaultClueTabbedContainerProps {
@@ -104,6 +114,9 @@ export interface DefaultClueTabbedContainerProps {
   dob?: React.ReactNode;
   sex?: React.ReactNode;
   children?: React.ReactNode;
+  tab2Image?: React.ReactNode;
+  children2?: React.ReactNode;
+  tab?: SingleChoiceArg<"two">;
   className?: string;
 }
 
@@ -146,6 +159,24 @@ function PlasmicClueTabbedContainer__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "tab",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.tab
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+
   const styleTokensClassNames = _useStyleTokens();
 
   return (
@@ -160,27 +191,127 @@ function PlasmicClueTabbedContainer__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        sty.tabWrapper
+        sty.tabWrapper,
+        { [sty.tabWrappertab_two]: hasVariant($state, "tab", "two") }
       )}
     >
-      <div className={classNames(projectcss.all, sty.freeBox__eev9P)}>
+      <div
+        className={classNames(projectcss.all, sty.freeBox__eev9P, {
+          [sty.freeBoxtab_two__eev9PAqIkb]: hasVariant($state, "tab", "two")
+        })}
+      >
         <div className={classNames(projectcss.all, sty.freeBox__dqTc1)}>
           <div className={classNames(projectcss.all, sty.freeBox__ebUw)}>
-            <ContainerTab
-              className={classNames("__wab_instance", sty.containerTab__sgFhn)}
-            />
+            <div
+              className={classNames(projectcss.all, sty.freeBox__bagI)}
+              onClick={async event => {
+                const $steps = {};
 
-            <ContainerTab
-              active={true}
-              className={classNames("__wab_instance", sty.containerTab__lqeAu)}
-            />
+                $steps["updateTab"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        vgroup: "tab",
+                        operation: 1,
+                        value: "two"
+                      };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, undefined);
+                        return undefined;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateTab"] != null &&
+                  typeof $steps["updateTab"] === "object" &&
+                  typeof $steps["updateTab"].then === "function"
+                ) {
+                  $steps["updateTab"] = await $steps["updateTab"];
+                }
+              }}
+            >
+              <ContainerTab
+                active={hasVariant($state, "tab", "two") ? undefined : true}
+                className={classNames(
+                  "__wab_instance",
+                  sty.containerTab__sgFhn,
+                  {
+                    [sty.containerTabtab_two__sgFhnAqIkb]: hasVariant(
+                      $state,
+                      "tab",
+                      "two"
+                    )
+                  }
+                )}
+                color={hasVariant($state, "tab", "two") ? "gray" : undefined}
+              >
+                {"Patient Information"}
+              </ContainerTab>
+            </div>
+            <div
+              className={classNames(projectcss.all, sty.freeBox__h4T6U, {
+                [sty.freeBoxtab_two__h4T6UAqIkb]: hasVariant(
+                  $state,
+                  "tab",
+                  "two"
+                )
+              })}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updateTab"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        vgroup: "tab",
+                        operation: 0,
+                        value: "two"
+                      };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateTab"] != null &&
+                  typeof $steps["updateTab"] === "object" &&
+                  typeof $steps["updateTab"].then === "function"
+                ) {
+                  $steps["updateTab"] = await $steps["updateTab"];
+                }
+              }}
+            >
+              <ContainerTab
+                active={hasVariant($state, "tab", "two") ? true : undefined}
+                className={classNames(
+                  "__wab_instance",
+                  sty.containerTab__lqeAu,
+                  {
+                    [sty.containerTabtab_two__lqeAuaqIkb]: hasVariant(
+                      $state,
+                      "tab",
+                      "two"
+                    )
+                  }
+                )}
+              />
+            </div>
           </div>
         </div>
       </div>
       <div
         data-plasmic-name={"tab1"}
         data-plasmic-override={overrides.tab1}
-        className={classNames(projectcss.all, sty.tab1)}
+        className={classNames(projectcss.all, sty.tab1, {
+          [sty.tab1tab_two]: hasVariant($state, "tab", "two")
+        })}
       >
         <div className={classNames(projectcss.all, sty.freeBox__guZoM)}>
           <div className={classNames(projectcss.all, sty.freeBox__zVB1)}>
@@ -278,7 +409,7 @@ function PlasmicClueTabbedContainer__RenderFunc(props: {
                     sty.text__ptJDa
                   )}
                 >
-                  {"Black"}
+                  {"White"}
                 </div>
               </div>
             </div>
@@ -289,7 +420,15 @@ function PlasmicClueTabbedContainer__RenderFunc(props: {
                 sty.text__ounBk
               )}
             >
-              {"Today's date: 9/25/2025"}
+              <React.Fragment>
+                <React.Fragment>{"Today's date: "}</React.Fragment>
+                <span
+                  className={"plasmic_default__all plasmic_default__span"}
+                  style={{ fontWeight: 700 }}
+                >
+                  {"9/25/2025"}
+                </span>
+              </React.Fragment>
             </div>
           </div>
           <div
@@ -805,14 +944,97 @@ function PlasmicClueTabbedContainer__RenderFunc(props: {
           </div>
         </div>
       </div>
+      {(hasVariant($state, "tab", "two") ? true : false) ? (
+        <div
+          data-plasmic-name={"tab2"}
+          data-plasmic-override={overrides.tab2}
+          className={classNames(projectcss.all, sty.tab2, {
+            [sty.tab2tab_two]: hasVariant($state, "tab", "two")
+          })}
+        >
+          <div className={classNames(projectcss.all, sty.freeBox__eaqUe)}>
+            <div className={classNames(projectcss.all, sty.freeBox__izrNw)}>
+              {renderPlasmicSlot({
+                defaultContents: (
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__vZl3O)}
+                    displayHeight={"100%"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"100%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                  />
+                ),
+
+                value: args.tab2Image
+              })}
+            </div>
+            <div
+              data-plasmic-name={"scrollContainer2"}
+              data-plasmic-override={overrides.scrollContainer2}
+              className={classNames(projectcss.all, sty.scrollContainer2)}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__n7Gr)}>
+                {renderPlasmicSlot({
+                  defaultContents: (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__fwVp8)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__al420
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__q0WpY
+                          )}
+                        >
+                          {"General:"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__udJ7J
+                          )}
+                        >
+                          {
+                            "Alert, interactive, age-appropriate behavior. Well-nourhsed and well-hydrated."
+                          }
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                  value: args.children2
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  tabWrapper: ["tabWrapper", "tab1", "scrollContainer"],
+  tabWrapper: [
+    "tabWrapper",
+    "tab1",
+    "scrollContainer",
+    "tab2",
+    "scrollContainer2"
+  ],
   tab1: ["tab1", "scrollContainer"],
-  scrollContainer: ["scrollContainer"]
+  scrollContainer: ["scrollContainer"],
+  tab2: ["tab2", "scrollContainer2"],
+  scrollContainer2: ["scrollContainer2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -821,6 +1043,8 @@ type NodeDefaultElementType = {
   tabWrapper: "div";
   tab1: "div";
   scrollContainer: "div";
+  tab2: "div";
+  scrollContainer2: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -887,6 +1111,8 @@ export const PlasmicClueTabbedContainer = Object.assign(
     // Helper components rendering sub-elements
     tab1: makeNodeComponent("tab1"),
     scrollContainer: makeNodeComponent("scrollContainer"),
+    tab2: makeNodeComponent("tab2"),
+    scrollContainer2: makeNodeComponent("scrollContainer2"),
 
     // Metadata about props expected for PlasmicClueTabbedContainer
     internalVariantProps: PlasmicClueTabbedContainer__VariantProps,

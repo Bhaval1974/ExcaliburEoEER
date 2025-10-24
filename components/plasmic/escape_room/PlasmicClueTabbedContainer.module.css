@@ -42,16 +42,34 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  justify-content: flex-end;
+  align-items: flex-end;
+  min-width: 0;
+  padding: 0px;
+}
+.freeBox__bagI {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
   padding: 0px;
 }
-.containerTab__sgFhn:global(.__wab_instance) {
+.freeBox__h4T6U {
+  display: flex;
+  flex-direction: column;
   position: relative;
-}
-.containerTab__lqeAu:global(.__wab_instance) {
-  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
 }
 .tab1 {
   display: flex;
@@ -63,6 +81,9 @@
   align-items: center;
   min-width: 0;
   padding: 0px;
+}
+.tab1tab_two {
+  display: none;
 }
 .freeBox__guZoM {
   display: flex;
@@ -223,6 +244,7 @@
   height: auto;
   max-width: 100%;
   text-align: left;
+  font-family: "Open Sans", sans-serif;
 }
 .column__xjzz {
   display: flex;
@@ -303,6 +325,7 @@
   height: auto;
   max-width: 100%;
   text-align: left;
+  font-family: "Open Sans", sans-serif;
 }
 .column__psJvS {
   display: flex;
@@ -327,6 +350,7 @@
 }
 .slotTargetSex {
   text-align: left;
+  font-family: "Open Sans", sans-serif;
 }
 .columns__nDBb {
   display: flex;
@@ -383,6 +407,7 @@
   height: auto;
   max-width: 100%;
   text-align: left;
+  font-family: "Open Sans", sans-serif;
 }
 .column___4Knuy {
   display: flex;
@@ -402,6 +427,7 @@
   height: auto;
   max-width: 100%;
   text-align: left;
+  font-family: "Open Sans", sans-serif;
   min-width: 0;
 }
 .text__ounBk {
@@ -410,6 +436,7 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  font-family: "Open Sans", sans-serif;
   min-width: 0;
 }
 .scrollContainer {
@@ -1026,4 +1053,129 @@
   max-width: 100%;
   padding-bottom: 0px;
   min-width: 0;
+}
+.tab2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
+}
+.freeBox__eaqUe {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  column-gap: 50px;
+  overflow-y: visible;
+  background: #e8e8e8;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  min-width: 0;
+  padding: 25px;
+  border-width: 1px;
+  border-style: solid;
+}
+.freeBox__izrNw {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 25%;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  row-gap: 1px;
+  min-width: 0;
+  padding: 0px;
+}
+.img__vZl3O {
+  animation: none;
+  object-fit: cover;
+  max-width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+.img__vZl3O > picture > img {
+  object-fit: cover;
+}
+.scrollContainer2 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 600px;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
+}
+.freeBox__n7Gr {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__n7Gr {
+    width: 100%;
+    height: auto;
+    min-width: 0;
+  }
+}
+.freeBox__fwVp8 {
+  animation: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
+}
+.freeBox__al420 {
+  animation: none;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  column-gap: 15px;
+  min-width: 0;
+  padding: 0px;
+}
+.text__q0WpY {
+  animation: none;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-weight: 700;
+}
+.text__udJ7J {
+  animation: none;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
 }

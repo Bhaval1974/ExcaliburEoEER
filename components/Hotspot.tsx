@@ -6,6 +6,7 @@ import {
   DefaultHotspotProps
 } from "./plasmic/escape_room/PlasmicHotspot";
 import { HTMLElementRefOf } from "@plasmicapp/react-web";
+import { getQuestionResult } from "@/core/services/exam";
 
 // Your component props start with props for variants and slots you defined
 // in Plasmic, but you can add more here, like event handlers that you can
@@ -23,22 +24,87 @@ import { HTMLElementRefOf } from "@plasmicapp/react-web";
 export interface HotspotProps extends DefaultHotspotProps {}
 
 function Hotspot_(props: HotspotProps, ref: HTMLElementRefOf<"div">) {
-  // Use PlasmicHotspot to render this component as it was
-  // designed in Plasmic, by activating the appropriate variants,
-  // attaching the appropriate event handlers, etc.  You
-  // can also install whatever React hooks you need here to manage state or
-  // fetch data.
-  //
-  // Props you can pass into PlasmicHotspot are:
-  // 1. Variants you want to activate,
-  // 2. Contents for slots you want to fill,
-  // 3. Overrides for any named node in the component to attach behavior and data,
-  // 4. Props to set on the root node.
-  //
-  // By default, we are just piping all HotspotProps here, but feel free
-  // to do whatever works for you.
 
-  return <PlasmicHotspot root={{ ref }} {...props} />;
+  const [completed, setCompleted] = React.useState<boolean>(false);
+  const [locked, setLocked] = React.useState<boolean>(false);
+
+      React.useEffect(() => {
+        
+          const updateLocked = () => {
+            if (props?.questionId === 'kelvin-final') {
+            const KelvinPCPQ4 = getQuestionResult("Kelvin-PCP-q4");
+            const KelvinPCPQ1 = getQuestionResult("Kelvin-PCP-q1");
+            const KelvinPCPQ2 = getQuestionResult("Kelvin-PCP-q2");
+            const KelvinPCPQ3 = getQuestionResult("Kelvin-PCP-q3");
+            if (KelvinPCPQ1 && KelvinPCPQ2 && KelvinPCPQ3 && KelvinPCPQ4 &&
+              KelvinPCPQ1.isCorrect && KelvinPCPQ2.isCorrect && KelvinPCPQ3.isCorrect && KelvinPCPQ4.isCorrect) {
+              setLocked(false);
+            } else {
+              setLocked(true);
+            }
+          }else if (props?.questionId === 'sharese-final'){
+            const SharesePCPQ4 = getQuestionResult("Sharese-PCP-q4");
+            const SharesePCPQ1 = getQuestionResult("Sharese-PCP-q1");
+            const SharesePCPQ2 = getQuestionResult("Sharese-PCP-q2");
+
+            const SharesePCPQ3 = getQuestionResult("Sharese-PCP-q3");
+            if (SharesePCPQ1 && SharesePCPQ2 && SharesePCPQ3 && SharesePCPQ4 &&
+              SharesePCPQ1.isCorrect && SharesePCPQ2.isCorrect && SharesePCPQ3.isCorrect && SharesePCPQ4.isCorrect) {
+              setLocked(false);
+            } else {
+              setLocked(true);
+            }
+
+          }else if (props?.questionId === 'ivan-final'){
+            const IvanPCPQ4 = getQuestionResult("Ivan-PCP-q4");
+            const IvanPCPQ1 = getQuestionResult("Ivan-PCP-q1");
+            const IvanPCPQ2 = getQuestionResult("Ivan-PCP-q2");
+            const IvanPCPQ3 = getQuestionResult("Ivan-PCP-q3");
+            if (IvanPCPQ1 && IvanPCPQ2 && IvanPCPQ3 && IvanPCPQ4 &&
+              IvanPCPQ1.isCorrect && IvanPCPQ2.isCorrect && IvanPCPQ3.isCorrect && IvanPCPQ4.isCorrect) {
+              setLocked(false);
+            } else {
+              setLocked(true);
+            }
+          }
+
+          }
+          updateLocked();
+
+                // Listen for localStorage changes
+      window.addEventListener('storage', updateLocked);
+  
+      return () => {
+        window.removeEventListener('storage', updateLocked);
+      };
+        
+    }, []);
+
+    React.useEffect(() => {
+      const updateCompleted = () => {
+        
+        if (props?.questionId) {
+          const question = props.questionId.trim();
+          console.log("Checking completion for questionId:", question);
+        const result = getQuestionResult(question);
+        console.log("Question result:", result);
+        setCompleted(result ? result.isCorrect : false);
+        }
+      };
+  
+      // Initial load
+      updateCompleted();
+  
+      // Listen for localStorage changes
+      window.addEventListener('storage', updateCompleted);
+  
+      return () => {
+        window.removeEventListener('storage', updateCompleted);
+      };
+    }, []);
+
+  return <PlasmicHotspot root={{ ref }} {...props} completed={completed} locked={locked}
+  />;
 }
 
 const Hotspot = React.forwardRef(Hotspot_);

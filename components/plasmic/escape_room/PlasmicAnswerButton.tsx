@@ -73,17 +73,23 @@ export type PlasmicAnswerButton__VariantMembers = {
   selected: "selected";
   answerState: "correct" | "incorrect";
   style2: "final";
+  correct: "correct";
+  incorrect: "incorrect";
 };
 export type PlasmicAnswerButton__VariantsArgs = {
   selected?: SingleBooleanChoiceArg<"selected">;
   answerState?: SingleChoiceArg<"correct" | "incorrect">;
   style2?: SingleChoiceArg<"final">;
+  correct?: SingleBooleanChoiceArg<"correct">;
+  incorrect?: SingleBooleanChoiceArg<"incorrect">;
 };
 type VariantPropType = keyof PlasmicAnswerButton__VariantsArgs;
 export const PlasmicAnswerButton__VariantProps = new Array<VariantPropType>(
   "selected",
   "answerState",
-  "style2"
+  "style2",
+  "correct",
+  "incorrect"
 );
 
 export type PlasmicAnswerButton__ArgsType = {
@@ -109,6 +115,8 @@ export interface DefaultAnswerButtonProps {
   selected?: SingleBooleanChoiceArg<"selected">;
   answerState?: SingleChoiceArg<"correct" | "incorrect">;
   style2?: SingleChoiceArg<"final">;
+  correct?: SingleBooleanChoiceArg<"correct">;
+  incorrect?: SingleBooleanChoiceArg<"incorrect">;
   className?: string;
 }
 
@@ -170,6 +178,18 @@ function PlasmicAnswerButton__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.style2
+      },
+      {
+        path: "correct",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.correct
+      },
+      {
+        path: "incorrect",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.incorrect
       }
     ],
     [$props, $ctx, $refs]
@@ -207,6 +227,8 @@ function PlasmicAnswerButton__RenderFunc(props: {
             "answerState",
             "incorrect"
           ),
+          [sty.rootcorrect]: hasVariant($state, "correct", "correct"),
+          [sty.rootincorrect]: hasVariant($state, "incorrect", "incorrect"),
           [sty.rootselected]: hasVariant($state, "selected", "selected"),
           [sty.rootstyle2_final]: hasVariant($state, "style2", "final"),
           [sty.rootstyle2_final_selected]:
@@ -226,6 +248,16 @@ function PlasmicAnswerButton__RenderFunc(props: {
           [sty.freeBoxanswerState_incorrect__tFjs2DjXg]: hasVariant(
             $state,
             "answerState",
+            "incorrect"
+          ),
+          [sty.freeBoxcorrect__tFjs1DPbH]: hasVariant(
+            $state,
+            "correct",
+            "correct"
+          ),
+          [sty.freeBoxincorrect__tFjSakSvw]: hasVariant(
+            $state,
+            "incorrect",
             "incorrect"
           ),
           [sty.freeBoxselected__tFjsIfe6D]: hasVariant(
@@ -271,6 +303,16 @@ function PlasmicAnswerButton__RenderFunc(props: {
                   $state,
                   "answerState",
                   "incorrect"
+                ),
+                [sty.slotTargetChildrencorrect]: hasVariant(
+                  $state,
+                  "correct",
+                  "correct"
+                ),
+                [sty.slotTargetChildrenincorrect]: hasVariant(
+                  $state,
+                  "incorrect",
+                  "incorrect"
                 )
               })
             })}
@@ -287,6 +329,16 @@ function PlasmicAnswerButton__RenderFunc(props: {
           [sty.freeBoxanswerState_incorrect__djHnV2DjXg]: hasVariant(
             $state,
             "answerState",
+            "incorrect"
+          ),
+          [sty.freeBoxcorrect__djHnV1DPbH]: hasVariant(
+            $state,
+            "correct",
+            "correct"
+          ),
+          [sty.freeBoxincorrect__djHnVakSvw]: hasVariant(
+            $state,
+            "incorrect",
             "incorrect"
           ),
           [sty.freeBoxselected__djHnVIfe6D]: hasVariant(
@@ -334,6 +386,16 @@ function PlasmicAnswerButton__RenderFunc(props: {
                 [sty.slotTargetSlotanswerState_incorrect]: hasVariant(
                   $state,
                   "answerState",
+                  "incorrect"
+                ),
+                [sty.slotTargetSlotcorrect]: hasVariant(
+                  $state,
+                  "correct",
+                  "correct"
+                ),
+                [sty.slotTargetSlotincorrect]: hasVariant(
+                  $state,
+                  "incorrect",
                   "incorrect"
                 ),
                 [sty.slotTargetSlotselected]: hasVariant(

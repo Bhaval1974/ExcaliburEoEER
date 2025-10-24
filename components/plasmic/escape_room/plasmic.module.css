@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700&family=Inconsolata%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700&family=Open+Sans%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B1%2C400%3B1%2C500%3B1%2C600%3B1%2C700&family=Roboto+Condensed%3Aital%2Cwght%400%2C400%3B0%2C700%3B1%2C400%3B1%2C700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter%3Aital%2Cwght%400%2C300%3B0%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C800&family=Inconsolata%3Aital%2Cwght%400%2C300%3B0%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C800&family=Open+Sans%3Aital%2Cwght%400%2C300%3B0%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B0%2C800%3B1%2C300%3B1%2C400%3B1%2C500%3B1%2C600%3B1%2C700%3B1%2C800&family=Roboto+Condensed%3Aital%2Cwght%400%2C300%3B0%2C400%3B0%2C700%3B1%2C300%3B1%2C400%3B1%2C700&display=swap");
 
 .plasmic_tokens {
   --token-ccmzhXtsTqCC: #f9dbbf;
@@ -129,7 +129,7 @@
   --plasmic-token-correct-answer: var(--token-Eozza9wjGW1p);
   --token-vbOi9-1Zo0_Y: #382e2c;
   --plasmic-token-incorrect-answer: var(--token-vbOi9-1Zo0_Y);
-  --token-eicqt-ssaXax: #a47763;
+  --token-eicqt-ssaXax: #fff1e1;
   --plasmic-token-clue-tab: var(--token-eicqt-ssaXax);
   --token-jyvaH5gQaBQ6: #b1b1b1;
   --plasmic-token-clue-header: var(--token-jyvaH5gQaBQ6);
@@ -139,6 +139,20 @@
   --plasmic-token-final-dark-gray: var(--token-B0KYi8EazF9b);
   --token-7j032B0jYQJt: #eae9ea;
   --plasmic-token-final-light-gray: var(--token-7j032B0jYQJt);
+  --token-v_PpG8DT_HhH: #e1e1e1;
+  --plasmic-token-background-light-gray: var(--token-v_PpG8DT_HhH);
+  --token-vBhQs2NPGpZv: #dddddd;
+  --plasmic-token-gray-light: var(--token-vBhQs2NPGpZv);
+  --token-xMj1khf_0xoD: #323232;
+  --plasmic-token-black-faded: var(--token-xMj1khf_0xoD);
+  --token-x9s9fnGn386_: #ffffff;
+  --plasmic-token-white: var(--token-x9s9fnGn386_);
+  --token-bTiWNo-h9oNc: #b5b5b5;
+  --plasmic-token-background-gray: var(--token-bTiWNo-h9oNc);
+  --token-aGVfk_BffHc2: 25px;
+  --plasmic-token-gap-25-px: var(--token-aGVfk_BffHc2);
+  --token-dcTQFi48-TA6: 50px;
+  --plasmic-token-padding-50-px: var(--token-dcTQFi48-TA6);
 }
 
 .plasmic_tokens {

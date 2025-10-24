@@ -60,6 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import BottomToolbar from "../../BottomToolbar"; // plasmic-import: 2RFJUesBV3VF/component
+import InfographEdButton from "../../InfographEdButton"; // plasmic-import: TjjevRS570P0/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/styleTokensProvider
 
@@ -82,6 +83,7 @@ export const PlasmicFaculty__ArgProps = new Array<ArgPropType>();
 export type PlasmicFaculty__OverridesType = {
   root?: Flex__<"div">;
   bottomToolbar?: Flex__<typeof BottomToolbar>;
+  infographEdButton?: Flex__<typeof InfographEdButton>;
 };
 
 export interface DefaultFacultyProps {}
@@ -309,6 +311,64 @@ function PlasmicFaculty__RenderFunc(props: {
             data-plasmic-override={overrides.bottomToolbar}
             className={classNames("__wab_instance", sty.bottomToolbar)}
           />
+
+          <InfographEdButton
+            data-plasmic-name={"infographEdButton"}
+            data-plasmic-override={overrides.infographEdButton}
+            className={classNames("__wab_instance", sty.infographEdButton)}
+            onClick={async event => {
+              const $steps = {};
+
+              $steps["updateStateVariable"] = true
+                ? (() => {
+                    const actionArgs = {};
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+                      undefined;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateStateVariable"] != null &&
+                typeof $steps["updateStateVariable"] === "object" &&
+                typeof $steps["updateStateVariable"].then === "function"
+              ) {
+                $steps["updateStateVariable"] =
+                  await $steps["updateStateVariable"];
+              }
+            }}
+            onClickSubmit={async event => {
+              const $steps = {};
+
+              $steps["goToSpecialty"] = true
+                ? (() => {
+                    const actionArgs = { destination: `/specialty` };
+                    return (({ destination }) => {
+                      if (
+                        typeof destination === "string" &&
+                        destination.startsWith("#")
+                      ) {
+                        document
+                          .getElementById(destination.substr(1))
+                          .scrollIntoView({ behavior: "smooth" });
+                      } else {
+                        __nextRouter?.push(destination);
+                      }
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["goToSpecialty"] != null &&
+                typeof $steps["goToSpecialty"] === "object" &&
+                typeof $steps["goToSpecialty"].then === "function"
+              ) {
+                $steps["goToSpecialty"] = await $steps["goToSpecialty"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -316,8 +376,9 @@ function PlasmicFaculty__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "bottomToolbar"],
-  bottomToolbar: ["bottomToolbar"]
+  root: ["root", "bottomToolbar", "infographEdButton"],
+  bottomToolbar: ["bottomToolbar"],
+  infographEdButton: ["infographEdButton"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -325,6 +386,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   bottomToolbar: typeof BottomToolbar;
+  infographEdButton: typeof InfographEdButton;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -390,6 +452,7 @@ export const PlasmicFaculty = Object.assign(
   {
     // Helper components rendering sub-elements
     bottomToolbar: makeNodeComponent("bottomToolbar"),
+    infographEdButton: makeNodeComponent("infographEdButton"),
 
     // Metadata about props expected for PlasmicFaculty
     internalVariantProps: PlasmicFaculty__VariantProps,

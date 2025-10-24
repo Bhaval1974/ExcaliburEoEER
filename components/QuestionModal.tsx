@@ -6,42 +6,155 @@ import {
   DefaultQuestionModalProps
 } from "./plasmic/escape_room/PlasmicQuestionModal";
 import { HTMLElementRefOf } from "@plasmicapp/react-web";
+import { saveQuestionResult, getQuestionResult } from "../core/services/exam";
 
-// Your component props start with props for variants and slots you defined
-// in Plasmic, but you can add more here, like event handlers that you can
-// attach to named nodes in your component.
-//
-// If you don't want to expose certain variants or slots as a prop, you can use
-// Omit to hide them:
-//
-// interface QuestionModalProps extends Omit<DefaultQuestionModalProps, "hideProps1"|"hideProp2"> {
-//   // etc.
-// }
-//
-// You can also stop extending from DefaultQuestionModalProps altogether and have
-// total control over the props for your component.
+
 export interface QuestionModalProps extends DefaultQuestionModalProps {}
 
 function QuestionModal_(
   props: QuestionModalProps,
   ref: HTMLElementRefOf<"div">
 ) {
-  // Use PlasmicQuestionModal to render this component as it was
-  // designed in Plasmic, by activating the appropriate variants,
-  // attaching the appropriate event handlers, etc.  You
-  // can also install whatever React hooks you need here to manage state or
-  // fetch data.
-  //
-  // Props you can pass into PlasmicQuestionModal are:
-  // 1. Variants you want to activate,
-  // 2. Contents for slots you want to fill,
-  // 3. Overrides for any named node in the component to attach behavior and data,
-  // 4. Props to set on the root node.
-  //
-  // By default, we are just piping all QuestionModalProps here, but feel free
-  // to do whatever works for you.
+  const [selectedOption, setSelectedOption] = React.useState<string | null>(null);
+const [selectedWager, setSelectedWager] = React.useState<number | null>(null);
 
-  return <PlasmicQuestionModal root={{ ref }} {...props} />;
+  const handleSubmit = () => {
+    let score = 0;
+    console.log("Selected option:", selectedOption);
+    console.log("Submitting answer...", props);
+    // Add your submit logic here
+    if (selectedOption && props.questionId) {
+      if(props.design == 'finalOne' && !selectedWager){
+        alert('Please select your confidence level before submitting.');
+      }
+        
+
+      const result:any = getQuestionResult(props.questionId);
+      if (result && result.isCorrect) {
+        alert('You have already answered this question correctly.');
+      }else{
+      if (!result && selectedOption === props.correctAnswer) {
+         //if final question and correct and first attempt, give score based on wager
+        if(props.design == 'finalOne' && selectedWager){
+          score = selectedWager;
+        }else{
+          score = 10;
+        }
+      }else if (result && result.attempt_number && props.design == 'finalOne' && selectedWager) {
+        score = -selectedWager;
+      }
+     
+      saveQuestionResult(props.questionId, result?.attempt_number ? result.attempt_number + 1 : 1, score, selectedOption === props.correctAnswer);
+      }
+      
+
+    }else{
+      alert('Please select an option before submitting.');
+    }
+  }
+  console.log("Rendering QuestionModal with questionId:", props);
+
+  return <PlasmicQuestionModal root={{ ref }} {...props}
+  
+    a={{
+      props: {
+        onClick: (e) => {
+          setSelectedOption('A');
+        }
+      }
+    }}
+    b={{
+      props: {
+        onClick: (e) => {
+          setSelectedOption('B');
+        }
+      }
+    }}
+    c={{
+      props: {
+        onClick: (e) => {
+          setSelectedOption('C');
+        }
+      }
+    }}
+    d={{
+      props: {
+        onClick: (e) => {
+          setSelectedOption('D');
+        }
+      } 
+    }}
+
+        a2={{
+      props: {
+        onClick: (e) => {
+          setSelectedOption('A');
+        }
+      }
+    }}
+    b2={{
+      props: {
+        onClick: (e) => {
+          setSelectedOption('B');
+        }
+      }
+    }}
+    c2={{
+      props: {
+        onClick: (e) => {
+          setSelectedOption('C');
+        }
+      }
+    }}
+    d2={{
+      props: {
+        onClick: (e) => {
+          setSelectedOption('D');
+        }
+      } 
+    }}
+    submit={{
+    props: {
+      
+      onClick: (e) => {
+        handleSubmit();
+      }
+      
+    }
+  }}
+  lessConfident={{
+    props: {
+              onClick: () => {
+          setSelectedWager(3);
+        }
+    }
+  }}
+  confident={{
+    props: {
+      onClick: () => {
+        setSelectedWager(7);
+      }
+    }
+  }}
+  veryConfident={{
+    props: {
+      onClick: () => {
+        setSelectedWager(10);
+      }
+    }
+  }}
+
+
+      submit2={{
+    props: {
+      
+      onClick: (e) => {
+        handleSubmit();
+      }
+      
+    }
+  }}
+  />;
 }
 
 const QuestionModal = React.forwardRef(QuestionModal_);

@@ -192,6 +192,37 @@ function PlasmicSpecialty__RenderFunc(props: {
                 <div className={classNames(projectcss.all, sty.freeBox__jWi6R)}>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__gxv98)}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["goToExamSpecialty"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              destination: `/exam-specialty`
+                            };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToExamSpecialty"] != null &&
+                        typeof $steps["goToExamSpecialty"] === "object" &&
+                        typeof $steps["goToExamSpecialty"].then === "function"
+                      ) {
+                        $steps["goToExamSpecialty"] =
+                          await $steps["goToExamSpecialty"];
+                      }
+                    }}
                   >
                     <PlasmicImg__
                       alt={""}
@@ -223,6 +254,34 @@ function PlasmicSpecialty__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__my45V)}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["goToExamPcp"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/exam-pcp` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToExamPcp"] != null &&
+                        typeof $steps["goToExamPcp"] === "object" &&
+                        typeof $steps["goToExamPcp"].then === "function"
+                      ) {
+                        $steps["goToExamPcp"] = await $steps["goToExamPcp"];
+                      }
+                    }}
                   >
                     <PlasmicImg__
                       alt={""}

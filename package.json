@@ -11,6 +11,7 @@
   "dependencies": {
     "@plasmicapp/cli": "^0.1.348",
     "@plasmicapp/react-web": "^0.2.405",
+    "@plasmicpkgs/antd5": "^0.0.307",
     "@plasmicpkgs/react-aria": "^0.0.155",
     "google-auth-library": "^10.4.1",
     "next": "14.2.29",

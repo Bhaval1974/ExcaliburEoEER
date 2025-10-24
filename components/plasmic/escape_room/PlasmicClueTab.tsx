@@ -71,13 +71,16 @@ createPlasmicElementProxy;
 
 export type PlasmicClueTab__VariantMembers = {
   active: "active";
+  hasText: "yes";
 };
 export type PlasmicClueTab__VariantsArgs = {
   active?: SingleBooleanChoiceArg<"active">;
+  hasText?: SingleChoiceArg<"yes">;
 };
 type VariantPropType = keyof PlasmicClueTab__VariantsArgs;
 export const PlasmicClueTab__VariantProps = new Array<VariantPropType>(
-  "active"
+  "active",
+  "hasText"
 );
 
 export type PlasmicClueTab__ArgsType = { children?: React.ReactNode };
@@ -86,12 +89,12 @@ export const PlasmicClueTab__ArgProps = new Array<ArgPropType>("children");
 
 export type PlasmicClueTab__OverridesType = {
   root?: Flex__<"div">;
-  text?: Flex__<"div">;
 };
 
 export interface DefaultClueTabProps {
   children?: React.ReactNode;
   active?: SingleBooleanChoiceArg<"active">;
+  hasText?: SingleChoiceArg<"yes">;
   className?: string;
 }
 
@@ -143,10 +146,10 @@ function PlasmicClueTab__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.active
       },
       {
-        path: "direction",
+        path: "hasText",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.direction
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.hasText
       }
     ],
     [$props, $ctx, $refs]
@@ -172,27 +175,143 @@ function PlasmicClueTab__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        sty.root
+        sty.root,
+        {
+          [sty.rootactive]: hasVariant($state, "active", "active"),
+          [sty.roothasText_yes]: hasVariant($state, "hasText", "yes"),
+          [sty.roothasText_yes_active]:
+            hasVariant($state, "hasText", "yes") &&
+            hasVariant($state, "active", "active")
+        }
       )}
     >
-      <div
-        className={classNames(projectcss.all, sty.freeBox__i2IU, {
-          [sty.freeBoxactive__i2IUnT3CS]: hasVariant($state, "active", "active")
-        })}
-      >
-        <div className={classNames(projectcss.all, sty.freeBox__tqiOo)}>
+      {(hasVariant($state, "hasText", "yes") ? true : false) ? (
+        <div
+          className={classNames(projectcss.all, sty.freeBox__tgDmG, {
+            [sty.freeBoxactive__tgDmGnT3CS]: hasVariant(
+              $state,
+              "active",
+              "active"
+            ),
+            [sty.freeBoxhasText_yes__tgDmGysFeQ]: hasVariant(
+              $state,
+              "hasText",
+              "yes"
+            ),
+            [sty.freeBoxhasText_yes_active__tgDmGysFeQNT3CS]:
+              hasVariant($state, "hasText", "yes") &&
+              hasVariant($state, "active", "active")
+          })}
+        >
           <div
-            data-plasmic-name={"text"}
-            data-plasmic-override={overrides.text}
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.text
+              sty.text__ownls,
+              {
+                [sty.textactive__ownlsnT3CS]: hasVariant(
+                  $state,
+                  "active",
+                  "active"
+                ),
+                [sty.texthasText_yes__ownlsYsFeQ]: hasVariant(
+                  $state,
+                  "hasText",
+                  "yes"
+                ),
+                [sty.texthasText_yes_active__ownlsYsFeQNT3CS]:
+                  hasVariant($state, "hasText", "yes") &&
+                  hasVariant($state, "active", "active")
+              }
+            )}
+          >
+            {"click to view"}
+          </div>
+        </div>
+      ) : null}
+      <div
+        className={classNames(projectcss.all, sty.freeBox__i2IU, {
+          [sty.freeBoxactive__i2IUnT3CS]: hasVariant(
+            $state,
+            "active",
+            "active"
+          ),
+          [sty.freeBoxhasText_yes__i2IUysFeQ]: hasVariant(
+            $state,
+            "hasText",
+            "yes"
+          ),
+          [sty.freeBoxhasText_yes_active__i2IUysFeQNT3CS]:
+            hasVariant($state, "hasText", "yes") &&
+            hasVariant($state, "active", "active")
+        })}
+      >
+        <div
+          className={classNames(projectcss.all, sty.freeBox__tqiOo, {
+            [sty.freeBoxhasText_yes__tqiOoYsFeQ]: hasVariant(
+              $state,
+              "hasText",
+              "yes"
+            ),
+            [sty.freeBoxhasText_yes_active__tqiOoYsFeQNT3CS]:
+              hasVariant($state, "hasText", "yes") &&
+              hasVariant($state, "active", "active")
+          })}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__xf5Iw,
+              {
+                [sty.texthasText_yes__xf5IwYsFeQ]: hasVariant(
+                  $state,
+                  "hasText",
+                  "yes"
+                )
+              }
             )}
           >
             {"You are here"}
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__mhXz8)}>
+          <div
+            className={classNames(projectcss.all, sty.freeBox__mhXz8, {
+              [sty.freeBoxhasText_yes_active__mhXz8YsFeQNT3CS]:
+                hasVariant($state, "hasText", "yes") &&
+                hasVariant($state, "active", "active")
+            })}
+          >
+            {(
+              hasVariant($state, "hasText", "yes") &&
+              hasVariant($state, "active", "active")
+                ? true
+                : hasVariant($state, "hasText", "yes")
+                  ? true
+                  : false
+            ) ? (
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__fGgS3,
+                  {
+                    [sty.texthasText_yes__fGgS3YsFeQ]: hasVariant(
+                      $state,
+                      "hasText",
+                      "yes"
+                    ),
+                    [sty.texthasText_yes_active__fGgS3YsFeQNT3CS]:
+                      hasVariant($state, "hasText", "yes") &&
+                      hasVariant($state, "active", "active")
+                  }
+                )}
+              >
+                {hasVariant($state, "hasText", "yes") &&
+                hasVariant($state, "active", "active")
+                  ? "you are here"
+                  : "click to view"}
+              </div>
+            ) : null}
             {renderPlasmicSlot({
               defaultContents: "CMP",
               value: args.children,
@@ -201,7 +320,10 @@ function PlasmicClueTab__RenderFunc(props: {
                   $state,
                   "active",
                   "active"
-                )
+                ),
+                [sty.slotTargetChildrenhasText_yes_active]:
+                  hasVariant($state, "hasText", "yes") &&
+                  hasVariant($state, "active", "active")
               })
             })}
           </div>
@@ -212,15 +334,13 @@ function PlasmicClueTab__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "text"],
-  text: ["text"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  text: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -285,7 +405,6 @@ export const PlasmicClueTab = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicClueTab
     internalVariantProps: PlasmicClueTab__VariantProps,

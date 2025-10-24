@@ -1,0 +1,81 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  column-gap: 15px;
+  position: relative;
+  background: #ffffff;
+  justify-self: flex-start;
+  cursor: pointer;
+  min-width: 0;
+  padding: 25px 15px;
+  border: 1px solid var(--token-h1IJQpQlo5HQ);
+}
+.rootlocked {
+  background: #e4e0dc;
+}
+.rootactive {
+  background: #0078a7;
+}
+.check {
+  object-fit: cover;
+  max-width: 100%;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+.checklocked {
+  display: none;
+}
+.checkactive {
+  display: none;
+}
+.lock {
+  object-fit: cover;
+  max-width: 100%;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  display: none;
+}
+.locklocked {
+  display: block;
+}
+.lockactive {
+  display: none;
+}
+.pin {
+  object-fit: cover;
+  max-width: 100%;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  display: none;
+}
+.pinlocked {
+  display: none;
+}
+.pinactive {
+  display: block;
+}
+.freeBox {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.slotTargetChildren {
+  line-height: 1;
+}
+.slotTargetChildrenlocked {
+  color: var(--token-jyvaH5gQaBQ6);
+}
+.slotTargetChildrenactive {
+  color: var(--token-x9s9fnGn386_);
+}

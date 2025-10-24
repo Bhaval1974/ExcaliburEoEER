@@ -61,6 +61,8 @@ import {
 
 import AnswerButton from "../../AnswerButton"; // plasmic-import: AxrUA-GaPp8F/component
 import InfographEdButton from "../../InfographEdButton"; // plasmic-import: TjjevRS570P0/component
+import WagerCard from "../../WagerCard"; // plasmic-import: w_DAzjAsMVHz/component
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/styleTokensProvider
 
@@ -76,22 +78,27 @@ createPlasmicElementProxy;
 export type PlasmicQuestionModal__VariantMembers = {
   active: "active";
   reasoning: "question1";
-  type: "final";
+  design: "finalOne";
+  slotContent: "wager";
 };
 export type PlasmicQuestionModal__VariantsArgs = {
   active?: SingleBooleanChoiceArg<"active">;
   reasoning?: SingleChoiceArg<"question1">;
-  type?: SingleChoiceArg<"final">;
+  design?: SingleChoiceArg<"finalOne">;
+  slotContent?: SingleChoiceArg<"wager">;
 };
 type VariantPropType = keyof PlasmicQuestionModal__VariantsArgs;
 export const PlasmicQuestionModal__VariantProps = new Array<VariantPropType>(
   "active",
   "reasoning",
-  "type"
+  "design",
+  "slotContent"
 );
 
 export type PlasmicQuestionModal__ArgsType = {
   onClickClose?: (event: any) => void;
+  isSelected?: string;
+  onIsSelectedChange?: (val: string) => void;
   onClickSubmit?: (event: any) => void;
   questionId?: string;
   questions?: any;
@@ -100,12 +107,32 @@ export type PlasmicQuestionModal__ArgsType = {
   answerB?: string;
   answerC?: string;
   answerD?: string;
+  onClickVeryConfident?: (event: any) => void;
+  onClickConfident?: (event: any) => void;
+  onClickLessConfident?: (event: any) => void;
+  value?: number;
+  correctAnswer?: string;
+  finalQuestion?: string;
+  onClickA?: (event: any) => void;
+  onClickB?: (event: any) => void;
+  onClickC?: (event: any) => void;
+  onClickD?: (event: any) => void;
+  controlledSelectedOptionId?: string;
+  controlledIsSubmitted?: boolean;
+  controlledCorrectAnswer?: string;
+  onClickContinue?: (event: any) => void;
+  onStepChange?: (val: string) => void;
+  currentStep?: number;
+  correctReasoning2?: React.ReactNode;
+  incorrectReasoning2?: React.ReactNode;
   correctReasoning?: React.ReactNode;
   incorrectReasoning?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicQuestionModal__ArgsType;
 export const PlasmicQuestionModal__ArgProps = new Array<ArgPropType>(
   "onClickClose",
+  "isSelected",
+  "onIsSelectedChange",
   "onClickSubmit",
   "questionId",
   "questions",
@@ -114,6 +141,24 @@ export const PlasmicQuestionModal__ArgProps = new Array<ArgPropType>(
   "answerB",
   "answerC",
   "answerD",
+  "onClickVeryConfident",
+  "onClickConfident",
+  "onClickLessConfident",
+  "value",
+  "correctAnswer",
+  "finalQuestion",
+  "onClickA",
+  "onClickB",
+  "onClickC",
+  "onClickD",
+  "controlledSelectedOptionId",
+  "controlledIsSubmitted",
+  "controlledCorrectAnswer",
+  "onClickContinue",
+  "onStepChange",
+  "currentStep",
+  "correctReasoning2",
+  "incorrectReasoning2",
   "correctReasoning",
   "incorrectReasoning"
 );
@@ -121,11 +166,25 @@ export const PlasmicQuestionModal__ArgProps = new Array<ArgPropType>(
 export type PlasmicQuestionModal__OverridesType = {
   root?: Flex__<"div">;
   img?: Flex__<typeof PlasmicImg__>;
-  infographEdButton?: Flex__<typeof InfographEdButton>;
+  a?: Flex__<typeof AnswerButton>;
+  b?: Flex__<typeof AnswerButton>;
+  c?: Flex__<typeof AnswerButton>;
+  d?: Flex__<typeof AnswerButton>;
+  submit?: Flex__<typeof InfographEdButton>;
+  a2?: Flex__<typeof AnswerButton>;
+  b2?: Flex__<typeof AnswerButton>;
+  c2?: Flex__<typeof AnswerButton>;
+  d2?: Flex__<typeof AnswerButton>;
+  lessConfident?: Flex__<typeof WagerCard>;
+  confident?: Flex__<typeof WagerCard>;
+  veryConfident?: Flex__<typeof WagerCard>;
+  submit2?: Flex__<typeof InfographEdButton>;
 };
 
 export interface DefaultQuestionModalProps {
   onClickClose?: (event: any) => void;
+  isSelected?: string;
+  onIsSelectedChange?: (val: string) => void;
   onClickSubmit?: (event: any) => void;
   questionId?: string;
   questions?: any;
@@ -134,11 +193,30 @@ export interface DefaultQuestionModalProps {
   answerB?: string;
   answerC?: string;
   answerD?: string;
+  onClickVeryConfident?: (event: any) => void;
+  onClickConfident?: (event: any) => void;
+  onClickLessConfident?: (event: any) => void;
+  value?: number;
+  correctAnswer?: string;
+  finalQuestion?: string;
+  onClickA?: (event: any) => void;
+  onClickB?: (event: any) => void;
+  onClickC?: (event: any) => void;
+  onClickD?: (event: any) => void;
+  controlledSelectedOptionId?: string;
+  controlledIsSubmitted?: boolean;
+  controlledCorrectAnswer?: string;
+  onClickContinue?: (event: any) => void;
+  onStepChange?: (val: string) => void;
+  currentStep?: number;
+  correctReasoning2?: React.ReactNode;
+  incorrectReasoning2?: React.ReactNode;
   correctReasoning?: React.ReactNode;
   incorrectReasoning?: React.ReactNode;
   active?: SingleBooleanChoiceArg<"active">;
   reasoning?: SingleChoiceArg<"question1">;
-  type?: SingleChoiceArg<"final">;
+  design?: SingleChoiceArg<"finalOne">;
+  slotContent?: SingleChoiceArg<"wager">;
   className?: string;
 }
 
@@ -163,7 +241,9 @@ function PlasmicQuestionModal__RenderFunc(props: {
     () =>
       Object.assign(
         {
-          questions: []
+          questions: [],
+          controlledIsSubmitted: false,
+          currentStep: 1
         },
         Object.fromEntries(
           Object.entries(props.args).filter(([_, v]) => v !== undefined)
@@ -193,9 +273,11 @@ function PlasmicQuestionModal__RenderFunc(props: {
       },
       {
         path: "isSelected",
-        type: "private",
+        type: "writable",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+
+        valueProp: "isSelected",
+        onChangeProp: "onIsSelectedChange"
       },
       {
         path: "reasoning",
@@ -204,10 +286,61 @@ function PlasmicQuestionModal__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.reasoning
       },
       {
-        path: "type",
+        path: "design",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.type
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.design
+      },
+      {
+        path: "slotContent",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.slotContent
+      },
+      {
+        path: "wager",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "selectedOptionId",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "isSubmitted",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "isCorrect",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "step",
+        type: "readonly",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $props.currentStep;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return 1;
+              }
+              throw e;
+            }
+          })(),
+
+        onChangeProp: "onStepChange"
       }
     ],
     [$props, $ctx, $refs]
@@ -236,12 +369,20 @@ function PlasmicQuestionModal__RenderFunc(props: {
         sty.root,
         {
           [sty.rootactive]: hasVariant($state, "active", "active"),
+          [sty.rootdesign_finalOne]: hasVariant($state, "design", "finalOne"),
+          [sty.rootdesign_finalOne_slotContent_wager]:
+            hasVariant($state, "slotContent", "wager") &&
+            hasVariant($state, "design", "finalOne"),
           [sty.rootreasoning_question1]: hasVariant(
             $state,
             "reasoning",
             "question1"
           ),
-          [sty.roottype_final]: hasVariant($state, "type", "final")
+          [sty.rootslotContent_wager]: hasVariant(
+            $state,
+            "slotContent",
+            "wager"
+          )
         }
       )}
     >
@@ -252,15 +393,15 @@ function PlasmicQuestionModal__RenderFunc(props: {
             "active",
             "active"
           ),
+          [sty.freeBoxdesign_finalOne__tk1B7Gw30Z]: hasVariant(
+            $state,
+            "design",
+            "finalOne"
+          ),
           [sty.freeBoxreasoning_question1__tk1B7S50Um]: hasVariant(
             $state,
             "reasoning",
             "question1"
-          ),
-          [sty.freeBoxtype_final__tk1B7Gw30Z]: hasVariant(
-            $state,
-            "type",
-            "final"
           )
         })}
       >
@@ -286,10 +427,10 @@ function PlasmicQuestionModal__RenderFunc(props: {
             "active",
             "active"
           ),
-          [sty.freeBoxtype_final__hsUfhGw30Z]: hasVariant(
+          [sty.freeBoxdesign_finalOne__hsUfhGw30Z]: hasVariant(
             $state,
-            "type",
-            "final"
+            "design",
+            "finalOne"
           )
         })}
       >
@@ -300,10 +441,20 @@ function PlasmicQuestionModal__RenderFunc(props: {
               "active",
               "active"
             ),
-            [sty.freeBoxtype_final__omsVeGw30Z]: hasVariant(
+            [sty.freeBoxdesign_finalOne__omsVeGw30Z]: hasVariant(
               $state,
-              "type",
-              "final"
+              "design",
+              "finalOne"
+            ),
+            [sty.freeBoxreasoning_question1__omsVes50Um]: hasVariant(
+              $state,
+              "reasoning",
+              "question1"
+            ),
+            [sty.freeBoxslotContent_wager__omsVewFdBj]: hasVariant(
+              $state,
+              "slotContent",
+              "wager"
             )
           })}
         >
@@ -361,15 +512,15 @@ function PlasmicQuestionModal__RenderFunc(props: {
             "active",
             "active"
           ),
+          [sty.freeBoxdesign_finalOne___7WXd3Gw30Z]: hasVariant(
+            $state,
+            "design",
+            "finalOne"
+          ),
           [sty.freeBoxreasoning_question1___7WXd3S50Um]: hasVariant(
             $state,
             "reasoning",
             "question1"
-          ),
-          [sty.freeBoxtype_final___7WXd3Gw30Z]: hasVariant(
-            $state,
-            "type",
-            "final"
           )
         })}
       >
@@ -398,6 +549,11 @@ function PlasmicQuestionModal__RenderFunc(props: {
                     $state,
                     "active",
                     "active"
+                  ),
+                  [sty.textslotContent_wager__wqVwQwFdBj]: hasVariant(
+                    $state,
+                    "slotContent",
+                    "wager"
                   )
                 }
               )}
@@ -407,38 +563,150 @@ function PlasmicQuestionModal__RenderFunc(props: {
           </div>
           <div
             className={classNames(projectcss.all, sty.freeBox__yAUk2, {
+              [sty.freeBoxactive__yAUk2Dygov]: hasVariant(
+                $state,
+                "active",
+                "active"
+              ),
+              [sty.freeBoxdesign_finalOne__yAUk2Gw30Z]: hasVariant(
+                $state,
+                "design",
+                "finalOne"
+              ),
               [sty.freeBoxreasoning_question1__yAUk2S50Um]: hasVariant(
                 $state,
                 "reasoning",
                 "question1"
-              ),
-              [sty.freeBoxtype_final__yAUk2Gw30Z]: hasVariant(
-                $state,
-                "type",
-                "final"
               )
             })}
           >
             <AnswerButton
-              className={classNames("__wab_instance", sty.answerButton__arD1F, {
-                [sty.answerButtonactive__arD1FDygov]: hasVariant(
+              data-plasmic-name={"a"}
+              data-plasmic-override={overrides.a}
+              className={classNames("__wab_instance", sty.a, {
+                [sty.aactive]: hasVariant($state, "active", "active"),
+                [sty.adesign_finalOne]: hasVariant(
                   $state,
-                  "active",
-                  "active"
+                  "design",
+                  "finalOne"
                 ),
-                [sty.answerButtonreasoning_question1__arD1Fs50Um]: hasVariant(
+                [sty.areasoning_question1]: hasVariant(
                   $state,
                   "reasoning",
                   "question1"
                 ),
-                [sty.answerButtontype_final__arD1FGw30Z]: hasVariant(
+                [sty.aslotContent_wager]: hasVariant(
                   $state,
-                  "type",
-                  "final"
+                  "slotContent",
+                  "wager"
                 )
               })}
+              correct={(() => {
+                try {
+                  return (
+                    $state.isSubmitted &&
+                    $state.selectedOptionId === "A" &&
+                    $props.correctAnswer === "A"
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })()}
+              incorrect={(() => {
+                try {
+                  return (
+                    $state.isSubmitted &&
+                    $state.selectedOptionId === "A" &&
+                    $props.correctAnswer !== "A"
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })()}
               onClick={async event => {
                 const $steps = {};
+
+                $steps["updateIsSelected2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["isSubmitted"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateIsSelected2"] != null &&
+                  typeof $steps["updateIsSelected2"] === "object" &&
+                  typeof $steps["updateIsSelected2"].then === "function"
+                ) {
+                  $steps["updateIsSelected2"] =
+                    await $steps["updateIsSelected2"];
+                }
+
+                $steps["updateSelectedOptionId"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["selectedOptionId"]
+                        },
+                        operation: 0,
+                        value: "A"
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateSelectedOptionId"] != null &&
+                  typeof $steps["updateSelectedOptionId"] === "object" &&
+                  typeof $steps["updateSelectedOptionId"].then === "function"
+                ) {
+                  $steps["updateSelectedOptionId"] =
+                    await $steps["updateSelectedOptionId"];
+                }
 
                 $steps["updateIsSelected"] = true
                   ? (() => {
@@ -476,7 +744,7 @@ function PlasmicQuestionModal__RenderFunc(props: {
               }}
               selected={(() => {
                 try {
-                  return $state.isSelected == "A";
+                  return !$state.isSubmitted && $state.selectedOptionId === "A";
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -507,25 +775,87 @@ function PlasmicQuestionModal__RenderFunc(props: {
             />
 
             <AnswerButton
-              answerState={
-                hasVariant($state, "reasoning", "question1")
-                  ? "correct"
-                  : undefined
-              }
-              className={classNames("__wab_instance", sty.answerButton__cuFvl, {
-                [sty.answerButtonactive__cuFvlDygov]: hasVariant(
-                  $state,
-                  "active",
-                  "active"
-                ),
-                [sty.answerButtonreasoning_question1__cuFvls50Um]: hasVariant(
+              data-plasmic-name={"b"}
+              data-plasmic-override={overrides.b}
+              className={classNames("__wab_instance", sty.b, {
+                [sty.bactive]: hasVariant($state, "active", "active"),
+                [sty.breasoning_question1]: hasVariant(
                   $state,
                   "reasoning",
                   "question1"
                 )
               })}
+              correct={(() => {
+                try {
+                  return (
+                    $state.isSubmitted &&
+                    $state.selectedOptionId === "B" &&
+                    $props.correctAnswer === "B"
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })()}
+              incorrect={(() => {
+                try {
+                  return (
+                    $state.isSubmitted &&
+                    $state.selectedOptionId === "B" &&
+                    $props.correctAnswer !== "B"
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })()}
               onClick={async event => {
                 const $steps = {};
+
+                $steps["updateIsSelected3"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["isSubmitted"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateIsSelected3"] != null &&
+                  typeof $steps["updateIsSelected3"] === "object" &&
+                  typeof $steps["updateIsSelected3"].then === "function"
+                ) {
+                  $steps["updateIsSelected3"] =
+                    await $steps["updateIsSelected3"];
+                }
 
                 $steps["updateIsSelected"] = true
                   ? (() => {
@@ -560,10 +890,45 @@ function PlasmicQuestionModal__RenderFunc(props: {
                 ) {
                   $steps["updateIsSelected"] = await $steps["updateIsSelected"];
                 }
+
+                $steps["updateIsSelected2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["selectedOptionId"]
+                        },
+                        operation: 0,
+                        value: "B"
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateIsSelected2"] != null &&
+                  typeof $steps["updateIsSelected2"] === "object" &&
+                  typeof $steps["updateIsSelected2"].then === "function"
+                ) {
+                  $steps["updateIsSelected2"] =
+                    await $steps["updateIsSelected2"];
+                }
               }}
               selected={(() => {
                 try {
-                  return $state.isSelected == "B";
+                  return !$state.isSubmitted && $state.selectedOptionId === "B";
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -595,15 +960,82 @@ function PlasmicQuestionModal__RenderFunc(props: {
               {"B"}
             </AnswerButton>
             <AnswerButton
-              className={classNames("__wab_instance", sty.answerButton__iMZm, {
-                [sty.answerButtonactive__iMZmDygov]: hasVariant(
-                  $state,
-                  "active",
-                  "active"
-                )
+              data-plasmic-name={"c"}
+              data-plasmic-override={overrides.c}
+              className={classNames("__wab_instance", sty.c, {
+                [sty.cactive]: hasVariant($state, "active", "active")
               })}
+              correct={(() => {
+                try {
+                  return (
+                    $state.isSubmitted &&
+                    $state.selectedOptionId === "C" &&
+                    $props.correctAnswer === "C"
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })()}
+              incorrect={(() => {
+                try {
+                  return (
+                    $state.isSubmitted &&
+                    $state.selectedOptionId === "C" &&
+                    $props.correctAnswer !== "C"
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })()}
               onClick={async event => {
                 const $steps = {};
+
+                $steps["updateIsSelected3"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["isSubmitted"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateIsSelected3"] != null &&
+                  typeof $steps["updateIsSelected3"] === "object" &&
+                  typeof $steps["updateIsSelected3"].then === "function"
+                ) {
+                  $steps["updateIsSelected3"] =
+                    await $steps["updateIsSelected3"];
+                }
 
                 $steps["updateIsSelected"] = true
                   ? (() => {
@@ -638,10 +1070,45 @@ function PlasmicQuestionModal__RenderFunc(props: {
                 ) {
                   $steps["updateIsSelected"] = await $steps["updateIsSelected"];
                 }
+
+                $steps["updateIsSelected2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["selectedOptionId"]
+                        },
+                        operation: 0,
+                        value: "C"
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateIsSelected2"] != null &&
+                  typeof $steps["updateIsSelected2"] === "object" &&
+                  typeof $steps["updateIsSelected2"].then === "function"
+                ) {
+                  $steps["updateIsSelected2"] =
+                    await $steps["updateIsSelected2"];
+                }
               }}
               selected={(() => {
                 try {
-                  return $state.isSelected == "C";
+                  return !$state.isSubmitted && $state.selectedOptionId === "C";
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -673,15 +1140,87 @@ function PlasmicQuestionModal__RenderFunc(props: {
               {"C"}
             </AnswerButton>
             <AnswerButton
-              className={classNames("__wab_instance", sty.answerButton__gWiOe, {
-                [sty.answerButtonreasoning_question1__gWiOes50Um]: hasVariant(
+              data-plasmic-name={"d"}
+              data-plasmic-override={overrides.d}
+              className={classNames("__wab_instance", sty.d, {
+                [sty.dactive]: hasVariant($state, "active", "active"),
+                [sty.dreasoning_question1]: hasVariant(
                   $state,
                   "reasoning",
                   "question1"
                 )
               })}
+              correct={(() => {
+                try {
+                  return (
+                    $state.isSubmitted &&
+                    $state.selectedOptionId === "D" &&
+                    $props.correctAnswer === "D"
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })()}
+              incorrect={(() => {
+                try {
+                  return (
+                    $state.isSubmitted &&
+                    $state.selectedOptionId === "D" &&
+                    $props.correctAnswer !== "D"
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })()}
               onClick={async event => {
                 const $steps = {};
+
+                $steps["updateIsSelected3"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["isSubmitted"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateIsSelected3"] != null &&
+                  typeof $steps["updateIsSelected3"] === "object" &&
+                  typeof $steps["updateIsSelected3"].then === "function"
+                ) {
+                  $steps["updateIsSelected3"] =
+                    await $steps["updateIsSelected3"];
+                }
 
                 $steps["updateIsSelected"] = true
                   ? (() => {
@@ -716,10 +1255,45 @@ function PlasmicQuestionModal__RenderFunc(props: {
                 ) {
                   $steps["updateIsSelected"] = await $steps["updateIsSelected"];
                 }
+
+                $steps["updateIsSelected2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["selectedOptionId"]
+                        },
+                        operation: 0,
+                        value: "D"
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateIsSelected2"] != null &&
+                  typeof $steps["updateIsSelected2"] === "object" &&
+                  typeof $steps["updateIsSelected2"].then === "function"
+                ) {
+                  $steps["updateIsSelected2"] =
+                    await $steps["updateIsSelected2"];
+                }
               }}
               selected={(() => {
                 try {
-                  return $state.isSelected == "D";
+                  return !$state.isSubmitted && $state.selectedOptionId === "D";
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -776,80 +1350,518 @@ function PlasmicQuestionModal__RenderFunc(props: {
                 : true
             ) ? (
               <InfographEdButton
-                data-plasmic-name={"infographEdButton"}
-                data-plasmic-override={overrides.infographEdButton}
+                data-plasmic-name={"submit"}
+                data-plasmic-override={overrides.submit}
                 active={
                   hasVariant($state, "active", "active") ? true : undefined
                 }
-                className={classNames("__wab_instance", sty.infographEdButton, {
-                  [sty.infographEdButtonactive]: hasVariant(
+                className={classNames("__wab_instance", sty.submit, {
+                  [sty.submitactive]: hasVariant($state, "active", "active"),
+                  [sty.submitreasoning_question1]: hasVariant(
                     $state,
-                    "active",
-                    "active"
+                    "reasoning",
+                    "question1"
+                  ),
+                  [sty.submitslotContent_wager]: hasVariant(
+                    $state,
+                    "slotContent",
+                    "wager"
                   )
                 })}
                 isSelected={$state.isSelected}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateIsSubmitted"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["isSubmitted"]
+                          },
+                          operation: 0,
+                          value: true
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateIsSubmitted"] != null &&
+                    typeof $steps["updateIsSubmitted"] === "object" &&
+                    typeof $steps["updateIsSubmitted"].then === "function"
+                  ) {
+                    $steps["updateIsSubmitted"] =
+                      await $steps["updateIsSubmitted"];
+                  }
+
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              const q = (
+                                $props.questions?.questions || []
+                              ).find(qq => qq.id === $props.questionId);
+                              if (!q) return;
+                              $state.attempts = ($state.attempts ?? 0) + 1;
+                              const isCorrect =
+                                $state.selectedOptionId === q.correctAnswer;
+                              $state.isCorrect = isCorrect;
+                              return ($state.lastSubmission = {
+                                questionId: q.id,
+                                selected: $state.selectedOptionId,
+                                correctAnswer: q.correctAnswer,
+                                isCorrect,
+                                attempts: $state.attempts,
+                                ts: Date.now()
+                              });
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
+                  }
+                }}
                 onClickSubmit={args.onClickSubmit}
               />
             ) : null}
           </div>
         </div>
         <div
-          className={classNames(projectcss.all, sty.freeBox__wZ1CY, {
-            [sty.freeBoxactive__wZ1CYDygov]: hasVariant(
-              $state,
-              "active",
-              "active"
-            ),
-            [sty.freeBoxreasoning_question1__wZ1CYs50Um]: hasVariant(
+          className={classNames(projectcss.all, sty.freeBox__fLmWo, {
+            [sty.freeBoxdesign_finalOne_slotContent_wager__fLmWogw30ZWFdBj]:
+              hasVariant($state, "slotContent", "wager") &&
+              hasVariant($state, "design", "finalOne"),
+            [sty.freeBoxreasoning_question1__fLmWOs50Um]: hasVariant(
               $state,
               "reasoning",
               "question1"
             )
           })}
         >
-          <div
-            className={classNames(projectcss.all, sty.freeBox__hMaTq, {
-              [sty.freeBoxactive__hMaTqDygov]: hasVariant(
-                $state,
-                "active",
-                "active"
-              ),
-              [sty.freeBoxreasoning_question1__hMaTqs50Um]: hasVariant(
-                $state,
-                "reasoning",
-                "question1"
-              ),
-              [sty.freeBoxtype_final__hMaTqGw30Z]: hasVariant(
-                $state,
-                "type",
-                "final"
-              )
-            })}
-          >
+          {(hasVariant($state, "slotContent", "wager") ? false : true)
+            ? renderPlasmicSlot({
+                defaultContents: null,
+                value: args.correctReasoning2,
+                className: classNames(sty.slotTargetCorrectReasoning2, {
+                  [sty.slotTargetCorrectReasoning2active]: hasVariant(
+                    $state,
+                    "active",
+                    "active"
+                  ),
+                  [sty.slotTargetCorrectReasoning2reasoning_question1]:
+                    hasVariant($state, "reasoning", "question1"),
+                  [sty.slotTargetCorrectReasoning2slotContent_wager]:
+                    hasVariant($state, "slotContent", "wager")
+                })
+              })
+            : null}
+          {(hasVariant($state, "slotContent", "wager") ? false : true)
+            ? renderPlasmicSlot({
+                defaultContents: null,
+                value: args.incorrectReasoning2
+              })
+            : null}
+          {(
+            hasVariant($state, "slotContent", "wager") &&
+            hasVariant($state, "design", "finalOne")
+              ? true
+              : hasVariant($state, "slotContent", "wager")
+                ? true
+                : false
+          ) ? (
             <div
-              className={classNames(projectcss.all, sty.freeBox___4K6Rh, {
-                [sty.freeBoxreasoning_question1___4K6Rhs50Um]: hasVariant(
+              className={classNames(projectcss.all, sty.freeBox___8Gog5, {
+                [sty.freeBoxdesign_finalOne___8Gog5Gw30Z]: hasVariant(
                   $state,
-                  "reasoning",
-                  "question1"
+                  "design",
+                  "finalOne"
+                ),
+                [sty.freeBoxdesign_finalOne_slotContent_wager___8Gog5Gw30ZWFdBj]:
+                  hasVariant($state, "slotContent", "wager") &&
+                  hasVariant($state, "design", "finalOne"),
+                [sty.freeBoxslotContent_wager___8Gog5WFdBj]: hasVariant(
+                  $state,
+                  "slotContent",
+                  "wager"
                 )
               })}
             >
-              {renderPlasmicSlot({
-                defaultContents: null,
-                value: args.correctReasoning,
-                className: classNames(sty.slotTargetCorrectReasoning, {
-                  [sty.slotTargetCorrectReasoningreasoning_question1]:
-                    hasVariant($state, "reasoning", "question1")
-                })
-              })}
-              {renderPlasmicSlot({
-                defaultContents: null,
-                value: args.incorrectReasoning
-              })}
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__aE3Fw,
+                  {
+                    [sty.textslotContent_wager__aE3FWwFdBj]: hasVariant(
+                      $state,
+                      "slotContent",
+                      "wager"
+                    )
+                  }
+                )}
+              >
+                {hasVariant($state, "slotContent", "wager")
+                  ? "How confident are you? "
+                  : "Enter some text"}
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__auNdR,
+                  {
+                    [sty.textslotContent_wager__auNdRwFdBj]: hasVariant(
+                      $state,
+                      "slotContent",
+                      "wager"
+                    )
+                  }
+                )}
+              >
+                {hasVariant($state, "slotContent", "wager")
+                  ? "How many points would you like to wager? "
+                  : "Enter some text"}
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__y5Tw,
+                  {
+                    [sty.textslotContent_wager__y5TwwFdBj]: hasVariant(
+                      $state,
+                      "slotContent",
+                      "wager"
+                    )
+                  }
+                )}
+              >
+                {hasVariant($state, "slotContent", "wager")
+                  ? "Select your confidence level"
+                  : "Enter some text"}
+              </div>
+              {(
+                hasVariant($state, "slotContent", "wager")
+                  ? true
+                  : hasVariant($state, "active", "active")
+                    ? false
+                    : true
+              ) ? (
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__k6Go, {
+                    [sty.freeBoxactive__k6GoDygov]: hasVariant(
+                      $state,
+                      "active",
+                      "active"
+                    ),
+                    [sty.freeBoxslotContent_wager__k6GoWFdBj]: hasVariant(
+                      $state,
+                      "slotContent",
+                      "wager"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__u4T7N, {
+                      [sty.freeBoxslotContent_wager__u4T7NwFdBj]: hasVariant(
+                        $state,
+                        "slotContent",
+                        "wager"
+                      )
+                    })}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateWager"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["wager"]
+                              },
+                              operation: 0,
+                              value: 3
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateWager"] != null &&
+                        typeof $steps["updateWager"] === "object" &&
+                        typeof $steps["updateWager"].then === "function"
+                      ) {
+                        $steps["updateWager"] = await $steps["updateWager"];
+                      }
+                    }}
+                  >
+                    <WagerCard
+                      active={(() => {
+                        try {
+                          return $state.wager == 3;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.wagerCard___1QuiU,
+                        {
+                          [sty.wagerCardactive___1QuiUDygov]: hasVariant(
+                            $state,
+                            "active",
+                            "active"
+                          ),
+                          [sty.wagerCardslotContent_wager___1QuiUwFdBj]:
+                            hasVariant($state, "slotContent", "wager")
+                        }
+                      )}
+                    />
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__tUtaZ, {
+                      [sty.freeBoxslotContent_wager__tUtaZwFdBj]: hasVariant(
+                        $state,
+                        "slotContent",
+                        "wager"
+                      )
+                    })}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateWager"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["wager"]
+                              },
+                              operation: 0,
+                              value: 7
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateWager"] != null &&
+                        typeof $steps["updateWager"] === "object" &&
+                        typeof $steps["updateWager"].then === "function"
+                      ) {
+                        $steps["updateWager"] = await $steps["updateWager"];
+                      }
+                    }}
+                  >
+                    <WagerCard
+                      active={(() => {
+                        try {
+                          return $state.wager == 7;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()}
+                      amount={
+                        hasVariant($state, "slotContent", "wager")
+                          ? "_7"
+                          : undefined
+                      }
+                      className={classNames(
+                        "__wab_instance",
+                        sty.wagerCard__nf5Ex,
+                        {
+                          [sty.wagerCardslotContent_wager__nf5EXwFdBj]:
+                            hasVariant($state, "slotContent", "wager")
+                        }
+                      )}
+                    />
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__qrqEj, {
+                      [sty.freeBoxslotContent_wager__qrqEjwFdBj]: hasVariant(
+                        $state,
+                        "slotContent",
+                        "wager"
+                      )
+                    })}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateWager"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["wager"]
+                              },
+                              operation: 0,
+                              value: 10
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateWager"] != null &&
+                        typeof $steps["updateWager"] === "object" &&
+                        typeof $steps["updateWager"].then === "function"
+                      ) {
+                        $steps["updateWager"] = await $steps["updateWager"];
+                      }
+                    }}
+                  >
+                    <WagerCard
+                      active={(() => {
+                        try {
+                          return $state.wager == 10;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()}
+                      amount={
+                        hasVariant($state, "slotContent", "wager")
+                          ? "_10"
+                          : undefined
+                      }
+                      className={classNames(
+                        "__wab_instance",
+                        sty.wagerCard__nfVll,
+                        {
+                          [sty.wagerCardslotContent_wager__nfVllwFdBj]:
+                            hasVariant($state, "slotContent", "wager")
+                        }
+                      )}
+                    />
+                  </div>
+                </div>
+              ) : null}
+              <InfographEdButton
+                className={classNames(
+                  "__wab_instance",
+                  sty.infographEdButton__sEukD,
+                  {
+                    [sty.infographEdButtonslotContent_wager__sEukDwFdBj]:
+                      hasVariant($state, "slotContent", "wager")
+                  }
+                )}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateIsSubmitted"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["isSubmitted"]
+                          },
+                          operation: 0,
+                          value: true
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateIsSubmitted"] != null &&
+                    typeof $steps["updateIsSubmitted"] === "object" &&
+                    typeof $steps["updateIsSubmitted"].then === "function"
+                  ) {
+                    $steps["updateIsSubmitted"] =
+                      await $steps["updateIsSubmitted"];
+                  }
+                }}
+                onClickSubmit={args.onClickSubmit}
+              />
             </div>
-          </div>
+          ) : null}
         </div>
       </div>
       <div
@@ -859,32 +1871,41 @@ function PlasmicQuestionModal__RenderFunc(props: {
             "active",
             "active"
           ),
+          [sty.freeBoxdesign_finalOne___3Z9Fagw30Z]: hasVariant(
+            $state,
+            "design",
+            "finalOne"
+          ),
           [sty.freeBoxreasoning_question1___3Z9FAs50Um]: hasVariant(
             $state,
             "reasoning",
             "question1"
-          ),
-          [sty.freeBoxtype_final___3Z9Fagw30Z]: hasVariant(
-            $state,
-            "type",
-            "final"
           )
         })}
       >
         <svg
           className={classNames(projectcss.all, sty.svg__qolfN, {
             [sty.svgactive__qolfNDygov]: hasVariant($state, "active", "active"),
-            [sty.svgtype_final__qolfNgw30Z]: hasVariant($state, "type", "final")
+            [sty.svgdesign_finalOne__qolfNgw30Z]: hasVariant(
+              $state,
+              "design",
+              "finalOne"
+            )
           })}
           role={"img"}
         />
 
         <div
           className={classNames(projectcss.all, sty.freeBox__bbt7, {
-            [sty.freeBoxtype_final__bbt7Gw30Z]: hasVariant(
+            [sty.freeBoxactive__bbt7Dygov]: hasVariant(
               $state,
-              "type",
-              "final"
+              "active",
+              "active"
+            ),
+            [sty.freeBoxdesign_finalOne__bbt7Gw30Z]: hasVariant(
+              $state,
+              "design",
+              "finalOne"
             )
           })}
         >
@@ -894,17 +1915,38 @@ function PlasmicQuestionModal__RenderFunc(props: {
               projectcss.__wab_text,
               sty.text__iGSc,
               {
-                [sty.texttype_final__iGScGw30Z]: hasVariant(
+                [sty.textactive__iGScDygov]: hasVariant(
                   $state,
-                  "type",
-                  "final"
+                  "active",
+                  "active"
+                ),
+                [sty.textdesign_finalOne__iGScGw30Z]: hasVariant(
+                  $state,
+                  "design",
+                  "finalOne"
                 )
               }
             )}
           >
-            {hasVariant($state, "type", "final")
-              ? "Question 1 of 4:"
-              : "Enter some text"}
+            {hasVariant($state, "design", "finalOne") ? (
+              "Question 1 of 4:"
+            ) : (
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return $state.selectedOptionId;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
+            )}
           </div>
           <div
             className={classNames(
@@ -912,35 +1954,56 @@ function PlasmicQuestionModal__RenderFunc(props: {
               projectcss.__wab_text,
               sty.text___0X9U7,
               {
+                [sty.textactive___0X9U7Dygov]: hasVariant(
+                  $state,
+                  "active",
+                  "active"
+                ),
+                [sty.textdesign_finalOne___0X9U7Gw30Z]: hasVariant(
+                  $state,
+                  "design",
+                  "finalOne"
+                ),
                 [sty.textreasoning_question1___0X9U7S50Um]: hasVariant(
                   $state,
                   "reasoning",
                   "question1"
-                ),
-                [sty.texttype_final___0X9U7Gw30Z]: hasVariant(
-                  $state,
-                  "type",
-                  "final"
                 )
               }
             )}
           >
-            {hasVariant($state, "type", "final") ? (
+            {hasVariant($state, "design", "finalOne") ? (
               <React.Fragment>
-                <React.Fragment>
-                  {
-                    "After making the diagnosis of EoE, you initially suggest a food elimination trial to identify triggers for Kelvin's disease. However, Kelvin's parents are concerned that this will be a challenge given his feeding difficulties. "
+                {(() => {
+                  try {
+                    return $props.finalQuestion;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "";
+                    }
+                    throw e;
                   }
-                </React.Fragment>
-                <span
-                  className={"plasmic_default__all plasmic_default__span"}
-                  style={{ color: "var(--token-zjmk6VW4FHVN)" }}
-                >
-                  {"What is the best approach to manage this issue? "}
-                </span>
+                })()}
               </React.Fragment>
             ) : (
-              "Enter some text"
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return $props.correctAnswer;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
             )}
           </div>
         </div>
@@ -952,15 +2015,15 @@ function PlasmicQuestionModal__RenderFunc(props: {
             "active",
             "active"
           ),
+          [sty.freeBoxdesign_finalOne__xVeTgw30Z]: hasVariant(
+            $state,
+            "design",
+            "finalOne"
+          ),
           [sty.freeBoxreasoning_question1__xVeTs50Um]: hasVariant(
             $state,
             "reasoning",
             "question1"
-          ),
-          [sty.freeBoxtype_final__xVeTgw30Z]: hasVariant(
-            $state,
-            "type",
-            "final"
           )
         })}
       >
@@ -991,6 +2054,11 @@ function PlasmicQuestionModal__RenderFunc(props: {
           </div>
           <div
             className={classNames(projectcss.all, sty.freeBox__g3R52, {
+              [sty.freeBoxdesign_finalOne__g3R52Gw30Z]: hasVariant(
+                $state,
+                "design",
+                "finalOne"
+              ),
               [sty.freeBoxreasoning_question1__g3R52S50Um]: hasVariant(
                 $state,
                 "reasoning",
@@ -999,74 +2067,102 @@ function PlasmicQuestionModal__RenderFunc(props: {
             })}
           >
             <AnswerButton
-              className={classNames(
-                "__wab_instance",
-                sty.answerButton___3GZwW,
-                {
-                  [sty.answerButtonactive___3GZwWDygov]: hasVariant(
-                    $state,
-                    "active",
-                    "active"
-                  ),
-                  [sty.answerButtonreasoning_question1___3GZwWs50Um]:
-                    hasVariant($state, "reasoning", "question1"),
-                  [sty.answerButtontype_final___3GZwWgw30Z]: hasVariant(
-                    $state,
-                    "type",
-                    "final"
-                  )
-                }
-              )}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["updateIsSelected"] = true
+              data-plasmic-name={"a2"}
+              data-plasmic-override={overrides.a2}
+              className={classNames("__wab_instance", sty.a2, {
+                [sty.a2active]: hasVariant($state, "active", "active"),
+                [sty.a2design_finalOne]: hasVariant(
+                  $state,
+                  "design",
+                  "finalOne"
+                ),
+                [sty.a2design_finalOne_slotContent_wager]:
+                  hasVariant($state, "slotContent", "wager") &&
+                  hasVariant($state, "design", "finalOne"),
+                [sty.a2reasoning_question1]: hasVariant(
+                  $state,
+                  "reasoning",
+                  "question1"
+                )
+              })}
+              correct={
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne")
                   ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["isSelected"]
-                        },
-                        operation: 0,
-                        value: "A"
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
+                      try {
+                        return (
+                          $props.controlledIsSubmitted &&
+                          $props.controlledSelectedOptionId === "A" &&
+                          $props.correctAnswer === "A"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
                         }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
+                        throw e;
+                      }
                     })()
-                  : undefined;
-                if (
-                  $steps["updateIsSelected"] != null &&
-                  typeof $steps["updateIsSelected"] === "object" &&
-                  typeof $steps["updateIsSelected"].then === "function"
-                ) {
-                  $steps["updateIsSelected"] = await $steps["updateIsSelected"];
-                }
-              }}
-              selected={(() => {
-                try {
-                  return $state.isSelected == "A";
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return [];
-                  }
-                  throw e;
-                }
-              })()}
+                  : undefined
+              }
+              incorrect={
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne")
+                  ? (() => {
+                      try {
+                        return (
+                          $props.controlledIsSubmitted &&
+                          $props.controlledSelectedOptionId === "A" &&
+                          $props.correctAnswer !== "A"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  : undefined
+              }
+              onClick={args.onClickA}
+              selected={
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne")
+                  ? (() => {
+                      try {
+                        return (
+                          !$props.controlledIsSubmitted &&
+                          $props.controlledSelectedOptionId === "A"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  : (() => {
+                      try {
+                        return $state.isSelected == "A";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+              }
               slot={
                 <React.Fragment>
                   {(() => {
@@ -1084,82 +2180,113 @@ function PlasmicQuestionModal__RenderFunc(props: {
                   })()}
                 </React.Fragment>
               }
-              style2={hasVariant($state, "type", "final") ? "final" : undefined}
+              style2={
+                hasVariant($state, "design", "finalOne") ? "final" : undefined
+              }
             />
 
             <AnswerButton
+              data-plasmic-name={"b2"}
+              data-plasmic-override={overrides.b2}
               answerState={
                 hasVariant($state, "reasoning", "question1")
                   ? "correct"
                   : undefined
               }
-              className={classNames("__wab_instance", sty.answerButton__bJ4Dg, {
-                [sty.answerButtonactive__bJ4DgDygov]: hasVariant(
+              className={classNames("__wab_instance", sty.b2, {
+                [sty.b2active]: hasVariant($state, "active", "active"),
+                [sty.b2design_finalOne]: hasVariant(
                   $state,
-                  "active",
-                  "active"
+                  "design",
+                  "finalOne"
                 ),
-                [sty.answerButtonreasoning_question1__bJ4Dgs50Um]: hasVariant(
+                [sty.b2design_finalOne_slotContent_wager]:
+                  hasVariant($state, "slotContent", "wager") &&
+                  hasVariant($state, "design", "finalOne"),
+                [sty.b2reasoning_question1]: hasVariant(
                   $state,
                   "reasoning",
                   "question1"
-                ),
-                [sty.answerButtontype_final__bJ4DgGw30Z]: hasVariant(
-                  $state,
-                  "type",
-                  "final"
                 )
               })}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["updateIsSelected"] = true
+              correct={
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne")
                   ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["isSelected"]
-                        },
-                        operation: 0,
-                        value: "B"
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
+                      try {
+                        return (
+                          $props.controlledIsSubmitted &&
+                          $props.controlledSelectedOptionId === "B" &&
+                          $props.correctAnswer === "B"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
                         }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
+                        throw e;
+                      }
                     })()
-                  : undefined;
-                if (
-                  $steps["updateIsSelected"] != null &&
-                  typeof $steps["updateIsSelected"] === "object" &&
-                  typeof $steps["updateIsSelected"].then === "function"
-                ) {
-                  $steps["updateIsSelected"] = await $steps["updateIsSelected"];
-                }
-              }}
-              selected={(() => {
-                try {
-                  return $state.isSelected == "B";
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return [];
-                  }
-                  throw e;
-                }
-              })()}
+                  : undefined
+              }
+              incorrect={
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne")
+                  ? (() => {
+                      try {
+                        return (
+                          $props.controlledIsSubmitted &&
+                          $props.controlledSelectedOptionId === "B" &&
+                          $props.correctAnswer !== "B"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  : undefined
+              }
+              onClick={args.onClickB}
+              selected={
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne")
+                  ? (() => {
+                      try {
+                        return (
+                          !$props.controlledIsSubmitted &&
+                          $props.controlledSelectedOptionId === "B"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  : (() => {
+                      try {
+                        return $state.isSelected == "B";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+              }
               slot={
                 <React.Fragment>
                   {(() => {
@@ -1177,77 +2304,104 @@ function PlasmicQuestionModal__RenderFunc(props: {
                   })()}
                 </React.Fragment>
               }
-              style2={hasVariant($state, "type", "final") ? "final" : undefined}
+              style2={
+                hasVariant($state, "design", "finalOne") ? "final" : undefined
+              }
             >
               {"B"}
             </AnswerButton>
             <AnswerButton
-              className={classNames(
-                "__wab_instance",
-                sty.answerButton___99Mo5,
-                {
-                  [sty.answerButtonactive___99Mo5Dygov]: hasVariant(
-                    $state,
-                    "active",
-                    "active"
-                  ),
-                  [sty.answerButtontype_final___99Mo5Gw30Z]: hasVariant(
-                    $state,
-                    "type",
-                    "final"
-                  )
-                }
-              )}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["updateIsSelected"] = true
+              data-plasmic-name={"c2"}
+              data-plasmic-override={overrides.c2}
+              className={classNames("__wab_instance", sty.c2, {
+                [sty.c2active]: hasVariant($state, "active", "active"),
+                [sty.c2design_finalOne]: hasVariant(
+                  $state,
+                  "design",
+                  "finalOne"
+                ),
+                [sty.c2design_finalOne_slotContent_wager]:
+                  hasVariant($state, "slotContent", "wager") &&
+                  hasVariant($state, "design", "finalOne")
+              })}
+              correct={
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne")
                   ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["isSelected"]
-                        },
-                        operation: 0,
-                        value: "C"
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
+                      try {
+                        return (
+                          $props.controlledIsSubmitted &&
+                          $props.controlledSelectedOptionId === "C" &&
+                          $props.correctAnswer === "C"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
                         }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
+                        throw e;
+                      }
                     })()
-                  : undefined;
-                if (
-                  $steps["updateIsSelected"] != null &&
-                  typeof $steps["updateIsSelected"] === "object" &&
-                  typeof $steps["updateIsSelected"].then === "function"
-                ) {
-                  $steps["updateIsSelected"] = await $steps["updateIsSelected"];
-                }
-              }}
-              selected={(() => {
-                try {
-                  return $state.isSelected == "C";
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return [];
-                  }
-                  throw e;
-                }
-              })()}
+                  : undefined
+              }
+              incorrect={
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne")
+                  ? (() => {
+                      try {
+                        return (
+                          $props.controlledIsSubmitted &&
+                          $props.controlledSelectedOptionId === "C" &&
+                          $props.correctAnswer !== "C"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  : undefined
+              }
+              onClick={args.onClickC}
+              selected={
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne")
+                  ? (() => {
+                      try {
+                        return (
+                          !$props.controlledIsSubmitted &&
+                          $props.controlledSelectedOptionId === "C"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  : (() => {
+                      try {
+                        return $state.isSelected == "C";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+              }
               slot={
                 <React.Fragment>
                   {(() => {
@@ -1265,68 +2419,103 @@ function PlasmicQuestionModal__RenderFunc(props: {
                   })()}
                 </React.Fragment>
               }
-              style2={hasVariant($state, "type", "final") ? "final" : undefined}
+              style2={
+                hasVariant($state, "design", "finalOne") ? "final" : undefined
+              }
             >
               {"C"}
             </AnswerButton>
             <AnswerButton
-              className={classNames("__wab_instance", sty.answerButton__xKgj, {
-                [sty.answerButtontype_final__xKgjgw30Z]: hasVariant(
+              data-plasmic-name={"d2"}
+              data-plasmic-override={overrides.d2}
+              className={classNames("__wab_instance", sty.d2, {
+                [sty.d2design_finalOne]: hasVariant(
                   $state,
-                  "type",
-                  "final"
-                )
+                  "design",
+                  "finalOne"
+                ),
+                [sty.d2design_finalOne_slotContent_wager]:
+                  hasVariant($state, "slotContent", "wager") &&
+                  hasVariant($state, "design", "finalOne")
               })}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["updateIsSelected"] = true
+              correct={
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne")
                   ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["isSelected"]
-                        },
-                        operation: 0,
-                        value: "D"
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
+                      try {
+                        return (
+                          $props.controlledIsSubmitted &&
+                          $props.controlledSelectedOptionId === "D" &&
+                          $props.correctAnswer === "D"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
                         }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
+                        throw e;
+                      }
                     })()
-                  : undefined;
-                if (
-                  $steps["updateIsSelected"] != null &&
-                  typeof $steps["updateIsSelected"] === "object" &&
-                  typeof $steps["updateIsSelected"].then === "function"
-                ) {
-                  $steps["updateIsSelected"] = await $steps["updateIsSelected"];
-                }
-              }}
-              selected={(() => {
-                try {
-                  return $state.isSelected == "D";
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return [];
-                  }
-                  throw e;
-                }
-              })()}
+                  : undefined
+              }
+              incorrect={
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne")
+                  ? (() => {
+                      try {
+                        return (
+                          $props.controlledIsSubmitted &&
+                          $props.controlledSelectedOptionId === "D" &&
+                          $props.correctAnswer !== "D"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  : undefined
+              }
+              onClick={args.onClickD}
+              selected={
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne")
+                  ? (() => {
+                      try {
+                        return (
+                          !$props.controlledIsSubmitted &&
+                          $props.controlledSelectedOptionId === "D"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  : (() => {
+                      try {
+                        return $state.isSelected == "D";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+              }
               slot={
                 <div
                   className={classNames(
@@ -1352,7 +2541,9 @@ function PlasmicQuestionModal__RenderFunc(props: {
                   </React.Fragment>
                 </div>
               }
-              style2={hasVariant($state, "type", "final") ? "final" : undefined}
+              style2={
+                hasVariant($state, "design", "finalOne") ? "final" : undefined
+              }
             >
               {"D"}
             </AnswerButton>
@@ -1380,34 +2571,40 @@ function PlasmicQuestionModal__RenderFunc(props: {
                     "active",
                     "active"
                   ),
-                  [sty.freeBoxtype_final__nIiSgGw30Z]: hasVariant(
+                  [sty.freeBoxdesign_finalOne__nIiSgGw30Z]: hasVariant(
                     $state,
-                    "type",
-                    "final"
+                    "design",
+                    "finalOne"
                   )
                 })}
               >
-                <div
+                <InfographEdButton
                   className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__au2Cg,
+                    "__wab_instance",
+                    sty.infographEdButton__hnm0R,
                     {
-                      [sty.textactive__au2CgDygov]: hasVariant(
-                        $state,
-                        "active",
-                        "active"
-                      ),
-                      [sty.texttype_final__au2CgGw30Z]: hasVariant(
-                        $state,
-                        "type",
-                        "final"
-                      )
+                      [sty.infographEdButtondesign_finalOne__hnm0Rgw30Z]:
+                        hasVariant($state, "design", "finalOne")
                     }
                   )}
-                  onClick={args.onClickSubmit}
                 >
-                  {hasVariant($state, "type", "final") ? "Back" : "Submit"}
+                  {hasVariant($state, "design", "finalOne") ? "back" : "Submit"}
+                </InfographEdButton>
+                <div className={classNames(projectcss.all, sty.freeBox__cBc8A)}>
+                  <InfographEdButton
+                    className={classNames(
+                      "__wab_instance",
+                      sty.infographEdButton__qhyiO,
+                      {
+                        [sty.infographEdButtondesign_finalOne_slotContent_wager__qhyiOgw30ZWFdBj]:
+                          hasVariant($state, "slotContent", "wager") &&
+                          hasVariant($state, "design", "finalOne")
+                      }
+                    )}
+                    onClick={args.onClickContinue}
+                  >
+                    {"continue"}
+                  </InfographEdButton>
                 </div>
               </div>
             ) : null}
@@ -1415,6 +2612,9 @@ function PlasmicQuestionModal__RenderFunc(props: {
         </div>
         <div
           className={classNames(projectcss.all, sty.freeBox___4AkhO, {
+            [sty.freeBoxdesign_finalOne_slotContent_wager___4AkhOgw30ZWFdBj]:
+              hasVariant($state, "slotContent", "wager") &&
+              hasVariant($state, "design", "finalOne"),
             [sty.freeBoxreasoning_question1___4AkhOs50Um]: hasVariant(
               $state,
               "reasoning",
@@ -1423,8 +2623,21 @@ function PlasmicQuestionModal__RenderFunc(props: {
           })}
         >
           <div
-            className={classNames(projectcss.all, sty.freeBox__yBEaF, {
-              [sty.freeBoxreasoning_question1__yBEaFs50Um]: hasVariant(
+            className={classNames(projectcss.all, sty.freeBox__wZ1CY, {
+              [sty.freeBoxactive__wZ1CYDygov]: hasVariant(
+                $state,
+                "active",
+                "active"
+              ),
+              [sty.freeBoxdesign_finalOne__wZ1CYgw30Z]: hasVariant(
+                $state,
+                "design",
+                "finalOne"
+              ),
+              [sty.freeBoxdesign_finalOne_slotContent_wager__wZ1CYgw30ZWFdBj]:
+                hasVariant($state, "slotContent", "wager") &&
+                hasVariant($state, "design", "finalOne"),
+              [sty.freeBoxreasoning_question1__wZ1CYs50Um]: hasVariant(
                 $state,
                 "reasoning",
                 "question1"
@@ -1432,55 +2645,417 @@ function PlasmicQuestionModal__RenderFunc(props: {
             })}
           >
             <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__hgHlk,
-                {
-                  [sty.textactive__hgHlkDygov]: hasVariant(
-                    $state,
-                    "active",
-                    "active"
-                  ),
-                  [sty.textreasoning_question1__hgHlKs50Um]: hasVariant(
+              className={classNames(projectcss.all, sty.freeBox__hMaTq, {
+                [sty.freeBoxactive__hMaTqDygov]: hasVariant(
+                  $state,
+                  "active",
+                  "active"
+                ),
+                [sty.freeBoxdesign_finalOne__hMaTqGw30Z]: hasVariant(
+                  $state,
+                  "design",
+                  "finalOne"
+                ),
+                [sty.freeBoxreasoning_question1__hMaTqs50Um]: hasVariant(
+                  $state,
+                  "reasoning",
+                  "question1"
+                ),
+                [sty.freeBoxslotContent_wager__hMaTqwFdBj]: hasVariant(
+                  $state,
+                  "slotContent",
+                  "wager"
+                )
+              })}
+            >
+              <div
+                className={classNames(projectcss.all, sty.freeBox___4K6Rh, {
+                  [sty.freeBoxdesign_finalOne_slotContent_wager___4K6RhGw30ZWFdBj]:
+                    hasVariant($state, "slotContent", "wager") &&
+                    hasVariant($state, "design", "finalOne"),
+                  [sty.freeBoxreasoning_question1___4K6Rhs50Um]: hasVariant(
                     $state,
                     "reasoning",
                     "question1"
                   )
-                }
-              )}
-            >
-              {hasVariant($state, "reasoning", "question1")
-                ? "Correct answer: B"
-                : "Enter some text"}
-            </div>
-          </div>
-          <div
-            className={classNames(projectcss.all, sty.freeBox__oupbr, {
-              [sty.freeBoxreasoning_question1__oupbrs50Um]: hasVariant(
-                $state,
-                "reasoning",
-                "question1"
-              )
-            })}
-          >
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text___3Fxji,
-                {
-                  [sty.textreasoning_question1___3FxjIs50Um]: hasVariant(
-                    $state,
-                    "reasoning",
-                    "question1"
-                  )
-                }
-              )}
-            >
-              {hasVariant($state, "reasoning", "question1")
-                ? "Studies have found that these factors have a higher risk of developing EoE: "
-                : "Enter some text"}
+                })}
+              >
+                {(hasVariant($state, "slotContent", "wager") ? false : true)
+                  ? renderPlasmicSlot({
+                      defaultContents: null,
+                      value: args.correctReasoning,
+                      className: classNames(sty.slotTargetCorrectReasoning, {
+                        [sty.slotTargetCorrectReasoningreasoning_question1]:
+                          hasVariant($state, "reasoning", "question1"),
+                        [sty.slotTargetCorrectReasoningslotContent_wager]:
+                          hasVariant($state, "slotContent", "wager")
+                      })
+                    })
+                  : null}
+                {(hasVariant($state, "slotContent", "wager") ? false : true)
+                  ? renderPlasmicSlot({
+                      defaultContents: null,
+                      value: args.incorrectReasoning
+                    })
+                  : null}
+                {(
+                  hasVariant($state, "slotContent", "wager") &&
+                  hasVariant($state, "design", "finalOne")
+                    ? true
+                    : hasVariant($state, "slotContent", "wager")
+                      ? true
+                      : false
+                ) ? (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__n2Fl, {
+                      [sty.freeBoxdesign_finalOne__n2FlGw30Z]: hasVariant(
+                        $state,
+                        "design",
+                        "finalOne"
+                      ),
+                      [sty.freeBoxdesign_finalOne_slotContent_wager__n2FlGw30ZWFdBj]:
+                        hasVariant($state, "slotContent", "wager") &&
+                        hasVariant($state, "design", "finalOne"),
+                      [sty.freeBoxslotContent_wager__n2FlwFdBj]: hasVariant(
+                        $state,
+                        "slotContent",
+                        "wager"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__eteMu,
+                        {
+                          [sty.textslotContent_wager__eteMuwFdBj]: hasVariant(
+                            $state,
+                            "slotContent",
+                            "wager"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "slotContent", "wager")
+                        ? "How confident are you? "
+                        : "Enter some text"}
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__ghDwU,
+                        {
+                          [sty.textslotContent_wager__ghDwUwFdBj]: hasVariant(
+                            $state,
+                            "slotContent",
+                            "wager"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "slotContent", "wager")
+                        ? "How many points would you like to wager? "
+                        : "Enter some text"}
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__rCwc1,
+                        {
+                          [sty.textslotContent_wager__rCwc1WFdBj]: hasVariant(
+                            $state,
+                            "slotContent",
+                            "wager"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "slotContent", "wager")
+                        ? "Select your confidence level"
+                        : "Enter some text"}
+                    </div>
+                    {(
+                      hasVariant($state, "slotContent", "wager")
+                        ? true
+                        : hasVariant($state, "active", "active")
+                          ? false
+                          : true
+                    ) ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___7Eivr,
+                          {
+                            [sty.freeBoxactive___7EivrDygov]: hasVariant(
+                              $state,
+                              "active",
+                              "active"
+                            ),
+                            [sty.freeBoxslotContent_wager___7EivrwFdBj]:
+                              hasVariant($state, "slotContent", "wager")
+                          }
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__cQsAn,
+                            {
+                              [sty.freeBoxslotContent_wager__cQsANwFdBj]:
+                                hasVariant($state, "slotContent", "wager")
+                            }
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["updateWager"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["wager"]
+                                    },
+                                    operation: 0,
+                                    value: 3
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWager"] != null &&
+                              typeof $steps["updateWager"] === "object" &&
+                              typeof $steps["updateWager"].then === "function"
+                            ) {
+                              $steps["updateWager"] =
+                                await $steps["updateWager"];
+                            }
+                          }}
+                        >
+                          <WagerCard
+                            data-plasmic-name={"lessConfident"}
+                            data-plasmic-override={overrides.lessConfident}
+                            active={(() => {
+                              try {
+                                return $state.wager == 3;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [];
+                                }
+                                throw e;
+                              }
+                            })()}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.lessConfident,
+                              {
+                                [sty.lessConfidentactive]: hasVariant(
+                                  $state,
+                                  "active",
+                                  "active"
+                                ),
+                                [sty.lessConfidentslotContent_wager]:
+                                  hasVariant($state, "slotContent", "wager")
+                              }
+                            )}
+                          />
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__n8Rua,
+                            {
+                              [sty.freeBoxslotContent_wager__n8RuawFdBj]:
+                                hasVariant($state, "slotContent", "wager")
+                            }
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["updateWager"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["wager"]
+                                    },
+                                    operation: 0,
+                                    value: 7
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWager"] != null &&
+                              typeof $steps["updateWager"] === "object" &&
+                              typeof $steps["updateWager"].then === "function"
+                            ) {
+                              $steps["updateWager"] =
+                                await $steps["updateWager"];
+                            }
+                          }}
+                        >
+                          <WagerCard
+                            data-plasmic-name={"confident"}
+                            data-plasmic-override={overrides.confident}
+                            active={(() => {
+                              try {
+                                return $state.wager == 7;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [];
+                                }
+                                throw e;
+                              }
+                            })()}
+                            amount={
+                              hasVariant($state, "slotContent", "wager")
+                                ? "_7"
+                                : undefined
+                            }
+                            className={classNames(
+                              "__wab_instance",
+                              sty.confident,
+                              {
+                                [sty.confidentslotContent_wager]: hasVariant(
+                                  $state,
+                                  "slotContent",
+                                  "wager"
+                                )
+                              }
+                            )}
+                          />
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__g31II,
+                            {
+                              [sty.freeBoxslotContent_wager__g31IIwFdBj]:
+                                hasVariant($state, "slotContent", "wager")
+                            }
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["updateWager"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["wager"]
+                                    },
+                                    operation: 0,
+                                    value: 10
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWager"] != null &&
+                              typeof $steps["updateWager"] === "object" &&
+                              typeof $steps["updateWager"].then === "function"
+                            ) {
+                              $steps["updateWager"] =
+                                await $steps["updateWager"];
+                            }
+                          }}
+                        >
+                          <WagerCard
+                            data-plasmic-name={"veryConfident"}
+                            data-plasmic-override={overrides.veryConfident}
+                            active={(() => {
+                              try {
+                                return $state.wager == 10;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [];
+                                }
+                                throw e;
+                              }
+                            })()}
+                            amount={
+                              hasVariant($state, "slotContent", "wager")
+                                ? "_10"
+                                : undefined
+                            }
+                            className={classNames(
+                              "__wab_instance",
+                              sty.veryConfident,
+                              {
+                                [sty.veryConfidentslotContent_wager]:
+                                  hasVariant($state, "slotContent", "wager")
+                              }
+                            )}
+                          />
+                        </div>
+                      </div>
+                    ) : null}
+                    <InfographEdButton
+                      data-plasmic-name={"submit2"}
+                      data-plasmic-override={overrides.submit2}
+                      className={classNames("__wab_instance", sty.submit2, {
+                        [sty.submit2slotContent_wager]: hasVariant(
+                          $state,
+                          "slotContent",
+                          "wager"
+                        )
+                      })}
+                      onClick={args.onClickSubmit}
+                    />
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>
@@ -1490,9 +3065,37 @@ function PlasmicQuestionModal__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "img", "infographEdButton"],
+  root: [
+    "root",
+    "img",
+    "a",
+    "b",
+    "c",
+    "d",
+    "submit",
+    "a2",
+    "b2",
+    "c2",
+    "d2",
+    "lessConfident",
+    "confident",
+    "veryConfident",
+    "submit2"
+  ],
   img: ["img"],
-  infographEdButton: ["infographEdButton"]
+  a: ["a"],
+  b: ["b"],
+  c: ["c"],
+  d: ["d"],
+  submit: ["submit"],
+  a2: ["a2"],
+  b2: ["b2"],
+  c2: ["c2"],
+  d2: ["d2"],
+  lessConfident: ["lessConfident"],
+  confident: ["confident"],
+  veryConfident: ["veryConfident"],
+  submit2: ["submit2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1500,7 +3103,19 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   img: typeof PlasmicImg__;
-  infographEdButton: typeof InfographEdButton;
+  a: typeof AnswerButton;
+  b: typeof AnswerButton;
+  c: typeof AnswerButton;
+  d: typeof AnswerButton;
+  submit: typeof InfographEdButton;
+  a2: typeof AnswerButton;
+  b2: typeof AnswerButton;
+  c2: typeof AnswerButton;
+  d2: typeof AnswerButton;
+  lessConfident: typeof WagerCard;
+  confident: typeof WagerCard;
+  veryConfident: typeof WagerCard;
+  submit2: typeof InfographEdButton;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1566,7 +3181,19 @@ export const PlasmicQuestionModal = Object.assign(
   {
     // Helper components rendering sub-elements
     img: makeNodeComponent("img"),
-    infographEdButton: makeNodeComponent("infographEdButton"),
+    a: makeNodeComponent("a"),
+    b: makeNodeComponent("b"),
+    c: makeNodeComponent("c"),
+    d: makeNodeComponent("d"),
+    submit: makeNodeComponent("submit"),
+    a2: makeNodeComponent("a2"),
+    b2: makeNodeComponent("b2"),
+    c2: makeNodeComponent("c2"),
+    d2: makeNodeComponent("d2"),
+    lessConfident: makeNodeComponent("lessConfident"),
+    confident: makeNodeComponent("confident"),
+    veryConfident: makeNodeComponent("veryConfident"),
+    submit2: makeNodeComponent("submit2"),
 
     // Metadata about props expected for PlasmicQuestionModal
     internalVariantProps: PlasmicQuestionModal__VariantProps,

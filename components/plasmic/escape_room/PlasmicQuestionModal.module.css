@@ -20,7 +20,10 @@
 .rootreasoning_question1 {
   display: flex;
 }
-.roottype_final {
+.rootdesign_finalOne {
+  display: flex;
+}
+.rootslotContent_wager {
   display: flex;
 }
 .freeBox__tk1B7 {
@@ -39,7 +42,7 @@
   z-index: 2;
   padding: 0px;
 }
-.freeBoxtype_final__tk1B7Gw30Z {
+.freeBoxdesign_finalOne__tk1B7Gw30Z {
   display: none;
 }
 .text__ajtzg {
@@ -79,7 +82,7 @@
 .freeBoxactive__hsUfhDygov {
   margin: 0px;
 }
-.freeBoxtype_final__hsUfhGw30Z {
+.freeBoxdesign_finalOne__hsUfhGw30Z {
   display: none;
 }
 .freeBox__omsVe {
@@ -140,7 +143,7 @@
   display: flex;
   padding: 0px;
 }
-.freeBoxtype_final___7WXd3Gw30Z {
+.freeBoxdesign_finalOne___7WXd3Gw30Z {
   display: none;
 }
 .freeBox__pppAk {
@@ -196,29 +199,47 @@
   margin-top: 20px;
   padding: 0px;
 }
-.answerButton__arD1F:global(.__wab_instance) {
+.a:global(.__wab_instance) {
   max-width: 100%;
 }
-.answerButton__cuFvl:global(.__wab_instance) {
+.b:global(.__wab_instance) {
   max-width: 100%;
 }
-.answerButton__iMZm:global(.__wab_instance) {
+.c:global(.__wab_instance) {
   max-width: 100%;
 }
-.answerButton__gWiOe:global(.__wab_instance) {
+.d:global(.__wab_instance) {
   max-width: 100%;
 }
 .text__lqEw5 {
   white-space: pre-wrap;
 }
-.infographEdButton:global(.__wab_instance) {
+.submit:global(.__wab_instance) {
   position: relative;
   flex-shrink: 0;
 }
-.infographEdButtonactive:global(.__wab_instance) {
+.submitactive:global(.__wab_instance) {
   flex-shrink: 0;
 }
-.freeBox__wZ1CY {
+.submitreasoning_question1:global(.__wab_instance) {
+  flex-shrink: 0;
+}
+.submitslotContent_wager:global(.__wab_instance) {
+  flex-shrink: 0;
+}
+.freeBox__fLmWo {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.slotTargetCorrectReasoning2reasoning_question1 {
+  font-family: "Open Sans", sans-serif;
+}
+.freeBox___8Gog5 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -230,19 +251,64 @@
   min-width: 0;
   padding: 8px;
 }
-.freeBoxactive__wZ1CYDygov {
-  padding: 16px;
-}
-.freeBoxreasoning_question1__wZ1CYs50Um {
-  max-width: 50%;
-  justify-content: flex-start;
-  align-items: flex-start;
+.freeBoxslotContent_wager___8Gog5WFdBj {
   display: flex;
   flex-direction: column;
   column-gap: 0px;
+}
+.freeBoxdesign_finalOne_slotContent_wager___8Gog5Gw30ZWFdBj {
+  display: flex;
+}
+.text__aE3Fw {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.textslotContent_wager__aE3FWwFdBj {
+  text-align: center;
+}
+.text__auNdR {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.textslotContent_wager__auNdRwFdBj {
+  text-align: center;
+}
+.text__y5Tw {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.textslotContent_wager__y5TwwFdBj {
+  text-align: center;
+  text-transform: uppercase;
+}
+.freeBox__k6Go {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+.freeBoxslotContent_wager__k6GoWFdBj {
+  column-gap: 20px;
+  row-gap: 0px;
+  display: flex;
   padding: 0px;
 }
-.freeBox__hMaTq {
+.freeBox__u4T7N {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -252,25 +318,37 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
-.freeBoxreasoning_question1__hMaTqs50Um {
-  background: #e4f4f4;
-  height: 100%;
-  min-height: 0;
-  padding: 20px;
-}
-.freeBox___4K6Rh {
+.freeBox__tUtaZ {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
-  display: flex;
-  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   min-width: 0;
+  padding: 0px;
 }
-.slotTargetCorrectReasoningreasoning_question1 {
-  font-family: "Open Sans", sans-serif;
+.freeBox__qrqEj {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
+}
+.infographEdButton__sEukD:global(.__wab_instance) {
+  max-width: 100%;
+}
+.infographEdButtonslotContent_wager__sEukDwFdBj:global(.__wab_instance) {
+  flex-shrink: 0;
 }
 .freeBox___3Z9Fa {
   display: flex;
@@ -285,7 +363,7 @@
   padding: 8px;
 }
 .freeBoxactive___3Z9FaDygov {
-  display: none;
+  display: flex;
 }
 .freeBoxreasoning_question1___3Z9FAs50Um {
   display: none;
@@ -304,10 +382,11 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 50px;
   min-width: 0;
   padding: 8px;
 }
-.freeBoxtype_final__bbt7Gw30Z {
+.freeBoxdesign_finalOne__bbt7Gw30Z {
   padding: 0px;
 }
 .text__iGSc {
@@ -348,7 +427,7 @@
   display: none;
   padding: 0px;
 }
-.freeBoxtype_final__xVeTgw30Z {
+.freeBoxdesign_finalOne__xVeTgw30Z {
   display: flex;
 }
 .freeBox__py71H {
@@ -404,16 +483,16 @@
   margin-top: 20px;
   padding: 0px;
 }
-.answerButton___3GZwW:global(.__wab_instance) {
+.a2:global(.__wab_instance) {
   max-width: 100%;
 }
-.answerButton__bJ4Dg:global(.__wab_instance) {
+.b2:global(.__wab_instance) {
   max-width: 100%;
 }
-.answerButton___99Mo5:global(.__wab_instance) {
+.c2:global(.__wab_instance) {
   max-width: 100%;
 }
-.answerButton__xKgj:global(.__wab_instance) {
+.d2:global(.__wab_instance) {
   max-width: 100%;
 }
 .text__e8IH {
@@ -434,18 +513,48 @@
   border-radius: 10px;
   padding: 0px;
 }
-.text__au2Cg {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 20pt;
+.freeBoxdesign_finalOne__nIiSgGw30Z {
+  display: flex;
+  flex-direction: row;
+  max-width: none;
+  background: none;
+  justify-content: space-between;
+  row-gap: 0px;
+}
+.infographEdButton__hnm0R:global(.__wab_instance) {
+  max-width: 100%;
+  flex-shrink: 0;
+}
+.infographEdButtondesign_finalOne__hnm0Rgw30Z:global(.__wab_instance) {
+  width: auto;
+  min-width: 300px;
+}
+.freeBox__cBc8A {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
-  color: var(--token-A0PHvu8gKc_i);
-  text-align: center;
-  cursor: pointer;
+  justify-content: flex-start;
+  align-items: center;
   min-width: 0;
+  padding: 0px;
+}
+.infographEdButton__qhyiO:global(.__wab_instance) {
+  animation: none;
+  max-width: 100%;
+  width: auto;
+  min-width: 300px;
+  flex-shrink: 0;
+}
+.infographEdButtondesign_finalOne_slotContent_wager__qhyiOgw30ZWFdBj:global(
+  .__wab_instance
+) {
+  flex-shrink: 0;
+}
+.text__gsigE {
+  animation: none;
 }
 .freeBox___4AkhO {
   display: flex;
@@ -468,7 +577,7 @@
   column-gap: 0px;
   padding: 0px;
 }
-.freeBox__yBEaF {
+.freeBox__wZ1CY {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -480,26 +589,19 @@
   min-width: 0;
   padding: 8px;
 }
-.freeBoxreasoning_question1__yBEaFs50Um {
-  background: var(--token-Eozza9wjGW1p);
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  padding: 20px;
+.freeBoxactive__wZ1CYDygov {
+  padding: 16px;
 }
-.text__hgHlk {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
+.freeBoxreasoning_question1__wZ1CYs50Um {
+  max-width: 50%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  column-gap: 0px;
+  padding: 0px;
 }
-.textreasoning_question1__hgHlKs50Um {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 20pt;
-  color: var(--token-A0PHvu8gKc_i);
-}
-.freeBox__oupbr {
+.freeBox__hMaTq {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -511,16 +613,132 @@
   min-width: 0;
   padding: 8px;
 }
-.freeBoxreasoning_question1__oupbrs50Um {
+.freeBoxreasoning_question1__hMaTqs50Um {
   background: #e4f4f4;
   height: 100%;
   min-height: 0;
   padding: 20px;
 }
-.text___3Fxji {
+.freeBox___4K6Rh {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.slotTargetCorrectReasoningreasoning_question1 {
+  font-family: "Open Sans", sans-serif;
+}
+.freeBox__n2Fl {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+.freeBoxslotContent_wager__n2FlwFdBj {
+  display: flex;
+  flex-direction: column;
+  column-gap: 0px;
+}
+.freeBoxdesign_finalOne_slotContent_wager__n2FlGw30ZWFdBj {
+  display: flex;
+}
+.text__eteMu {
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   min-width: 0;
+}
+.textslotContent_wager__eteMuwFdBj {
+  text-align: center;
+}
+.text__ghDwU {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.textslotContent_wager__ghDwUwFdBj {
+  text-align: center;
+}
+.text__rCwc1 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.textslotContent_wager__rCwc1WFdBj {
+  text-align: center;
+  text-transform: uppercase;
+}
+.freeBox___7Eivr {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+.freeBoxslotContent_wager___7EivrwFdBj {
+  column-gap: 20px;
+  row-gap: 0px;
+  display: flex;
+  padding: 0px;
+}
+.freeBox__cQsAn {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
+}
+.freeBox__n8Rua {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
+}
+.freeBox__g31II {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 0px;
+}
+.submit2:global(.__wab_instance) {
+  max-width: 100%;
+}
+.submit2slotContent_wager:global(.__wab_instance) {
+  flex-shrink: 0;
 }

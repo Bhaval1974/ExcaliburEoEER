@@ -67,27 +67,41 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: 7WvC14QG9b5jXarkiBh2yY/projectcss
 import sty from "./PlasmicHotspot.module.css"; // plasmic-import: Fhh6u1WI2G9i/css
 
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: ZMoSd5dtyVZ7/icon
+import Lock1SvgIcon from "./icons/PlasmicIcon__Lock1Svg"; // plasmic-import: w2AEEyZLPBdy/icon
+
 createPlasmicElementProxy;
 
 export type PlasmicHotspot__VariantMembers = {
   size: "_50Px";
+  completed: "completed";
+  locked: "locked";
 };
 export type PlasmicHotspot__VariantsArgs = {
   size?: SingleChoiceArg<"_50Px">;
+  completed?: SingleBooleanChoiceArg<"completed">;
+  locked?: SingleBooleanChoiceArg<"locked">;
 };
 type VariantPropType = keyof PlasmicHotspot__VariantsArgs;
-export const PlasmicHotspot__VariantProps = new Array<VariantPropType>("size");
+export const PlasmicHotspot__VariantProps = new Array<VariantPropType>(
+  "size",
+  "completed",
+  "locked"
+);
 
-export type PlasmicHotspot__ArgsType = {};
+export type PlasmicHotspot__ArgsType = { questionId?: string };
 type ArgPropType = keyof PlasmicHotspot__ArgsType;
-export const PlasmicHotspot__ArgProps = new Array<ArgPropType>();
+export const PlasmicHotspot__ArgProps = new Array<ArgPropType>("questionId");
 
 export type PlasmicHotspot__OverridesType = {
   root?: Flex__<"div">;
 };
 
 export interface DefaultHotspotProps {
+  questionId?: string;
   size?: SingleChoiceArg<"_50Px">;
+  completed?: SingleBooleanChoiceArg<"completed">;
+  locked?: SingleBooleanChoiceArg<"locked">;
   className?: string;
 }
 
@@ -137,6 +151,18 @@ function PlasmicHotspot__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.size
+      },
+      {
+        path: "completed",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.completed
+      },
+      {
+        path: "locked",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.locked
       }
     ],
     [$props, $ctx, $refs]
@@ -163,21 +189,64 @@ function PlasmicHotspot__RenderFunc(props: {
         projectcss.plasmic_mixins,
         styleTokensClassNames,
         sty.root,
-        { [sty.rootsize__50Px]: hasVariant($state, "size", "_50Px") }
+        {
+          [sty.rootcompleted]: hasVariant($state, "completed", "completed"),
+          [sty.rootlocked]: hasVariant($state, "locked", "locked"),
+          [sty.rootsize__50Px]: hasVariant($state, "size", "_50Px"),
+          [sty.rootsize__50Px_completed]:
+            hasVariant($state, "size", "_50Px") &&
+            hasVariant($state, "completed", "completed")
+        }
       )}
+      onClick={async event => {
+        const $steps = {};
+
+        $steps["updateSize"] = true
+          ? (() => {
+              const actionArgs = {
+                vgroup: "size",
+                operation: 0,
+                value: "_50Px"
+              };
+              return (({ vgroup, value }) => {
+                if (typeof value === "string") {
+                  value = [value];
+                }
+
+                $stateSet($state, vgroup, value);
+                return value;
+              })?.apply(null, [actionArgs]);
+            })()
+          : undefined;
+        if (
+          $steps["updateSize"] != null &&
+          typeof $steps["updateSize"] === "object" &&
+          typeof $steps["updateSize"].then === "function"
+        ) {
+          $steps["updateSize"] = await $steps["updateSize"];
+        }
+      }}
     >
-      <div
-        className={classNames(projectcss.all, sty.freeBox__iy2MK, {
-          [sty.freeBoxsize__50Px__iy2MKb1D4B]: hasVariant(
-            $state,
-            "size",
-            "_50Px"
-          )
-        })}
-      >
+      {(
+        hasVariant($state, "locked", "locked")
+          ? true
+          : hasVariant($state, "completed", "completed")
+            ? false
+            : true
+      ) ? (
         <div
-          className={classNames(projectcss.all, sty.freeBox__kDhc8, {
-            [sty.freeBoxsize__50Px__kDhc8B1D4B]: hasVariant(
+          className={classNames(projectcss.all, sty.freeBox__iy2MK, {
+            [sty.freeBoxcompleted__iy2MKkywwe]: hasVariant(
+              $state,
+              "completed",
+              "completed"
+            ),
+            [sty.freeBoxlocked__iy2MKqTzol]: hasVariant(
+              $state,
+              "locked",
+              "locked"
+            ),
+            [sty.freeBoxsize__50Px__iy2MKb1D4B]: hasVariant(
               $state,
               "size",
               "_50Px"
@@ -185,8 +254,8 @@ function PlasmicHotspot__RenderFunc(props: {
           })}
         >
           <div
-            className={classNames(projectcss.all, sty.freeBox__lPtod, {
-              [sty.freeBoxsize__50Px__lPtodb1D4B]: hasVariant(
+            className={classNames(projectcss.all, sty.freeBox__kDhc8, {
+              [sty.freeBoxsize__50Px__kDhc8B1D4B]: hasVariant(
                 $state,
                 "size",
                 "_50Px"
@@ -194,17 +263,80 @@ function PlasmicHotspot__RenderFunc(props: {
             })}
           >
             <div
-              className={classNames(projectcss.all, sty.freeBox__zhdog, {
-                [sty.freeBoxsize__50Px__zhdogB1D4B]: hasVariant(
+              className={classNames(projectcss.all, sty.freeBox__lPtod, {
+                [sty.freeBoxlocked__lPtodqTzol]: hasVariant(
+                  $state,
+                  "locked",
+                  "locked"
+                ),
+                [sty.freeBoxsize__50Px__lPtodb1D4B]: hasVariant(
                   $state,
                   "size",
                   "_50Px"
                 )
               })}
-            />
+            >
+              <div
+                className={classNames(projectcss.all, sty.freeBox__zhdog, {
+                  [sty.freeBoxcompleted__zhdogkywwe]: hasVariant(
+                    $state,
+                    "completed",
+                    "completed"
+                  ),
+                  [sty.freeBoxlocked__zhdogQTzol]: hasVariant(
+                    $state,
+                    "locked",
+                    "locked"
+                  ),
+                  [sty.freeBoxsize__50Px__zhdogB1D4B]: hasVariant(
+                    $state,
+                    "size",
+                    "_50Px"
+                  )
+                })}
+              />
+            </div>
           </div>
         </div>
+      ) : null}
+      <div
+        className={classNames(projectcss.all, sty.freeBox__nM0S0, {
+          [sty.freeBoxcompleted__nM0S0Kywwe]: hasVariant(
+            $state,
+            "completed",
+            "completed"
+          ),
+          [sty.freeBoxlocked__nM0S0QTzol]: hasVariant(
+            $state,
+            "locked",
+            "locked"
+          ),
+          [sty.freeBoxsize__50Px_completed__nM0S0B1D4BKywwe]:
+            hasVariant($state, "size", "_50Px") &&
+            hasVariant($state, "completed", "completed")
+        })}
+      >
+        <CheckSvgIcon
+          className={classNames(projectcss.all, sty.svg__ghlcv, {
+            [sty.svgcompleted__ghlcvkywwe]: hasVariant(
+              $state,
+              "completed",
+              "completed"
+            ),
+            [sty.svglocked__ghlcvQTzol]: hasVariant($state, "locked", "locked"),
+            [sty.svgsize__50Px_completed__ghlcvB1D4BKywwe]:
+              hasVariant($state, "size", "_50Px") &&
+              hasVariant($state, "completed", "completed")
+          })}
+          role={"img"}
+        />
       </div>
+      <Lock1SvgIcon
+        className={classNames(projectcss.all, sty.svg__nSisR, {
+          [sty.svglocked__nSisRqTzol]: hasVariant($state, "locked", "locked")
+        })}
+        role={"img"}
+      />
     </div>
   ) as React.ReactElement | null;
 }

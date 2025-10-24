@@ -90,6 +90,7 @@ export type PlasmicBottomToolbar__OverridesType = {
   help?: Flex__<typeof PlasmicImg__>;
   glossary?: Flex__<typeof PlasmicImg__>;
   reference2?: Flex__<typeof PlasmicImg__>;
+  totalPoints?: Flex__<"div">;
 };
 
 export interface DefaultBottomToolbarProps {
@@ -309,12 +310,22 @@ function PlasmicBottomToolbar__RenderFunc(props: {
         >
           {"YOUR POINTS:"}
         </div>
-        <div className={classNames(projectcss.all, sty.freeBox__gsFjC)}>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__gsFjC, {
+            [sty.freeBoxhasReference_visible__gsFjCvbT1R]: hasVariant(
+              $state,
+              "hasReference",
+              "visible"
+            )
+          })}
+        >
           <div
+            data-plasmic-name={"totalPoints"}
+            data-plasmic-override={overrides.totalPoints}
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.text__uex4
+              sty.totalPoints
             )}
           >
             {"100"}
@@ -326,11 +337,12 @@ function PlasmicBottomToolbar__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "home", "help", "glossary", "reference2"],
+  root: ["root", "home", "help", "glossary", "reference2", "totalPoints"],
   home: ["home"],
   help: ["help"],
   glossary: ["glossary"],
-  reference2: ["reference2"]
+  reference2: ["reference2"],
+  totalPoints: ["totalPoints"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -341,6 +353,7 @@ type NodeDefaultElementType = {
   help: typeof PlasmicImg__;
   glossary: typeof PlasmicImg__;
   reference2: typeof PlasmicImg__;
+  totalPoints: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -409,6 +422,7 @@ export const PlasmicBottomToolbar = Object.assign(
     help: makeNodeComponent("help"),
     glossary: makeNodeComponent("glossary"),
     reference2: makeNodeComponent("reference2"),
+    totalPoints: makeNodeComponent("totalPoints"),
 
     // Metadata about props expected for PlasmicBottomToolbar
     internalVariantProps: PlasmicBottomToolbar__VariantProps,

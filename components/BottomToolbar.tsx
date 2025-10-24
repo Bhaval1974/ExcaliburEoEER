@@ -6,7 +6,7 @@ import {
   DefaultBottomToolbarProps
 } from "./plasmic/escape_room/PlasmicBottomToolbar";
 import { HTMLElementRefOf } from "@plasmicapp/react-web";
-
+import { getTotalScore } from "../core/services/exam";
 // Your component props start with props for variants and slots you defined
 // in Plasmic, but you can add more here, like event handlers that you can
 // attach to named nodes in your component.
@@ -26,22 +26,31 @@ function BottomToolbar_(
   props: BottomToolbarProps,
   ref: HTMLElementRefOf<"div">
 ) {
-  // Use PlasmicBottomToolbar to render this component as it was
-  // designed in Plasmic, by activating the appropriate variants,
-  // attaching the appropriate event handlers, etc.  You
-  // can also install whatever React hooks you need here to manage state or
-  // fetch data.
-  //
-  // Props you can pass into PlasmicBottomToolbar are:
-  // 1. Variants you want to activate,
-  // 2. Contents for slots you want to fill,
-  // 3. Overrides for any named node in the component to attach behavior and data,
-  // 4. Props to set on the root node.
-  //
-  // By default, we are just piping all BottomToolbarProps here, but feel free
-  // to do whatever works for you.
+  const [totalScore, setTotalScore] = React.useState<number>(0);
 
-  return <PlasmicBottomToolbar root={{ ref }} {...props} />;
+  React.useEffect(() => {
+    const updateScore = () => {
+      setTotalScore(getTotalScore());
+    };
+
+    // Initial load
+    updateScore();
+
+    // Listen for localStorage changes
+    window.addEventListener('storage', updateScore);
+
+    return () => {
+      window.removeEventListener('storage', updateScore);
+    };
+  }, []);
+
+  return <PlasmicBottomToolbar root={{ ref }} {...props} 
+  totalPoints={{ 
+    props: {
+      children: `${totalScore}`
+    }
+   }}
+  />;
 }
 
 const BottomToolbar = React.forwardRef(BottomToolbar_);

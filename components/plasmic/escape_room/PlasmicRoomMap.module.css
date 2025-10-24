@@ -1,0 +1,90 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 600px;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+  justify-self: flex-start;
+}
+.freeBox__csLGf {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px;
+}
+.room__zszjz:global(.__wab_instance) {
+  position: relative;
+}
+.room__uDdGc:global(.__wab_instance) {
+  position: relative;
+}
+.room__hUo2S:global(.__wab_instance) {
+  position: relative;
+}
+.freeBox___6OJBi {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px;
+}
+.room__vNxAb:global(.__wab_instance) {
+  position: relative;
+}
+.text__kvvSd {
+  font-weight: 600;
+}
+.freeBox__kJlla {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  column-gap: 5px;
+  margin-top: 35px;
+  min-width: 0;
+  padding: 0px;
+}
+.text___1Oax {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #535353;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+.svg {
+  object-fit: cover;
+  max-width: 100%;
+  height: 1em;
+}
+.text__orCtr {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+}

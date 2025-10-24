@@ -257,7 +257,9 @@ function PlasmicTutorialShell__RenderFunc(props: {
         >
           <PlasmicImg__
             alt={""}
-            className={classNames(sty.img__uRwXf)}
+            className={classNames(sty.img__uRwXf, {
+              [sty.imgpage__1__uRwXf3SPjq]: hasVariant($state, "page", "_1")
+            })}
             displayHeight={"auto"}
             displayMaxHeight={"none"}
             displayMaxWidth={"100%"}
@@ -274,23 +276,19 @@ function PlasmicTutorialShell__RenderFunc(props: {
           />
         </div>
       ) : null}
-      {(
-        hasVariant($state, "page", "_1")
-          ? true
-          : (() => {
-              try {
-                return $state.currentStep == 1;
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return true;
-                }
-                throw e;
-              }
-            })()
-      ) ? (
+      {(() => {
+        try {
+          return $state.currentStep == 1;
+        } catch (e) {
+          if (
+            e instanceof TypeError ||
+            e?.plasmicType === "PlasmicUndefinedDataError"
+          ) {
+            return true;
+          }
+          throw e;
+        }
+      })() ? (
         <div
           data-plasmic-name={"page1"}
           data-plasmic-override={overrides.page1}
@@ -373,23 +371,21 @@ function PlasmicTutorialShell__RenderFunc(props: {
         </div>
       ) : null}
       {(
-        hasVariant($state, "page", "_2")
+        hasVariant($state, "page", "_1")
           ? true
-          : hasVariant($state, "page", "_1")
-            ? true
-            : (() => {
-                try {
-                  return $state.currentStep == 2;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return true;
-                  }
-                  throw e;
+          : (() => {
+              try {
+                return $state.currentStep == 2;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
                 }
-              })()
+                throw e;
+              }
+            })()
       ) ? (
         <div
           data-plasmic-name={"page2"}
@@ -1061,25 +1057,23 @@ function PlasmicTutorialShell__RenderFunc(props: {
         </div>
       ) : null}
       {(
-        hasVariant($state, "page", "_3")
+        hasVariant($state, "page", "_2")
           ? true
-          : hasVariant($state, "page", "_2")
+          : hasVariant($state, "page", "_1")
             ? true
-            : hasVariant($state, "page", "_1")
-              ? true
-              : (() => {
-                  try {
-                    return $state.currentStep == 3;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
+            : (() => {
+                try {
+                  return $state.currentStep == 3;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
                   }
-                })()
+                  throw e;
+                }
+              })()
       ) ? (
         <div
           data-plasmic-name={"page3"}
@@ -1220,27 +1214,25 @@ function PlasmicTutorialShell__RenderFunc(props: {
         </div>
       ) : null}
       {(
-        hasVariant($state, "page", "_4")
+        hasVariant($state, "page", "_3")
           ? true
-          : hasVariant($state, "page", "_3")
+          : hasVariant($state, "page", "_2")
             ? true
-            : hasVariant($state, "page", "_2")
+            : hasVariant($state, "page", "_1")
               ? true
-              : hasVariant($state, "page", "_1")
-                ? true
-                : (() => {
-                    try {
-                      return $state.currentStep == 4;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
+              : (() => {
+                  try {
+                    return $state.currentStep == 4;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
                     }
-                  })()
+                    throw e;
+                  }
+                })()
       ) ? (
         <div
           data-plasmic-name={"page4"}
@@ -1356,29 +1348,27 @@ function PlasmicTutorialShell__RenderFunc(props: {
         </div>
       ) : null}
       {(
-        hasVariant($state, "page", "_5")
+        hasVariant($state, "page", "_4")
           ? true
-          : hasVariant($state, "page", "_4")
+          : hasVariant($state, "page", "_3")
             ? true
-            : hasVariant($state, "page", "_3")
+            : hasVariant($state, "page", "_2")
               ? true
-              : hasVariant($state, "page", "_2")
+              : hasVariant($state, "page", "_1")
                 ? true
-                : hasVariant($state, "page", "_1")
-                  ? true
-                  : (() => {
-                      try {
-                        return $state.currentStep == 5;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
+                : (() => {
+                    try {
+                      return $state.currentStep == 5;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
                       }
-                    })()
+                      throw e;
+                    }
+                  })()
       ) ? (
         <div
           data-plasmic-name={"page5"}
@@ -1471,31 +1461,29 @@ function PlasmicTutorialShell__RenderFunc(props: {
         </div>
       ) : null}
       {(
-        hasVariant($state, "page", "_6")
+        hasVariant($state, "page", "_5")
           ? true
-          : hasVariant($state, "page", "_5")
+          : hasVariant($state, "page", "_4")
             ? true
-            : hasVariant($state, "page", "_4")
+            : hasVariant($state, "page", "_3")
               ? true
-              : hasVariant($state, "page", "_3")
+              : hasVariant($state, "page", "_2")
                 ? true
-                : hasVariant($state, "page", "_2")
+                : hasVariant($state, "page", "_1")
                   ? true
-                  : hasVariant($state, "page", "_1")
-                    ? true
-                    : (() => {
-                        try {
-                          return $state.currentStep == 6;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
+                  : (() => {
+                      try {
+                        return $state.currentStep == 6;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
                         }
-                      })()
+                        throw e;
+                      }
+                    })()
       ) ? (
         <div
           data-plasmic-name={"page6"}
@@ -1690,33 +1678,31 @@ function PlasmicTutorialShell__RenderFunc(props: {
         </div>
       ) : null}
       {(
-        hasVariant($state, "page", "_7")
+        hasVariant($state, "page", "_6")
           ? true
-          : hasVariant($state, "page", "_6")
+          : hasVariant($state, "page", "_5")
             ? true
-            : hasVariant($state, "page", "_5")
+            : hasVariant($state, "page", "_4")
               ? true
-              : hasVariant($state, "page", "_4")
+              : hasVariant($state, "page", "_3")
                 ? true
-                : hasVariant($state, "page", "_3")
+                : hasVariant($state, "page", "_2")
                   ? true
-                  : hasVariant($state, "page", "_2")
+                  : hasVariant($state, "page", "_1")
                     ? true
-                    : hasVariant($state, "page", "_1")
-                      ? true
-                      : (() => {
-                          try {
-                            return $state.currentStep == 7;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
+                    : (() => {
+                        try {
+                          return $state.currentStep == 7;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
                           }
-                        })()
+                          throw e;
+                        }
+                      })()
       ) ? (
         <div
           data-plasmic-name={"page7"}
@@ -1943,35 +1929,33 @@ function PlasmicTutorialShell__RenderFunc(props: {
         </div>
       ) : null}
       {(
-        hasVariant($state, "page", "_8")
+        hasVariant($state, "page", "_7")
           ? true
-          : hasVariant($state, "page", "_7")
+          : hasVariant($state, "page", "_6")
             ? true
-            : hasVariant($state, "page", "_6")
+            : hasVariant($state, "page", "_5")
               ? true
-              : hasVariant($state, "page", "_5")
+              : hasVariant($state, "page", "_4")
                 ? true
-                : hasVariant($state, "page", "_4")
+                : hasVariant($state, "page", "_3")
                   ? true
-                  : hasVariant($state, "page", "_3")
+                  : hasVariant($state, "page", "_2")
                     ? true
-                    : hasVariant($state, "page", "_2")
+                    : hasVariant($state, "page", "_1")
                       ? true
-                      : hasVariant($state, "page", "_1")
-                        ? true
-                        : (() => {
-                            try {
-                              return $state.currentStep == 8;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return true;
-                              }
-                              throw e;
+                      : (() => {
+                          try {
+                            return $state.currentStep == 8;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
                             }
-                          })()
+                            throw e;
+                          }
+                        })()
       ) ? (
         <div
           data-plasmic-name={"page8"}
